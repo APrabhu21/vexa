@@ -1,0 +1,3 @@
+a5d40aa meeting-api tests: speak is served now, so no route row is known-unserved (#1866)
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+3049 passed, 16 skipped, 3 warnings in 95.05s (0:01:35)

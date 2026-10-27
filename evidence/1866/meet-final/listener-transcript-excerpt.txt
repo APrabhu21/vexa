@@ -1,0 +1,7 @@
+19:24:57.511 | Vexa Speaker | This is Vexa speaking, the quick brown fox jumps over the lazy dog.
+19:29:05.070 | Vexa Speaker | Number one.
+19:29:10.964 | Vexa Speaker | Number two.
+19:29:16.846 | Vexa Speaker | Number three.
+19:29:21.205 | Vexa Speaker | Number four.
+19:31:48.669 | Vexa Speaker | Retry check.
+19:32:02.758 | Vexa Speaker | The interrupt test begins now. Vexo will keep reading this paragraph until...

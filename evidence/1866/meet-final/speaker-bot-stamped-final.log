@@ -1,0 +1,36 @@
+19:24:52.847 [bot] speak id=8a89b6f6f9904e518968d5c159438e7f started chars=67
+19:25:01.797 [bot] speak id=8a89b6f6f9904e518968d5c159438e7f done ms=8377
+19:25:02.316 [bot] speak id=8a89b6f6f9904e518968d5c159438e7f mic=off
+19:25:30.173 [bot] speak id=58964830cbce4d2c8a32fb79812df431 started chars=466
+19:25:33.104 [bot] speak_stop cleared=0
+19:25:33.104 [bot] speak id=58964830cbce4d2c8a32fb79812df431 failed reason=stopped
+19:25:33.751 [bot] speak id=58964830cbce4d2c8a32fb79812df431 mic=off
+19:29:01.232 [bot] speak id=022a19649b2a42cca92b16bfa90f1c54 started chars=8
+19:29:01.232 [bot] speak dropped id=f2efdbec77fe4961803c211abd308d0c reason=queue_full
+19:29:01.509 [bot] speak dropped id=b6abd3d8743d4bba8033a3ea3e0f9e80 reason=queue_full
+19:29:05.245 [bot] speak id=022a19649b2a42cca92b16bfa90f1c54 done ms=3632
+19:29:05.768 [bot] speak id=022a19649b2a42cca92b16bfa90f1c54 mic=off
+19:29:05.768 [bot] speak id=c14744c6ce2a4023b4da6f354fb3c3ca started chars=8
+19:29:11.318 [bot] speak id=c14744c6ce2a4023b4da6f354fb3c3ca done ms=5093
+19:29:11.600 [bot] speak id=c14744c6ce2a4023b4da6f354fb3c3ca mic=off
+19:29:11.600 [bot] speak id=0648b405211b4a38a980153dc4d8d002 started chars=8
+19:29:17.389 [bot] speak id=0648b405211b4a38a980153dc4d8d002 done ms=5283
+19:29:17.648 [bot] speak id=0648b405211b4a38a980153dc4d8d002 mic=off
+19:29:17.648 [bot] speak id=bb8c7e3f9ddb44c5b27d730030091ca0 started chars=8
+19:29:21.649 [bot] speak id=bb8c7e3f9ddb44c5b27d730030091ca0 done ms=3474
+19:29:21.920 [bot] speak id=bb8c7e3f9ddb44c5b27d730030091ca0 mic=off
+19:29:56.152 [bot] speak_stop cleared=0
+19:29:56.152 [bot] speak id=none mic=off
+19:31:01.122 [bot] speak id=6d3dd832abca4928935f701704611d24 started chars=466
+19:31:01.652 [bot] speak id=6d3dd832abca4928935f701704611d24 failed reason=mic_unverified
+19:31:01.652 [bot] speak id=6d3dd832abca4928935f701704611d24 mic_controls=["Audio settings","Turn on microphone"]
+19:31:01.652 [bot] speak id=6d3dd832abca4928935f701704611d24 mic=off
+19:31:09.241 [bot] speak_stop cleared=0
+19:31:09.241 [bot] speak id=none mic=off
+19:31:44.615 [bot] speak id=accdbcb296a94c84857a1426fcae5e36 started chars=12
+19:31:49.061 [bot] speak id=accdbcb296a94c84857a1426fcae5e36 done ms=4016
+19:31:49.589 [bot] speak id=accdbcb296a94c84857a1426fcae5e36 mic=off
+19:31:58.607 [bot] speak id=13afa532a41645ecada3d45bf6446722 started chars=466
+19:32:06.699 [bot] speak_stop cleared=0
+19:32:06.699 [bot] speak id=13afa532a41645ecada3d45bf6446722 failed reason=stopped
+19:32:07.347 [bot] speak id=13afa532a41645ecada3d45bf6446722 mic=off

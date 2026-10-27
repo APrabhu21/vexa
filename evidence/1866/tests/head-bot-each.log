@@ -1,0 +1,61 @@
+rc=0 tsx src/config.test.ts
+rc=0 tsx src/stt-faults.test.ts
+rc=0 tsx src/transcript-gaps.test.ts
+rc=0 tsx src/aloneness.test.ts
+rc=0 tsx src/orchestrator.test.ts
+rc=0 tsx src/signals.test.ts
+SKIP(windows) tsx src/entrypoint.test.ts
+rc=0 tsx src/join-driver.test.ts
+rc=0 tsx src/join-evidence.test.ts
+rc=0 tsx src/stress.test.ts
+rc=0 tsx src/adapters/lifecycle-http.test.ts
+rc=0 tsx src/adapters/transcript-redis.test.ts
+rc=0 tsx src/adapters/acts-redis.test.ts
+rc=0 tsx src/adapters/redis-lazy-connect.test.ts
+rc=0 tsx src/adapters/redis-terminal.test.ts
+rc=0 tsx src/adapters/voice-note-redis.test.ts
+rc=0 tsx src/voice-note.test.ts
+rc=0 tsx src/pipeline.test.ts
+rc=0 tsx src/transcription-language.test.ts
+rc=0 tsx src/speaker-hints.test.ts
+rc=1 tsx src/capture-bridge.boundary.test.ts
+    throw new Error(
+Error: [build-browser-utils] missing built entry: C:\Users\aprabhu\JANCodes\vexa-1866\core\meetings\modules\gmeet-capture\dist\index.js
+❌ FAIL — Error: Command failed: node build-browser-utils.mjs
+rc=0 tsx src/navigation.boundary.test.ts
+rc=0 tsx src/meeting-navigation.test.ts
+rc=0 tsx src/meeting-navigation.boundary.test.ts
+rc=1 tsx src/teams-speaker-animation.boundary.test.ts
+    throw new Error(
+Error: [build-browser-utils] missing built entry: C:\Users\aprabhu\JANCodes\vexa-1866\core\meetings\modules\gmeet-capture\dist\index.js
+❌ FAIL — Error: Command failed: node build-browser-utils.mjs
+rc=0 tsx src/live-pipeline.test.ts
+rc=0 tsx src/recording.test.ts
+rc=0 tsx src/telemetry.test.ts
+rc=0 tsx src/telemetry-recorder.test.ts
+rc=0 tsx src/signal-upload.test.ts
+rc=1 tsx src/session-writeback.test.ts
+Error: EPERM: operation not permitted, symlink 'C:\Users\aprabhu\AppData\Local\Temp\session-writeback-STtm2c\elsewhere' -> 'C:\Users\aprabhu\AppData\Local\Temp\session-writeback-STtm2c\profile\Default\Preferences'
+rc=0 tsx src/session-restore.test.ts
+rc=0 tsx src/browser-session.test.ts
+rc=0 tsx src/replay.test.ts
+rc=1 tsx src/zoom-speaker-wiring.test.ts
+❌ missing C:\Users\aprabhu\JANCodes\vexa-1866\core\meetings\services\bot\dist\browser-utils.global.js — build the capture bundle first (pnpm --filter @vexa/bot build).
+rc=1 tsx src/teams-caption-wiring.test.ts
+❌ missing C:\Users\aprabhu\JANCodes\vexa-1866\core\meetings\services\bot\dist\browser-utils.global.js — build the capture bundle first (pnpm --filter @vexa/bot build).
+rc=1 tsx src/csrc-wiring.test.ts
+❌ missing C:\Users\aprabhu\JANCodes\vexa-1866\core\meetings\services\bot\dist\browser-utils.global.js — build the capture bundle first (pnpm --filter @vexa/bot build).
+rc=1 tsx src/csrc-capture.boundary.test.ts
+    throw new Error(
+Error: [build-browser-utils] missing built entry: C:\Users\aprabhu\JANCodes\vexa-1866\core\meetings\modules\gmeet-capture\dist\index.js
+  const err = new Error(message);
+rc=0 tsx src/teardown-sidecars.test.ts
+rc=0 tsx src/act-dispatch.test.ts
+rc=0 tsx src/speak-controller.test.ts
+rc=0 tsx src/tts-playback.test.ts
+rc=1 tsx src/gmeet-chat-wiring.test.ts
+❌ missing C:\Users\aprabhu\JANCodes\vexa-1866\core\meetings\services\bot\dist\browser-utils.global.js — build the capture bundle first (pnpm --filter @vexa/bot build).
+rc=0 tsx mock/mock.test.ts
+rc=0 tsx src/call.test.ts
+rc=0 tsx src/adapters/livekit-room.test.ts
+rc=0 node --test runtime/native-meeting/test/*.test.mjs

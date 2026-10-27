@@ -1,0 +1,6 @@
+
+▶ gates: contract-version
+  ✗ sealed contract changed: core/meetings/contracts/acts.v1 — a published .vN is frozen. BREAKING change → add the next version (vN+1); BACK-COMPATIBLE change → re-seal with `pnpm seal:contracts` in a lane:contract human-reviewed PR.
+
+❌ gates failed
+

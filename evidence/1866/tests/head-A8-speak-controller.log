@@ -1,0 +1,51 @@
+  ✅ only the first utterance plays while the second waits
+  ✅ the second plays after the first finished
+  ✅ no two playbacks ever overlapped
+  ✅ started/done lines name each id
+  ✅ MAX_PENDING is 3
+  ✅ the utterance past the cap is dropped as queue_full
+  ✅ the dropped utterance was never played
+  ✅ stop killed the playback
+  ✅ stop reports how many it cleared
+  ✅ the playing utterance ends as stopped
+  ✅ the waiting utterances never play
+  ✅ the meeting-UI mic is off after stop
+  ✅ a bot without voiceAgentEnabled does not play
+  ✅ it says why, with the id
+  ✅ an off mic is switched on before audio plays
+  ✅ and switched off again after
+  ✅ the mic-off line names the id
+  ✅ a mic already on is not clicked off before speaking
+  ✅ an unverifiable mic means no play
+  ✅ …failed reason=mic_unverified
+  ✅ …and the mic controls the page shows are logged
+  ✅ a toggle Meet relabels late still plays, after one click
+  ✅ a mic that will not switch on means no play
+  ✅ a mic that will not switch off is logged as unverified
+  ✅ on Zoom the UI mic is left as the join set it
+  ✅ …and the line says so
+  ✅ a TTS tts_http_401 gives failed reason=tts_http_401
+  ✅ …and the mic goes back off (tts_http_401)
+  ✅ a TTS tts_not_configured gives failed reason=tts_not_configured
+  ✅ …and the mic goes back off (tts_not_configured)
+  ✅ a TTS tts_unreachable gives failed reason=tts_unreachable
+  ✅ …and the mic goes back off (tts_unreachable)
+  ✅ the voice reaches the TTS
+  ✅ every speak line names the id
+  ✅ no line carries the spoken text
+  ✅ an act without an id still gets a traceable id
+  ✅ mic control "Turn off microphone (ctrl + d)" reads on
+  ✅ mic control "Turn on microphone (ctrl + d)" reads off
+  ✅ mic control "Mute (Ctrl+Shift+M)" reads on
+  ✅ mic control "Unmute (Ctrl+Shift+M)" reads off
+  ✅ mic control "Mute mic" reads on
+  ✅ mic control "Unmute mic" reads off
+  ✅ mic control "mute my microphone" reads on
+  ✅ mic control "unmute my microphone" reads off
+  ✅ mic control "Mute microphone" reads on
+  ✅ mic control "Unmute microphone" reads off
+  ✅ mic control "Camera" reads unknown
+  ✅ mic control "" reads unknown
+  ✅ no control at all reads unknown
+
+✅ speak-controller (L2): one utterance at a time, a capped queue, stop clears it, the mic is read before it is clicked, and every line names the id.

@@ -1,0 +1,397 @@
+## setup 2026-10-27T18:19:13Z
+$ git rev-parse HEAD
+37e53450913a5d9d28cdd17801d88ae5c132b935
+deployment: Vexa Lite, fresh clone; host: Windows 11 + WSL2 Ubuntu 24.04, docker.io 29.1.3
+$ make -C deploy/lite build
+build exit=0
+$ docker image inspect vexa-lite:dev --format '{{.Id}}'
+sha256:12b1061c95f3e0e1cde86e8f2fb77a913fa0d697e1aab6f9898617d45cae6099
+env deltas from stock: LOCAL_STT=1 (bundled CPU STT); TTS_SERVICE_URL=http://kokoro:8880 (Kokoro-FastAPI v0.2.4, CPU, on vexa-lite-net), TTS_VOICE=af_bella, TTS_API_TOKEN unset
+$ make lite LOCAL_STT=1
+lite exit=0
+$ make probe SURFACE=lite
+probe exit=2
+# TTS settings in the runtime process environment (values redacted):
+TTS_API_TOKEN=<redacted>
+TTS_SERVICE_URL=http://kokoro:8880
+TTS_VOICE=af_bella
+user A id= key minted (bot,tx)
+user B id= key minted (bot,tx)
+user C id= key minted (bot,tx)
+user A id=3 key minted (bot,tx)
+user B id=4 key minted (bot,tx)
+user C id=5 key minted (bot,tx)
+$ make probe SURFACE=lite
+probe exit=0
+## L2 spawn 2026-10-27T18:45:06Z
+[18:45:06.386] $ curl -X POST /bots  (key A) body={"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","bot_name":"Vexa Speaker","voice_agent_enabled":true}
+HTTP/1.1 201 Created
+{"id":2,"user_id":3,"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","constructed_meeting_url":"https://meet.google.com/fnv-enye-wbr","status":"requested","bot_container_id":"mtg-2-e6d99069","start_time":null,"end_time":null,"completion_reason":null,"failure_stage":null,"data":{"recording_enabled":true,"service_authority":{"mode":"unconfigured","allow":true,"reason":"unconfigured","enforced":false,"decided_at":"2026-10-27T18:45:06.423631+00:00","request_id":"meeting-session:e6d99069-85a7-492f-873c-d4bcceba83e7:admit","stop_scope":null,"decision_id":"service-authority:unconfigured:56f5152022ed311d4d6f9662fd1e49bfa3e416fa6428b0aa29578d68d482a7cc","service_mode":"bot","last_boundary_at":null,"last_decision_id":"service-authority:unconfigured:56f5152022ed311d4d6f9662fd1e49bfa3e416fa6428b0aa29578d68d482a7cc","service_identity":"meeting-session:e6d99069-85a7-492f-873c-d4bcceba83e7","authority_version":"service-authority.v1","teardown_confirmed":false,"transcription_provider":"vexa","lifecycle_contract_version":"2026-07-28"},"transcribe_enabled":true,"voice_agent_enabled":true,"transcription_language":{"source":"auto","language":null,"allowed_languages":[]},"transcription_provider":"vexa","constructed_meeting_url":"https://meet.google.com/fnv-enye-wbr","sessions":["e6d99069-85a7-492f-873c-d4bcceba83e7"]},"created_at":"2026-10-27T18:45:06.424167Z","updated_at":"2026-10-27T18:45:06.472646Z"}
+[18:45:06.488] $ curl -X POST /bots  (key B) body={"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","bot_name":"Vexa Listener"}
+HTTP/1.1 201 Created
+{"id":3,"user_id":4,"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","constructed_meeting_url":"https://meet.google.com/fnv-enye-wbr","status":"requested","bot_container_id":"mtg-3-cd2107ac","start_time":null,"end_time":null,"completion_reason":null,"failure_stage":null,"data":{"recording_enabled":true,"service_authority":{"mode":"unconfigured","allow":true,"reason":"unconfigured","enforced":false,"decided_at":"2026-10-27T18:45:06.520485+00:00","request_id":"meeting-session:cd2107ac-bcc9-4812-8be4-3ef33273125b:admit","stop_scope":null,"decision_id":"service-authority:unconfigured:dbd22a775f45ca558149ced645b8490f072584eedb6d34c69aba16003a3a9dd8","service_mode":"bot","last_boundary_at":null,"last_decision_id":"service-authority:unconfigured:dbd22a775f45ca558149ced645b8490f072584eedb6d34c69aba16003a3a9dd8","service_identity":"meeting-session:cd2107ac-bcc9-4812-8be4-3ef33273125b","authority_version":"service-authority.v1","teardown_confirmed":false,"transcription_provider":"vexa","lifecycle_contract_version":"2026-07-28"},"transcribe_enabled":true,"transcription_language":{"source":"auto","language":null,"allowed_languages":[]},"transcription_provider":"vexa","constructed_meeting_url":"https://meet.google.com/fnv-enye-wbr","sessions":["cd2107ac-bcc9-4812-8be4-3ef33273125b"]},"created_at":"2026-10-27T18:45:06.520915Z","updated_at":"2026-10-27T18:45:06.568999Z"}
+## L4 speak 2026-10-27T18:45:54Z
+[18:45:54.518] $ curl -X POST /bots/google_meet/fnv-enye-wbr/speak  (key A) body={"text":"This is Vexa speaking. The quick brown fox jumps over the lazy dog."}
+HTTP/1.1 200 OK
+{"status":"queued","request_id":"b3a54beed1724f77a0e0e5168f298ea5","meeting_id":2,"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","chars":67}
+## respawn speaker with mic diagnostic 2026-10-27T18:51:21Z
+stop 200
+eting_url":"https://meet.google.com/fnv-enye-wbr","sessions":["5e0cf609-c737-4683-be23-a84339cbb949"]},"created_at":"2026-10-27T18:51:24.415794Z","updated_at":"2026-10-27T18:51:24.471431Z"}
+spawn 201
+## L4-diag speak 2026-10-27T18:52:04Z
+[18:52:04.439] $ curl -X POST /bots/google_meet/fnv-enye-wbr/speak  (key A) body={"text":"Diagnostic check one."}
+HTTP/1.1 200 OK
+{"status":"queued","request_id":"d308aecdf8ba4b8db79f9d35c6c05606","meeting_id":4,"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","chars":21}
+## L4 speak 2026-10-27T18:55:43Z
+[18:55:43.281] $ curl -X POST /bots/google_meet/fnv-enye-wbr/speak  (key A) body={"text":"This is Vexa speaking. The quick brown fox jumps over the lazy dog."}
+HTTP/1.1 200 OK
+{"status":"queued","request_id":"8d2e89dd6208428cb91903ab972755e0","meeting_id":4,"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","chars":67}
+deployment: Vexa Lite, fresh clone; host: Windows 11 + WSL2 Ubuntu 24.04, docker.io 29.1.3
+$ make -C deploy/lite build
+build exit=0
+$ docker image inspect vexa-lite:dev --format '{{.Id}}'
+sha256:7b8e14a12a3d471c091ae3da5384cdccc9d322a30f2992b324c538ca60b9b172
+env deltas from stock: LOCAL_STT=1 (bundled CPU STT); TTS_SERVICE_URL=http://kokoro:8880 (Kokoro-FastAPI v0.2.4, CPU, on vexa-lite-net), TTS_VOICE=af_bella, TTS_API_TOKEN unset
+$ make lite LOCAL_STT=1
+lite exit=0
+## run 2 on image sha256:7b8e14a1 at a885c07
+## L2 spawn 2026-10-27T19:01:07Z
+[19:01:07.989] $ curl -X POST /bots  (key A) body={"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","bot_name":"Vexa Speaker","voice_agent_enabled":true}
+HTTP/1.1 201 Created
+{"id":5,"user_id":3,"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","constructed_meeting_url":"https://meet.google.com/fnv-enye-wbr","status":"requested","bot_container_id":"mtg-5-3248a2e5","start_time":null,"end_time":null,"completion_reason":null,"failure_stage":null,"data":{"recording_enabled":true,"service_authority":{"mode":"unconfigured","allow":true,"reason":"unconfigured","enforced":false,"decided_at":"2026-10-27T19:01:08.027234+00:00","request_id":"meeting-session:3248a2e5-aa9b-41ec-af26-1815cf25355e:admit","stop_scope":null,"decision_id":"service-authority:unconfigured:50f50ecca97ee7f5d5d352d44d86038c02b25c97d1d28736d296807de654782b","service_mode":"bot","last_boundary_at":null,"last_decision_id":"service-authority:unconfigured:50f50ecca97ee7f5d5d352d44d86038c02b25c97d1d28736d296807de654782b","service_identity":"meeting-session:3248a2e5-aa9b-41ec-af26-1815cf25355e","authority_version":"service-authority.v1","teardown_confirmed":false,"transcription_provider":"vexa","lifecycle_contract_version":"2026-07-28"},"transcribe_enabled":true,"voice_agent_enabled":true,"transcription_language":{"source":"auto","language":null,"allowed_languages":[]},"transcription_provider":"vexa","constructed_meeting_url":"https://meet.google.com/fnv-enye-wbr","sessions":["3248a2e5-aa9b-41ec-af26-1815cf25355e"]},"created_at":"2026-10-27T19:01:08.027881Z","updated_at":"2026-10-27T19:01:08.250007Z"}
+[19:01:08.267] $ curl -X POST /bots  (key B) body={"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","bot_name":"Vexa Listener"}
+HTTP/1.1 201 Created
+{"id":6,"user_id":4,"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","constructed_meeting_url":"https://meet.google.com/fnv-enye-wbr","status":"requested","bot_container_id":"mtg-6-d43e1822","start_time":null,"end_time":null,"completion_reason":null,"failure_stage":null,"data":{"recording_enabled":true,"service_authority":{"mode":"unconfigured","allow":true,"reason":"unconfigured","enforced":false,"decided_at":"2026-10-27T19:01:08.299307+00:00","request_id":"meeting-session:d43e1822-a2e2-4790-96ae-a635917f6ea3:admit","stop_scope":null,"decision_id":"service-authority:unconfigured:84ad30408f8d86b20eae03eefe6d3a1f04a032955bf75d3c791c77a736b92350","service_mode":"bot","last_boundary_at":null,"last_decision_id":"service-authority:unconfigured:84ad30408f8d86b20eae03eefe6d3a1f04a032955bf75d3c791c77a736b92350","service_identity":"meeting-session:d43e1822-a2e2-4790-96ae-a635917f6ea3","authority_version":"service-authority.v1","teardown_confirmed":false,"transcription_provider":"vexa","lifecycle_contract_version":"2026-07-28"},"transcribe_enabled":true,"transcription_language":{"source":"auto","language":null,"allowed_languages":[]},"transcription_provider":"vexa","constructed_meeting_url":"https://meet.google.com/fnv-enye-wbr","sessions":["d43e1822-a2e2-4790-96ae-a635917f6ea3"]},"created_at":"2026-10-27T19:01:08.299879Z","updated_at":"2026-10-27T19:01:08.394475Z"}
+## L3 A 2026-10-27T19:02:12Z GET /bots/status -> [(5, 'active')]
+## L3 B 2026-10-27T19:02:12Z GET /bots/status -> [(6, 'active')]
+## L4 speak 2026-10-27T19:02:27Z
+[19:02:27.215] $ curl -X POST /bots/google_meet/fnv-enye-wbr/speak  (key A) body={"text":"This is Vexa speaking. The quick brown fox jumps over the lazy dog."}
+HTTP/1.1 200 OK
+{"status":"queued","request_id":"6bd3216f378a4245b58b0e1ee05f4f18","meeting_id":5,"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","chars":67}
+## L5-keyB 2026-10-27T19:03:15Z
+[19:03:15.065] $ curl -X POST /bots/google_meet/fnv-enye-wbr/speak  (key B) body={"text":"hello from B"}
+HTTP/1.1 409 Conflict
+{"detail":"this bot was started without voice_agent_enabled: true, so it cannot speak — start a bot with that flag"}
+## L5-keyC 2026-10-27T19:03:15Z
+[19:03:15.100] $ curl -X POST /bots/google_meet/fnv-enye-wbr/speak  (key C) body={"text":"hello from C"}
+HTTP/1.1 404 Not Found
+{"detail":"no running bot in this meeting that you can speak through — start one with voice_agent_enabled: true"}
+## L5-empty 2026-10-27T19:03:15Z
+[19:03:15.134] $ curl -X POST /bots/google_meet/fnv-enye-wbr/speak  (key A) body={"text":""}
+HTTP/1.1 422 Unprocessable Entity
+{"detail":"'text' must be a non-empty string — send the sentence to say"}
+## L5-501 2026-10-27T19:03:15Z
+[19:03:15.164] $ curl -X POST /bots/google_meet/fnv-enye-wbr/speak  (key A) body={"text":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}
+HTTP/1.1 422 Unprocessable Entity
+{"detail":"'text' is longer than 500 characters — split it into shorter requests"}
+## L5-audio 2026-10-27T19:03:15Z
+[19:03:15.193] $ curl -X POST /bots/google_meet/fnv-enye-wbr/speak  (key A) body={"audio_base64":"AAAA"}
+HTTP/1.1 422 Unprocessable Entity
+{"detail":"audio input is not served by this route yet — see #514"}
+## L6-long speak 2026-10-27T19:03:27Z
+[19:03:27.116] $ curl -X POST /bots/google_meet/fnv-enye-wbr/speak  (key A) body={"text":"The interrupt test begins now. Vexa will keep reading this paragraph until the stop request arrives, and nothing after that point should ever be heard by anyone in the meeting. The paragraph goes on about the weather, the river behind the office, the slow afternoon traffic, and the sound of rain on a tin roof, so that there is plenty of speech left to cut. If you can still hear this sentence, the stop request did not reach the bot in time, and that is a finding."}
+HTTP/1.1 200 OK
+{"status":"queued","request_id":"81e0c99e84024cbfbd89b15dc7c53791","meeting_id":5,"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","chars":466}
+## L6 stop 2026-10-27T19:03:30Z
+[19:03:30.182] $ curl -X DELETE /bots/google_meet/fnv-enye-wbr/speak  (key A)
+HTTP/1.1 200 OK
+{"status":"stop_sent","bots":1}
+## L7 rate limit 2026-10-27T19:04:13Z
+[19:04:13.205] POST speak number 1 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"9475cb9ac36c4db181dc8e3b9a250cfa","meeting_id":5,"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","chars":8}
+[19:04:13.267] POST speak number 2 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"cbfe8d740a234fbf9e63f9f97a3f5804","meeting_id":5,"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","chars":8}
+[19:04:13.319] POST speak number 3 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"5ba110e9d48943e2b8be6f9c16667df9","meeting_id":5,"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","chars":8}
+[19:04:13.371] POST speak number 4 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"b2185a22def0452f8f30fdcbb507f6a8","meeting_id":5,"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","chars":8}
+[19:04:13.414] POST speak number 5 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"99508faed2f44214be320ec4115c4eb3","meeting_id":5,"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","chars":8}
+[19:04:13.454] POST speak number 6 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"4e0b2a0f751d4a8a8da9aadb94e948f7","meeting_id":5,"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","chars":8}
+[19:04:13.506] POST speak number 7 -> HTTP/1.1 429 Too Many Requests  {"detail":"this meeting takes at most 6 speak requests every 60 seconds; nothing was said — retry after 47 s"}
+deployment: Vexa Lite, fresh clone; host: Windows 11 + WSL2 Ubuntu 24.04, docker.io 29.1.3
+$ make -C deploy/lite build
+build exit=0
+$ docker image inspect vexa-lite:dev --format '{{.Id}}'
+sha256:002bb8f5f0756a562dc10a0a22d4d2ae8a13a2a3136063c25c6cbe4378458a7a
+env deltas from stock: LOCAL_STT=1 (bundled CPU STT); TTS_SERVICE_URL=http://kokoro:8880 (Kokoro-FastAPI v0.2.4, CPU, on vexa-lite-net), TTS_VOICE=af_bella, TTS_API_TOKEN unset
+$ make lite LOCAL_STT=1
+lite exit=0
+## run 3 (final) on image sha256:002bb8f5f0756a562dc10a0a22d4d2ae8a13a2a3136063c25c6cbe4378458a7a at 6c35846
+## L2 spawn 2026-10-27T19:22:45Z
+[19:22:45.180] $ curl -X POST /bots  (key A) body={"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","bot_name":"Vexa Speaker","voice_agent_enabled":true}
+HTTP/1.1 201 Created
+{"id":7,"user_id":3,"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","constructed_meeting_url":"https://meet.google.com/fnv-enye-wbr","status":"requested","bot_container_id":"mtg-7-d856aca0","start_time":null,"end_time":null,"completion_reason":null,"failure_stage":null,"data":{"recording_enabled":true,"service_authority":{"mode":"unconfigured","allow":true,"reason":"unconfigured","enforced":false,"decided_at":"2026-10-27T19:22:45.223481+00:00","request_id":"meeting-session:d856aca0-91b2-4775-935a-e41cb4eee8aa:admit","stop_scope":null,"decision_id":"service-authority:unconfigured:8c3b3cd666f6ee06c8f9f533a7d6768932d7359e2633b96240315ab6430e6811","service_mode":"bot","last_boundary_at":null,"last_decision_id":"service-authority:unconfigured:8c3b3cd666f6ee06c8f9f533a7d6768932d7359e2633b96240315ab6430e6811","service_identity":"meeting-session:d856aca0-91b2-4775-935a-e41cb4eee8aa","authority_version":"service-authority.v1","teardown_confirmed":false,"transcription_provider":"vexa","lifecycle_contract_version":"2026-07-28"},"transcribe_enabled":true,"voice_agent_enabled":true,"transcription_language":{"source":"auto","language":null,"allowed_languages":[]},"transcription_provider":"vexa","constructed_meeting_url":"https://meet.google.com/fnv-enye-wbr","sessions":["d856aca0-91b2-4775-935a-e41cb4eee8aa"]},"created_at":"2026-10-27T19:22:45.224326Z","updated_at":"2026-10-27T19:22:45.416168Z"}
+[19:22:45.440] $ curl -X POST /bots  (key B) body={"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","bot_name":"Vexa Listener"}
+HTTP/1.1 201 Created
+{"id":8,"user_id":4,"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","constructed_meeting_url":"https://meet.google.com/fnv-enye-wbr","status":"requested","bot_container_id":"mtg-8-2414ee56","start_time":null,"end_time":null,"completion_reason":null,"failure_stage":null,"data":{"recording_enabled":true,"service_authority":{"mode":"unconfigured","allow":true,"reason":"unconfigured","enforced":false,"decided_at":"2026-10-27T19:22:45.472602+00:00","request_id":"meeting-session:2414ee56-5bdc-447d-b3cc-803b556b9d7b:admit","stop_scope":null,"decision_id":"service-authority:unconfigured:b02fd0a67425797ee098186708f0e5fa7f4804724601d636ab2cf0a69c484d69","service_mode":"bot","last_boundary_at":null,"last_decision_id":"service-authority:unconfigured:b02fd0a67425797ee098186708f0e5fa7f4804724601d636ab2cf0a69c484d69","service_identity":"meeting-session:2414ee56-5bdc-447d-b3cc-803b556b9d7b","authority_version":"service-authority.v1","teardown_confirmed":false,"transcription_provider":"vexa","lifecycle_contract_version":"2026-07-28"},"transcribe_enabled":true,"transcription_language":{"source":"auto","language":null,"allowed_languages":[]},"transcription_provider":"vexa","constructed_meeting_url":"https://meet.google.com/fnv-enye-wbr","sessions":["2414ee56-5bdc-447d-b3cc-803b556b9d7b"]},"created_at":"2026-10-27T19:22:45.473188Z","updated_at":"2026-10-27T19:22:45.524080Z"}
+## L3 A 2026-10-27T19:23:37Z GET /bots/status -> [(7, 'awaiting_admission')]
+## L3 B 2026-10-27T19:23:37Z GET /bots/status -> [(8, 'awaiting_admission')]
+## L3 A 2026-10-27T19:23:59Z GET /bots/status -> [(7, 'awaiting_admission')]
+## L3 B 2026-10-27T19:23:59Z GET /bots/status -> [(8, 'awaiting_admission')]
+## L3 A 2026-10-27T19:24:46Z GET /bots/status -> [(7, 'active')]
+## L3 B 2026-10-27T19:24:46Z GET /bots/status -> [(8, 'active')]
+## L4 speak 2026-10-27T19:24:52Z
+[19:24:52.746] $ curl -X POST /bots/google_meet/fnv-enye-wbr/speak  (key A) body={"text":"This is Vexa speaking. The quick brown fox jumps over the lazy dog."}
+HTTP/1.1 200 OK
+{"status":"queued","request_id":"8a89b6f6f9904e518968d5c159438e7f","meeting_id":7,"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","chars":67}
+## L5-keyB 2026-10-27T19:25:22Z
+[19:25:22.619] $ curl -X POST /bots/google_meet/fnv-enye-wbr/speak  (key B) body={"text":"hello from B"}
+HTTP/1.1 409 Conflict
+{"detail":"this bot was started without voice_agent_enabled: true, so it cannot speak — start a bot with that flag"}
+## L5-keyC 2026-10-27T19:25:22Z
+[19:25:22.655] $ curl -X POST /bots/google_meet/fnv-enye-wbr/speak  (key C) body={"text":"hello from C"}
+HTTP/1.1 404 Not Found
+{"detail":"no running bot in this meeting that you can speak through — start one with voice_agent_enabled: true"}
+## L5-empty 2026-10-27T19:25:22Z
+[19:25:22.686] $ curl -X POST /bots/google_meet/fnv-enye-wbr/speak  (key A) body={"text":""}
+HTTP/1.1 422 Unprocessable Entity
+{"detail":"'text' must be a non-empty string — send the sentence to say"}
+## L5-501 2026-10-27T19:25:22Z
+[19:25:22.717] $ curl -X POST /bots/google_meet/fnv-enye-wbr/speak  (key A) body={"text":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}
+HTTP/1.1 422 Unprocessable Entity
+{"detail":"'text' is longer than 500 characters — split it into shorter requests"}
+## L5-audio 2026-10-27T19:25:22Z
+[19:25:22.744] $ curl -X POST /bots/google_meet/fnv-enye-wbr/speak  (key A) body={"audio_base64":"AAAA"}
+HTTP/1.1 422 Unprocessable Entity
+{"detail":"audio input is not served by this route yet — see #514"}
+## L6-long speak 2026-10-27T19:25:29Z
+[19:25:29.914] $ curl -X POST /bots/google_meet/fnv-enye-wbr/speak  (key A) body={"text":"The interrupt test begins now. Vexa will keep reading this paragraph until the stop request arrives, and nothing after that point should ever be heard by anyone in the meeting. The paragraph goes on about the weather, the river behind the office, the slow afternoon traffic, and the sound of rain on a tin roof, so that there is plenty of speech left to cut. If you can still hear this sentence, the stop request did not reach the bot in time, and that is a finding."}
+HTTP/1.1 200 OK
+{"status":"queued","request_id":"58964830cbce4d2c8a32fb79812df431","meeting_id":7,"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","chars":466}
+## L6 stop 2026-10-27T19:25:33Z
+[19:25:33.030] $ curl -X DELETE /bots/google_meet/fnv-enye-wbr/speak  (key A)
+HTTP/1.1 200 OK
+{"status":"stop_sent","bots":1}
+## L7 rate limit 2026-10-27T19:29:01Z
+[19:29:01.093] POST speak number 1 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"022a19649b2a42cca92b16bfa90f1c54","meeting_id":7,"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","chars":8}
+[19:29:01.124] POST speak number 2 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"c14744c6ce2a4023b4da6f354fb3c3ca","meeting_id":7,"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","chars":8}
+[19:29:01.150] POST speak number 3 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"0648b405211b4a38a980153dc4d8d002","meeting_id":7,"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","chars":8}
+[19:29:01.176] POST speak number 4 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"bb8c7e3f9ddb44c5b27d730030091ca0","meeting_id":7,"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","chars":8}
+[19:29:01.200] POST speak number 5 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"f2efdbec77fe4961803c211abd308d0c","meeting_id":7,"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","chars":8}
+[19:29:01.223] POST speak number 6 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"b6abd3d8743d4bba8033a3ea3e0f9e80","meeting_id":7,"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","chars":8}
+[19:29:01.248] POST speak number 7 -> HTTP/1.1 429 Too Many Requests retry-after: 59 {"detail":"this meeting takes at most 6 speak requests every 60 seconds; nothing was said — retry after 59 s"}
+## L8 2026-10-27T19:29:34Z GET /transcripts/google_meet/fnv-enye-wbr (key B)
+## L6-long (stop after 8 s) speak 2026-10-27T19:29:47Z
+[19:29:47.920] $ curl -X POST /bots/google_meet/fnv-enye-wbr/speak  (key A) body={"text":"The interrupt test begins now. Vexa will keep reading this paragraph until the stop request arrives, and nothing after that point should ever be heard by anyone in the meeting. The paragraph goes on about the weather, the river behind the office, the slow afternoon traffic, and the sound of rain on a tin roof, so that there is plenty of speech left to cut. If you can still hear this sentence, the stop request did not reach the bot in time, and that is a finding."}
+HTTP/1.1 429 Too Many Requests
+retry-after: 13
+{"detail":"this meeting takes at most 6 speak requests every 60 seconds; nothing was said — retry after 13 s"}
+## L6 stop 2026-10-27T19:29:55Z
+[19:29:55.959] $ curl -X DELETE /bots/google_meet/fnv-enye-wbr/speak  (key A)
+HTTP/1.1 200 OK
+{"status":"stop_sent","bots":1}
+## L6-long (stop after 8 s) speak 2026-10-27T19:31:01Z
+[19:31:01.027] $ curl -X POST /bots/google_meet/fnv-enye-wbr/speak  (key A) body={"text":"The interrupt test begins now. Vexa will keep reading this paragraph until the stop request arrives, and nothing after that point should ever be heard by anyone in the meeting. The paragraph goes on about the weather, the river behind the office, the slow afternoon traffic, and the sound of rain on a tin roof, so that there is plenty of speech left to cut. If you can still hear this sentence, the stop request did not reach the bot in time, and that is a finding."}
+HTTP/1.1 200 OK
+{"status":"queued","request_id":"6d3dd832abca4928935f701704611d24","meeting_id":7,"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","chars":466}
+## L6 stop 2026-10-27T19:31:09Z
+[19:31:09.067] $ curl -X DELETE /bots/google_meet/fnv-enye-wbr/speak  (key A)
+HTTP/1.1 200 OK
+{"status":"stop_sent","bots":1}
+## L8 2026-10-27T19:31:20Z GET /transcripts/google_meet/fnv-enye-wbr (key B)
+## L6-retry-check speak 2026-10-27T19:31:44Z
+[19:31:44.456] $ curl -X POST /bots/google_meet/fnv-enye-wbr/speak  (key A) body={"text":"Retry check."}
+HTTP/1.1 200 OK
+{"status":"queued","request_id":"accdbcb296a94c84857a1426fcae5e36","meeting_id":7,"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","chars":12}
+## L6-long (stop after 8 s) speak 2026-10-27T19:31:58Z
+[19:31:58.578] $ curl -X POST /bots/google_meet/fnv-enye-wbr/speak  (key A) body={"text":"The interrupt test begins now. Vexa will keep reading this paragraph until the stop request arrives, and nothing after that point should ever be heard by anyone in the meeting. The paragraph goes on about the weather, the river behind the office, the slow afternoon traffic, and the sound of rain on a tin roof, so that there is plenty of speech left to cut. If you can still hear this sentence, the stop request did not reach the bot in time, and that is a finding."}
+HTTP/1.1 200 OK
+{"status":"queued","request_id":"13afa532a41645ecada3d45bf6446722","meeting_id":7,"platform":"google_meet","native_meeting_id":"fnv-enye-wbr","chars":466}
+## L6 stop 2026-10-27T19:32:06Z
+[19:32:06.643] $ curl -X DELETE /bots/google_meet/fnv-enye-wbr/speak  (key A)
+HTTP/1.1 200 OK
+{"status":"stop_sent","bots":1}
+## L8 2026-10-27T19:32:25Z GET /transcripts/google_meet/fnv-enye-wbr (key B)
+## L9 2026-10-27T19:32:39Z
+DELETE /bots/google_meet/fnv-enye-wbr (key A) -> {"status":"stopping","meeting_id":7,"native_meeting_id":"fnv-enye-wbr","also_stopped":[],"cancelled":[]} 200
+DELETE /bots/google_meet/fnv-enye-wbr (key B) -> {"status":"stopping","meeting_id":8,"native_meeting_id":"fnv-enye-wbr","also_stopped":[],"cancelled":[]} 200
+probe exit=2
+$ VEXA_API_KEY=<user A key> make probe SURFACE=lite
+probe exit=0
+deployment: Vexa Lite, fresh clone; host: Windows 11 + WSL2 Ubuntu 24.04, docker.io 29.1.3
+$ make -C deploy/lite build
+build exit=0
+$ docker image inspect vexa-lite:dev --format '{{.Id}}'
+sha256:3b8f4ad8cec52c18b728f3628cd9eb85e811d49f11a78b553672fc89560fa23b
+env deltas from stock: LOCAL_STT=1 (bundled CPU STT); TTS_SERVICE_URL=http://kokoro:8880 (Kokoro-FastAPI v0.2.4, CPU, on vexa-lite-net), TTS_VOICE=af_bella, TTS_API_TOKEN unset
+$ make lite LOCAL_STT=1
+lite exit=0
+## zoom L2 spawn 2026-10-27T20:29:45Z (meeting_url from the host's invite link, redacted)
+POST /bots (key A, bot_name=Vexa Speaker, voice_agent_enabled=true) -> 201 {'id': 10, 'platform': 'zoom', 'native_meeting_id': '98335963876', 'status': 'requested', 'bot_container_id': 'mtg-10-2a8455ea', 'detail': None, 'voice_agent_enabled': True}
+POST /bots (key B, bot_name=Vexa Listener) -> 201 {'id': 11, 'platform': 'zoom', 'native_meeting_id': '98335963876', 'status': 'requested', 'bot_container_id': 'mtg-11-efcb16de', 'detail': None, 'voice_agent_enabled': None}
+## zoom L3 A 2026-10-27T20:30:41Z GET /bots/status -> [(10, 'active')]
+## zoom L3 B 2026-10-27T20:30:41Z GET /bots/status -> [(11, 'active')]
+## zoom-L4 speak 2026-10-27T20:30:53Z
+[20:30:53.932] $ curl -X POST /bots/zoom/98335963876/speak  (key A) body={"text":"This is Vexa speaking. The quick brown fox jumps over the lazy dog."}
+HTTP/1.1 200 OK
+{"status":"queued","request_id":"c1120adb056449d3947e096ee91d11f0","meeting_id":10,"platform":"zoom","native_meeting_id":"98335963876","chars":67}
+## L8 2026-10-27T20:31:29Z GET /transcripts/zoom/98335963876 (key B)
+## zoom-L5-keyB 2026-10-27T20:31:44Z
+[20:31:44.812] $ curl -X POST /bots/zoom/98335963876/speak  (key B) body={"text":"hello from B"}
+HTTP/1.1 409 Conflict
+{"detail":"this bot was started without voice_agent_enabled: true, so it cannot speak — start a bot with that flag"}
+## zoom-L5-keyC 2026-10-27T20:31:44Z
+[20:31:44.846] $ curl -X POST /bots/zoom/98335963876/speak  (key C) body={"text":"hello from C"}
+HTTP/1.1 404 Not Found
+{"detail":"no running bot in this meeting that you can speak through — start one with voice_agent_enabled: true"}
+## zoom-L5-empty 2026-10-27T20:31:44Z
+[20:31:44.888] $ curl -X POST /bots/zoom/98335963876/speak  (key A) body={"text":""}
+HTTP/1.1 422 Unprocessable Entity
+{"detail":"'text' must be a non-empty string — send the sentence to say"}
+## zoom-L5-501 2026-10-27T20:31:44Z
+[20:31:44.918] $ curl -X POST /bots/zoom/98335963876/speak  (key A) body={"text":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}
+HTTP/1.1 422 Unprocessable Entity
+{"detail":"'text' is longer than 500 characters — split it into shorter requests"}
+## zoom-L5-audio 2026-10-27T20:31:44Z
+[20:31:44.986] $ curl -X POST /bots/zoom/98335963876/speak  (key A) body={"audio_base64":"AAAA"}
+HTTP/1.1 422 Unprocessable Entity
+{"detail":"audio input is not served by this route yet — see #514"}
+## L6-long (stop after 8 s) speak 2026-10-27T20:31:50Z
+[20:31:50.520] $ curl -X POST /bots/The interrupt test begins now. Vexa will keep reading this paragraph until the stop request arrives, and nothing after that point should ever be heard by anyone in the meeting. The paragraph goes on about the weather, the river behind the office, the slow afternoon traffic, and the sound of rain on a tin roof, so that there is plenty of speech left to cut. If you can still hear this sentence, the stop request did not reach the bot in time, and that is a finding./98335963876/speak  (key A) body={"text":"The interrupt test begins now. Vexa will keep reading this paragraph until the stop request arrives, and nothing after that point should ever be heard by anyone in the meeting. The paragraph goes on about the weather, the river behind the office, the slow afternoon traffic, and the sound of rain on a tin roof, so that there is plenty of speech left to cut. If you can still hear this sentence, the stop request did not reach the bot in time, and that is a finding."}
+
+
+## L6 stop 2026-10-27T20:31:58Z
+[20:31:58.545] $ curl -X DELETE /bots/The interrupt test begins now. Vexa will keep reading this paragraph until the stop request arrives, and nothing after that point should ever be heard by anyone in the meeting. The paragraph goes on about the weather, the river behind the office, the slow afternoon traffic, and the sound of rain on a tin roof, so that there is plenty of speech left to cut. If you can still hear this sentence, the stop request did not reach the bot in time, and that is a finding./98335963876/speak  (key A)
+
+
+## L6-long (stop after 8 s) speak 2026-10-27T20:32:20Z
+[20:32:20.274] $ curl -X POST /bots/zoom/98335963876/speak  (key A) body={"text":"The interrupt test begins now. Vexa will keep reading this paragraph until the stop request arrives, and nothing after that point should ever be heard by anyone in the meeting. The paragraph goes on about the weather, the river behind the office, the slow afternoon traffic, and the sound of rain on a tin roof, so that there is plenty of speech left to cut. If you can still hear this sentence, the stop request did not reach the bot in time, and that is a finding."}
+HTTP/1.1 200 OK
+{"status":"queued","request_id":"8e18e0aedf374775976d34c90368028a","meeting_id":10,"platform":"zoom","native_meeting_id":"98335963876","chars":466}
+## L6 stop 2026-10-27T20:32:28Z
+[20:32:28.330] $ curl -X DELETE /bots/zoom/98335963876/speak  (key A)
+HTTP/1.1 200 OK
+{"status":"stop_sent","bots":1}
+## zoom L7 rate limit 2026-10-27T20:33:01Z
+[20:33:01.028] POST speak number 1 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"2ae37608001b4b16b0b990576be0f8aa","meeting_id":10,"platform":"zoom","native_meeting_id":"98335963876","chars":8}
+[20:33:01.055] POST speak number 2 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"6d83a5075661409e9fc83b38a7b77fbf","meeting_id":10,"platform":"zoom","native_meeting_id":"98335963876","chars":8}
+[20:33:01.141] POST speak number 3 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"0cd70374740f469098c1327e716b90c5","meeting_id":10,"platform":"zoom","native_meeting_id":"98335963876","chars":8}
+[20:33:01.183] POST speak number 4 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"120eaf57098043d4b562155d3df6e75d","meeting_id":10,"platform":"zoom","native_meeting_id":"98335963876","chars":8}
+[20:33:01.233] POST speak number 5 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"e6804953630d44059b5c6f879e2c90df","meeting_id":10,"platform":"zoom","native_meeting_id":"98335963876","chars":8}
+[20:33:01.298] POST speak number 6 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"b9e510d0bfcc4e69bab9f8b4519c16c8","meeting_id":10,"platform":"zoom","native_meeting_id":"98335963876","chars":8}
+[20:33:01.345] POST speak number 7 -> HTTP/1.1 429 Too Many Requests retry-after: 59 {"detail":"this meeting takes at most 6 speak requests every 60 seconds; nothing was said — retry after 59 s"}
+## L8 2026-10-27T20:33:33Z GET /transcripts/zoom/98335963876 (key B)
+## zoom L9 2026-10-27T20:33:33Z
+DELETE /bots/zoom/98335963876 (key A) -> 200
+DELETE /bots/zoom/98335963876 (key B) -> 200
+## teams L2 spawn 2026-10-27T20:42:59Z (meeting_url from the host's invite link, redacted)
+POST /bots (key A, bot_name=Vexa Speaker, voice_agent_enabled=true) -> 201 {'id': 12, 'platform': 'teams', 'native_meeting_id': '2102361579860283', 'status': 'requested', 'bot_container_id': 'mtg-12-afff46ef', 'detail': None, 'voice_agent_enabled': True}
+POST /bots (key B, bot_name=Vexa Listener) -> 201 {'id': 13, 'platform': 'teams', 'native_meeting_id': '2102361579860283', 'status': 'requested', 'bot_container_id': 'mtg-13-0439ca13', 'detail': None, 'voice_agent_enabled': None}
+## teams L3 A 2026-10-27T20:45:52Z GET /bots/status -> [(12, 'active')]
+## teams L3 B 2026-10-27T20:45:52Z GET /bots/status -> [(13, 'active')]
+## teams-L4 speak 2026-10-27T20:45:54Z
+[20:45:54.444] $ curl -X POST /bots/teams/2102361579860283/speak  (key A) body={"text":"This is Vexa speaking. The quick brown fox jumps over the lazy dog."}
+HTTP/1.1 200 OK
+{"status":"queued","request_id":"4de5d1b094c84630b097b8b68398ad6c","meeting_id":12,"platform":"teams","native_meeting_id":"2102361579860283","chars":67}
+deployment: Vexa Lite, fresh clone; host: Windows 11 + WSL2 Ubuntu 24.04, docker.io 29.1.3
+$ make -C deploy/lite build
+build exit=0
+$ docker image inspect vexa-lite:dev --format '{{.Id}}'
+sha256:3fbd38c1d9f51ff0068f70b26435f20ebdb087bf7b5c28aa5625c387df156d31
+env deltas from stock: LOCAL_STT=1 (bundled CPU STT); TTS_SERVICE_URL=http://kokoro:8880 (Kokoro-FastAPI v0.2.4, CPU, on vexa-lite-net), TTS_VOICE=af_bella, TTS_API_TOKEN unset
+$ make lite LOCAL_STT=1
+lite exit=0
+## teams L2 spawn 2026-10-27T20:52:04Z (meeting_url from the host's invite link, redacted)
+POST /bots (key A, bot_name=Vexa Speaker, voice_agent_enabled=true) -> 409 {'id': None, 'platform': None, 'native_meeting_id': None, 'status': None, 'bot_container_id': None, 'detail': 'An active meeting already exists for teams/2102361579860283', 'voice_agent_enabled': None}
+POST /bots (key B, bot_name=Vexa Listener) -> 409 {'id': None, 'platform': None, 'native_meeting_id': None, 'status': None, 'bot_container_id': None, 'detail': 'An active meeting already exists for teams/2102361579860283', 'voice_agent_enabled': None}
+## teams run 2 on image sha256:3fbd38c1d9f51ff0068f70b26435f20ebdb087bf7b5c28aa5625c387df156d31 at b2c1f7e
+## teams L2 spawn 2026-10-27T20:52:48Z (meeting_url from the host's invite link, redacted)
+POST /bots (key A, bot_name=Vexa Speaker, voice_agent_enabled=true) -> 201 {'id': 16, 'platform': 'teams', 'native_meeting_id': '2102361579860283', 'status': 'requested', 'bot_container_id': 'mtg-16-d6050cfa', 'detail': None, 'voice_agent_enabled': True}
+POST /bots (key B, bot_name=Vexa Listener) -> 201 {'id': 17, 'platform': 'teams', 'native_meeting_id': '2102361579860283', 'status': 'requested', 'bot_container_id': 'mtg-17-23d14b50', 'detail': None, 'voice_agent_enabled': None}
+## teams L3 A 2026-10-27T21:00:16Z GET /bots/status -> [(16, 'active')]
+## teams L3 B 2026-10-27T21:00:16Z GET /bots/status -> [(17, 'active')]
+## teams-L4 speak 2026-10-27T21:00:18Z
+[21:00:18.724] $ curl -X POST /bots/teams/2102361579860283/speak  (key A) body={"text":"This is Vexa speaking. The quick brown fox jumps over the lazy dog."}
+HTTP/1.1 200 OK
+{"status":"queued","request_id":"9094a1a5423a4c598a97680690a8b5de","meeting_id":16,"platform":"teams","native_meeting_id":"2102361579860283","chars":67}
+## L8 2026-10-27T21:00:44Z GET /transcripts/teams/2102361579860283 (key B)
+## teams-L5-keyB 2026-10-27T21:00:44Z
+[21:00:44.095] $ curl -X POST /bots/teams/2102361579860283/speak  (key B) body={"text":"hello from B"}
+HTTP/1.1 409 Conflict
+{"detail":"this bot was started without voice_agent_enabled: true, so it cannot speak — start a bot with that flag"}
+## teams-L5-keyC 2026-10-27T21:00:44Z
+[21:00:44.127] $ curl -X POST /bots/teams/2102361579860283/speak  (key C) body={"text":"hello from C"}
+HTTP/1.1 404 Not Found
+{"detail":"no running bot in this meeting that you can speak through — start one with voice_agent_enabled: true"}
+## teams-L5-empty 2026-10-27T21:00:44Z
+[21:00:44.159] $ curl -X POST /bots/teams/2102361579860283/speak  (key A) body={"text":""}
+HTTP/1.1 422 Unprocessable Entity
+{"detail":"'text' must be a non-empty string — send the sentence to say"}
+## teams-L5-501 2026-10-27T21:00:44Z
+[21:00:44.251] $ curl -X POST /bots/teams/2102361579860283/speak  (key A) body={"text":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}
+HTTP/1.1 422 Unprocessable Entity
+{"detail":"'text' is longer than 500 characters — split it into shorter requests"}
+## teams-L5-audio 2026-10-27T21:00:44Z
+[21:00:44.279] $ curl -X POST /bots/teams/2102361579860283/speak  (key A) body={"audio_base64":"AAAA"}
+HTTP/1.1 422 Unprocessable Entity
+{"detail":"audio input is not served by this route yet — see #514"}
+## L6-long (stop after 8 s) speak 2026-10-27T21:00:51Z
+[21:00:51.575] $ curl -X POST /bots/teams/2102361579860283/speak  (key A) body={"text":"The interrupt test begins now. Vexa will keep reading this paragraph until the stop request arrives, and nothing after that point should ever be heard by anyone in the meeting. The paragraph goes on about the weather, the river behind the office, the slow afternoon traffic, and the sound of rain on a tin roof, so that there is plenty of speech left to cut. If you can still hear this sentence, the stop request did not reach the bot in time, and that is a finding."}
+HTTP/1.1 200 OK
+{"status":"queued","request_id":"d8af436a023043a9bb1d776bca1aa41b","meeting_id":16,"platform":"teams","native_meeting_id":"2102361579860283","chars":466}
+## L6 stop 2026-10-27T21:00:59Z
+[21:00:59.621] $ curl -X DELETE /bots/teams/2102361579860283/speak  (key A)
+HTTP/1.1 200 OK
+{"status":"stop_sent","bots":1}
+## teams L7 rate limit 2026-10-27T21:02:01Z
+[21:02:01.247] POST speak number 1 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"a9e3c6e7c68d45c897d161c4d1d92a51","meeting_id":16,"platform":"teams","native_meeting_id":"2102361579860283","chars":8}
+[21:02:01.279] POST speak number 2 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"6de06b212bb74ee0a12ca7fc07ab8769","meeting_id":16,"platform":"teams","native_meeting_id":"2102361579860283","chars":8}
+[21:02:01.306] POST speak number 3 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"8965a29e66084dc5be75dad79a2608c5","meeting_id":16,"platform":"teams","native_meeting_id":"2102361579860283","chars":8}
+[21:02:01.329] POST speak number 4 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"013bb95e61eb476e853ff9de42d34551","meeting_id":16,"platform":"teams","native_meeting_id":"2102361579860283","chars":8}
+[21:02:01.352] POST speak number 5 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"8abe0b451626434ba60f621bbd7f3f73","meeting_id":16,"platform":"teams","native_meeting_id":"2102361579860283","chars":8}
+[21:02:01.379] POST speak number 6 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"15d8dca7adcc444f9c3ec10b8f4e1ba6","meeting_id":16,"platform":"teams","native_meeting_id":"2102361579860283","chars":8}
+[21:02:01.404] POST speak number 7 -> HTTP/1.1 429 Too Many Requests retry-after: 59 {"detail":"this meeting takes at most 6 speak requests every 60 seconds; nothing was said — retry after 59 s"}
+## L8 2026-10-27T21:02:51Z GET /transcripts/teams/2102361579860283 (key B)
+## teams L9 2026-10-27T21:02:51Z
+DELETE /bots/teams/2102361579860283 (key A) -> 200
+DELETE /bots/teams/2102361579860283 (key B) -> 200
+## recorded run (L1) on Meet vkv-ocpi-thk, image sha256:3fbd38c1d9f51ff0068f70b26435f20ebdb087bf7b5c28aa5625c387df156d31 at b2c1f7e, 2026-10-27T21:25:19Z
+## L2 spawn 2026-10-27T21:25:19Z
+[21:25:19.545] $ curl -X POST /bots  (key A) body={"platform":"google_meet","native_meeting_id":"vkv-ocpi-thk","bot_name":"Vexa Speaker","voice_agent_enabled":true}
+HTTP/1.1 201 Created
+{"id":18,"user_id":3,"platform":"google_meet","native_meeting_id":"vkv-ocpi-thk","constructed_meeting_url":"https://meet.google.com/vkv-ocpi-thk","status":"requested","bot_container_id":"mtg-18-a280d932","start_time":null,"end_time":null,"completion_reason":null,"failure_stage":null,"data":{"recording_enabled":true,"service_authority":{"mode":"unconfigured","allow":true,"reason":"unconfigured","enforced":false,"decided_at":"2026-10-27T21:25:19.666863+00:00","request_id":"meeting-session:a280d932-9b87-42c4-b0e6-4e441cd0ea5d:admit","stop_scope":null,"decision_id":"service-authority:unconfigured:28e49aa7508280dfba24c781a5b16be95ac7a9dee7080f86fecdfc56ea8923bf","service_mode":"bot","last_boundary_at":null,"last_decision_id":"service-authority:unconfigured:28e49aa7508280dfba24c781a5b16be95ac7a9dee7080f86fecdfc56ea8923bf","service_identity":"meeting-session:a280d932-9b87-42c4-b0e6-4e441cd0ea5d","authority_version":"service-authority.v1","teardown_confirmed":false,"transcription_provider":"vexa","lifecycle_contract_version":"2026-07-28"},"transcribe_enabled":true,"voice_agent_enabled":true,"transcription_language":{"source":"auto","language":null,"allowed_languages":[]},"transcription_provider":"vexa","constructed_meeting_url":"https://meet.google.com/vkv-ocpi-thk","sessions":["a280d932-9b87-42c4-b0e6-4e441cd0ea5d"]},"created_at":"2026-10-27T21:25:19.667609Z","updated_at":"2026-10-27T21:25:19.732516Z"}
+[21:25:19.747] $ curl -X POST /bots  (key B) body={"platform":"google_meet","native_meeting_id":"vkv-ocpi-thk","bot_name":"Vexa Listener"}
+HTTP/1.1 201 Created
+{"id":19,"user_id":4,"platform":"google_meet","native_meeting_id":"vkv-ocpi-thk","constructed_meeting_url":"https://meet.google.com/vkv-ocpi-thk","status":"requested","bot_container_id":"mtg-19-392f89e9","start_time":null,"end_time":null,"completion_reason":null,"failure_stage":null,"data":{"recording_enabled":true,"service_authority":{"mode":"unconfigured","allow":true,"reason":"unconfigured","enforced":false,"decided_at":"2026-10-27T21:25:19.783538+00:00","request_id":"meeting-session:392f89e9-587f-4a89-b536-f20d2526175b:admit","stop_scope":null,"decision_id":"service-authority:unconfigured:c3b5ccc496f21a440bb69605e04b75b2a4af37650cb2237fee7048b1020bbcf6","service_mode":"bot","last_boundary_at":null,"last_decision_id":"service-authority:unconfigured:c3b5ccc496f21a440bb69605e04b75b2a4af37650cb2237fee7048b1020bbcf6","service_identity":"meeting-session:392f89e9-587f-4a89-b536-f20d2526175b","authority_version":"service-authority.v1","teardown_confirmed":false,"transcription_provider":"vexa","lifecycle_contract_version":"2026-07-28"},"transcribe_enabled":true,"transcription_language":{"source":"auto","language":null,"allowed_languages":[]},"transcription_provider":"vexa","constructed_meeting_url":"https://meet.google.com/vkv-ocpi-thk","sessions":["392f89e9-587f-4a89-b536-f20d2526175b"]},"created_at":"2026-10-27T21:25:19.784266Z","updated_at":"2026-10-27T21:25:20.118892Z"}
+## recorded L3 A 2026-10-27T21:26:05Z GET /bots/status -> [(18, 'active')]
+## recorded L3 B 2026-10-27T21:26:05Z GET /bots/status -> [(19, 'active')]
+## rec-L4 speak 2026-10-27T21:26:19Z
+[21:26:19.449] $ curl -X POST /bots/google_meet/vkv-ocpi-thk/speak  (key A) body={"text":"This is Vexa speaking. The quick brown fox jumps over the lazy dog."}
+HTTP/1.1 200 OK
+{"status":"queued","request_id":"38c8982ac6714e108894a39dd1cf549c","meeting_id":18,"platform":"google_meet","native_meeting_id":"vkv-ocpi-thk","chars":67}
+## rec-L5-keyB 2026-10-27T21:26:41Z
+[21:26:41.619] $ curl -X POST /bots/google_meet/vkv-ocpi-thk/speak  (key B) body={"text":"hello from B"}
+HTTP/1.1 409 Conflict
+{"detail":"this bot was started without voice_agent_enabled: true, so it cannot speak — start a bot with that flag"}
+## rec-L5-keyC 2026-10-27T21:26:41Z
+[21:26:41.693] $ curl -X POST /bots/google_meet/vkv-ocpi-thk/speak  (key C) body={"text":"hello from C"}
+HTTP/1.1 404 Not Found
+{"detail":"no running bot in this meeting that you can speak through — start one with voice_agent_enabled: true"}
+## rec-L5-empty 2026-10-27T21:26:41Z
+[21:26:41.724] $ curl -X POST /bots/google_meet/vkv-ocpi-thk/speak  (key A) body={"text":""}
+HTTP/1.1 422 Unprocessable Entity
+{"detail":"'text' must be a non-empty string — send the sentence to say"}
+## rec-L5-501 2026-10-27T21:26:41Z
+[21:26:41.768] $ curl -X POST /bots/google_meet/vkv-ocpi-thk/speak  (key A) body={"text":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}
+HTTP/1.1 422 Unprocessable Entity
+{"detail":"'text' is longer than 500 characters — split it into shorter requests"}
+## rec-L5-audio 2026-10-27T21:26:41Z
+[21:26:41.798] $ curl -X POST /bots/google_meet/vkv-ocpi-thk/speak  (key A) body={"audio_base64":"AAAA"}
+HTTP/1.1 422 Unprocessable Entity
+{"detail":"audio input is not served by this route yet — see #514"}
+## L6-long (stop after 16 s) speak 2026-10-27T21:26:47Z
+[21:26:47.415] $ curl -X POST /bots/google_meet/vkv-ocpi-thk/speak  (key A) body={"text":"The interrupt test begins now. Vexa will keep reading this paragraph until the stop request arrives, and nothing after that point should ever be heard by anyone in the meeting. The paragraph goes on about the weather, the river behind the office, the slow afternoon traffic, and the sound of rain on a tin roof, so that there is plenty of speech left to cut. If you can still hear this sentence, the stop request did not reach the bot in time, and that is a finding."}
+HTTP/1.1 200 OK
+{"status":"queued","request_id":"3229d09f54b34ca69bffb45bf43b33b8","meeting_id":18,"platform":"google_meet","native_meeting_id":"vkv-ocpi-thk","chars":466}
+## L6 stop 2026-10-27T21:27:03Z
+[21:27:03.455] $ curl -X DELETE /bots/google_meet/vkv-ocpi-thk/speak  (key A)
+HTTP/1.1 200 OK
+{"status":"stop_sent","bots":1}
+## google_meet L7 rate limit 2026-10-27T21:28:01Z
+[21:28:01.220] POST speak number 1 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"877bb27bf540440bab4fa33e4a521d4a","meeting_id":18,"platform":"google_meet","native_meeting_id":"vkv-ocpi-thk","chars":8}
+[21:28:01.254] POST speak number 2 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"6c84abdf17da4e6abc34d41b5c67ec63","meeting_id":18,"platform":"google_meet","native_meeting_id":"vkv-ocpi-thk","chars":8}
+[21:28:01.287] POST speak number 3 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"a48fd154913a49bcadebeea4b24cef3e","meeting_id":18,"platform":"google_meet","native_meeting_id":"vkv-ocpi-thk","chars":8}
+[21:28:01.313] POST speak number 4 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"f3f5262cfa114dd39fe9ce4964425148","meeting_id":18,"platform":"google_meet","native_meeting_id":"vkv-ocpi-thk","chars":8}
+[21:28:01.338] POST speak number 5 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"ae9d88fd3a99409b89dbcfa5571abadb","meeting_id":18,"platform":"google_meet","native_meeting_id":"vkv-ocpi-thk","chars":8}
+[21:28:01.363] POST speak number 6 -> HTTP/1.1 200 OK  {"status":"queued","request_id":"3222c96f8e80485baf653cb5098dc821","meeting_id":18,"platform":"google_meet","native_meeting_id":"vkv-ocpi-thk","chars":8}
+[21:28:01.388] POST speak number 7 -> HTTP/1.1 429 Too Many Requests retry-after: 59 {"detail":"this meeting takes at most 6 speak requests every 60 seconds; nothing was said — retry after 59 s"}
+## L8 2026-10-27T21:28:37Z GET /transcripts/google_meet/vkv-ocpi-thk (key B)
+## recorded L9 2026-10-27T21:28:37Z
+DELETE /bots/google_meet/vkv-ocpi-thk (key A) -> 200
+DELETE /bots/google_meet/vkv-ocpi-thk (key B) -> 200

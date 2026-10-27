@@ -1,0 +1,185 @@
+The XKEYBOARD keymap compiler (xkbcomp) reports:
+> Warning:          Could not resolve keysym XF86CameraAccessEnable
+> Warning:          Could not resolve keysym XF86CameraAccessDisable
+> Warning:          Could not resolve keysym XF86CameraAccessToggle
+> Warning:          Could not resolve keysym XF86NextElement
+> Warning:          Could not resolve keysym XF86PreviousElement
+> Warning:          Could not resolve keysym XF86AutopilotEngageToggle
+> Warning:          Could not resolve keysym XF86MarkWaypoint
+> Warning:          Could not resolve keysym XF86Sos
+> Warning:          Could not resolve keysym XF86NavChart
+> Warning:          Could not resolve keysym XF86FishingChart
+> Warning:          Could not resolve keysym XF86SingleRangeRadar
+> Warning:          Could not resolve keysym XF86DualRangeRadar
+> Warning:          Could not resolve keysym XF86RadarOverlay
+> Warning:          Could not resolve keysym XF86TraditionalSonar
+> Warning:          Could not resolve keysym XF86ClearvuSonar
+> Warning:          Could not resolve keysym XF86SidevuSonar
+> Warning:          Could not resolve keysym XF86NavInfo
+Errors from xkbcomp are not fatal to the X server
+{"level":"info","msg":"[capture-signal] tape-started","event":"capture_signal.tape_started","path":"/var/lib/vexa-runtime/homes/1500000000.f7a1b479877adaa0/captured-signal/a280d932-9b87-42c4-b0e6-4e441cd0ea5d.captured-signal.jsonl","max_bytes":262144000,"platform":"google_meet"}
+[bot] capture-signal recording → /var/lib/vexa-runtime/homes/1500000000.f7a1b479877adaa0/captured-signal/a280d932-9b87-42c4-b0e6-4e441cd0ea5d.captured-signal.jsonl
+[bot] aloneness: silence adapter + deaf-capture guard enabled (window_ms=600000)
+[bot] speaker-stream tuning enabled: {"pauseFinalMs":500,"idleTimeoutSec":1,"submitInterval":1,"maxBufferDuration":10,"confirmThreshold":1,"pipelineDrafts":true,"minAudioDuration":0.75}
+[bot] transcription language: auto (invocation)
+[remote-browser] Chromium runs with its sandbox
+[bot] navigation guard: allowed a navigation to meet.google.com
+[bot] navigation guard: allowed a redirect to meet.google.com
+[page-console:log] Vexa Browser Utils loaded successfully: [createGmeetCapture, createGmeetSpeakers, createGmeetCaptureV1, pickBoundName, GmeetChannelBinder, createPcmCaptureNode, createGmeetChat, sendGmeetChatMessage, openGmeetChatPanel, prepareGmeetChatSend, awaitGmeetChatLanded, createMixedAudioCapture, installRemoteAudioHook, selectTeamsMixStreams, mainAudioProvedSilent, createCsrcPoll, createRecordingTap, createJitsiSpeakers, createJitsiChat, sendJitsiChatMessage, createTeamsSpeakers, createTeamsCaptions, createZoomSpeakers, createTrackNameResolver]
+{"ts":"2026-10-27T21:25:21.918Z","level":"info","msg":"📸 Screenshot taken: After navigation to meeting URL"}
+{"ts":"2026-10-27T21:25:21.918Z","level":"info","msg":"Joining callback sent successfully"}
+{"ts":"2026-10-27T21:25:22.922Z","level":"info","msg":"Lobby locale (#856): url=https://meet.google.com/meet/vkv-ocpi-thk?hl=en html.lang=en navigator.language=en-US"}
+{"ts":"2026-10-27T21:25:22.924Z","level":"info","msg":"UI locale (google_meet, lobby): en via html-lang; navigator.language=en-US"}
+{"ts":"2026-10-27T21:25:22.992Z","level":"info","msg":"Humanized UI interaction mode active (OS-level XTEST input)."}
+{"ts":"2026-10-27T21:25:22.992Z","level":"info","msg":"Attempting to find name input field..."}
+[page-console:log] Vexa Browser Utils loaded successfully: [createGmeetCapture, createGmeetSpeakers, createGmeetCaptureV1, pickBoundName, GmeetChannelBinder, createPcmCaptureNode, createGmeetChat, sendGmeetChatMessage, openGmeetChatPanel, prepareGmeetChatSend, awaitGmeetChatLanded, createMixedAudioCapture, installRemoteAudioHook, selectTeamsMixStreams, mainAudioProvedSilent, createCsrcPoll, createRecordingTap, createJitsiSpeakers, createJitsiChat, sendJitsiChatMessage, createTeamsSpeakers, createTeamsCaptions, createZoomSpeakers, createTrackNameResolver]
+[page-console:warning] Failed to create WebGPU Context Provider
+[page-console:log] Vexa Browser Utils loaded successfully: [createGmeetCapture, createGmeetSpeakers, createGmeetCaptureV1, pickBoundName, GmeetChannelBinder, createPcmCaptureNode, createGmeetChat, sendGmeetChatMessage, openGmeetChatPanel, prepareGmeetChatSend, awaitGmeetChatLanded, createMixedAudioCapture, installRemoteAudioHook, selectTeamsMixStreams, mainAudioProvedSilent, createCsrcPoll, createRecordingTap, createJitsiSpeakers, createJitsiChat, sendJitsiChatMessage, createTeamsSpeakers, createTeamsCaptions, createZoomSpeakers, createTrackNameResolver]
+{"ts":"2026-10-27T21:25:24.987Z","level":"info","msg":"Located name input via selector: input[jsname][type=\"text\"]"}
+{"ts":"2026-10-27T21:25:24.987Z","level":"info","msg":"Name input field found."}
+[page-console:warning] Failed to create WebGPU Context Provider
+{"ts":"2026-10-27T21:25:25.576Z","level":"info","msg":"humanized: calibrated offset=(4,139) dpr=1"}
+{"ts":"2026-10-27T21:25:25.702Z","level":"info","msg":"humanized: replay 21 moves dx=-92 dy=92"}
+{"ts":"2026-10-27T21:25:26.070Z","level":"info","msg":"humanized: endpoint verified inside target page=(466,490); clicking"}
+{"ts":"2026-10-27T21:25:27.109Z","level":"info","msg":"humanized: no direct sequence (miss #1); trying stretch+rotate"}
+{"ts":"2026-10-27T21:25:27.110Z","level":"info","msg":"humanized: replay 35 moves dx=-42 dy=-203"}
+{"ts":"2026-10-27T21:25:27.679Z","level":"info","msg":"humanized: endpoint verified inside target page=(424,287); clicking"}
+{"ts":"2026-10-27T21:25:27.982Z","level":"info","msg":"humanized: no direct sequence (miss #2); trying stretch+rotate"}
+{"ts":"2026-10-27T21:25:27.982Z","level":"info","msg":"humanized: replay 20 moves dx=72 dy=-2"}
+{"ts":"2026-10-27T21:25:28.342Z","level":"info","msg":"humanized: endpoint verified inside target page=(496,285); clicking"}
+{"ts":"2026-10-27T21:25:28.540Z","level":"info","msg":"Located join button via selector: //button[.//span[text()=\"Ask to join\"]]"}
+{"ts":"2026-10-27T21:25:28.665Z","level":"info","msg":"humanized: no direct sequence (miss #3); trying stretch+rotate"}
+{"ts":"2026-10-27T21:25:28.666Z","level":"info","msg":"humanized: replay 28 moves dx=-26 dy=312"}
+{"ts":"2026-10-27T21:25:29.210Z","level":"info","msg":"humanized: endpoint verified inside target page=(470,597); clicking"}
+{"ts":"2026-10-27T21:25:29.354Z","level":"info","msg":"Vexa Speaker joined the Google Meet Meeting."}
+{"ts":"2026-10-27T21:25:29.426Z","level":"info","msg":"📸 Screenshot taken: After clicking 'Ask to join'"}
+{"ts":"2026-10-27T21:25:29.426Z","level":"info","msg":"Waiting for Google Meet meeting admission..."}
+{"ts":"2026-10-27T21:25:29.458Z","level":"info","msg":"📸 Screenshot taken: Start of admission check"}
+{"ts":"2026-10-27T21:25:29.458Z","level":"info","msg":"Checking if bot is already admitted to the Google Meet meeting..."}
+{"ts":"2026-10-27T21:25:29.511Z","level":"info","msg":"Bot not yet admitted - checking for Google Meet waiting room indicators..."}
+{"ts":"2026-10-27T21:25:29.525Z","level":"info","msg":"No waiting room detected. Polling for admission for up to 900000ms..."}
+{"ts":"2026-10-27T21:25:31.590Z","level":"info","msg":"Polling for Google Meet admission... 2s elapsed"}
+{"ts":"2026-10-27T21:25:31.647Z","level":"info","msg":"⚠️ Waiting room indicator visible — suppressing admission (lobby buttons are false positives)"}
+{"ts":"2026-10-27T21:25:31.654Z","level":"info","msg":"ℹ️ Waiting room appeared during polling. Switching to waiting-room monitoring..."}
+{"ts":"2026-10-27T21:25:31.655Z","level":"info","msg":"Awaiting admission callback sent successfully (during polling)"}
+[page-console:error] Failed to load resource: the server responded with a status of 401 ()
+[page-console:error] Failed to load resource: the server responded with a status of 401 ()
+[page-console:error] Failed to load resource: the server responded with a status of 401 ()
+[page-console:error] Failed to load resource: the server responded with a status of 401 ()
+[page-console:log] Vexa Browser Utils loaded successfully: [createGmeetCapture, createGmeetSpeakers, createGmeetCaptureV1, pickBoundName, GmeetChannelBinder, createPcmCaptureNode, createGmeetChat, sendGmeetChatMessage, openGmeetChatPanel, prepareGmeetChatSend, awaitGmeetChatLanded, createMixedAudioCapture, installRemoteAudioHook, selectTeamsMixStreams, mainAudioProvedSilent, createCsrcPoll, createRecordingTap, createJitsiSpeakers, createJitsiChat, sendJitsiChatMessage, createTeamsSpeakers, createTeamsCaptions, createZoomSpeakers, createTrackNameResolver]
+[page-console:log] Vexa Browser Utils loaded successfully: [createGmeetCapture, createGmeetSpeakers, createGmeetCaptureV1, pickBoundName, GmeetChannelBinder, createPcmCaptureNode, createGmeetChat, sendGmeetChatMessage, openGmeetChatPanel, prepareGmeetChatSend, awaitGmeetChatLanded, createMixedAudioCapture, installRemoteAudioHook, selectTeamsMixStreams, mainAudioProvedSilent, createCsrcPoll, createRecordingTap, createJitsiSpeakers, createJitsiChat, sendJitsiChatMessage, createTeamsSpeakers, createTeamsCaptions, createZoomSpeakers, createTrackNameResolver]
+{"ts":"2026-10-27T21:25:46.163Z","level":"info","msg":"✅ Admitted: 2 real participant tile(s) present (effects phantom excluded)"}
+[page] [GmeetChat] chat panel closed — opened it (toggle via attr:data-panel-id)
+[page] [PerSpeaker] stream 0 connected (track 459bc54a)
+[page] [PerSpeaker] stream 1 connected (track c1153e16)
+[page] [PerSpeaker] stream 2 connected (track 11c8364d)
+[page] [PerSpeaker] capture started with 3 stream(s)
+[page] [PerSpeaker] stream 0 ctx.state=running
+[page] [PerSpeaker] stream 1 ctx.state=running
+[page] [PerSpeaker] stream 2 ctx.state=running
+[page] [record-chunker] mix +stream (1 live)
+[page] [record-chunker] mix +stream (2 live)
+[page] [record-chunker] mix +stream (3 live)
+[page] [record-chunker] MediaRecorder started (audio/webm;codecs=opus, timeslice=15000ms)
+{"ts":"2026-10-27T21:25:46.241Z","level":"info","msg":"Starting periodic Google Meet removal monitoring..."}
+[page-console:error] Failed to load resource: the server responded with a status of 401 ()
+[page-console:log] Vexa Browser Utils loaded successfully: [createGmeetCapture, createGmeetSpeakers, createGmeetCaptureV1, pickBoundName, GmeetChannelBinder, createPcmCaptureNode, createGmeetChat, sendGmeetChatMessage, openGmeetChatPanel, prepareGmeetChatSend, awaitGmeetChatLanded, createMixedAudioCapture, installRemoteAudioHook, selectTeamsMixStreams, mainAudioProvedSilent, createCsrcPoll, createRecordingTap, createJitsiSpeakers, createJitsiChat, sendJitsiChatMessage, createTeamsSpeakers, createTeamsCaptions, createZoomSpeakers, createTrackNameResolver]
+[page] [GmeetChat] chat container matched: [jsname="xySENc"]
+[page] [GmeetChat] chat primed (0 message(s) already on screen; composer via structure:panel-of-message-list)
+[page] [record-chunker] chunk 0 (3662 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":18,"recording_session_uid":"a280d932-9b87-42c4-b0e6-4e441cd0ea5d"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":0,"is_final":false,"chunk_size_bytes":3662,"recording_meeting_id":18,"recording_session_uid":"a280d932-9b87-42c4-b0e6-4e441cd0ea5d"}
+[page] [record-chunker] chunk 1 (3530 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":18,"recording_session_uid":"a280d932-9b87-42c4-b0e6-4e441cd0ea5d"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":1,"is_final":false,"chunk_size_bytes":3530,"recording_meeting_id":18,"recording_session_uid":"a280d932-9b87-42c4-b0e6-4e441cd0ea5d"}
+[bot] speak id=38c8982ac6714e108894a39dd1cf549c started chars=67
+[COVERAGE] captured=0s submitted=0s transcribed=0s (0% of captured) no_speech=0s short=0s dropped=0s
+[page] [record-chunker] chunk 2 (3530 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":18,"recording_session_uid":"a280d932-9b87-42c4-b0e6-4e441cd0ea5d"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":2,"is_final":false,"chunk_size_bytes":3530,"recording_meeting_id":18,"recording_session_uid":"a280d932-9b87-42c4-b0e6-4e441cd0ea5d"}
+[bot] speak id=38c8982ac6714e108894a39dd1cf549c done ms=12957
+[bot] speak id=38c8982ac6714e108894a39dd1cf549c mic=off
+[page-console:error] Failed to load resource: the server responded with a status of 400 ()
+[page] [record-chunker] chunk 3 (3530 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":18,"recording_session_uid":"a280d932-9b87-42c4-b0e6-4e441cd0ea5d"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":3,"is_final":false,"chunk_size_bytes":3530,"recording_meeting_id":18,"recording_session_uid":"a280d932-9b87-42c4-b0e6-4e441cd0ea5d"}
+[page-console:error] Failed to load resource: the server responded with a status of 400 ()
+[bot] speak id=3229d09f54b34ca69bffb45bf43b33b8 started chars=466
+[page] [PerSpeaker] stream 2 silent seen=250 emitted=0 max=0.0000 ctx=running
+[page] [PerSpeaker] stream 1 silent seen=250 emitted=0 max=0.0000 ctx=running
+[page] [PerSpeaker] stream 0 silent seen=250 emitted=0 max=0.0000 ctx=running
+[page-console:error] Failed to load resource: the server responded with a status of 400 ()
+[page] [record-chunker] chunk 4 (3530 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":18,"recording_session_uid":"a280d932-9b87-42c4-b0e6-4e441cd0ea5d"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":4,"is_final":false,"chunk_size_bytes":3530,"recording_meeting_id":18,"recording_session_uid":"a280d932-9b87-42c4-b0e6-4e441cd0ea5d"}
+[bot] speak_stop cleared=0
+[bot] speak id=3229d09f54b34ca69bffb45bf43b33b8 failed reason=stopped
+[bot] speak id=3229d09f54b34ca69bffb45bf43b33b8 mic=off
+[page] [record-chunker] chunk 5 (3517 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":18,"recording_session_uid":"a280d932-9b87-42c4-b0e6-4e441cd0ea5d"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":5,"is_final":false,"chunk_size_bytes":3517,"recording_meeting_id":18,"recording_session_uid":"a280d932-9b87-42c4-b0e6-4e441cd0ea5d"}
+[page] [record-chunker] chunk 6 (3531 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":18,"recording_session_uid":"a280d932-9b87-42c4-b0e6-4e441cd0ea5d"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":6,"is_final":false,"chunk_size_bytes":3531,"recording_meeting_id":18,"recording_session_uid":"a280d932-9b87-42c4-b0e6-4e441cd0ea5d"}
+[page] [record-chunker] chunk 7 (3517 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":18,"recording_session_uid":"a280d932-9b87-42c4-b0e6-4e441cd0ea5d"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":7,"is_final":false,"chunk_size_bytes":3517,"recording_meeting_id":18,"recording_session_uid":"a280d932-9b87-42c4-b0e6-4e441cd0ea5d"}
+[page] [PerSpeaker] stream 2 silent seen=500 emitted=0 max=0.0000 ctx=running
+[page] [PerSpeaker] stream 1 silent seen=500 emitted=0 max=0.0000 ctx=running
+[page] [PerSpeaker] stream 0 silent seen=500 emitted=0 max=0.0000 ctx=running
+[bot] speak id=877bb27bf540440bab4fa33e4a521d4a started chars=8
+[bot] speak dropped id=ae9d88fd3a99409b89dbcfa5571abadb reason=queue_full
+[bot] speak dropped id=3222c96f8e80485baf653cb5098dc821 reason=queue_full
+[page] [record-chunker] chunk 8 (3518 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":18,"recording_session_uid":"a280d932-9b87-42c4-b0e6-4e441cd0ea5d"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":8,"is_final":false,"chunk_size_bytes":3518,"recording_meeting_id":18,"recording_session_uid":"a280d932-9b87-42c4-b0e6-4e441cd0ea5d"}
+[bot] speak id=877bb27bf540440bab4fa33e4a521d4a done ms=2585
+[bot] speak id=877bb27bf540440bab4fa33e4a521d4a mic=off
+[bot] speak id=6c84abdf17da4e6abc34d41b5c67ec63 started chars=8
+[bot] speak id=6c84abdf17da4e6abc34d41b5c67ec63 done ms=6054
+[bot] speak id=6c84abdf17da4e6abc34d41b5c67ec63 mic=off
+[bot] speak id=a48fd154913a49bcadebeea4b24cef3e started chars=8
+[page] [record-chunker] chunk 9 (3530 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":18,"recording_session_uid":"a280d932-9b87-42c4-b0e6-4e441cd0ea5d"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":9,"is_final":false,"chunk_size_bytes":3530,"recording_meeting_id":18,"recording_session_uid":"a280d932-9b87-42c4-b0e6-4e441cd0ea5d"}
+[bot] speak id=a48fd154913a49bcadebeea4b24cef3e done ms=5471
+[bot] speak id=a48fd154913a49bcadebeea4b24cef3e mic=off
+[bot] speak id=f3f5262cfa114dd39fe9ce4964425148 started chars=8
+[bot] speak id=f3f5262cfa114dd39fe9ce4964425148 done ms=5019
+[bot] speak id=f3f5262cfa114dd39fe9ce4964425148 mic=off
+[page] [record-chunker] chunk 10 (3531 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":18,"recording_session_uid":"a280d932-9b87-42c4-b0e6-4e441cd0ea5d"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":10,"is_final":false,"chunk_size_bytes":3531,"recording_meeting_id":18,"recording_session_uid":"a280d932-9b87-42c4-b0e6-4e441cd0ea5d"}
+[page] [PerSpeaker] capture stopped
+[page] [record-chunker] chunk 11 (1416 bytes)
+[page] [record-chunker] final chunk emitted (seq=12)
+[gmeet-pipeline] [RECONFIRM] reconfirmed=0 confirmed-as-drafted=0 requests=0
+[COVERAGE] captured=0s submitted=0s transcribed=0s (0% of captured) no_speech=0s short=0s dropped=0s
+{"ts":"2026-10-27T21:28:37.704Z","level":"info","msg":"[leaveGoogleMeet] Triggering leave action in browser context..."}
+{"ts":"2026-10-27T21:28:37.704Z","level":"info","msg":"[leaveGoogleMeet] Stopping recording pipeline before leave..."}
+{"ts":"2026-10-27T21:28:37.704Z","level":"warn","msg":"[leaveGoogleMeet] No bot config provided; cannot send leave callback"}
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":18,"recording_session_uid":"a280d932-9b87-42c4-b0e6-4e441cd0ea5d"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":12,"is_final":true,"chunk_size_bytes":0,"recording_meeting_id":18,"recording_session_uid":"a280d932-9b87-42c4-b0e6-4e441cd0ea5d"}
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":18,"recording_session_uid":"a280d932-9b87-42c4-b0e6-4e441cd0ea5d"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":11,"is_final":false,"chunk_size_bytes":1416,"recording_meeting_id":18,"recording_session_uid":"a280d932-9b87-42c4-b0e6-4e441cd0ea5d"}
+[page] [leave] clicked leave button via button[aria-label="Leave call"]
+{"ts":"2026-10-27T21:28:38.810Z","level":"info","msg":"[leaveGoogleMeet] Browser leave action complete","leave_result":true,"leave_reason":"stopped"}
+[bot] orchestrator: emitting completed (reason=stopped, from=active)
+[bot] redis (acts) error: Socket closed unexpectedly
+[bot] redis (transcript) error: Socket closed unexpectedly
+[bot] redis (transcript) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] redis (acts) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] redis (transcript) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] redis (acts) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] orchestrator: completed emitted + flushed
+[gmeet-pipeline] [RECONFIRM] reconfirmed=0 confirmed-as-drafted=0 requests=0
+[COVERAGE] captured=0s submitted=0s transcribed=0s (0% of captured) no_speech=0s short=0s dropped=0s
+[bot] capture-signal: session written: /var/lib/vexa-runtime/homes/1500000000.f7a1b479877adaa0/captured-signal/a280d932-9b87-42c4-b0e6-4e441cd0ea5d.captured-signal.jsonl (0 frames, 0 hints, 0 captions, 0 csrc, 1 observations)
+[bot] transcript-snapshot: 0 row(s) → /var/lib/vexa-runtime/homes/1500000000.f7a1b479877adaa0/captured-signal/a280d932-9b87-42c4-b0e6-4e441cd0ea5d.transcript.jsonl
+{"level":"info","msg":"[capture-signal] tape-uploaded","event":"capture_signal.tape_uploaded","part":"captured-signal","path":"/var/lib/vexa-runtime/homes/1500000000.f7a1b479877adaa0/captured-signal/a280d932-9b87-42c4-b0e6-4e441cd0ea5d.captured-signal.jsonl","bytes":267,"capped":false}
+{"level":"info","msg":"[capture-signal] tape-uploaded","event":"capture_signal.tape_uploaded","part":"observations","path":"/var/lib/vexa-runtime/homes/1500000000.f7a1b479877adaa0/captured-signal/a280d932-9b87-42c4-b0e6-4e441cd0ea5d.observations.jsonl","bytes":363,"capped":false}
+{"level":"info","msg":"[capture-signal] tape-uploaded","event":"capture_signal.tape_uploaded","part":"botlog","path":"/var/lib/vexa-runtime/homes/1500000000.f7a1b479877adaa0/captured-signal/a280d932-9b87-42c4-b0e6-4e441cd0ea5d.botlog.txt","bytes":23147,"capped":false}
+[bot] redis (transcript) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] pipeline fault: Error: NOAUTH Authentication required.
+[bot] pipeline fault: Error: NOAUTH Authentication required.
+[bot] redis (acts) error: WRONGPASS invalid username-password pair or user is disabled.

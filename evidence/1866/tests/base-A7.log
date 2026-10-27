@@ -1,0 +1,103 @@
+F...FFFF                                                                 [100%]
+================================== FAILURES ===================================
+_____ test_post_bots_voice_agent_enabled_arms_the_invocation_and_the_row ______
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000019D8597CDA0>
+
+    def test_post_bots_voice_agent_enabled_arms_the_invocation_and_the_row(monkeypatch):
+        r, repo, runtime = _spawn_voice(monkeypatch, {"voice_agent_enabled": True})
+    
+        assert r.status_code == 201, r.text
+        inv = json.loads(runtime.specs[0]["env"]["BOT_CONFIG"])
+>       assert inv["voiceAgentEnabled"] is True
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'voiceAgentEnabled'
+
+tests\test_bot_spawn.py:1405: KeyError
+---------------------------- Captured stdout call -----------------------------
+{"ts":"2026-10-27T16:19:37.898549Z","level":"info","service":"meeting-api","trace_id":"39303702154e4bfaa08973043b12fc8e","audience":"user","event":"bot_join_requested","span":"bots.create","user_id":7,"meeting_id":"google_meet/voice-bot","fields":{"platform":"google_meet","status":"requested","continued":false,"session_count":1}}
+__________ test_post_bots_voice_agent_enabled_must_be_a_boolean[yes] __________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000019D85B03DD0>
+value = 'yes'
+
+    @pytest.mark.parametrize("value", ["yes", 1, "true", [True]])
+    def test_post_bots_voice_agent_enabled_must_be_a_boolean(monkeypatch, value):
+        r, _, runtime = _spawn_voice(monkeypatch, {"voice_agent_enabled": value})
+    
+>       assert r.status_code == 422, r.text
+E       AssertionError: {"id":1,"user_id":7,"platform":"google_meet","native_meeting_id":"voice-bot","constructed_meeting_url":"https://meet.google.com/voice-bot","status":"requested","bot_container_id":"mtg-1-49ae4961","start_time":null,"end_time":null,"completion_reason":null,"failure_stage":null,"data":{"constructed_meeting_url":"https://meet.google.com/voice-bot","transcribe_enabled":true,"recording_enabled":true,"transcription_language":{"language":null,"allowed_languages":[],"source":"auto"},"transcription_provider":"vexa","service_authority":{"authority_version":"service-authority.v1","decision_id":"service-authority:unconfigured:94b11cd23692024d82e2da92d8b6ea642a1ac3e75726e110fa234d81f5b9fa40","request_id":"meeting-session:49ae4961-f75a-4982-9163-2b134a7d0de0:admit","service_identity":"meeting-session:49ae4961-f75a-4982-9163-2b134a7d0de0","allow":true,"reason":"unconfigured","decided_at":"2026-10-27T16:19:38.148632+00:00","stop_scope":null,"enforced":false,"mode":"unconfigured","service_mode":"bot","transcription_provider":"vexa","lifecycle_contract_version":"2026-07-28","last_boundary_at":null,"last_decision_id":"service-authority:unconfigured:94b11cd23692024d82e2da92d8b6ea642a1ac3e75726e110fa234d81f5b9fa40","teardown_confirmed":false},"sessions":["49ae4961-f75a-4982-9163-2b134a7d0de0"]},"created_at":"2026-06-20T09:00:00Z","updated_at":"2026-06-20T09:00:00Z"}
+E       assert 201 == 422
+E        +  where 201 = <Response [201 Created]>.status_code
+
+tests\test_bot_spawn.py:1426: AssertionError
+---------------------------- Captured stdout call -----------------------------
+{"ts":"2026-10-27T16:19:38.148632Z","level":"info","service":"meeting-api","trace_id":"d4b0ec2ce8fd463e8c79879fb3866800","audience":"user","event":"bot_join_requested","span":"bots.create","user_id":7,"meeting_id":"google_meet/voice-bot","fields":{"platform":"google_meet","status":"requested","continued":false,"session_count":1}}
+___________ test_post_bots_voice_agent_enabled_must_be_a_boolean[1] ___________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000019D85B798B0>
+value = 1
+
+    @pytest.mark.parametrize("value", ["yes", 1, "true", [True]])
+    def test_post_bots_voice_agent_enabled_must_be_a_boolean(monkeypatch, value):
+        r, _, runtime = _spawn_voice(monkeypatch, {"voice_agent_enabled": value})
+    
+>       assert r.status_code == 422, r.text
+E       AssertionError: {"id":1,"user_id":7,"platform":"google_meet","native_meeting_id":"voice-bot","constructed_meeting_url":"https://meet.google.com/voice-bot","status":"requested","bot_container_id":"mtg-1-e85e9866","start_time":null,"end_time":null,"completion_reason":null,"failure_stage":null,"data":{"constructed_meeting_url":"https://meet.google.com/voice-bot","transcribe_enabled":true,"recording_enabled":true,"transcription_language":{"language":null,"allowed_languages":[],"source":"auto"},"transcription_provider":"vexa","service_authority":{"authority_version":"service-authority.v1","decision_id":"service-authority:unconfigured:7ebbeaf804d9e30441e37e65687e1df1a76029ab50ca075ed224e14548c84d34","request_id":"meeting-session:e85e9866-5937-44ba-a465-dd327014f63d:admit","service_identity":"meeting-session:e85e9866-5937-44ba-a465-dd327014f63d","allow":true,"reason":"unconfigured","decided_at":"2026-10-27T16:19:38.188136+00:00","stop_scope":null,"enforced":false,"mode":"unconfigured","service_mode":"bot","transcription_provider":"vexa","lifecycle_contract_version":"2026-07-28","last_boundary_at":null,"last_decision_id":"service-authority:unconfigured:7ebbeaf804d9e30441e37e65687e1df1a76029ab50ca075ed224e14548c84d34","teardown_confirmed":false},"sessions":["e85e9866-5937-44ba-a465-dd327014f63d"]},"created_at":"2026-06-20T09:00:00Z","updated_at":"2026-06-20T09:00:00Z"}
+E       assert 201 == 422
+E        +  where 201 = <Response [201 Created]>.status_code
+
+tests\test_bot_spawn.py:1426: AssertionError
+---------------------------- Captured stdout call -----------------------------
+{"ts":"2026-10-27T16:19:38.190642Z","level":"info","service":"meeting-api","trace_id":"6a7fd6a5ca1248d990f19b5470602074","audience":"user","event":"bot_join_requested","span":"bots.create","user_id":7,"meeting_id":"google_meet/voice-bot","fields":{"platform":"google_meet","status":"requested","continued":false,"session_count":1}}
+_________ test_post_bots_voice_agent_enabled_must_be_a_boolean[true] __________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000019D85B7A960>
+value = 'true'
+
+    @pytest.mark.parametrize("value", ["yes", 1, "true", [True]])
+    def test_post_bots_voice_agent_enabled_must_be_a_boolean(monkeypatch, value):
+        r, _, runtime = _spawn_voice(monkeypatch, {"voice_agent_enabled": value})
+    
+>       assert r.status_code == 422, r.text
+E       AssertionError: {"id":1,"user_id":7,"platform":"google_meet","native_meeting_id":"voice-bot","constructed_meeting_url":"https://meet.google.com/voice-bot","status":"requested","bot_container_id":"mtg-1-d4b845b3","start_time":null,"end_time":null,"completion_reason":null,"failure_stage":null,"data":{"constructed_meeting_url":"https://meet.google.com/voice-bot","transcribe_enabled":true,"recording_enabled":true,"transcription_language":{"language":null,"allowed_languages":[],"source":"auto"},"transcription_provider":"vexa","service_authority":{"authority_version":"service-authority.v1","decision_id":"service-authority:unconfigured:b720fdb5a9e3a54df2b730223a2353d3b25a520ac398f16c70174ae988b06521","request_id":"meeting-session:d4b845b3-9010-435a-90c3-b31fd66e5295:admit","service_identity":"meeting-session:d4b845b3-9010-435a-90c3-b31fd66e5295","allow":true,"reason":"unconfigured","decided_at":"2026-10-27T16:19:38.212162+00:00","stop_scope":null,"enforced":false,"mode":"unconfigured","service_mode":"bot","transcription_provider":"vexa","lifecycle_contract_version":"2026-07-28","last_boundary_at":null,"last_decision_id":"service-authority:unconfigured:b720fdb5a9e3a54df2b730223a2353d3b25a520ac398f16c70174ae988b06521","teardown_confirmed":false},"sessions":["d4b845b3-9010-435a-90c3-b31fd66e5295"]},"created_at":"2026-06-20T09:00:00Z","updated_at":"2026-06-20T09:00:00Z"}
+E       assert 201 == 422
+E        +  where 201 = <Response [201 Created]>.status_code
+
+tests\test_bot_spawn.py:1426: AssertionError
+---------------------------- Captured stdout call -----------------------------
+{"ts":"2026-10-27T16:19:38.212162Z","level":"info","service":"meeting-api","trace_id":"d553417956ff4230a4926fb57a233204","audience":"user","event":"bot_join_requested","span":"bots.create","user_id":7,"meeting_id":"google_meet/voice-bot","fields":{"platform":"google_meet","status":"requested","continued":false,"session_count":1}}
+________ test_post_bots_voice_agent_enabled_must_be_a_boolean[value3] _________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000019D828E2600>
+value = [True]
+
+    @pytest.mark.parametrize("value", ["yes", 1, "true", [True]])
+    def test_post_bots_voice_agent_enabled_must_be_a_boolean(monkeypatch, value):
+        r, _, runtime = _spawn_voice(monkeypatch, {"voice_agent_enabled": value})
+    
+>       assert r.status_code == 422, r.text
+E       AssertionError: {"id":1,"user_id":7,"platform":"google_meet","native_meeting_id":"voice-bot","constructed_meeting_url":"https://meet.google.com/voice-bot","status":"requested","bot_container_id":"mtg-1-64d2910c","start_time":null,"end_time":null,"completion_reason":null,"failure_stage":null,"data":{"constructed_meeting_url":"https://meet.google.com/voice-bot","transcribe_enabled":true,"recording_enabled":true,"transcription_language":{"language":null,"allowed_languages":[],"source":"auto"},"transcription_provider":"vexa","service_authority":{"authority_version":"service-authority.v1","decision_id":"service-authority:unconfigured:6ee78760f5fff11f54162ccac5c7c2277beadef401a39ba238f193f95c397de7","request_id":"meeting-session:64d2910c-ab43-438f-b024-1f8e5299cbb4:admit","service_identity":"meeting-session:64d2910c-ab43-438f-b024-1f8e5299cbb4","allow":true,"reason":"unconfigured","decided_at":"2026-10-27T16:19:38.233212+00:00","stop_scope":null,"enforced":false,"mode":"unconfigured","service_mode":"bot","transcription_provider":"vexa","lifecycle_contract_version":"2026-07-28","last_boundary_at":null,"last_decision_id":"service-authority:unconfigured:6ee78760f5fff11f54162ccac5c7c2277beadef401a39ba238f193f95c397de7","teardown_confirmed":false},"sessions":["64d2910c-ab43-438f-b024-1f8e5299cbb4"]},"created_at":"2026-06-20T09:00:00Z","updated_at":"2026-06-20T09:00:00Z"}
+E       assert 201 == 422
+E        +  where 201 = <Response [201 Created]>.status_code
+
+tests\test_bot_spawn.py:1426: AssertionError
+---------------------------- Captured stdout call -----------------------------
+{"ts":"2026-10-27T16:19:38.234133Z","level":"info","service":"meeting-api","trace_id":"c5a537ff0839488d93ec7ccc992d55e7","audience":"user","event":"bot_join_requested","span":"bots.create","user_id":7,"meeting_id":"google_meet/voice-bot","fields":{"platform":"google_meet","status":"requested","continued":false,"session_count":1}}
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\aprabhu\JANCodes\vexa-1866\core\meetings\services\meeting-api\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+.venv\Lib\site-packages\starlette\testclient.py:53
+  C:\Users\aprabhu\JANCodes\vexa-1866\core\meetings\services\meeting-api\.venv\Lib\site-packages\starlette\testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_bot_spawn.py::test_post_bots_voice_agent_enabled_arms_the_invocation_and_the_row
+FAILED tests/test_bot_spawn.py::test_post_bots_voice_agent_enabled_must_be_a_boolean[yes]
+FAILED tests/test_bot_spawn.py::test_post_bots_voice_agent_enabled_must_be_a_boolean[1]
+FAILED tests/test_bot_spawn.py::test_post_bots_voice_agent_enabled_must_be_a_boolean[true]
+FAILED tests/test_bot_spawn.py::test_post_bots_voice_agent_enabled_must_be_a_boolean[value3]
+5 failed, 3 passed, 83 deselected, 2 warnings in 1.38s

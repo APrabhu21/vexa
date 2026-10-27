@@ -1,0 +1,238 @@
+═══ vexa full-journey probe · mode=real · gateway=http://localhost:8056 · meeting=google_meet/aaa-prb9613-bot ═══
+
+━━ S0 ready ━━
+   Expected: GET /health 200 and authed GET /meetings non-5xx (meeting-api ready behind the gateway)
+   Actual:   /health → 200 · GET /meetings → 200
+   Verdict:  GREEN
+
+━━ S1 spawn ━━
+   Expected: POST /bots (probe) → 201 + a meeting row id
+   Actual:   → 201 {"id":9,"user_id":3,"platform":"google_meet","native_meeting_id":"aaa-prb9613-bot","constructed_meeting_url":"https://meet.google.com/aaa-prb9613-bot","status":"requested","bot_container_id":"mtg-9-7a
+   Verdict:  GREEN
+
+━━ S2 schedule ━━
+   Expected: the meeting row appears in GET /meetings (status=requested counts) within 20s
+   Actual:   row: requested|9|||
+   Verdict:  GREEN
+
+━━ S3 boot ━━
+   Expected: status leaves 'requested' (bot booted + first lifecycle callback) ≤ 180s
+   Actual:   row: joining|9|||
+   Verdict:  GREEN
+
+━━ S4 join ━━
+   Expected: dead meeting URL → a TRUTHFUL named terminal (failed + completion_reason/failure_stage) ≤ 300s
+   Actual:   terminal: failed (reason=join_failure stage=joining)
+   Verdict:  GREEN
+
+━━ S5 transcribe ━━
+   Expected: WS /ws subscribe acked (no meeting was joined, so 0 segments is the truthful count)
+   Actual:   ws ack=1 · live transcript frames=0 · durable segments=0 (GET /transcripts → 200)
+   Verdict:  GREEN
+
+━━ S6 live-view ━━
+   Expected: GET /agent/meeting/stream (SSE) → 200 text/event-stream for the probe's own meeting
+   Actual:   HTTP/1.1 200 OK · content-type: text/event-stream
+   Verdict:  GREEN
+
+━━ S7 stop ━━
+   Expected: bot already terminal (failed) — the stop route still ANSWERS (non-5xx)
+   Actual:   DELETE → 200
+   Verdict:  GREEN
+
+━━ S8 log sweep ━━
+--- vexa-lite (tail 60) ---
+INFO:     127.0.0.1:35396 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:35:38.850962Z","level":"debug","service":"identity","trace_id":"f2ccd81acc1a4b6099ac7d4342756bc1","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":3.9}}
+{"ts":"2026-10-27T19:35:38.851671Z","level":"info","service":"gateway","trace_id":"f2ccd81acc1a4b6099ac7d4342756bc1","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"GET","path":"/meetings"}}
+{"ts":"2026-10-27T19:35:38.857933Z","level":"info","service":"transcription-collector","trace_id":"85ae6cbe0c4f4736b45eddea2fdc10d9","audience":"user","event":"meetings_listed","span":"meetings.list","user_id":3,"fields":{"count":5}}
+INFO:     127.0.0.1:39170 - "GET /meetings HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:35:38.858716Z","level":"debug","service":"gateway","trace_id":"f2ccd81acc1a4b6099ac7d4342756bc1","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"GET","path":"http://localhost:8080/meetings","downstream_status":200}}
+INFO:     172.18.0.1:49216 - "GET /meetings HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:35:38.887393Z","level":"debug","service":"gateway","trace_id":"aa092aac372b43a398c97e72d9e16039","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/transcripts/google_meet/aaa-prb9613-bot","minted":true}}
+{"ts":"2026-10-27T19:35:38.888565Z","level":"debug","service":"identity","trace_id":"aa092aac372b43a398c97e72d9e16039","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:35396 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:35:38.891520Z","level":"debug","service":"identity","trace_id":"aa092aac372b43a398c97e72d9e16039","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":3.0}}
+{"ts":"2026-10-27T19:35:38.891786Z","level":"info","service":"gateway","trace_id":"aa092aac372b43a398c97e72d9e16039","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"GET","path":"/transcripts/google_meet/aaa-prb9613-bot"}}
+{"ts":"2026-10-27T19:35:38.896361Z","level":"info","service":"transcription-collector","trace_id":"45ff8a5203204fceaf67ad1c702457df","audience":"user","event":"transcript_served","span":"transcripts.get","user_id":3,"meeting_id":"google_meet/aaa-prb9613-bot","fields":{"segments":0}}
+INFO:     127.0.0.1:39170 - "GET /transcripts/google_meet/aaa-prb9613-bot HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:35:38.897123Z","level":"debug","service":"gateway","trace_id":"aa092aac372b43a398c97e72d9e16039","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"GET","path":"http://localhost:8080/transcripts/google_meet/aaa-prb9613-bot","downstream_status":200}}
+INFO:     172.18.0.1:49228 - "GET /transcripts/google_meet/aaa-prb9613-bot HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:35:38.921289Z","level":"debug","service":"gateway","trace_id":"0f0a7a63419d4ba8989a04b4d7bdf939","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/meetings","minted":true}}
+{"ts":"2026-10-27T19:35:38.922548Z","level":"debug","service":"identity","trace_id":"0f0a7a63419d4ba8989a04b4d7bdf939","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:35396 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:35:38.925423Z","level":"debug","service":"identity","trace_id":"0f0a7a63419d4ba8989a04b4d7bdf939","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":2.9}}
+{"ts":"2026-10-27T19:35:38.925536Z","level":"info","service":"gateway","trace_id":"0f0a7a63419d4ba8989a04b4d7bdf939","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"GET","path":"/meetings"}}
+{"ts":"2026-10-27T19:35:38.930284Z","level":"info","service":"transcription-collector","trace_id":"805352ea69424d41a84ee707ba1c2b90","audience":"user","event":"meetings_listed","span":"meetings.list","user_id":3,"fields":{"count":5}}
+INFO:     127.0.0.1:39170 - "GET /meetings HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:35:38.931045Z","level":"debug","service":"gateway","trace_id":"0f0a7a63419d4ba8989a04b4d7bdf939","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"GET","path":"http://localhost:8080/meetings","downstream_status":200}}
+INFO:     172.18.0.1:49236 - "GET /meetings HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:35:39.025482Z","level":"debug","service":"gateway","trace_id":"9e2596d4120c4d0aa7fdf2ed136ca2ac","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/agent/meeting/stream","minted":true}}
+{"ts":"2026-10-27T19:35:39.026695Z","level":"debug","service":"identity","trace_id":"9e2596d4120c4d0aa7fdf2ed136ca2ac","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:35396 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:35:39.029419Z","level":"debug","service":"identity","trace_id":"9e2596d4120c4d0aa7fdf2ed136ca2ac","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":2.7}}
+{"ts":"2026-10-27T19:35:39.029636Z","level":"info","service":"gateway","trace_id":"9e2596d4120c4d0aa7fdf2ed136ca2ac","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"GET","path":"/agent/meeting/stream"}}
+{"ts":"2026-10-27T19:35:39.031740Z","level":"debug","service":"agent-api","trace_id":"9e2596d4120c4d0aa7fdf2ed136ca2ac","audience":"system","event":"request_received","span":"edge","user_id":"3","fields":{"method":"GET","path":"/api/meeting/stream","minted":false}}
+{"ts":"2026-10-27T19:35:39.035159Z","level":"debug","service":"identity","trace_id":"a7f255dd198a4fadafcf6bac62bd3d17","audience":"system","event":"request_received","fields":{"method":"GET","path":"/internal/users/3/is-admin"}}
+INFO:     127.0.0.1:53140 - "GET /internal/users/3/is-admin HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:35:39.037025Z","level":"debug","service":"identity","trace_id":"a7f255dd198a4fadafcf6bac62bd3d17","audience":"system","event":"request_completed","fields":{"method":"GET","path":"/internal/users/3/is-admin","status":200,"duration_ms":1.8}}
+{"ts":"2026-10-27T19:35:39.038019Z","level":"debug","service":"identity","trace_id":"9e2596d4120c4d0aa7fdf2ed136ca2ac","audience":"system","event":"request_received","fields":{"method":"GET","path":"/internal/registry/principals/3/memberships"}}
+INFO:     127.0.0.1:53150 - "GET /internal/registry/principals/3/memberships HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:35:39.039335Z","level":"debug","service":"identity","trace_id":"9e2596d4120c4d0aa7fdf2ed136ca2ac","audience":"system","event":"request_completed","fields":{"method":"GET","path":"/internal/registry/principals/3/memberships","status":200,"duration_ms":1.3}}
+INFO:     127.0.0.1:60466 - "GET /meetings/9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46826 - "GET /api/meeting/stream?meeting_id=9&session_uid=aaa-prb9613-bot HTTP/1.1" 200 OK
+INFO:     172.18.0.1:49244 - "GET /agent/meeting/stream?meeting_id=9&session_uid=aaa-prb9613-bot HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:35:39.340751Z","level":"debug","service":"gateway","trace_id":"bf35e1823a794091aa1cc4193e9a482c","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/health","minted":true}}
+INFO:     127.0.0.1:34872 - "GET /health HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:35:40.552468Z","level":"debug","service":"agent-api","trace_id":"9e2596d4120c4d0aa7fdf2ed136ca2ac","audience":"system","event":"request_completed","span":"edge","user_id":"3","fields":{"method":"GET","path":"/api/meeting/stream","status":200,"ms":1520}}
+{"ts":"2026-10-27T19:35:40.567970Z","level":"debug","service":"gateway","trace_id":"ec6d387256664408b02a8687a3e8ae9f","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/meetings","minted":true}}
+{"ts":"2026-10-27T19:35:40.569141Z","level":"debug","service":"identity","trace_id":"ec6d387256664408b02a8687a3e8ae9f","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:35396 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:35:40.572205Z","level":"debug","service":"identity","trace_id":"ec6d387256664408b02a8687a3e8ae9f","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":3.1}}
+{"ts":"2026-10-27T19:35:40.572466Z","level":"info","service":"gateway","trace_id":"ec6d387256664408b02a8687a3e8ae9f","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"GET","path":"/meetings"}}
+{"ts":"2026-10-27T19:35:40.577386Z","level":"info","service":"transcription-collector","trace_id":"c3058dc11cbc400d93c9937245a3f54d","audience":"user","event":"meetings_listed","span":"meetings.list","user_id":3,"fields":{"count":5}}
+INFO:     127.0.0.1:39170 - "GET /meetings HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:35:40.578094Z","level":"debug","service":"gateway","trace_id":"ec6d387256664408b02a8687a3e8ae9f","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"GET","path":"http://localhost:8080/meetings","downstream_status":200}}
+INFO:     172.18.0.1:49256 - "GET /meetings HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:35:40.601768Z","level":"debug","service":"gateway","trace_id":"7c946aa731954ca1acb6dcae7e3b3c45","audience":"system","event":"request_received","span":"edge","fields":{"method":"DELETE","path":"/bots/google_meet/aaa-prb9613-bot","minted":true}}
+{"ts":"2026-10-27T19:35:40.602862Z","level":"debug","service":"identity","trace_id":"7c946aa731954ca1acb6dcae7e3b3c45","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:35396 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:35:40.605716Z","level":"debug","service":"identity","trace_id":"7c946aa731954ca1acb6dcae7e3b3c45","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":2.9}}
+{"ts":"2026-10-27T19:35:40.605922Z","level":"info","service":"gateway","trace_id":"7c946aa731954ca1acb6dcae7e3b3c45","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"DELETE","path":"/bots/google_meet/aaa-prb9613-bot"}}
+INFO:     127.0.0.1:39170 - "DELETE /bots/google_meet/aaa-prb9613-bot HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:35:40.612488Z","level":"debug","service":"gateway","trace_id":"7c946aa731954ca1acb6dcae7e3b3c45","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"DELETE","path":"http://localhost:8080/bots/google_meet/aaa-prb9613-bot","downstream_status":200}}
+INFO:     172.18.0.1:49258 - "DELETE /bots/google_meet/aaa-prb9613-bot HTTP/1.1" 200 OK
+--- bot workload logs (/var/lib/vexa-runtime/logs) ---
+--- /var/lib/vexa-runtime/logs/mtg-7-d856aca0.log (tail 25) ---
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":7,"recording_session_uid":"d856aca0-91b2-4775-935a-e41cb4eee8aa"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":33,"is_final":true,"chunk_size_bytes":0,"recording_meeting_id":7,"recording_session_uid":"d856aca0-91b2-4775-935a-e41cb4eee8aa"}
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":7,"recording_session_uid":"d856aca0-91b2-4775-935a-e41cb4eee8aa"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":32,"is_final":false,"chunk_size_bytes":2340,"recording_meeting_id":7,"recording_session_uid":"d856aca0-91b2-4775-935a-e41cb4eee8aa"}
+[page] [leave] clicked leave button via button[aria-label="Leave call"]
+{"ts":"2026-10-27T19:32:40.415Z","level":"info","msg":"[leaveGoogleMeet] Browser leave action complete","leave_result":true,"leave_reason":"stopped"}
+[bot] orchestrator: emitting completed (reason=stopped, from=active)
+[bot] redis (transcript) error: Socket closed unexpectedly
+[bot] redis (acts) error: Socket closed unexpectedly
+[bot] redis (transcript) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] redis (acts) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] redis (transcript) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] redis (acts) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] orchestrator: completed emitted + flushed
+[gmeet-pipeline] [RECONFIRM] reconfirmed=0 confirmed-as-drafted=0 requests=0
+[COVERAGE] captured=0s submitted=0s transcribed=0s (0% of captured) no_speech=0s short=0s dropped=0s
+[bot] capture-signal: session written: /var/lib/vexa-runtime/homes/1500000000.3cfe733668d4eb5f/captured-signal/d856aca0-91b2-4775-935a-e41cb4eee8aa.captured-signal.jsonl (0 frames, 0 hints, 0 captions, 0 csrc, 1 observations)
+[bot] transcript-snapshot: 0 row(s) → /var/lib/vexa-runtime/homes/1500000000.3cfe733668d4eb5f/captured-signal/d856aca0-91b2-4775-935a-e41cb4eee8aa.transcript.jsonl
+{"level":"info","msg":"[capture-signal] tape-uploaded","event":"capture_signal.tape_uploaded","part":"captured-signal","path":"/var/lib/vexa-runtime/homes/1500000000.3cfe733668d4eb5f/captured-signal/d856aca0-91b2-4775-935a-e41cb4eee8aa.captured-signal.jsonl","bytes":267,"capped":false}
+{"level":"info","msg":"[capture-signal] tape-uploaded","event":"capture_signal.tape_uploaded","part":"observations","path":"/var/lib/vexa-runtime/homes/1500000000.3cfe733668d4eb5f/captured-signal/d856aca0-91b2-4775-935a-e41cb4eee8aa.observations.jsonl","bytes":363,"capped":false}
+[bot] redis (acts) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] redis (transcript) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] pipeline fault: Error: NOAUTH Authentication required.
+[bot] pipeline fault: Error: NOAUTH Authentication required.
+{"level":"info","msg":"[capture-signal] tape-uploaded","event":"capture_signal.tape_uploaded","part":"botlog","path":"/var/lib/vexa-runtime/homes/1500000000.3cfe733668d4eb5f/captured-signal/d856aca0-91b2-4775-935a-e41cb4eee8aa.botlog.txt","bytes":36273,"capped":false}
+--- /var/lib/vexa-runtime/logs/mtg-8-2414ee56.log (tail 25) ---
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":8,"recording_session_uid":"2414ee56-5bdc-447d-b3cc-803b556b9d7b"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":32,"is_final":false,"chunk_size_bytes":2326,"recording_meeting_id":8,"recording_session_uid":"2414ee56-5bdc-447d-b3cc-803b556b9d7b"}
+[page] [leave] clicked leave button via button[aria-label="Leave call"]
+{"ts":"2026-10-27T19:32:40.439Z","level":"info","msg":"[leaveGoogleMeet] Browser leave action complete","leave_result":true,"leave_reason":"stopped"}
+[bot] orchestrator: emitting completed (reason=stopped, from=active)
+[bot] redis (transcript) error: Socket closed unexpectedly
+[bot] redis (acts) error: Socket closed unexpectedly
+[bot] redis (transcript) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] redis (acts) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] redis (acts) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] redis (transcript) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] orchestrator: completed emitted + flushed
+[gmeet-pipeline] [RECONFIRM] reconfirmed=7 confirmed-as-drafted=0 requests=7
+[COVERAGE] captured=13.8s submitted=12s transcribed=13.5s (98% of captured) no_speech=0.3s short=0s dropped=0s
+[bot] capture-signal: session written: /var/lib/vexa-runtime/homes/1500000001.621398b669a8b30d/captured-signal/2414ee56-5bdc-447d-b3cc-803b556b9d7b.captured-signal.jsonl (54 frames, 0 hints, 0 captions, 0 csrc, 1 observations)
+[bot] transcript-snapshot: 7 row(s) → /var/lib/vexa-runtime/homes/1500000001.621398b669a8b30d/captured-signal/2414ee56-5bdc-447d-b3cc-803b556b9d7b.transcript.jsonl
+{"level":"info","msg":"[capture-signal] tape-uploaded","event":"capture_signal.tape_uploaded","part":"captured-signal","path":"/var/lib/vexa-runtime/homes/1500000001.621398b669a8b30d/captured-signal/2414ee56-5bdc-447d-b3cc-803b556b9d7b.captured-signal.jsonl","bytes":1187132,"capped":false}
+{"level":"info","msg":"[capture-signal] tape-uploaded","event":"capture_signal.tape_uploaded","part":"stt","path":"/var/lib/vexa-runtime/homes/1500000001.621398b669a8b30d/captured-signal/2414ee56-5bdc-447d-b3cc-803b556b9d7b.stt.jsonl","bytes":3055,"capped":false}
+[bot] redis (acts) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] redis (transcript) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] pipeline fault: Error: NOAUTH Authentication required.
+[bot] pipeline fault: Error: NOAUTH Authentication required.
+{"level":"info","msg":"[capture-signal] tape-uploaded","event":"capture_signal.tape_uploaded","part":"observations","path":"/var/lib/vexa-runtime/homes/1500000001.621398b669a8b30d/captured-signal/2414ee56-5bdc-447d-b3cc-803b556b9d7b.observations.jsonl","bytes":363,"capped":false}
+{"level":"info","msg":"[capture-signal] tape-uploaded","event":"capture_signal.tape_uploaded","part":"botlog","path":"/var/lib/vexa-runtime/homes/1500000001.621398b669a8b30d/captured-signal/2414ee56-5bdc-447d-b3cc-803b556b9d7b.botlog.txt","bytes":36949,"capped":false}
+{"level":"info","msg":"[capture-signal] tape-uploaded","event":"capture_signal.tape_uploaded","part":"transcript","path":"/var/lib/vexa-runtime/homes/1500000001.621398b669a8b30d/captured-signal/2414ee56-5bdc-447d-b3cc-803b556b9d7b.transcript.jsonl","bytes":2420,"capped":false}
+--- /var/lib/vexa-runtime/logs/mtg-9-7a17dd7b.log (tail 25) ---
+{"ts":"2026-10-27T19:33:35.400Z","level":"info","msg":"Joining callback sent successfully"}
+{"ts":"2026-10-27T19:33:36.404Z","level":"info","msg":"Lobby locale (#856): url=https://meet.google.com/_meet/whoops?hl=en&sc=232 html.lang=en navigator.language=en-US"}
+{"ts":"2026-10-27T19:33:36.406Z","level":"info","msg":"UI locale (google_meet, lobby): en via html-lang; navigator.language=en-US"}
+{"ts":"2026-10-27T19:33:36.421Z","level":"info","msg":"Humanized UI interaction mode active (OS-level XTEST input)."}
+{"ts":"2026-10-27T19:33:36.421Z","level":"info","msg":"Attempting to find name input field..."}
+[COVERAGE] captured=0s submitted=0s transcribed=0s (0% of captured) no_speech=0s short=0s dropped=0s
+{"ts":"2026-10-27T19:35:36.691Z","level":"info","msg":"📸 Screenshot: name input not found by any of 6 selectors (tried: input[jsname][type=\"text\"] | input[type=\"text\"]:not([aria-hidden=\"true\"]) | div[jscontroller] input[type=\"text\"] | input[type=\"text\"][aria-label=\"Your name\"] | input[placeholder*=\"name\"] | input[placeholder*=\"Name\"])"}
+{"ts":"2026-10-27T19:35:36.693Z","level":"info","msg":"UI locale (google_meet, join verdict): en via html-lang; navigator.language=en-US"}
+[bot] redis (acts) error: Socket closed unexpectedly
+[bot] redis (transcript) error: Socket closed unexpectedly
+[bot] redis (acts) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] redis (transcript) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] redis (acts) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] redis (transcript) error: WRONGPASS invalid username-password pair or user is disabled.
+[gmeet-pipeline] [RECONFIRM] reconfirmed=0 confirmed-as-drafted=0 requests=0
+[COVERAGE] captured=0s submitted=0s transcribed=0s (0% of captured) no_speech=0s short=0s dropped=0s
+[bot] capture-signal: session written: /var/lib/vexa-runtime/homes/1500000002.d3255edac316bb78/captured-signal/7a17dd7b-b9ed-476d-b928-4d7c5b6f972e.captured-signal.jsonl (0 frames, 0 hints, 0 captions, 0 csrc, 1 observations)
+[bot] transcript-snapshot: 0 row(s) → /var/lib/vexa-runtime/homes/1500000002.d3255edac316bb78/captured-signal/7a17dd7b-b9ed-476d-b928-4d7c5b6f972e.transcript.jsonl
+{"level":"info","msg":"[capture-signal] tape-uploaded","event":"capture_signal.tape_uploaded","part":"captured-signal","path":"/var/lib/vexa-runtime/homes/1500000002.d3255edac316bb78/captured-signal/7a17dd7b-b9ed-476d-b928-4d7c5b6f972e.captured-signal.jsonl","bytes":270,"capped":false}
+{"level":"info","msg":"[capture-signal] tape-uploaded","event":"capture_signal.tape_uploaded","part":"observations","path":"/var/lib/vexa-runtime/homes/1500000002.d3255edac316bb78/captured-signal/7a17dd7b-b9ed-476d-b928-4d7c5b6f972e.observations.jsonl","bytes":363,"capped":false}
+{"level":"info","msg":"[capture-signal] tape-uploaded","event":"capture_signal.tape_uploaded","part":"botlog","path":"/var/lib/vexa-runtime/homes/1500000002.d3255edac316bb78/captured-signal/7a17dd7b-b9ed-476d-b928-4d7c5b6f972e.botlog.txt","bytes":4395,"capped":false}
+[bot] redis (acts) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] redis (transcript) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] pipeline fault: Error: NOAUTH Authentication required.
+[bot] pipeline fault: Error: NOAUTH Authentication required.
+--- /var/lib/vexa-runtime/logs/r4check-bot.log (tail 25) ---
+The XKEYBOARD keymap compiler (xkbcomp) reports:
+> Warning:          Could not resolve keysym XF86CameraAccessEnable
+> Warning:          Could not resolve keysym XF86CameraAccessDisable
+> Warning:          Could not resolve keysym XF86CameraAccessToggle
+> Warning:          Could not resolve keysym XF86NextElement
+> Warning:          Could not resolve keysym XF86PreviousElement
+> Warning:          Could not resolve keysym XF86AutopilotEngageToggle
+> Warning:          Could not resolve keysym XF86MarkWaypoint
+> Warning:          Could not resolve keysym XF86Sos
+> Warning:          Could not resolve keysym XF86NavChart
+> Warning:          Could not resolve keysym XF86FishingChart
+> Warning:          Could not resolve keysym XF86SingleRangeRadar
+> Warning:          Could not resolve keysym XF86DualRangeRadar
+> Warning:          Could not resolve keysym XF86RadarOverlay
+> Warning:          Could not resolve keysym XF86TraditionalSonar
+> Warning:          Could not resolve keysym XF86ClearvuSonar
+> Warning:          Could not resolve keysym XF86SidevuSonar
+> Warning:          Could not resolve keysym XF86NavInfo
+Errors from xkbcomp are not fatal to the X server
+[bot] FATAL invocation.v1: VEXA_BOT_CONFIG failed validation — data must have required property 'platform', data must have required property 'meetingUrl', data must have required property 'botName', data must have required property 'redisUrl'
+[bot] lifecycle.v1 failed (validation_error) @requested
+--- /var/lib/vexa-runtime/logs/r4check-worker-named.log (tail 25) ---
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/app/agent/worker/__main__.py", line 3, in <module>
+    main()
+  File "/app/agent/worker/engine.py", line 3678, in main
+    client = stream_bounds.BoundedStream(redis.from_url(os.environ["REDIS_URL"], decode_responses=True))
+                                                        ~~~~~~~~~~^^^^^^^^^^^^^
+  File "<frozen os>", line 685, in __getitem__
+KeyError: 'REDIS_URL'
+--- /var/lib/vexa-runtime/logs/r4check-worker-num.log (tail 25) ---
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/app/agent/worker/__main__.py", line 3, in <module>
+    main()
+  File "/app/agent/worker/engine.py", line 3678, in main
+    client = stream_bounds.BoundedStream(redis.from_url(os.environ["REDIS_URL"], decode_responses=True))
+                                                        ~~~~~~~~~~^^^^^^^^^^^^^
+  File "<frozen os>", line 685, in __getitem__
+KeyError: 'REDIS_URL'
+
+═══ PROBE PASS · mode=real · google_meet/aaa-prb9613-bot ═══
+  GREEN  S0 ready
+  GREEN  S1 spawn
+  GREEN  S2 schedule
+  GREEN  S3 boot
+  GREEN  S4 join
+  GREEN  S5 transcribe
+  GREEN  S6 live-view
+  GREEN  S7 stop
+  DONE   S8 log sweep

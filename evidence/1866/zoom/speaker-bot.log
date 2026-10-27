@@ -1,0 +1,179 @@
+The XKEYBOARD keymap compiler (xkbcomp) reports:
+> Warning:          Could not resolve keysym XF86CameraAccessEnable
+> Warning:          Could not resolve keysym XF86CameraAccessDisable
+> Warning:          Could not resolve keysym XF86CameraAccessToggle
+> Warning:          Could not resolve keysym XF86NextElement
+> Warning:          Could not resolve keysym XF86PreviousElement
+> Warning:          Could not resolve keysym XF86AutopilotEngageToggle
+> Warning:          Could not resolve keysym XF86MarkWaypoint
+> Warning:          Could not resolve keysym XF86Sos
+> Warning:          Could not resolve keysym XF86NavChart
+> Warning:          Could not resolve keysym XF86FishingChart
+> Warning:          Could not resolve keysym XF86SingleRangeRadar
+> Warning:          Could not resolve keysym XF86DualRangeRadar
+> Warning:          Could not resolve keysym XF86RadarOverlay
+> Warning:          Could not resolve keysym XF86TraditionalSonar
+> Warning:          Could not resolve keysym XF86ClearvuSonar
+> Warning:          Could not resolve keysym XF86SidevuSonar
+> Warning:          Could not resolve keysym XF86NavInfo
+Errors from xkbcomp are not fatal to the X server
+{"level":"info","msg":"[capture-signal] tape-started","event":"capture_signal.tape_started","path":"/var/lib/vexa-runtime/homes/1500000000.ed3dbfdf3071441a/captured-signal/2a8455ea-eba8-402c-99e2-b328eb558d7b.captured-signal.jsonl","max_bytes":262144000,"platform":"zoom"}
+[bot] capture-signal recording → /var/lib/vexa-runtime/homes/1500000000.ed3dbfdf3071441a/captured-signal/2a8455ea-eba8-402c-99e2-b328eb558d7b.captured-signal.jsonl
+[bot] aloneness: silence adapter + deaf-capture guard enabled (window_ms=600000)
+[bot] speaker-stream tuning enabled: {"pauseFinalMs":500,"idleTimeoutSec":1,"submitInterval":1,"maxBufferDuration":10,"confirmThreshold":1,"pipelineDrafts":true,"minAudioDuration":0.75}
+[bot] transcription language: auto (invocation)
+[remote-browser] Chromium runs with its sandbox
+{"ts":"2026-10-27T20:29:48.291Z","level":"info","msg":"[Zoom Web] Navigating to web client: https://app.zoom.us/wc/98335963876/join?pwd=<redacted>"}
+[bot] navigation guard: allowed a navigation to app.zoom.us
+[bot] navigation guard: allowed a redirect to app.zoom.us
+[page-console:log] Vexa Browser Utils loaded successfully: [createGmeetCapture, createGmeetSpeakers, createGmeetCaptureV1, pickBoundName, GmeetChannelBinder, createPcmCaptureNode, createGmeetChat, sendGmeetChatMessage, openGmeetChatPanel, prepareGmeetChatSend, awaitGmeetChatLanded, createMixedAudioCapture, installRemoteAudioHook, selectTeamsMixStreams, mainAudioProvedSilent, createCsrcPoll, createRecordingTap, createJitsiSpeakers, createJitsiChat, sendJitsiChatMessage, createTeamsSpeakers, createTeamsCaptions, createZoomSpeakers, createTrackNameResolver]
+[page-console:log] Vexa Browser Utils loaded successfully: [createGmeetCapture, createGmeetSpeakers, createGmeetCaptureV1, pickBoundName, GmeetChannelBinder, createPcmCaptureNode, createGmeetChat, sendGmeetChatMessage, openGmeetChatPanel, prepareGmeetChatSend, awaitGmeetChatLanded, createMixedAudioCapture, installRemoteAudioHook, selectTeamsMixStreams, mainAudioProvedSilent, createCsrcPoll, createRecordingTap, createJitsiSpeakers, createJitsiChat, sendJitsiChatMessage, createTeamsSpeakers, createTeamsCaptions, createZoomSpeakers, createTrackNameResolver]
+[page-console:log] Vexa Browser Utils loaded successfully: [createGmeetCapture, createGmeetSpeakers, createGmeetCaptureV1, pickBoundName, GmeetChannelBinder, createPcmCaptureNode, createGmeetChat, sendGmeetChatMessage, openGmeetChatPanel, prepareGmeetChatSend, awaitGmeetChatLanded, createMixedAudioCapture, installRemoteAudioHook, selectTeamsMixStreams, mainAudioProvedSilent, createCsrcPoll, createRecordingTap, createJitsiSpeakers, createJitsiChat, sendJitsiChatMessage, createTeamsSpeakers, createTeamsCaptions, createZoomSpeakers, createTrackNameResolver]
+{"ts":"2026-10-27T20:29:54.296Z","level":"info","msg":"UI locale (zoom, pre-join): en-us via html-lang; navigator.language=en-US"}
+{"ts":"2026-10-27T20:29:54.340Z","level":"info","msg":"[Zoom Web] Pre-join name input present"}
+[page-console:log] Vexa Browser Utils loaded successfully: [createGmeetCapture, createGmeetSpeakers, createGmeetCaptureV1, pickBoundName, GmeetChannelBinder, createPcmCaptureNode, createGmeetChat, sendGmeetChatMessage, openGmeetChatPanel, prepareGmeetChatSend, awaitGmeetChatLanded, createMixedAudioCapture, installRemoteAudioHook, selectTeamsMixStreams, mainAudioProvedSilent, createCsrcPoll, createRecordingTap, createJitsiSpeakers, createJitsiChat, sendJitsiChatMessage, createTeamsSpeakers, createTeamsCaptions, createZoomSpeakers, createTrackNameResolver]
+{"ts":"2026-10-27T20:29:54.826Z","level":"info","msg":"[Zoom Web] Name typed: \"Vexa Speaker\""}
+{"ts":"2026-10-27T20:29:54.839Z","level":"info","msg":"[Zoom Web] Join button enabled — proceeding to click"}
+[page-console:log] Vexa Browser Utils loaded successfully: [createGmeetCapture, createGmeetSpeakers, createGmeetCaptureV1, pickBoundName, GmeetChannelBinder, createPcmCaptureNode, createGmeetChat, sendGmeetChatMessage, openGmeetChatPanel, prepareGmeetChatSend, awaitGmeetChatLanded, createMixedAudioCapture, installRemoteAudioHook, selectTeamsMixStreams, mainAudioProvedSilent, createCsrcPoll, createRecordingTap, createJitsiSpeakers, createJitsiChat, sendJitsiChatMessage, createTeamsSpeakers, createTeamsCaptions, createZoomSpeakers, createTrackNameResolver]
+[page-console:log] Vexa Browser Utils loaded successfully: [createGmeetCapture, createGmeetSpeakers, createGmeetCaptureV1, pickBoundName, GmeetChannelBinder, createPcmCaptureNode, createGmeetChat, sendGmeetChatMessage, openGmeetChatPanel, prepareGmeetChatSend, awaitGmeetChatLanded, createMixedAudioCapture, installRemoteAudioHook, selectTeamsMixStreams, mainAudioProvedSilent, createCsrcPoll, createRecordingTap, createJitsiSpeakers, createJitsiChat, sendJitsiChatMessage, createTeamsSpeakers, createTeamsCaptions, createZoomSpeakers, createTrackNameResolver]
+{"ts":"2026-10-27T20:29:54.883Z","level":"info","msg":"[Zoom Web] Muted microphone in preview (recorder bot — receive-only audio)"}
+{"ts":"2026-10-27T20:29:54.919Z","level":"info","msg":"[Zoom Web] Stopped video in preview"}
+{"ts":"2026-10-27T20:29:54.919Z","level":"info","msg":"[Zoom Web] Clicking Join (DOM-direct)..."}
+{"ts":"2026-10-27T20:29:54.922Z","level":"info","msg":"[Zoom Web] Join clicked — waiting for meeting to load..."}
+[page-console:log] Vexa Browser Utils loaded successfully: [createGmeetCapture, createGmeetSpeakers, createGmeetCaptureV1, pickBoundName, GmeetChannelBinder, createPcmCaptureNode, createGmeetChat, sendGmeetChatMessage, openGmeetChatPanel, prepareGmeetChatSend, awaitGmeetChatLanded, createMixedAudioCapture, installRemoteAudioHook, selectTeamsMixStreams, mainAudioProvedSilent, createCsrcPoll, createRecordingTap, createJitsiSpeakers, createJitsiChat, sendJitsiChatMessage, createTeamsSpeakers, createTeamsCaptions, createZoomSpeakers, createTrackNameResolver]
+[page-console:log] Vexa Browser Utils loaded successfully: [createGmeetCapture, createGmeetSpeakers, createGmeetCaptureV1, pickBoundName, GmeetChannelBinder, createPcmCaptureNode, createGmeetChat, sendGmeetChatMessage, openGmeetChatPanel, prepareGmeetChatSend, awaitGmeetChatLanded, createMixedAudioCapture, installRemoteAudioHook, selectTeamsMixStreams, mainAudioProvedSilent, createCsrcPoll, createRecordingTap, createJitsiSpeakers, createJitsiChat, sendJitsiChatMessage, createTeamsSpeakers, createTeamsCaptions, createZoomSpeakers, createTrackNameResolver]
+[page-console:log] Vexa Browser Utils loaded successfully: [createGmeetCapture, createGmeetSpeakers, createGmeetCaptureV1, pickBoundName, GmeetChannelBinder, createPcmCaptureNode, createGmeetChat, sendGmeetChatMessage, openGmeetChatPanel, prepareGmeetChatSend, awaitGmeetChatLanded, createMixedAudioCapture, installRemoteAudioHook, selectTeamsMixStreams, mainAudioProvedSilent, createCsrcPoll, createRecordingTap, createJitsiSpeakers, createJitsiChat, sendJitsiChatMessage, createTeamsSpeakers, createTeamsCaptions, createZoomSpeakers, createTrackNameResolver]
+[page-console:log] Vexa Browser Utils loaded successfully: [createGmeetCapture, createGmeetSpeakers, createGmeetCaptureV1, pickBoundName, GmeetChannelBinder, createPcmCaptureNode, createGmeetChat, sendGmeetChatMessage, openGmeetChatPanel, prepareGmeetChatSend, awaitGmeetChatLanded, createMixedAudioCapture, installRemoteAudioHook, selectTeamsMixStreams, mainAudioProvedSilent, createCsrcPoll, createRecordingTap, createJitsiSpeakers, createJitsiChat, sendJitsiChatMessage, createTeamsSpeakers, createTeamsCaptions, createZoomSpeakers, createTrackNameResolver]
+[page-console:log] Vexa Browser Utils loaded successfully: [createGmeetCapture, createGmeetSpeakers, createGmeetCaptureV1, pickBoundName, GmeetChannelBinder, createPcmCaptureNode, createGmeetChat, sendGmeetChatMessage, openGmeetChatPanel, prepareGmeetChatSend, awaitGmeetChatLanded, createMixedAudioCapture, installRemoteAudioHook, selectTeamsMixStreams, mainAudioProvedSilent, createCsrcPoll, createRecordingTap, createJitsiSpeakers, createJitsiChat, sendJitsiChatMessage, createTeamsSpeakers, createTeamsCaptions, createZoomSpeakers, createTrackNameResolver]
+[page-console:log] Vexa Browser Utils loaded successfully: [createGmeetCapture, createGmeetSpeakers, createGmeetCaptureV1, pickBoundName, GmeetChannelBinder, createPcmCaptureNode, createGmeetChat, sendGmeetChatMessage, openGmeetChatPanel, prepareGmeetChatSend, awaitGmeetChatLanded, createMixedAudioCapture, installRemoteAudioHook, selectTeamsMixStreams, mainAudioProvedSilent, createCsrcPoll, createRecordingTap, createJitsiSpeakers, createJitsiChat, sendJitsiChatMessage, createTeamsSpeakers, createTeamsCaptions, createZoomSpeakers, createTrackNameResolver]
+[page] [Audio Hook] mirrored remote audio track c1xiz197 (1 total)
+{"ts":"2026-10-27T20:29:57.923Z","level":"info","msg":"[Zoom Web] Checking admission state..."}
+{"ts":"2026-10-27T20:29:57.925Z","level":"info","msg":"[Zoom Web] Bot immediately admitted (no waiting room detected)"}
+[page] [pertrack] capturing ch=0 (1 track(s))
+[page] [record-chunker] mix +stream (1 live)
+[page] [record-chunker] MediaRecorder started (audio/webm;codecs=opus, timeslice=15000ms)
+[page] [ZoomSpeakers] SPEAKER_START: Atharva Prabhu
+{"ts":"2026-10-27T20:29:58.883Z","level":"info","msg":"[Zoom Web] Clicked Stop Incoming Video — confirming"}
+[page-console:log] Error when getting WebGL context:  Error: Cannot create a canvas in this context
+    at blob:https://app.zoom.us/ee9000b3-3083-47fe-baba-1b0c6785bc8d:17:1089764
+    at blob:https://app.zoom.us/ee9000b3-3083-47fe-baba-1b0c6785bc8d:17:1089852
+    at VIe (blob:https://app.zoom.us/ee9000b3-3083-47fe-baba-1b0c6785bc8d:17:1090142)
+    at ONe (blob:https://app.zoom.us/ee9000b3-3083-47fe-baba-1b0c6785bc8d:17:1099544)
+    at Object.evaluationFn (blob:https://app.zoom.us/ee9000b3-3083-47fe-baba-1b0c6785bc8d:17:1106073)
+    at e.value (blob:https://app.zoom.us/ee9000b3-3083-47fe-baba-1b0c6785bc8d:17:179817)
+    at e.value (blob:https://app.zoom.us/ee9000b3-3083-47fe-baba-1b0c6785bc8d:17:178966)
+    at e.value (blob:https://app.zoom.us/ee9000b3-3083-47fe-baba-1b0c6785bc8d:17:179184)
+    at Object.evaluationFn (blob:https://app.zoom.us/ee9000b3-3083-47fe-baba-1b0c6785bc8d:17:1105980)
+    at e.value (blob:https://app.zoom.us/ee9000b3-3083-47fe-baba-1b0c6785bc8d:17:179817)
+[page-console:warning] Initialization of backend webgl failed
+[page-console:warning] Error: WebGL is not supported on this device
+    at new s (blob:https://app.zoom.us/ee9000b3-3083-47fe-baba-1b0c6785bc8d:17:1193517)
+    at Object.factory (blob:https://app.zoom.us/ee9000b3-3083-47fe-baba-1b0c6785bc8d:17:1214321)
+    at e.value (blob:https://app.zoom.us/ee9000b3-3083-47fe-baba-1b0c6785bc8d:17:217748)
+    at e.<anonymous> (blob:https://app.zoom.us/ee9000b3-3083-47fe-baba-1b0c6785bc8d:17:216828)
+    at h (blob:https://app.zoom.us/ee9000b3-3083-47fe-baba-1b0c6785bc8d:17:2100)
+    at Generator.<anonymous> (blob:https://app.zoom.us/ee9000b3-3083-47fe-baba-1b0c6785bc8d:17:3441)
+    at Generator.next (blob:https://app.zoom.us/ee9000b3-3083-47fe-baba-1b0c6785bc8d:17:2463)
+    at u (blob:https://app.zoom.us/ee9000b3-3083-47fe-baba-1b0c6785bc8d:17:8324)
+    at o (blob:https://app.zoom.us/ee9000b3-3083-47fe-baba-1b0c6785bc8d:17:8527)
+    at blob:https://app.zoom.us/ee9000b3-3083-47fe-baba-1b0c6785bc8d:17:8586
+{"ts":"2026-10-27T20:30:00.503Z","level":"info","msg":"[Zoom Web] Incoming video is off (Stop Incoming Video confirmed)"}
+[bot] zoom incoming video: off
+{"ts":"2026-10-27T20:30:01.253Z","level":"info","msg":"[Zoom Web] Dismissed \"chatting as guest\" popup"}
+[page] [record-chunker] chunk 0 (241035 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":0,"is_final":false,"chunk_size_bytes":241035,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+[page] [record-chunker] chunk 1 (241851 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":1,"is_final":false,"chunk_size_bytes":241851,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+[page] [record-chunker] chunk 2 (241516 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":2,"is_final":false,"chunk_size_bytes":241516,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+[COVERAGE] captured=0s submitted=0s transcribed=0s (0% of captured) no_speech=0s short=0s dropped=0s
+[bot] speak id=c1120adb056449d3947e096ee91d11f0 started chars=67
+[bot] speak id=c1120adb056449d3947e096ee91d11f0 mic=zoom_ui_left_on (Zoom grants a voice bot audio only with its mic on; tts_sink is muted at rest)
+[page] [record-chunker] chunk 3 (242482 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":3,"is_final":false,"chunk_size_bytes":242482,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+[bot] speak id=c1120adb056449d3947e096ee91d11f0 done ms=8130
+[page] [record-chunker] chunk 4 (241516 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":4,"is_final":false,"chunk_size_bytes":241516,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+[page] [record-chunker] chunk 5 (242483 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":5,"is_final":false,"chunk_size_bytes":242483,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+[page] [record-chunker] chunk 6 (241517 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":6,"is_final":false,"chunk_size_bytes":241517,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+[page] [record-chunker] chunk 7 (242483 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":7,"is_final":false,"chunk_size_bytes":242483,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+[page] [record-chunker] chunk 8 (242483 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":8,"is_final":false,"chunk_size_bytes":242483,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+[bot] speak id=8e18e0aedf374775976d34c90368028a started chars=466
+[bot] speak id=8e18e0aedf374775976d34c90368028a mic=zoom_ui_left_on (Zoom grants a voice bot audio only with its mic on; tts_sink is muted at rest)
+[bot] speak_stop cleared=0
+[bot] speak id=8e18e0aedf374775976d34c90368028a failed reason=stopped
+[page] [record-chunker] chunk 9 (241517 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":9,"is_final":false,"chunk_size_bytes":241517,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+[page] [record-chunker] chunk 10 (241517 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":10,"is_final":false,"chunk_size_bytes":241517,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+[page] [record-chunker] chunk 11 (242483 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":11,"is_final":false,"chunk_size_bytes":242483,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+[bot] speak id=2ae37608001b4b16b0b990576be0f8aa started chars=8
+[bot] speak id=2ae37608001b4b16b0b990576be0f8aa mic=zoom_ui_left_on (Zoom grants a voice bot audio only with its mic on; tts_sink is muted at rest)
+[bot] speak dropped id=e6804953630d44059b5c6f879e2c90df reason=queue_full
+[bot] speak dropped id=b9e510d0bfcc4e69bab9f8b4519c16c8 reason=queue_full
+[bot] speak id=2ae37608001b4b16b0b990576be0f8aa done ms=2600
+[bot] speak id=6d83a5075661409e9fc83b38a7b77fbf started chars=8
+[bot] speak id=6d83a5075661409e9fc83b38a7b77fbf mic=zoom_ui_left_on (Zoom grants a voice bot audio only with its mic on; tts_sink is muted at rest)
+[bot] speak id=6d83a5075661409e9fc83b38a7b77fbf done ms=3474
+[bot] speak id=0cd70374740f469098c1327e716b90c5 started chars=8
+[bot] speak id=0cd70374740f469098c1327e716b90c5 mic=zoom_ui_left_on (Zoom grants a voice bot audio only with its mic on; tts_sink is muted at rest)
+[bot] speak id=0cd70374740f469098c1327e716b90c5 done ms=3191
+[bot] speak id=120eaf57098043d4b562155d3df6e75d started chars=8
+[bot] speak id=120eaf57098043d4b562155d3df6e75d mic=zoom_ui_left_on (Zoom grants a voice bot audio only with its mic on; tts_sink is muted at rest)
+[page] [record-chunker] chunk 12 (240551 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":12,"is_final":false,"chunk_size_bytes":240551,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+[bot] speak id=120eaf57098043d4b562155d3df6e75d done ms=3407
+[page] [record-chunker] chunk 13 (242483 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":13,"is_final":false,"chunk_size_bytes":242483,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+{"ts":"2026-10-27T20:33:33.262Z","level":"info","msg":"[Zoom Web] Removal monitor stopped"}
+[page] [record-chunker] chunk 14 (74398 bytes)
+[page] [record-chunker] final chunk emitted (seq=15)
+[gmeet-pipeline] [RECONFIRM] reconfirmed=0 confirmed-as-drafted=0 requests=0
+[COVERAGE] captured=0s submitted=0s transcribed=0s (0% of captured) no_speech=0s short=0s dropped=0s
+{"ts":"2026-10-27T20:33:33.272Z","level":"info","msg":"[Zoom Web] Leaving meeting (reason: stopped)"}
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":15,"is_final":true,"chunk_size_bytes":0,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":14,"is_final":false,"chunk_size_bytes":74398,"recording_meeting_id":10,"recording_session_uid":"2a8455ea-eba8-402c-99e2-b328eb558d7b"}
+{"ts":"2026-10-27T20:33:33.299Z","level":"info","msg":"[Zoom Web] Clicked Leave button (selector: [footer-section=\"right\"] button[aria-label=\"Leave\"])"}
+{"ts":"2026-10-27T20:33:33.808Z","level":"info","msg":"[Zoom Web] Confirmed leave (selector: button.leave-meeting-options__btn--danger)"}
+[bot] navigation guard: allowed a navigation to app.zoom.us
+[page-console:log] Vexa Browser Utils loaded successfully: [createGmeetCapture, createGmeetSpeakers, createGmeetCaptureV1, pickBoundName, GmeetChannelBinder, createPcmCaptureNode, createGmeetChat, sendGmeetChatMessage, openGmeetChatPanel, prepareGmeetChatSend, awaitGmeetChatLanded, createMixedAudioCapture, installRemoteAudioHook, selectTeamsMixStreams, mainAudioProvedSilent, createCsrcPoll, createRecordingTap, createJitsiSpeakers, createJitsiChat, sendJitsiChatMessage, createTeamsSpeakers, createTeamsCaptions, createZoomSpeakers, createTrackNameResolver]
+[bot] orchestrator: emitting completed (reason=stopped, from=active)
+[bot] redis (transcript) error: Socket closed unexpectedly
+[bot] redis (acts) error: Socket closed unexpectedly
+[bot] redis (transcript) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] redis (acts) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] redis (transcript) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] redis (acts) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] orchestrator: completed emitted + flushed
+[gmeet-pipeline] [RECONFIRM] reconfirmed=0 confirmed-as-drafted=0 requests=0
+[COVERAGE] captured=0s submitted=0s transcribed=0s (0% of captured) no_speech=0s short=0s dropped=0s
+[bot] capture-signal: session written: /var/lib/vexa-runtime/homes/1500000000.ed3dbfdf3071441a/captured-signal/2a8455ea-eba8-402c-99e2-b328eb558d7b.captured-signal.jsonl (0 frames, 108 hints, 0 captions, 0 csrc, 2 observations)
+[bot] transcript-snapshot: 0 row(s) → /var/lib/vexa-runtime/homes/1500000000.ed3dbfdf3071441a/captured-signal/2a8455ea-eba8-402c-99e2-b328eb558d7b.transcript.jsonl
+{"level":"info","msg":"[capture-signal] tape-uploaded","event":"capture_signal.tape_uploaded","part":"captured-signal","path":"/var/lib/vexa-runtime/homes/1500000000.ed3dbfdf3071441a/captured-signal/2a8455ea-eba8-402c-99e2-b328eb558d7b.captured-signal.jsonl","bytes":9655,"capped":false}
+{"level":"info","msg":"[capture-signal] tape-uploaded","event":"capture_signal.tape_uploaded","part":"observations","path":"/var/lib/vexa-runtime/homes/1500000000.ed3dbfdf3071441a/captured-signal/2a8455ea-eba8-402c-99e2-b328eb558d7b.observations.jsonl","bytes":507,"capped":false}
+{"level":"info","msg":"[capture-signal] tape-uploaded","event":"capture_signal.tape_uploaded","part":"botlog","path":"/var/lib/vexa-runtime/homes/1500000000.ed3dbfdf3071441a/captured-signal/2a8455ea-eba8-402c-99e2-b328eb558d7b.botlog.txt","bytes":25843,"capped":false}
+[bot] redis (transcript) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] pipeline fault: Error: NOAUTH Authentication required.
+[bot] pipeline fault: Error: NOAUTH Authentication required.
+[bot] redis (acts) error: WRONGPASS invalid username-password pair or user is disabled.

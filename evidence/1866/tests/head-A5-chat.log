@@ -1,0 +1,48 @@
+...................................F                                     [100%]
+================================== FAILURES ===================================
+______ test_both_schema_models_declare_the_transcriptions_source_column _______
+
+    def test_both_schema_models_declare_the_transcriptions_source_column():
+        """admin-api's models own the table (its schema sync adds the column); meeting-api's mirror must
+        match it byte-for-byte or the db-writer's INSERT names a column the mirror does not know."""
+        for rel in ("core/identity/services/admin-api/src/admin_api/schema/models.py",
+                    "core/meetings/services/meeting-api/src/meeting_api/sessions/models.py"):
+            for parent in Path(__file__).resolve().parents:
+                if (parent / rel).is_file():
+>                   assert "    source = Column(String(32), nullable=True)\n" in (parent / rel).read_text(), rel
+                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_meeting_chat.py:456: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\aprabhu\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1028: in read_text
+    return f.read()
+           ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <encodings.cp1252.IncrementalDecoder object at 0x000001E9092557F0>
+input = b'"""The v0.12 backing-stack schema \xe2\x80\x94 the SQLAlchemy source-of-truth.\n\nDerived from the parent (re-read, ...n\n    __table_args__ = (\n        UniqueConstraint("meeting_id", "session_uid", name="_meeting_session_uc"),\n    )\n'
+final = True
+
+    def decode(self, input, final=False):
+>       return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       UnicodeDecodeError: 'charmap' codec can't decode byte 0x90 in position 149: character maps to <undefined>
+
+C:\Users\aprabhu\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\encodings\cp1252.py:23: UnicodeDecodeError
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\aprabhu\JANCodes\vexa-1866\core\meetings\services\meeting-api\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+.venv\Lib\site-packages\starlette\testclient.py:53
+  C:\Users\aprabhu\JANCodes\vexa-1866\core\meetings\services\meeting-api\.venv\Lib\site-packages\starlette\testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+tests/test_meeting_chat.py::test_the_transcriptions_upsert_carries_the_segment_source
+  C:\Users\aprabhu\JANCodes\vexa-1866\core\meetings\services\meeting-api\src\meeting_api\collector\adapters.py:250: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    "segid": str(sid), "source": seg.get("source"), "created": _dt.utcnow(),
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_meeting_chat.py::test_both_schema_models_declare_the_transcriptions_source_column
+1 failed, 35 passed, 3 warnings in 3.87s

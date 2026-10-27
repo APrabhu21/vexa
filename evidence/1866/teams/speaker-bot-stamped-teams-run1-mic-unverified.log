@@ -1,0 +1,4 @@
+20:45:54.531 [bot] speak id=4de5d1b094c84630b097b8b68398ad6c started chars=67
+20:45:54.531 [bot] speak id=4de5d1b094c84630b097b8b68398ad6c failed reason=mic_unverified
+20:45:54.531 [bot] speak id=4de5d1b094c84630b097b8b68398ad6c mic_controls=["Mute mic"]
+20:45:54.531 [bot] speak id=4de5d1b094c84630b097b8b68398ad6c mic_off_unverified

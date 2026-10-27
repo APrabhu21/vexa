@@ -1,0 +1,21 @@
+21:00:18.833 [bot] speak id=9094a1a5423a4c598a97680690a8b5de started chars=67
+21:00:33.098 [bot] speak id=9094a1a5423a4c598a97680690a8b5de done ms=13683
+21:00:33.793 [bot] speak id=9094a1a5423a4c598a97680690a8b5de mic=off
+21:00:51.689 [bot] speak id=d8af436a023043a9bb1d776bca1aa41b started chars=466
+21:00:59.962 [bot] speak_stop cleared=0
+21:00:59.962 [bot] speak id=d8af436a023043a9bb1d776bca1aa41b failed reason=stopped
+21:01:00.279 [bot] speak id=d8af436a023043a9bb1d776bca1aa41b mic=off
+21:02:01.278 [bot] speak id=a9e3c6e7c68d45c897d161c4d1d92a51 started chars=8
+21:02:01.538 [bot] speak dropped id=8abe0b451626434ba60f621bbd7f3f73 reason=queue_full
+21:02:01.538 [bot] speak dropped id=15d8dca7adcc444f9c3ec10b8f4e1ba6 reason=queue_full
+21:02:08.306 [bot] speak id=a9e3c6e7c68d45c897d161c4d1d92a51 done ms=6464
+21:02:08.839 [bot] speak id=a9e3c6e7c68d45c897d161c4d1d92a51 mic=off
+21:02:08.839 [bot] speak id=6de06b212bb74ee0a12ca7fc07ab8769 started chars=8
+21:02:14.401 [bot] speak id=6de06b212bb74ee0a12ca7fc07ab8769 done ms=5345
+21:02:14.925 [bot] speak id=6de06b212bb74ee0a12ca7fc07ab8769 mic=off
+21:02:14.925 [bot] speak id=8965a29e66084dc5be75dad79a2608c5 started chars=8
+21:02:19.117 [bot] speak id=8965a29e66084dc5be75dad79a2608c5 done ms=3820
+21:02:19.655 [bot] speak id=8965a29e66084dc5be75dad79a2608c5 mic=off
+21:02:19.655 [bot] speak id=013bb95e61eb476e853ff9de42d34551 started chars=8
+21:02:24.164 [bot] speak id=013bb95e61eb476e853ff9de42d34551 done ms=4150
+21:02:24.438 [bot] speak id=013bb95e61eb476e853ff9de42d34551 mic=off

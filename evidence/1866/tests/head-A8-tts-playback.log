@@ -1,0 +1,28 @@
+  ✅ muting touches tts_sink only, never the virtual_mic source
+  ✅ an unset TTS_SERVICE_URL is tts_not_configured
+  ✅ …and nothing is requested
+  ✅ a malformed TTS_SERVICE_URL is tts_not_configured
+  ✅ a TTS 401 is tts_http_401
+  ✅ …and nothing plays, the chain stays muted
+  ✅ an unreachable TTS server is tts_unreachable
+  ✅ it posts to {TTS_SERVICE_URL}/v1/audio/speech
+  ✅ the token goes as Authorization: Bearer
+  ✅ …and as X-API-Key
+  ✅ it asks for 24 kHz PCM
+  ✅ no voice named → TTS_VOICE
+  ✅ the chain is unmuted while audio plays
+  ✅ a played utterance is ok with its duration
+  ✅ the PCM reached the player
+  ✅ the chain is muted again after
+  ✅ "auto" with no TTS_VOICE → alloy
+  ✅ a named voice wins over TTS_VOICE
+  ✅ no token → no auth headers
+  ✅ stop kills the player
+  ✅ …the utterance ends as stopped
+  ✅ …and the chain is muted
+  ✅ stop during playback closes the TTS answer
+  ✅ stop before the answer closes it when it arrives (never drained)
+  ✅ a second play never runs beside the first: the first player is killed
+  ✅ no log line carries the spoken text or the token
+
+✅ tts-playback (L2): typed outcomes, both auth headers, the voice fallback, the chain open only while playing, stop kills at once, one player at a time.

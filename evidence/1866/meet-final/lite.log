@@ -1,0 +1,755 @@
+==============================================
+  Vexa Lite (v0.12) — starting container
+==============================================
+identity keygen: kept the signing key; public key at /var/lib/vexa/state/identity/public-key.pem
+Configuration:
+  - Redis URL:        redis://***@localhost:6379/0
+  - Database:         postgresql+asyncpg://postgres:***@vexa-lite-postgres:5432/vexa
+  - Transcription:    http://vexa-lite-whisper:8000
+  - Object storage:   vexa-lite-storage:9000
+  - Log level:        info
+
+Waiting for PostgreSQL at vexa-lite-postgres:5432...
+PostgreSQL is ready.
+
+[storage-init] session store bucket 'vexa-sessions' present
+[storage-init] session store account updated
+[storage-init] session store account scoped to s3://vexa-sessions/ (recordings bucket 'vexa' denied)
+[session-schema] role vexa_agent_sessions and the agent_session* tables are ready (schema version 1; grants on those tables only)
+[provision-key] waiting for admin-api...
+Starting services via supervisord...
+2026-10-27 19:22:04,145 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2026-10-27 19:22:04,148 INFO RPC interface 'supervisor' initialized
+2026-10-27 19:22:04,148 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2026-10-27 19:22:04,148 INFO supervisord started with pid 1
+2026-10-27 19:22:05,152 INFO spawned: 'model-proxy' with pid 53
+2026-10-27 19:22:05,153 INFO spawned: 'redis' with pid 54
+2026-10-27 19:22:05,154 INFO spawned: 'admin-api' with pid 55
+2026-10-27 19:22:05,155 INFO spawned: 'runtime' with pid 56
+2026-10-27 19:22:05,156 INFO spawned: 'agent-api' with pid 57
+2026-10-27 19:22:05,157 INFO spawned: 'meeting-api' with pid 58
+2026-10-27 19:22:05,158 INFO spawned: 'gateway' with pid 59
+2026-10-27 19:22:05,159 INFO spawned: 'mcp' with pid 60
+2026-10-27 19:22:05,159 INFO spawned: 'terminal' with pid 61
+54:M 27 Oct 2026 19:22:05.240 * oO0OoO0OoO0Oo Valkey is starting oO0OoO0OoO0Oo
+54:M 27 Oct 2026 19:22:05.240 * Valkey version=8.1.9, bits=64, commit=00000000, modified=1, pid=54, just started
+54:M 27 Oct 2026 19:22:05.240 * Configuration loaded
+54:M 27 Oct 2026 19:22:05.241 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+54:M 27 Oct 2026 19:22:05.241 * monotonic clock: POSIX clock_gettime
+54:M 27 Oct 2026 19:22:05.242 * Running mode=standalone, port=6379.
+54:M 27 Oct 2026 19:22:05.243 * Server initialized
+54:M 27 Oct 2026 19:22:05.246 * Creating AOF base file appendonly.aof.1.base.rdb on server start
+54:M 27 Oct 2026 19:22:05.250 * Creating AOF incr file appendonly.aof.1.incr.aof on server start
+54:M 27 Oct 2026 19:22:05.250 * Ready to accept connections tcp
+[terminal] TERMINAL_CANVAS_ORIGIN is unset: Meeting Canvas views run in a sandboxed frame on the terminal's own origin. The terminal refuses the requests that frame can make to it, but full isolation needs an origin of the canvas's own (a second host or port; see docs: Meeting Canvas isolation).
+INFO:     Started server process [53]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8102 (Press CTRL+C to quit)
+config.v1 capability stt: MISCONFIGURED — some-but-not-all keys set
+INFO:     Started server process [56]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8090 (Press CTRL+C to quit)
+2026-10-27 19:22:07,314 INFO success: redis entered RUNNING state, process has stayed up for > than 2 seconds (startsecs)
+INFO:     Started server process [59]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8056 (Press CTRL+C to quit)
+/app/admin-api/src/admin_api/__main__.py:154: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+[guard_core] 2026-10-27 19:22:07,449 - INFO - Security pipeline initialized with 17 checks: ['route_config', 'emergency_mode', 'https_enforcement', 'request_logging', 'request_size_content', 'required_headers', 'authentication', 'referrer', 'custom_validators', 'time_window', 'cloud_ip_refresh', 'ip_security', 'cloud_provider', 'user_agent', 'rate_limit', 'suspicious_activity', 'custom_request']
+[guard_core.handlers.redis] 2026-10-27 19:22:07,452 - INFO - Redis connection established
+[guard_core.handlers.ratelimit] 2026-10-27 19:22:07,452 - INFO - Rate limiting Lua script loaded successfully
+{"ts":"2026-10-27T19:22:07.455060Z","level":"debug","service":"gateway","trace_id":"602f279a9d1e41f5aa37ee89c66311e4","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/health","minted":true}}
+{"ts":"2026-10-27T19:22:07.455206Z","level":"debug","service":"gateway","trace_id":"849cdeaf4a5b41299e1b2e4e188fd0c8","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/health","minted":true}}
+INFO:     172.18.0.1:51820 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43314 - "GET /health HTTP/1.1" 200 OK
+INFO:     Started server process [55]
+INFO:     Waiting for application startup.
+{"ts":"2026-10-27T19:22:07.507904Z","level":"debug","service":"gateway","trace_id":"a8cb903a8eca4bdf8f5daf72dac5e9af","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/","minted":true}}
+INFO:     172.18.0.1:51834 - "GET / HTTP/1.1" 404 Not Found
+{"ts":"2026-10-27T19:22:07.526563Z","level":"debug","service":"gateway","trace_id":"4282c0a7c1354a49af2bb44a7b5943e7","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/health","minted":true}}
+INFO:     172.18.0.1:51842 - "GET /health HTTP/1.1" 200 OK
+routines run on flows, and this deployment has no flows-api configured (VEXA_FLOWS_API_URL, VEXA_FLOWS_API_KEY): routine files are left as they are
+preset library: nothing to add — _global/asks/ already has every preset this image ships
+organisation tier: nothing to add — _global already has every file this image seeds
+
+════════════════════ ADMIN CLAIM CODE ════════════════════
+This instance has no administrator. Open the terminal and enter this one-time code
+on the claim screen; the person who signs in with it becomes the administrator:
+
+        5227-0Q0M-M605-FQ17
+
+It works once. Restarting admin-api issues a new one and retires this one.
+To name the administrators instead, set VEXA_ADMIN_EMAILS (no code is issued then).
+═══════════════════════════════════════════════════════════
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8001 (Press CTRL+C to quit)
+> Terminal ready on http://0.0.0.0:3001 (WS proxy /ws, /voice-notes/*/stream -> ws://localhost:8056)
+routines run on flows, and this deployment has no flows-api configured (VEXA_FLOWS_API_URL, VEXA_FLOWS_API_KEY): routine files are left as they are
+preset library: nothing to add — _global/asks/ already has every preset this image ships
+organisation tier: nothing to add — _global already has every file this image seeds
+INFO:     Started server process [57]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8100 (Press CTRL+C to quit)
+{"ts":"2026-10-27T19:22:08.159484Z","level":"debug","service":"identity","trace_id":"cc615c5d4d9f4e91bd679f0ec59fd502","audience":"system","event":"request_received","fields":{"method":"GET","path":"/health"}}
+INFO:     127.0.0.1:37838 - "GET /health HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:08.160427Z","level":"debug","service":"identity","trace_id":"cc615c5d4d9f4e91bd679f0ec59fd502","audience":"system","event":"request_completed","fields":{"method":"GET","path":"/health","status":200,"duration_ms":0.9}}
+{"ts":"2026-10-27T19:22:08.220671Z","level":"debug","service":"identity","trace_id":"78eb4b51fc114e979abe75c1c77b1b82","audience":"system","event":"request_received","fields":{"method":"GET","path":"/admin/users/email/self-host@vexa.ai"}}
+INFO:     127.0.0.1:37846 - "GET /admin/users/email/self-host%40vexa.ai HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:08.225606Z","level":"debug","service":"identity","trace_id":"78eb4b51fc114e979abe75c1c77b1b82","audience":"system","event":"request_completed","fields":{"method":"GET","path":"/admin/users/email/self-host@vexa.ai","status":200,"duration_ms":4.9}}
+{"ts":"2026-10-27T19:22:08.226324Z","level":"debug","service":"identity","trace_id":"589b7079413741e697c1bed72213aa96","audience":"system","event":"request_received","fields":{"method":"POST","path":"/admin/users/1/tokens"}}
+INFO:     127.0.0.1:37860 - "POST /admin/users/1/tokens?scopes=bot,tx HTTP/1.1" 201 Created
+{"ts":"2026-10-27T19:22:08.236190Z","level":"debug","service":"identity","trace_id":"589b7079413741e697c1bed72213aa96","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/admin/users/1/tokens","status":201,"duration_ms":9.9}}
+{"ts":"2026-10-27T19:22:08.237077Z","level":"debug","service":"identity","trace_id":"e6031025949d4f728a6142f15d080561","audience":"system","event":"request_received","fields":{"method":"POST","path":"/admin/users/1/tokens"}}
+INFO:     127.0.0.1:37874 - "POST /admin/users/1/tokens?scopes=bot,tx HTTP/1.1" 201 Created
+{"ts":"2026-10-27T19:22:08.242088Z","level":"debug","service":"identity","trace_id":"e6031025949d4f728a6142f15d080561","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/admin/users/1/tokens","status":201,"duration_ms":5.0}}
+INFO:     Started server process [58]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8080 (Press CTRL+C to quit)
+2026-10-27 19:22:08,338 INFO waiting for terminal to stop
+2026-10-27 19:22:08,360 WARN stopped: terminal (terminated by SIGTERM)
+2026-10-27 19:22:08,362 INFO spawned: 'terminal' with pid 169
+[terminal] TERMINAL_CANVAS_ORIGIN is unset: Meeting Canvas views run in a sandboxed frame on the terminal's own origin. The terminal refuses the requests that frame can make to it, but full isolation needs an origin of the canvas's own (a second host or port; see docs: Meeting Canvas isolation).
+{"ts":"2026-10-27T19:22:08.602136Z","level":"debug","service":"identity","trace_id":"299a954fc6014d48ac760edb7565ffa6","audience":"system","event":"request_received","fields":{"method":"GET","path":"/internal/calendar-configs"}}
+INFO:     127.0.0.1:37888 - "GET /internal/calendar-configs HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:08.648992Z","level":"debug","service":"identity","trace_id":"299a954fc6014d48ac760edb7565ffa6","audience":"system","event":"request_completed","fields":{"method":"GET","path":"/internal/calendar-configs","status":200,"duration_ms":46.8}}
+{"ts":"2026-10-27T19:22:08.662685Z","level":"debug","service":"identity","trace_id":"c5d00de3da914f58b34e44d9855e2f20","audience":"system","event":"request_received","fields":{"method":"GET","path":"/.well-known/mcp-tools.json"}}
+INFO:     127.0.0.1:37890 - "GET /.well-known/mcp-tools.json HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:08.663636Z","level":"debug","service":"identity","trace_id":"c5d00de3da914f58b34e44d9855e2f20","audience":"system","event":"request_completed","fields":{"method":"GET","path":"/.well-known/mcp-tools.json","status":200,"duration_ms":0.9}}
+{"ts":"2026-10-27T19:22:08.664571Z","level":"debug","service":"identity","trace_id":"e85853ede01e469f8518c240f8d4a7f9","audience":"system","event":"request_received","fields":{"method":"GET","path":"/openapi.json"}}
+INFO:     127.0.0.1:37890 - "GET /openapi.json HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:08.715492Z","level":"debug","service":"identity","trace_id":"e85853ede01e469f8518c240f8d4a7f9","audience":"system","event":"request_completed","fields":{"method":"GET","path":"/openapi.json","status":200,"duration_ms":50.9}}
+INFO:     127.0.0.1:59474 - "GET /.well-known/mcp-tools.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59474 - "GET /openapi.json HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:08.835932Z","level":"debug","service":"agent-api","trace_id":"f58c327a63c7469b8cb99748b252d89d","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/.well-known/mcp-tools.json","minted":true}}
+INFO:     127.0.0.1:38530 - "GET /.well-known/mcp-tools.json HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:08.881725Z","level":"debug","service":"agent-api","trace_id":"f58c327a63c7469b8cb99748b252d89d","audience":"system","event":"request_completed","span":"edge","fields":{"method":"GET","path":"/.well-known/mcp-tools.json","status":200,"ms":45}}
+{"ts":"2026-10-27T19:22:08.882880Z","level":"debug","service":"agent-api","trace_id":"32bc6eb6fcd34713ba28be8b31c2b6e3","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/openapi.json","minted":true}}
+> Terminal ready on http://0.0.0.0:3001 (WS proxy /ws, /voice-notes/*/stream -> ws://localhost:8056)
+INFO:     127.0.0.1:38530 - "GET /openapi.json HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:09.302231Z","level":"debug","service":"agent-api","trace_id":"32bc6eb6fcd34713ba28be8b31c2b6e3","audience":"system","event":"request_completed","span":"edge","fields":{"method":"GET","path":"/openapi.json","status":200,"ms":419}}
+INFO:     Started server process [60]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8010 (Press CTRL+C to quit)
+2026-10-27 19:22:10,636 INFO success: model-proxy entered RUNNING state, process has stayed up for > than 5 seconds (startsecs)
+{"ts":"2026-10-27T19:22:12.555849Z","level":"debug","service":"agent-api","trace_id":"78389323250c4e0891f5b8ad7b8ddbad","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/","minted":true}}
+INFO:     172.18.0.1:48366 - "GET / HTTP/1.1" 404 Not Found
+{"ts":"2026-10-27T19:22:12.557386Z","level":"debug","service":"agent-api","trace_id":"78389323250c4e0891f5b8ad7b8ddbad","audience":"system","event":"request_completed","span":"edge","fields":{"method":"GET","path":"/","status":404,"ms":1}}
+INFO:     172.18.0.1:48370 - "GET /health HTTP/1.1" 200 OK
+2026-10-27 19:22:13,863 INFO success: terminal entered RUNNING state, process has stayed up for > than 5 seconds (startsecs)
+[provision-key] self-host keys provisioned; dashboard + terminal restarted
+[provision-key] ============================================================
+[provision-key] Sign in to the terminal (one use, valid for 1 hour):
+[provision-key]   http://localhost:3001/api/auth/redeem?t=<redacted-token>
+[provision-key] A new link any time: docker exec <this container> vexa-signin-link
+[provision-key] ============================================================
+2026-10-27 19:22:14,866 INFO reaped unknown pid 42 (exit status 0)
+2026-10-27 19:22:15,867 INFO success: admin-api entered RUNNING state, process has stayed up for > than 10 seconds (startsecs)
+2026-10-27 19:22:15,868 INFO success: runtime entered RUNNING state, process has stayed up for > than 10 seconds (startsecs)
+2026-10-27 19:22:15,868 INFO success: agent-api entered RUNNING state, process has stayed up for > than 10 seconds (startsecs)
+2026-10-27 19:22:15,868 INFO success: meeting-api entered RUNNING state, process has stayed up for > than 10 seconds (startsecs)
+2026-10-27 19:22:15,868 INFO success: gateway entered RUNNING state, process has stayed up for > than 10 seconds (startsecs)
+2026-10-27 19:22:15,868 INFO success: mcp entered RUNNING state, process has stayed up for > than 10 seconds (startsecs)
+{"ts":"2026-10-27T19:22:17.063502Z","level":"info","service":"runtime","trace_id":"531c2b4a93ae4cc6aa9cf4fe4498a840","audience":"system","event":"workload_spawned","span":"workloads.create","fields":{"workload_id":"r4check-worker-num","profile":"agent"}}
+INFO:     127.0.0.1:50220 - "POST /workloads HTTP/1.1" 201 Created
+{"ts":"2026-10-27T19:22:17.070541Z","level":"info","service":"runtime","trace_id":"37accadbb7434388830033dd8478aa7b","audience":"system","event":"workload_spawned","span":"workloads.create","fields":{"workload_id":"r4check-worker-named","profile":"agent"}}
+INFO:     127.0.0.1:50230 - "POST /workloads HTTP/1.1" 201 Created
+{"ts":"2026-10-27T19:22:17.076417Z","level":"info","service":"runtime","trace_id":"5a3e97f29b484c79988f9e2a6e85b0d0","audience":"system","event":"workload_spawned","span":"workloads.create","fields":{"workload_id":"r4check-bot","profile":"meeting-bot"}}
+INFO:     127.0.0.1:50242 - "POST /workloads HTTP/1.1" 201 Created
+{"ts":"2026-10-27T19:22:17.078487Z","level":"error","service":"runtime","trace_id":"8343dac68a8247b48e2d47cc79d96557","audience":"system","event":"workload_spawn_failed","span":"workloads.create","fields":{"workload_id":"r4check-refused","profile":"agent","error":"isolation could not be applied: the subject is not a plain name (letters, digits and . _ @ + = : -)"}}
+workload r4check-refused: REFUSED — isolation could not be applied (the subject is not a plain name (letters, digits and . _ @ + = : -)); a root runtime never starts a root child
+INFO:     127.0.0.1:50258 - "POST /workloads HTTP/1.1" 502 Bad Gateway
+2026-10-27 19:22:18,079 INFO reaped unknown pid 277 (exit status 127)
+{"ts":"2026-10-27T19:22:37.080839Z","level":"debug","service":"identity","trace_id":"7bd28dedaef24f8889c01a93c5b072ee","audience":"system","event":"request_received","fields":{"method":"POST","path":"/admin/users"}}
+INFO:     127.0.0.1:50760 - "POST /admin/users HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:37.085875Z","level":"debug","service":"identity","trace_id":"7bd28dedaef24f8889c01a93c5b072ee","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/admin/users","status":200,"duration_ms":5.0}}
+{"ts":"2026-10-27T19:22:37.086292Z","level":"debug","service":"identity","trace_id":"58c4b3ef96614d6a9f0bb7ffb4b272e2","audience":"system","event":"request_received","fields":{"method":"POST","path":"/admin/users/2/tokens"}}
+INFO:     127.0.0.1:50768 - "POST /admin/users/2/tokens?scopes=bot,tx HTTP/1.1" 201 Created
+{"ts":"2026-10-27T19:22:37.316310Z","level":"debug","service":"identity","trace_id":"58c4b3ef96614d6a9f0bb7ffb4b272e2","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/admin/users/2/tokens","status":201,"duration_ms":230.0}}
+{"ts":"2026-10-27T19:22:37.321682Z","level":"debug","service":"gateway","trace_id":"87c8632b10ba40c4a4b392c7fc3f37c9","audience":"system","event":"request_received","span":"edge","fields":{"method":"POST","path":"/agent/chat","minted":true}}
+{"ts":"2026-10-27T19:22:37.325842Z","level":"debug","service":"identity","trace_id":"87c8632b10ba40c4a4b392c7fc3f37c9","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:50774 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:37.332182Z","level":"debug","service":"identity","trace_id":"87c8632b10ba40c4a4b392c7fc3f37c9","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":6.3}}
+{"ts":"2026-10-27T19:22:37.333217Z","level":"info","service":"gateway","trace_id":"87c8632b10ba40c4a4b392c7fc3f37c9","audience":"user","event":"request_accepted","span":"auth","user_id":2,"fields":{"method":"POST","path":"/agent/chat"}}
+{"ts":"2026-10-27T19:22:37.336680Z","level":"debug","service":"agent-api","trace_id":"87c8632b10ba40c4a4b392c7fc3f37c9","audience":"system","event":"request_received","span":"edge","user_id":"2","fields":{"method":"POST","path":"/api/chat","minted":false}}
+{"ts":"2026-10-27T19:22:37.359241Z","level":"debug","service":"identity","trace_id":"87c8632b10ba40c4a4b392c7fc3f37c9","audience":"system","event":"request_received","fields":{"method":"GET","path":"/internal/users/2/memberships"}}
+INFO:     127.0.0.1:50776 - "GET /internal/users/2/memberships HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:37.362261Z","level":"debug","service":"identity","trace_id":"87c8632b10ba40c4a4b392c7fc3f37c9","audience":"system","event":"request_completed","fields":{"method":"GET","path":"/internal/users/2/memberships","status":200,"duration_ms":3.0}}
+{"ts":"2026-10-27T19:22:37.367889Z","level":"debug","service":"identity","trace_id":"87c8632b10ba40c4a4b392c7fc3f37c9","audience":"system","event":"request_received","fields":{"method":"GET","path":"/internal/users/2/memberships"}}
+INFO:     127.0.0.1:50790 - "GET /internal/users/2/memberships HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:37.369238Z","level":"debug","service":"identity","trace_id":"87c8632b10ba40c4a4b392c7fc3f37c9","audience":"system","event":"request_completed","fields":{"method":"GET","path":"/internal/users/2/memberships","status":200,"duration_ms":1.3}}
+{"ts":"2026-10-27T19:22:37.369447Z","level":"debug","service":"identity","trace_id":"87c8632b10ba40c4a4b392c7fc3f37c9","audience":"system","event":"request_received","fields":{"method":"GET","path":"/internal/registry/principals/2/memberships"}}
+INFO:     127.0.0.1:50792 - "GET /internal/registry/principals/2/memberships HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:37.372453Z","level":"debug","service":"identity","trace_id":"87c8632b10ba40c4a4b392c7fc3f37c9","audience":"system","event":"request_completed","fields":{"method":"GET","path":"/internal/registry/principals/2/memberships","status":200,"duration_ms":3.0}}
+{"ts":"2026-10-27T19:22:37.373068Z","level":"debug","service":"identity","trace_id":"87c8632b10ba40c4a4b392c7fc3f37c9","audience":"system","event":"request_received","fields":{"method":"GET","path":"/internal/registry/principals/2/memberships"}}
+INFO:     127.0.0.1:50806 - "GET /internal/registry/principals/2/memberships HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:37.374440Z","level":"debug","service":"identity","trace_id":"87c8632b10ba40c4a4b392c7fc3f37c9","audience":"system","event":"request_completed","fields":{"method":"GET","path":"/internal/registry/principals/2/memberships","status":200,"duration_ms":1.4}}
+{"ts":"2026-10-27T19:22:37.375395Z","level":"debug","service":"identity","trace_id":"87c8632b10ba40c4a4b392c7fc3f37c9","audience":"system","event":"request_received","fields":{"method":"GET","path":"/internal/users/2/memberships"}}
+INFO:     127.0.0.1:50822 - "GET /internal/users/2/memberships HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:37.376589Z","level":"debug","service":"identity","trace_id":"87c8632b10ba40c4a4b392c7fc3f37c9","audience":"system","event":"request_completed","fields":{"method":"GET","path":"/internal/users/2/memberships","status":200,"duration_ms":1.2}}
+{"ts":"2026-10-27T19:22:37.376862Z","level":"debug","service":"identity","trace_id":"87c8632b10ba40c4a4b392c7fc3f37c9","audience":"system","event":"request_received","fields":{"method":"GET","path":"/internal/registry/principals/2/memberships"}}
+INFO:     127.0.0.1:50838 - "GET /internal/registry/principals/2/memberships HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:37.378008Z","level":"debug","service":"identity","trace_id":"87c8632b10ba40c4a4b392c7fc3f37c9","audience":"system","event":"request_completed","fields":{"method":"GET","path":"/internal/registry/principals/2/memberships","status":200,"duration_ms":1.1}}
+{"ts":"2026-10-27T19:22:37.378323Z","level":"debug","service":"identity","trace_id":"87c8632b10ba40c4a4b392c7fc3f37c9","audience":"system","event":"request_received","fields":{"method":"GET","path":"/internal/registry/principals/2/memberships"}}
+INFO:     127.0.0.1:50848 - "GET /internal/registry/principals/2/memberships HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:37.379395Z","level":"debug","service":"identity","trace_id":"87c8632b10ba40c4a4b392c7fc3f37c9","audience":"system","event":"request_completed","fields":{"method":"GET","path":"/internal/registry/principals/2/memberships","status":200,"duration_ms":1.1}}
+{"ts":"2026-10-27T19:22:37.391202Z","level":"debug","service":"identity","trace_id":"87c8632b10ba40c4a4b392c7fc3f37c9","audience":"system","event":"request_received","fields":{"method":"GET","path":"/internal/users/2/model-config"}}
+INFO:     127.0.0.1:50864 - "GET /internal/users/2/model-config HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:37.394304Z","level":"debug","service":"identity","trace_id":"87c8632b10ba40c4a4b392c7fc3f37c9","audience":"system","event":"request_completed","fields":{"method":"GET","path":"/internal/users/2/model-config","status":200,"duration_ms":3.1}}
+INFO:     127.0.0.1:44096 - "POST /api/chat HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:37.395411Z","level":"debug","service":"agent-api","trace_id":"87c8632b10ba40c4a4b392c7fc3f37c9","audience":"system","event":"request_completed","span":"edge","user_id":"2","fields":{"method":"POST","path":"/api/chat","status":200,"ms":58}}
+INFO:     127.0.0.1:52280 - "POST /agent/chat HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:37.509350Z","level":"debug","service":"gateway","trace_id":"02cb8a7e42214ecfbb2bafb6d7c29ef1","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/health","minted":true}}
+INFO:     127.0.0.1:52286 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57700 - "DELETE /workloads/r4check-worker-num HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57706 - "DELETE /workloads/r4check-worker-named HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57720 - "DELETE /workloads/r4check-bot HTTP/1.1" 200 OK
+2026-10-27 19:22:37,521 INFO reaped unknown pid 257 (terminated by SIGKILL)
+2026-10-27 19:22:37,521 INFO reaped unknown pid 264 (terminated by SIGKILL)
+2026-10-27 19:22:37,521 INFO reaped unknown pid 266 (terminated by SIGKILL)
+2026-10-27 19:22:37,521 INFO reaped unknown pid 273 (exit status 1)
+INFO:     127.0.0.1:57728 - "DELETE /workloads/r4check-refused HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:37.565694Z","level":"debug","service":"gateway","trace_id":"9879909359c649d6ad064edb1deb3f16","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/bots/status","minted":true}}
+2026-10-27 19:22:37,565 INFO reaped unknown pid 258 (terminated by SIGKILL)
+{"ts":"2026-10-27T19:22:37.566995Z","level":"debug","service":"identity","trace_id":"9879909359c649d6ad064edb1deb3f16","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:50774 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:37.571156Z","level":"debug","service":"identity","trace_id":"9879909359c649d6ad064edb1deb3f16","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":4.2}}
+{"ts":"2026-10-27T19:22:37.571712Z","level":"info","service":"gateway","trace_id":"9879909359c649d6ad064edb1deb3f16","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"GET","path":"/bots/status"}}
+{"ts":"2026-10-27T19:22:37.586855Z","level":"info","service":"transcription-collector","trace_id":"9c09aeab5202410fa383b5e521905d1f","audience":"user","event":"bots_status","span":"bots.status","user_id":3,"fields":{"running":0}}
+INFO:     127.0.0.1:57810 - "GET /bots/status HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:37.588056Z","level":"debug","service":"gateway","trace_id":"9879909359c649d6ad064edb1deb3f16","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"GET","path":"http://localhost:8080/bots/status","downstream_status":200}}
+INFO:     172.18.0.1:43686 - "GET /bots/status HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:37.594737Z","level":"debug","service":"gateway","trace_id":"d716f3d8625b471bb31eaea27eeba736","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/bots/status","minted":true}}
+{"ts":"2026-10-27T19:22:37.595699Z","level":"debug","service":"identity","trace_id":"d716f3d8625b471bb31eaea27eeba736","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:50774 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:37.598768Z","level":"debug","service":"identity","trace_id":"d716f3d8625b471bb31eaea27eeba736","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":3.1}}
+{"ts":"2026-10-27T19:22:37.598959Z","level":"info","service":"gateway","trace_id":"d716f3d8625b471bb31eaea27eeba736","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"GET","path":"/bots/status"}}
+{"ts":"2026-10-27T19:22:37.604937Z","level":"info","service":"transcription-collector","trace_id":"61d6959e0a5a454b93750c309d305e80","audience":"user","event":"bots_status","span":"bots.status","user_id":3,"fields":{"running":0}}
+INFO:     127.0.0.1:57810 - "GET /bots/status HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:37.605801Z","level":"debug","service":"gateway","trace_id":"d716f3d8625b471bb31eaea27eeba736","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"GET","path":"http://localhost:8080/bots/status","downstream_status":200}}
+INFO:     172.18.0.1:43688 - "GET /bots/status HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:37.611949Z","level":"debug","service":"gateway","trace_id":"4cf46c6741814b78863429875e58331d","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/bots/status","minted":true}}
+{"ts":"2026-10-27T19:22:37.612879Z","level":"debug","service":"identity","trace_id":"4cf46c6741814b78863429875e58331d","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:50774 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:37.616447Z","level":"debug","service":"identity","trace_id":"4cf46c6741814b78863429875e58331d","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":3.6}}
+{"ts":"2026-10-27T19:22:37.616925Z","level":"info","service":"gateway","trace_id":"4cf46c6741814b78863429875e58331d","audience":"user","event":"request_accepted","span":"auth","user_id":4,"fields":{"method":"GET","path":"/bots/status"}}
+{"ts":"2026-10-27T19:22:37.623309Z","level":"info","service":"transcription-collector","trace_id":"db690339fae24289a454707ba90e567c","audience":"user","event":"bots_status","span":"bots.status","user_id":4,"fields":{"running":0}}
+INFO:     127.0.0.1:57810 - "GET /bots/status HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:37.624113Z","level":"debug","service":"gateway","trace_id":"4cf46c6741814b78863429875e58331d","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":4,"fields":{"method":"GET","path":"http://localhost:8080/bots/status","downstream_status":200}}
+INFO:     172.18.0.1:43694 - "GET /bots/status HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:45.188837Z","level":"debug","service":"gateway","trace_id":"ccbf1f51d4004eb6b0a1bb74d5701036","audience":"system","event":"request_received","span":"edge","fields":{"method":"POST","path":"/bots","minted":true}}
+{"ts":"2026-10-27T19:22:45.191530Z","level":"debug","service":"identity","trace_id":"ccbf1f51d4004eb6b0a1bb74d5701036","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:41278 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:45.195577Z","level":"debug","service":"identity","trace_id":"ccbf1f51d4004eb6b0a1bb74d5701036","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":4.0}}
+{"ts":"2026-10-27T19:22:45.195905Z","level":"info","service":"gateway","trace_id":"ccbf1f51d4004eb6b0a1bb74d5701036","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"POST","path":"/bots"}}
+{"ts":"2026-10-27T19:22:45.215300Z","level":"debug","service":"identity","trace_id":"31111c3c98924cb28ba2459f36471510","audience":"system","event":"request_received","fields":{"method":"GET","path":"/internal/users/3/bot-context"}}
+INFO:     127.0.0.1:41290 - "GET /internal/users/3/bot-context HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:45.218969Z","level":"debug","service":"identity","trace_id":"31111c3c98924cb28ba2459f36471510","audience":"system","event":"request_completed","fields":{"method":"GET","path":"/internal/users/3/bot-context","status":200,"duration_ms":3.7}}
+{"ts":"2026-10-27T19:22:45.348778Z","level":"info","service":"meeting-api","trace_id":"3b3aab2dd0d44d8799f9e5cdf7ba1429","audience":"system","event":"runtime_callback","span":"runtime.callback","fields":{"workload_id":"mtg-7-d856aca0","state":"starting"}}
+INFO:     127.0.0.1:57788 - "POST /runtime/callback HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:45.406803Z","level":"info","service":"meeting-api","trace_id":"98d6cdd85510405480d6476671644fa2","audience":"system","event":"runtime_callback","span":"runtime.callback","fields":{"workload_id":"mtg-7-d856aca0","state":"running"}}
+INFO:     127.0.0.1:57800 - "POST /runtime/callback HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:45.408567Z","level":"info","service":"runtime","trace_id":"49217fa387c24b219244b07c327d9c4b","audience":"system","event":"workload_spawned","span":"workloads.create","fields":{"workload_id":"mtg-7-d856aca0","profile":"meeting-bot"}}
+INFO:     127.0.0.1:51536 - "POST /workloads HTTP/1.1" 201 Created
+{"ts":"2026-10-27T19:22:45.432479Z","level":"info","service":"meeting-api","trace_id":"ccbf1f51d4004eb6b0a1bb74d5701036","audience":"user","event":"bot_join_requested","span":"bots.create","user_id":3,"meeting_id":"google_meet/fnv-enye-wbr","fields":{"platform":"google_meet","status":"requested","continued":false,"session_count":1}}
+INFO:     127.0.0.1:57782 - "POST /bots HTTP/1.1" 201 Created
+{"ts":"2026-10-27T19:22:45.433677Z","level":"debug","service":"gateway","trace_id":"ccbf1f51d4004eb6b0a1bb74d5701036","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"POST","path":"http://localhost:8080/bots","downstream_status":201}}
+INFO:     172.18.0.1:60006 - "POST /bots HTTP/1.1" 201 Created
+{"ts":"2026-10-27T19:22:45.448445Z","level":"debug","service":"gateway","trace_id":"bfadff6082d24b4985d7f27141a8513a","audience":"system","event":"request_received","span":"edge","fields":{"method":"POST","path":"/bots","minted":true}}
+{"ts":"2026-10-27T19:22:45.449567Z","level":"debug","service":"identity","trace_id":"bfadff6082d24b4985d7f27141a8513a","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:41278 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:45.452760Z","level":"debug","service":"identity","trace_id":"bfadff6082d24b4985d7f27141a8513a","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":3.2}}
+{"ts":"2026-10-27T19:22:45.452993Z","level":"info","service":"gateway","trace_id":"bfadff6082d24b4985d7f27141a8513a","audience":"user","event":"request_accepted","span":"auth","user_id":4,"fields":{"method":"POST","path":"/bots"}}
+{"ts":"2026-10-27T19:22:45.466911Z","level":"debug","service":"identity","trace_id":"e03b7e470f344f09b4ee2b58cff0d8b8","audience":"system","event":"request_received","fields":{"method":"GET","path":"/internal/users/4/bot-context"}}
+INFO:     127.0.0.1:41294 - "GET /internal/users/4/bot-context HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:45.470150Z","level":"debug","service":"identity","trace_id":"e03b7e470f344f09b4ee2b58cff0d8b8","audience":"system","event":"request_completed","fields":{"method":"GET","path":"/internal/users/4/bot-context","status":200,"duration_ms":3.2}}
+{"ts":"2026-10-27T19:22:45.498007Z","level":"info","service":"meeting-api","trace_id":"f9e8ec66465e4857b7b92cf836f217d9","audience":"system","event":"runtime_callback","span":"runtime.callback","fields":{"workload_id":"mtg-8-2414ee56","state":"starting"}}
+INFO:     127.0.0.1:57808 - "POST /runtime/callback HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:45.516312Z","level":"info","service":"meeting-api","trace_id":"801dc070c67042a59e74036451e65d40","audience":"system","event":"runtime_callback","span":"runtime.callback","fields":{"workload_id":"mtg-8-2414ee56","state":"running"}}
+INFO:     127.0.0.1:57812 - "POST /runtime/callback HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:45.517139Z","level":"info","service":"runtime","trace_id":"067ebc5c60104fdabdcaa51cbc8d863b","audience":"system","event":"workload_spawned","span":"workloads.create","fields":{"workload_id":"mtg-8-2414ee56","profile":"meeting-bot"}}
+INFO:     127.0.0.1:51536 - "POST /workloads HTTP/1.1" 201 Created
+{"ts":"2026-10-27T19:22:45.532054Z","level":"info","service":"meeting-api","trace_id":"bfadff6082d24b4985d7f27141a8513a","audience":"user","event":"bot_join_requested","span":"bots.create","user_id":4,"meeting_id":"google_meet/fnv-enye-wbr","fields":{"platform":"google_meet","status":"requested","continued":false,"session_count":1}}
+INFO:     127.0.0.1:57782 - "POST /bots HTTP/1.1" 201 Created
+{"ts":"2026-10-27T19:22:45.533088Z","level":"debug","service":"gateway","trace_id":"bfadff6082d24b4985d7f27141a8513a","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":4,"fields":{"method":"POST","path":"http://localhost:8080/bots","downstream_status":201}}
+INFO:     172.18.0.1:60014 - "POST /bots HTTP/1.1" 201 Created
+2026-10-27 19:22:46,535 INFO reaped unknown pid 355 (exit status 127)
+2026-10-27 19:22:46,535 INFO reaped unknown pid 377 (exit status 127)
+{"ts":"2026-10-27T19:22:47.273348Z","level":"info","service":"meeting-api","trace_id":"5c1fa9e9530747bf8269bfc312563339","audience":"user","event":"meeting_lifecycle_advanced","span":"lifecycle.callback","meeting_id":"2414ee56-5bdc-447d-b3cc-803b556b9d7b","fields":{"meeting_status":"joining"}}
+INFO:     127.0.0.1:57826 - "POST /bots/internal/callback/lifecycle HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:47.273927Z","level":"info","service":"meeting-api","trace_id":"288c38ad9e024d66a872cfcc1397d702","audience":"user","event":"meeting_lifecycle_advanced","span":"lifecycle.callback","meeting_id":"d856aca0-91b2-4775-935a-e41cb4eee8aa","fields":{"meeting_status":"joining"}}
+INFO:     127.0.0.1:57818 - "POST /bots/internal/callback/lifecycle HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:57.696519Z","level":"info","service":"meeting-api","trace_id":"d869279e42cb42cfb5e5d007a260eabc","audience":"user","event":"meeting_lifecycle_advanced","span":"lifecycle.callback","meeting_id":"d856aca0-91b2-4775-935a-e41cb4eee8aa","fields":{"meeting_status":"awaiting_admission"}}
+INFO:     127.0.0.1:39192 - "POST /bots/internal/callback/lifecycle HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:22:57.697009Z","level":"info","service":"meeting-api","trace_id":"4fbae916dc474783957757ba364edc89","audience":"user","event":"meeting_lifecycle_advanced","span":"lifecycle.callback","meeting_id":"2414ee56-5bdc-447d-b3cc-803b556b9d7b","fields":{"meeting_status":"awaiting_admission"}}
+INFO:     127.0.0.1:39200 - "POST /bots/internal/callback/lifecycle HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:23:07.565052Z","level":"debug","service":"gateway","trace_id":"55e6d4875d424dea8ba782ca2bba2f47","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/health","minted":true}}
+INFO:     127.0.0.1:33172 - "GET /health HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:23:37.017996Z","level":"debug","service":"gateway","trace_id":"39c5e4682b9b4e66b776be0aa631bf38","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/bots/status","minted":true}}
+{"ts":"2026-10-27T19:23:37.020487Z","level":"debug","service":"identity","trace_id":"39c5e4682b9b4e66b776be0aa631bf38","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:37188 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:23:37.025192Z","level":"debug","service":"identity","trace_id":"39c5e4682b9b4e66b776be0aa631bf38","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":4.7}}
+{"ts":"2026-10-27T19:23:37.025515Z","level":"info","service":"gateway","trace_id":"39c5e4682b9b4e66b776be0aa631bf38","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"GET","path":"/bots/status"}}
+{"ts":"2026-10-27T19:23:37.033109Z","level":"info","service":"transcription-collector","trace_id":"38376fc8b2b8427b86b58c2da04c0344","audience":"user","event":"bots_status","span":"bots.status","user_id":3,"fields":{"running":1}}
+INFO:     127.0.0.1:59914 - "GET /bots/status HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:23:37.034149Z","level":"debug","service":"gateway","trace_id":"39c5e4682b9b4e66b776be0aa631bf38","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"GET","path":"http://localhost:8080/bots/status","downstream_status":200}}
+INFO:     172.18.0.1:59796 - "GET /bots/status HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:23:37.059709Z","level":"debug","service":"gateway","trace_id":"5f369de12d9543dfb1a9a061a88c77fa","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/bots/status","minted":true}}
+{"ts":"2026-10-27T19:23:37.060817Z","level":"debug","service":"identity","trace_id":"5f369de12d9543dfb1a9a061a88c77fa","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:37188 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:23:37.063956Z","level":"debug","service":"identity","trace_id":"5f369de12d9543dfb1a9a061a88c77fa","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":3.1}}
+{"ts":"2026-10-27T19:23:37.064199Z","level":"info","service":"gateway","trace_id":"5f369de12d9543dfb1a9a061a88c77fa","audience":"user","event":"request_accepted","span":"auth","user_id":4,"fields":{"method":"GET","path":"/bots/status"}}
+{"ts":"2026-10-27T19:23:37.069668Z","level":"info","service":"transcription-collector","trace_id":"753578f5dabd4ca4b3c6260d0852b8d6","audience":"user","event":"bots_status","span":"bots.status","user_id":4,"fields":{"running":1}}
+INFO:     127.0.0.1:59914 - "GET /bots/status HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:23:37.070643Z","level":"debug","service":"gateway","trace_id":"5f369de12d9543dfb1a9a061a88c77fa","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":4,"fields":{"method":"GET","path":"http://localhost:8080/bots/status","downstream_status":200}}
+INFO:     172.18.0.1:59810 - "GET /bots/status HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:23:37.640618Z","level":"debug","service":"gateway","trace_id":"5d0cf35c413e4077a6d9221abca1facb","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/health","minted":true}}
+INFO:     127.0.0.1:41118 - "GET /health HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:23:59.732159Z","level":"debug","service":"gateway","trace_id":"3ae24af952df47f9a95a7bd0a22cc3b4","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/bots/status","minted":true}}
+{"ts":"2026-10-27T19:23:59.733991Z","level":"debug","service":"identity","trace_id":"3ae24af952df47f9a95a7bd0a22cc3b4","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:58434 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:23:59.738707Z","level":"debug","service":"identity","trace_id":"3ae24af952df47f9a95a7bd0a22cc3b4","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":4.7}}
+{"ts":"2026-10-27T19:23:59.739320Z","level":"info","service":"gateway","trace_id":"3ae24af952df47f9a95a7bd0a22cc3b4","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"GET","path":"/bots/status"}}
+{"ts":"2026-10-27T19:23:59.745659Z","level":"info","service":"transcription-collector","trace_id":"2752b2b442c74be298227737b9966c6c","audience":"user","event":"bots_status","span":"bots.status","user_id":3,"fields":{"running":1}}
+INFO:     127.0.0.1:40262 - "GET /bots/status HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:23:59.746417Z","level":"debug","service":"gateway","trace_id":"3ae24af952df47f9a95a7bd0a22cc3b4","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"GET","path":"http://localhost:8080/bots/status","downstream_status":200}}
+INFO:     172.18.0.1:41772 - "GET /bots/status HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:23:59.761077Z","level":"debug","service":"gateway","trace_id":"ed46d86a458f46c7a77bb84db0be4b2d","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/bots/status","minted":true}}
+{"ts":"2026-10-27T19:23:59.762214Z","level":"debug","service":"identity","trace_id":"ed46d86a458f46c7a77bb84db0be4b2d","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:58434 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:23:59.766259Z","level":"debug","service":"identity","trace_id":"ed46d86a458f46c7a77bb84db0be4b2d","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":4.0}}
+{"ts":"2026-10-27T19:23:59.766888Z","level":"info","service":"gateway","trace_id":"ed46d86a458f46c7a77bb84db0be4b2d","audience":"user","event":"request_accepted","span":"auth","user_id":4,"fields":{"method":"GET","path":"/bots/status"}}
+{"ts":"2026-10-27T19:23:59.772316Z","level":"info","service":"transcription-collector","trace_id":"ca73e4e17cd245c8b4553f4ae0744a90","audience":"user","event":"bots_status","span":"bots.status","user_id":4,"fields":{"running":1}}
+INFO:     127.0.0.1:40262 - "GET /bots/status HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:23:59.773332Z","level":"debug","service":"gateway","trace_id":"ed46d86a458f46c7a77bb84db0be4b2d","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":4,"fields":{"method":"GET","path":"http://localhost:8080/bots/status","downstream_status":200}}
+INFO:     172.18.0.1:41788 - "GET /bots/status HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:24:07.702087Z","level":"debug","service":"gateway","trace_id":"668e7cc808f14fec8cfa49f70029faf7","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/health","minted":true}}
+INFO:     127.0.0.1:33886 - "GET /health HTTP/1.1" 200 OK
+subject_ticket_key_missing: VEXA_SUBJECT_TICKET_KEY_FILE is not set; meeting facts are published without a subject ticket and the gateway door will refuse the flows calls they cause (subject_ticket_required)
+{"ts":"2026-10-27T19:24:27.925665Z","level":"info","service":"meeting-api","trace_id":"1758c5db5924432fa2198300979b4812","audience":"user","event":"meeting_lifecycle_advanced","span":"lifecycle.callback","meeting_id":"d856aca0-91b2-4775-935a-e41cb4eee8aa","fields":{"meeting_status":"active"}}
+INFO:     127.0.0.1:39462 - "POST /bots/internal/callback/lifecycle HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:24:27.967885Z","level":"info","service":"meeting-api","trace_id":"0b6d86bcb2dc4106b274024df0a03670","audience":"user","event":"meeting_lifecycle_advanced","span":"lifecycle.callback","meeting_id":"2414ee56-5bdc-447d-b3cc-803b556b9d7b","fields":{"meeting_status":"active"}}
+INFO:     127.0.0.1:39478 - "POST /bots/internal/callback/lifecycle HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:24:37.755075Z","level":"debug","service":"gateway","trace_id":"ff9316a789cb4ac4b63f9df48a27c849","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/health","minted":true}}
+INFO:     127.0.0.1:52822 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56670 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56686 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:24:46.930980Z","level":"debug","service":"gateway","trace_id":"024ba475977547e2aad72c402f929714","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/bots/status","minted":true}}
+{"ts":"2026-10-27T19:24:46.933095Z","level":"debug","service":"identity","trace_id":"024ba475977547e2aad72c402f929714","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:37782 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:24:46.936410Z","level":"debug","service":"identity","trace_id":"024ba475977547e2aad72c402f929714","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":3.3}}
+{"ts":"2026-10-27T19:24:46.936588Z","level":"info","service":"gateway","trace_id":"024ba475977547e2aad72c402f929714","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"GET","path":"/bots/status"}}
+{"ts":"2026-10-27T19:24:46.943854Z","level":"info","service":"transcription-collector","trace_id":"b77898a3a8f546c98906bbfe1a48b2d8","audience":"user","event":"bots_status","span":"bots.status","user_id":3,"fields":{"running":1}}
+INFO:     127.0.0.1:56702 - "GET /bots/status HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:24:46.944736Z","level":"debug","service":"gateway","trace_id":"024ba475977547e2aad72c402f929714","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"GET","path":"http://localhost:8080/bots/status","downstream_status":200}}
+INFO:     172.18.0.1:46922 - "GET /bots/status HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:24:46.958002Z","level":"debug","service":"gateway","trace_id":"8ba40d5556af4af7b9f9444fe8933fd4","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/bots/status","minted":true}}
+{"ts":"2026-10-27T19:24:46.959222Z","level":"debug","service":"identity","trace_id":"8ba40d5556af4af7b9f9444fe8933fd4","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:37782 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:24:46.962346Z","level":"debug","service":"identity","trace_id":"8ba40d5556af4af7b9f9444fe8933fd4","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":3.1}}
+{"ts":"2026-10-27T19:24:46.962693Z","level":"info","service":"gateway","trace_id":"8ba40d5556af4af7b9f9444fe8933fd4","audience":"user","event":"request_accepted","span":"auth","user_id":4,"fields":{"method":"GET","path":"/bots/status"}}
+{"ts":"2026-10-27T19:24:46.967823Z","level":"info","service":"transcription-collector","trace_id":"cc72878d81ef46ffa811ff4e5aaa472e","audience":"user","event":"bots_status","span":"bots.status","user_id":4,"fields":{"running":1}}
+INFO:     127.0.0.1:56702 - "GET /bots/status HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:24:46.968891Z","level":"debug","service":"gateway","trace_id":"8ba40d5556af4af7b9f9444fe8933fd4","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":4,"fields":{"method":"GET","path":"http://localhost:8080/bots/status","downstream_status":200}}
+INFO:     172.18.0.1:46928 - "GET /bots/status HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:24:52.754771Z","level":"debug","service":"gateway","trace_id":"4f5d468d39be487aacbd40c6fdb627f2","audience":"system","event":"request_received","span":"edge","fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak","minted":true}}
+{"ts":"2026-10-27T19:24:52.757543Z","level":"debug","service":"identity","trace_id":"4f5d468d39be487aacbd40c6fdb627f2","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:35784 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:24:52.761094Z","level":"debug","service":"identity","trace_id":"4f5d468d39be487aacbd40c6fdb627f2","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":3.5}}
+{"ts":"2026-10-27T19:24:52.761396Z","level":"info","service":"gateway","trace_id":"4f5d468d39be487aacbd40c6fdb627f2","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak"}}
+{"ts":"2026-10-27T19:24:52.824691Z","level":"info","service":"meeting-api","trace_id":"4f5d468d39be487aacbd40c6fdb627f2","audience":"user","event":"bot_speak_queued","span":"bots.speak","user_id":3,"meeting_id":"7","fields":{"request_id":"8a89b6f6f9904e518968d5c159438e7f","chars":67,"role":"owner"}}
+INFO:     127.0.0.1:55480 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:24:52.826165Z","level":"debug","service":"gateway","trace_id":"4f5d468d39be487aacbd40c6fdb627f2","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"POST","path":"http://localhost:8080/bots/google_meet/fnv-enye-wbr/speak","downstream_status":200}}
+INFO:     172.18.0.1:44938 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55494 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55498 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:25:07.813393Z","level":"debug","service":"gateway","trace_id":"d2e2415ade6c45b1aa36c5f245ab307c","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/health","minted":true}}
+INFO:     127.0.0.1:35248 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58632 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58638 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:25:22.628586Z","level":"debug","service":"gateway","trace_id":"e889094ab6db48af8083ff979b7f60c2","audience":"system","event":"request_received","span":"edge","fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak","minted":true}}
+{"ts":"2026-10-27T19:25:22.630431Z","level":"debug","service":"identity","trace_id":"e889094ab6db48af8083ff979b7f60c2","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:40150 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:25:22.634668Z","level":"debug","service":"identity","trace_id":"e889094ab6db48af8083ff979b7f60c2","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":4.2}}
+{"ts":"2026-10-27T19:25:22.635255Z","level":"info","service":"gateway","trace_id":"e889094ab6db48af8083ff979b7f60c2","audience":"user","event":"request_accepted","span":"auth","user_id":4,"fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak"}}
+{"ts":"2026-10-27T19:25:22.641212Z","level":"info","service":"meeting-api","trace_id":"e889094ab6db48af8083ff979b7f60c2","audience":"user","event":"bot_speak_refused","span":"bots.speak","user_id":4,"meeting_id":"8","fields":{"reason":"voice_not_enabled","status":409,"role":"owner"}}
+INFO:     127.0.0.1:53316 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 409 Conflict
+{"ts":"2026-10-27T19:25:22.642171Z","level":"debug","service":"gateway","trace_id":"e889094ab6db48af8083ff979b7f60c2","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":4,"fields":{"method":"POST","path":"http://localhost:8080/bots/google_meet/fnv-enye-wbr/speak","downstream_status":409}}
+INFO:     172.18.0.1:35498 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 409 Conflict
+{"ts":"2026-10-27T19:25:22.663691Z","level":"debug","service":"gateway","trace_id":"0997eb52073141e29329ac7e7cda5d3c","audience":"system","event":"request_received","span":"edge","fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak","minted":true}}
+{"ts":"2026-10-27T19:25:22.665033Z","level":"debug","service":"identity","trace_id":"0997eb52073141e29329ac7e7cda5d3c","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:40150 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:25:22.669269Z","level":"debug","service":"identity","trace_id":"0997eb52073141e29329ac7e7cda5d3c","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":4.2}}
+{"ts":"2026-10-27T19:25:22.669839Z","level":"info","service":"gateway","trace_id":"0997eb52073141e29329ac7e7cda5d3c","audience":"user","event":"request_accepted","span":"auth","user_id":5,"fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak"}}
+{"ts":"2026-10-27T19:25:22.674708Z","level":"info","service":"meeting-api","trace_id":"0997eb52073141e29329ac7e7cda5d3c","audience":"user","event":"bot_speak_refused","span":"bots.speak","user_id":5,"fields":{"reason":"no_meeting","status":404}}
+INFO:     127.0.0.1:53316 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 404 Not Found
+{"ts":"2026-10-27T19:25:22.675721Z","level":"debug","service":"gateway","trace_id":"0997eb52073141e29329ac7e7cda5d3c","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":5,"fields":{"method":"POST","path":"http://localhost:8080/bots/google_meet/fnv-enye-wbr/speak","downstream_status":404}}
+INFO:     172.18.0.1:35504 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 404 Not Found
+{"ts":"2026-10-27T19:25:22.694693Z","level":"debug","service":"gateway","trace_id":"bbcd90a542804e35bf536393d38b0a84","audience":"system","event":"request_received","span":"edge","fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak","minted":true}}
+{"ts":"2026-10-27T19:25:22.695831Z","level":"debug","service":"identity","trace_id":"bbcd90a542804e35bf536393d38b0a84","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:40150 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:25:22.700214Z","level":"debug","service":"identity","trace_id":"bbcd90a542804e35bf536393d38b0a84","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":4.4}}
+{"ts":"2026-10-27T19:25:22.701013Z","level":"info","service":"gateway","trace_id":"bbcd90a542804e35bf536393d38b0a84","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak"}}
+{"ts":"2026-10-27T19:25:22.703257Z","level":"info","service":"meeting-api","trace_id":"bbcd90a542804e35bf536393d38b0a84","audience":"user","event":"bot_speak_refused","span":"bots.speak","user_id":3,"fields":{"reason":"bad_text","status":422}}
+INFO:     127.0.0.1:53316 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 422 Unprocessable Entity
+{"ts":"2026-10-27T19:25:22.704033Z","level":"debug","service":"gateway","trace_id":"bbcd90a542804e35bf536393d38b0a84","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"POST","path":"http://localhost:8080/bots/google_meet/fnv-enye-wbr/speak","downstream_status":422}}
+INFO:     172.18.0.1:35508 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 422 Unprocessable Entity
+{"ts":"2026-10-27T19:25:22.725522Z","level":"debug","service":"gateway","trace_id":"f0a52fa6d60e4d70811ae566e9513ddc","audience":"system","event":"request_received","span":"edge","fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak","minted":true}}
+{"ts":"2026-10-27T19:25:22.726671Z","level":"debug","service":"identity","trace_id":"f0a52fa6d60e4d70811ae566e9513ddc","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:40150 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:25:22.729764Z","level":"debug","service":"identity","trace_id":"f0a52fa6d60e4d70811ae566e9513ddc","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":3.1}}
+{"ts":"2026-10-27T19:25:22.730027Z","level":"info","service":"gateway","trace_id":"f0a52fa6d60e4d70811ae566e9513ddc","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak"}}
+{"ts":"2026-10-27T19:25:22.732308Z","level":"info","service":"meeting-api","trace_id":"f0a52fa6d60e4d70811ae566e9513ddc","audience":"user","event":"bot_speak_refused","span":"bots.speak","user_id":3,"fields":{"reason":"text_too_long","status":422}}
+INFO:     127.0.0.1:53316 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 422 Unprocessable Entity
+{"ts":"2026-10-27T19:25:22.732872Z","level":"debug","service":"gateway","trace_id":"f0a52fa6d60e4d70811ae566e9513ddc","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"POST","path":"http://localhost:8080/bots/google_meet/fnv-enye-wbr/speak","downstream_status":422}}
+INFO:     172.18.0.1:35518 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 422 Unprocessable Entity
+{"ts":"2026-10-27T19:25:22.764587Z","level":"debug","service":"gateway","trace_id":"3a79b06085e74fefb556be70dabed4b8","audience":"system","event":"request_received","span":"edge","fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak","minted":true}}
+{"ts":"2026-10-27T19:25:22.765771Z","level":"debug","service":"identity","trace_id":"3a79b06085e74fefb556be70dabed4b8","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:40150 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:25:22.768971Z","level":"debug","service":"identity","trace_id":"3a79b06085e74fefb556be70dabed4b8","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":3.2}}
+{"ts":"2026-10-27T19:25:22.769225Z","level":"info","service":"gateway","trace_id":"3a79b06085e74fefb556be70dabed4b8","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak"}}
+{"ts":"2026-10-27T19:25:22.771362Z","level":"info","service":"meeting-api","trace_id":"3a79b06085e74fefb556be70dabed4b8","audience":"user","event":"bot_speak_refused","span":"bots.speak","user_id":3,"fields":{"reason":"audio_input","status":422}}
+INFO:     127.0.0.1:53316 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 422 Unprocessable Entity
+{"ts":"2026-10-27T19:25:22.772172Z","level":"debug","service":"gateway","trace_id":"3a79b06085e74fefb556be70dabed4b8","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"POST","path":"http://localhost:8080/bots/google_meet/fnv-enye-wbr/speak","downstream_status":422}}
+INFO:     172.18.0.1:35520 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:53330 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53338 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:25:29.921698Z","level":"debug","service":"gateway","trace_id":"5eba86899c2142d78bd0e0d16fa446a2","audience":"system","event":"request_received","span":"edge","fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak","minted":true}}
+{"ts":"2026-10-27T19:25:29.923710Z","level":"debug","service":"identity","trace_id":"5eba86899c2142d78bd0e0d16fa446a2","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:40164 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:25:29.926999Z","level":"debug","service":"identity","trace_id":"5eba86899c2142d78bd0e0d16fa446a2","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":3.3}}
+{"ts":"2026-10-27T19:25:29.927359Z","level":"info","service":"gateway","trace_id":"5eba86899c2142d78bd0e0d16fa446a2","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak"}}
+{"ts":"2026-10-27T19:25:29.933858Z","level":"info","service":"meeting-api","trace_id":"5eba86899c2142d78bd0e0d16fa446a2","audience":"user","event":"bot_speak_queued","span":"bots.speak","user_id":3,"meeting_id":"7","fields":{"request_id":"58964830cbce4d2c8a32fb79812df431","chars":466,"role":"owner"}}
+INFO:     127.0.0.1:53350 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:25:29.934880Z","level":"debug","service":"gateway","trace_id":"5eba86899c2142d78bd0e0d16fa446a2","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"POST","path":"http://localhost:8080/bots/google_meet/fnv-enye-wbr/speak","downstream_status":200}}
+INFO:     172.18.0.1:35524 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:25:33.046238Z","level":"debug","service":"gateway","trace_id":"48ebb38097a246e483a5b392f784c7ef","audience":"system","event":"request_received","span":"edge","fields":{"method":"DELETE","path":"/bots/google_meet/fnv-enye-wbr/speak","minted":true}}
+{"ts":"2026-10-27T19:25:33.047640Z","level":"debug","service":"identity","trace_id":"48ebb38097a246e483a5b392f784c7ef","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:40164 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:25:33.057639Z","level":"debug","service":"identity","trace_id":"48ebb38097a246e483a5b392f784c7ef","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":10.0}}
+{"ts":"2026-10-27T19:25:33.057957Z","level":"info","service":"gateway","trace_id":"48ebb38097a246e483a5b392f784c7ef","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"DELETE","path":"/bots/google_meet/fnv-enye-wbr/speak"}}
+{"ts":"2026-10-27T19:25:33.062697Z","level":"info","service":"meeting-api","trace_id":"48ebb38097a246e483a5b392f784c7ef","audience":"user","event":"bot_speak_stop_sent","span":"bots.speak","user_id":3,"meeting_id":"7","fields":{"bots":1,"role":"owner"}}
+INFO:     127.0.0.1:53350 - "DELETE /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:25:33.063580Z","level":"debug","service":"gateway","trace_id":"48ebb38097a246e483a5b392f784c7ef","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"DELETE","path":"http://localhost:8080/bots/google_meet/fnv-enye-wbr/speak","downstream_status":200}}
+INFO:     172.18.0.1:60450 - "DELETE /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:25:37.936650Z","level":"debug","service":"gateway","trace_id":"f149f56dac664905afbaa1be908f2ae5","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/health","minted":true}}
+INFO:     127.0.0.1:32888 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32998 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32994 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41066 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41080 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:26:07.980227Z","level":"debug","service":"gateway","trace_id":"0a2c08f473644443a77b092fe4e09cf5","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/health","minted":true}}
+INFO:     127.0.0.1:55620 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38628 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38642 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34064 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34070 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:26:38.034250Z","level":"debug","service":"gateway","trace_id":"7c643472accf4b508a172e5a02cf4fc4","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/health","minted":true}}
+INFO:     127.0.0.1:43698 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45770 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45774 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45410 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45418 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+54:M 27 Oct 2026 19:27:06.013 * 100 changes in 300 seconds. Saving...
+54:M 27 Oct 2026 19:27:06.013 * Background saving started by pid 4680
+4680:C 27 Oct 2026 19:27:06.018 * DB saved on disk
+4680:C 27 Oct 2026 19:27:06.018 * Fork CoW for RDB: current 0 MB, peak 0 MB, average 0 MB
+54:M 27 Oct 2026 19:27:06.114 * Background saving terminated with success
+{"ts":"2026-10-27T19:27:08.142925Z","level":"debug","service":"gateway","trace_id":"36fb5851068648ecb8c82cbe95e4a3fd","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/health","minted":true}}
+INFO:     127.0.0.1:55438 - "GET /health HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:27:08.667718Z","level":"debug","service":"identity","trace_id":"c751799dbbdf43b98bc25f5e4e632f8c","audience":"system","event":"request_received","fields":{"method":"GET","path":"/internal/calendar-configs"}}
+INFO:     127.0.0.1:39726 - "GET /internal/calendar-configs HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:27:08.670336Z","level":"debug","service":"identity","trace_id":"c751799dbbdf43b98bc25f5e4e632f8c","audience":"system","event":"request_completed","fields":{"method":"GET","path":"/internal/calendar-configs","status":200,"duration_ms":2.6}}
+INFO:     127.0.0.1:53982 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53984 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35258 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35262 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:27:38.298418Z","level":"debug","service":"gateway","trace_id":"197e9b5ab68840d78ce1a15caa6224a2","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/health","minted":true}}
+INFO:     127.0.0.1:60852 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48556 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48566 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37046 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37056 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:28:08.372413Z","level":"debug","service":"gateway","trace_id":"6473cf8c5c82414e9a12943d4d7ef40b","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/health","minted":true}}
+INFO:     127.0.0.1:56336 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39828 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39838 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43306 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43316 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:28:38.430349Z","level":"debug","service":"gateway","trace_id":"563b2fb2a3b74e679ca79a47c13e9e20","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/health","minted":true}}
+INFO:     127.0.0.1:42354 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53208 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53214 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45514 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45528 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:29:01.100387Z","level":"debug","service":"gateway","trace_id":"9366601e66844610afd6d02f604557bb","audience":"system","event":"request_received","span":"edge","fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak","minted":true}}
+{"ts":"2026-10-27T19:29:01.102680Z","level":"debug","service":"identity","trace_id":"9366601e66844610afd6d02f604557bb","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:50230 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:29:01.108282Z","level":"debug","service":"identity","trace_id":"9366601e66844610afd6d02f604557bb","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":5.6}}
+{"ts":"2026-10-27T19:29:01.108843Z","level":"info","service":"gateway","trace_id":"9366601e66844610afd6d02f604557bb","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak"}}
+{"ts":"2026-10-27T19:29:01.114580Z","level":"info","service":"meeting-api","trace_id":"9366601e66844610afd6d02f604557bb","audience":"user","event":"bot_speak_queued","span":"bots.speak","user_id":3,"meeting_id":"7","fields":{"request_id":"022a19649b2a42cca92b16bfa90f1c54","chars":8,"role":"owner"}}
+INFO:     127.0.0.1:45542 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:29:01.115221Z","level":"debug","service":"gateway","trace_id":"9366601e66844610afd6d02f604557bb","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"POST","path":"http://localhost:8080/bots/google_meet/fnv-enye-wbr/speak","downstream_status":200}}
+INFO:     172.18.0.1:59102 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:29:01.130085Z","level":"debug","service":"gateway","trace_id":"41000c556a3e442b99014f0c8c1105b4","audience":"system","event":"request_received","span":"edge","fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak","minted":true}}
+{"ts":"2026-10-27T19:29:01.131178Z","level":"debug","service":"identity","trace_id":"41000c556a3e442b99014f0c8c1105b4","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:50230 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:29:01.134680Z","level":"debug","service":"identity","trace_id":"41000c556a3e442b99014f0c8c1105b4","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":3.5}}
+{"ts":"2026-10-27T19:29:01.135147Z","level":"info","service":"gateway","trace_id":"41000c556a3e442b99014f0c8c1105b4","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak"}}
+{"ts":"2026-10-27T19:29:01.140541Z","level":"info","service":"meeting-api","trace_id":"41000c556a3e442b99014f0c8c1105b4","audience":"user","event":"bot_speak_queued","span":"bots.speak","user_id":3,"meeting_id":"7","fields":{"request_id":"c14744c6ce2a4023b4da6f354fb3c3ca","chars":8,"role":"owner"}}
+INFO:     127.0.0.1:45542 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:29:01.141446Z","level":"debug","service":"gateway","trace_id":"41000c556a3e442b99014f0c8c1105b4","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"POST","path":"http://localhost:8080/bots/google_meet/fnv-enye-wbr/speak","downstream_status":200}}
+INFO:     172.18.0.1:59116 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:29:01.158524Z","level":"debug","service":"gateway","trace_id":"5cabf3b25b64477b9fbb5315708f193d","audience":"system","event":"request_received","span":"edge","fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak","minted":true}}
+{"ts":"2026-10-27T19:29:01.159609Z","level":"debug","service":"identity","trace_id":"5cabf3b25b64477b9fbb5315708f193d","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:50230 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:29:01.162632Z","level":"debug","service":"identity","trace_id":"5cabf3b25b64477b9fbb5315708f193d","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":3.0}}
+{"ts":"2026-10-27T19:29:01.163069Z","level":"info","service":"gateway","trace_id":"5cabf3b25b64477b9fbb5315708f193d","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak"}}
+{"ts":"2026-10-27T19:29:01.167457Z","level":"info","service":"meeting-api","trace_id":"5cabf3b25b64477b9fbb5315708f193d","audience":"user","event":"bot_speak_queued","span":"bots.speak","user_id":3,"meeting_id":"7","fields":{"request_id":"0648b405211b4a38a980153dc4d8d002","chars":8,"role":"owner"}}
+INFO:     127.0.0.1:45542 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:29:01.168252Z","level":"debug","service":"gateway","trace_id":"5cabf3b25b64477b9fbb5315708f193d","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"POST","path":"http://localhost:8080/bots/google_meet/fnv-enye-wbr/speak","downstream_status":200}}
+INFO:     172.18.0.1:59132 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:29:01.182317Z","level":"debug","service":"gateway","trace_id":"92cc11b42f8b4efe821a840b34902ec9","audience":"system","event":"request_received","span":"edge","fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak","minted":true}}
+{"ts":"2026-10-27T19:29:01.183649Z","level":"debug","service":"identity","trace_id":"92cc11b42f8b4efe821a840b34902ec9","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:50230 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:29:01.186732Z","level":"debug","service":"identity","trace_id":"92cc11b42f8b4efe821a840b34902ec9","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":3.1}}
+{"ts":"2026-10-27T19:29:01.187013Z","level":"info","service":"gateway","trace_id":"92cc11b42f8b4efe821a840b34902ec9","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak"}}
+{"ts":"2026-10-27T19:29:01.192089Z","level":"info","service":"meeting-api","trace_id":"92cc11b42f8b4efe821a840b34902ec9","audience":"user","event":"bot_speak_queued","span":"bots.speak","user_id":3,"meeting_id":"7","fields":{"request_id":"bb8c7e3f9ddb44c5b27d730030091ca0","chars":8,"role":"owner"}}
+INFO:     127.0.0.1:45542 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:29:01.192945Z","level":"debug","service":"gateway","trace_id":"92cc11b42f8b4efe821a840b34902ec9","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"POST","path":"http://localhost:8080/bots/google_meet/fnv-enye-wbr/speak","downstream_status":200}}
+INFO:     172.18.0.1:59134 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:29:01.205620Z","level":"debug","service":"gateway","trace_id":"4140c9b7454b451baf860e30bfa8d6b5","audience":"system","event":"request_received","span":"edge","fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak","minted":true}}
+{"ts":"2026-10-27T19:29:01.206711Z","level":"debug","service":"identity","trace_id":"4140c9b7454b451baf860e30bfa8d6b5","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:50230 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:29:01.209682Z","level":"debug","service":"identity","trace_id":"4140c9b7454b451baf860e30bfa8d6b5","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":3.0}}
+{"ts":"2026-10-27T19:29:01.209753Z","level":"info","service":"gateway","trace_id":"4140c9b7454b451baf860e30bfa8d6b5","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak"}}
+{"ts":"2026-10-27T19:29:01.214572Z","level":"info","service":"meeting-api","trace_id":"4140c9b7454b451baf860e30bfa8d6b5","audience":"user","event":"bot_speak_queued","span":"bots.speak","user_id":3,"meeting_id":"7","fields":{"request_id":"f2efdbec77fe4961803c211abd308d0c","chars":8,"role":"owner"}}
+INFO:     127.0.0.1:45542 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:29:01.215285Z","level":"debug","service":"gateway","trace_id":"4140c9b7454b451baf860e30bfa8d6b5","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"POST","path":"http://localhost:8080/bots/google_meet/fnv-enye-wbr/speak","downstream_status":200}}
+INFO:     172.18.0.1:59140 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:29:01.230397Z","level":"debug","service":"gateway","trace_id":"2d0f24a243f2454fb8676f4f4f80929d","audience":"system","event":"request_received","span":"edge","fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak","minted":true}}
+{"ts":"2026-10-27T19:29:01.231670Z","level":"debug","service":"identity","trace_id":"2d0f24a243f2454fb8676f4f4f80929d","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:50230 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:29:01.234751Z","level":"debug","service":"identity","trace_id":"2d0f24a243f2454fb8676f4f4f80929d","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":3.1}}
+{"ts":"2026-10-27T19:29:01.235040Z","level":"info","service":"gateway","trace_id":"2d0f24a243f2454fb8676f4f4f80929d","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak"}}
+{"ts":"2026-10-27T19:29:01.239870Z","level":"info","service":"meeting-api","trace_id":"2d0f24a243f2454fb8676f4f4f80929d","audience":"user","event":"bot_speak_queued","span":"bots.speak","user_id":3,"meeting_id":"7","fields":{"request_id":"b6abd3d8743d4bba8033a3ea3e0f9e80","chars":8,"role":"owner"}}
+INFO:     127.0.0.1:45542 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:29:01.240786Z","level":"debug","service":"gateway","trace_id":"2d0f24a243f2454fb8676f4f4f80929d","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"POST","path":"http://localhost:8080/bots/google_meet/fnv-enye-wbr/speak","downstream_status":200}}
+INFO:     172.18.0.1:59150 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:29:01.253304Z","level":"debug","service":"gateway","trace_id":"277905d68aec44a89ee10c8a4184f2c9","audience":"system","event":"request_received","span":"edge","fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak","minted":true}}
+{"ts":"2026-10-27T19:29:01.254500Z","level":"debug","service":"identity","trace_id":"277905d68aec44a89ee10c8a4184f2c9","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:50230 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:29:01.257607Z","level":"debug","service":"identity","trace_id":"277905d68aec44a89ee10c8a4184f2c9","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":3.1}}
+{"ts":"2026-10-27T19:29:01.257992Z","level":"info","service":"gateway","trace_id":"277905d68aec44a89ee10c8a4184f2c9","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak"}}
+{"ts":"2026-10-27T19:29:01.262452Z","level":"info","service":"meeting-api","trace_id":"277905d68aec44a89ee10c8a4184f2c9","audience":"user","event":"bot_speak_refused","span":"bots.speak","user_id":3,"meeting_id":"7","fields":{"reason":"rate_limited","status":429,"role":"owner"}}
+INFO:     127.0.0.1:45542 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 429 Too Many Requests
+{"ts":"2026-10-27T19:29:01.263188Z","level":"debug","service":"gateway","trace_id":"277905d68aec44a89ee10c8a4184f2c9","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"POST","path":"http://localhost:8080/bots/google_meet/fnv-enye-wbr/speak","downstream_status":429}}
+INFO:     172.18.0.1:59158 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 429 Too Many Requests
+{"ts":"2026-10-27T19:29:08.499549Z","level":"debug","service":"gateway","trace_id":"b3918890704540928eb802d7aa45e99d","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/health","minted":true}}
+INFO:     127.0.0.1:54492 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52990 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53004 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35186 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35176 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:29:34.279708Z","level":"debug","service":"gateway","trace_id":"5378861773a5467c9f5f76c6a43607fb","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/transcripts/google_meet/fnv-enye-wbr","minted":true}}
+{"ts":"2026-10-27T19:29:34.331754Z","level":"debug","service":"identity","trace_id":"5378861773a5467c9f5f76c6a43607fb","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:58280 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:29:34.335926Z","level":"debug","service":"identity","trace_id":"5378861773a5467c9f5f76c6a43607fb","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":4.2}}
+{"ts":"2026-10-27T19:29:34.336704Z","level":"info","service":"gateway","trace_id":"5378861773a5467c9f5f76c6a43607fb","audience":"user","event":"request_accepted","span":"auth","user_id":4,"fields":{"method":"GET","path":"/transcripts/google_meet/fnv-enye-wbr"}}
+{"ts":"2026-10-27T19:29:34.345271Z","level":"info","service":"transcription-collector","trace_id":"f5bb0e84823e4821b9c4620f2661579e","audience":"user","event":"transcript_served","span":"transcripts.get","user_id":4,"meeting_id":"google_meet/fnv-enye-wbr","fields":{"segments":5}}
+INFO:     127.0.0.1:43698 - "GET /transcripts/google_meet/fnv-enye-wbr HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:29:34.346106Z","level":"debug","service":"gateway","trace_id":"5378861773a5467c9f5f76c6a43607fb","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":4,"fields":{"method":"GET","path":"http://localhost:8080/transcripts/google_meet/fnv-enye-wbr","downstream_status":200}}
+INFO:     172.18.0.1:33010 - "GET /transcripts/google_meet/fnv-enye-wbr HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:29:38.624735Z","level":"debug","service":"gateway","trace_id":"3aa6e49e75434baca281a1befb32d80c","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/health","minted":true}}
+INFO:     127.0.0.1:59270 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50216 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50230 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:29:47.928177Z","level":"debug","service":"gateway","trace_id":"20ed2dc155714a098440ebfd3ca1a88e","audience":"system","event":"request_received","span":"edge","fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak","minted":true}}
+{"ts":"2026-10-27T19:29:47.929997Z","level":"debug","service":"identity","trace_id":"20ed2dc155714a098440ebfd3ca1a88e","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:40904 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:29:47.933252Z","level":"debug","service":"identity","trace_id":"20ed2dc155714a098440ebfd3ca1a88e","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":3.3}}
+{"ts":"2026-10-27T19:29:47.933565Z","level":"info","service":"gateway","trace_id":"20ed2dc155714a098440ebfd3ca1a88e","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak"}}
+{"ts":"2026-10-27T19:29:47.941344Z","level":"info","service":"meeting-api","trace_id":"20ed2dc155714a098440ebfd3ca1a88e","audience":"user","event":"bot_speak_refused","span":"bots.speak","user_id":3,"meeting_id":"7","fields":{"reason":"rate_limited","status":429,"role":"owner"}}
+INFO:     127.0.0.1:50238 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 429 Too Many Requests
+{"ts":"2026-10-27T19:29:47.942424Z","level":"debug","service":"gateway","trace_id":"20ed2dc155714a098440ebfd3ca1a88e","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"POST","path":"http://localhost:8080/bots/google_meet/fnv-enye-wbr/speak","downstream_status":429}}
+INFO:     172.18.0.1:33620 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 429 Too Many Requests
+{"ts":"2026-10-27T19:29:55.972137Z","level":"debug","service":"gateway","trace_id":"ea3475461f824e03bbe4b53d8a6604a1","audience":"system","event":"request_received","span":"edge","fields":{"method":"DELETE","path":"/bots/google_meet/fnv-enye-wbr/speak","minted":true}}
+{"ts":"2026-10-27T19:29:55.973876Z","level":"debug","service":"identity","trace_id":"ea3475461f824e03bbe4b53d8a6604a1","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:35314 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:29:55.976734Z","level":"debug","service":"identity","trace_id":"ea3475461f824e03bbe4b53d8a6604a1","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":2.9}}
+{"ts":"2026-10-27T19:29:55.976943Z","level":"info","service":"gateway","trace_id":"ea3475461f824e03bbe4b53d8a6604a1","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"DELETE","path":"/bots/google_meet/fnv-enye-wbr/speak"}}
+{"ts":"2026-10-27T19:29:55.981984Z","level":"info","service":"meeting-api","trace_id":"ea3475461f824e03bbe4b53d8a6604a1","audience":"user","event":"bot_speak_stop_sent","span":"bots.speak","user_id":3,"meeting_id":"7","fields":{"bots":1,"role":"owner"}}
+INFO:     127.0.0.1:60262 - "DELETE /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:29:55.982612Z","level":"debug","service":"gateway","trace_id":"ea3475461f824e03bbe4b53d8a6604a1","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"DELETE","path":"http://localhost:8080/bots/google_meet/fnv-enye-wbr/speak","downstream_status":200}}
+INFO:     172.18.0.1:48300 - "DELETE /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60264 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60272 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:30:08.674611Z","level":"debug","service":"gateway","trace_id":"b8222214c6044dd3a367f61c3b9ccd53","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/health","minted":true}}
+INFO:     127.0.0.1:58490 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33072 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33082 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34386 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34388 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:30:38.731533Z","level":"debug","service":"gateway","trace_id":"e9b3ac3a44324447b3f59ee502454c23","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/health","minted":true}}
+INFO:     127.0.0.1:52846 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32768 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32772 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51248 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51264 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:31:01.036384Z","level":"debug","service":"gateway","trace_id":"b88666a2ee2849aa8ce3acfd3398e21f","audience":"system","event":"request_received","span":"edge","fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak","minted":true}}
+{"ts":"2026-10-27T19:31:01.038463Z","level":"debug","service":"identity","trace_id":"b88666a2ee2849aa8ce3acfd3398e21f","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:45872 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:31:01.042877Z","level":"debug","service":"identity","trace_id":"b88666a2ee2849aa8ce3acfd3398e21f","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":4.4}}
+{"ts":"2026-10-27T19:31:01.043290Z","level":"info","service":"gateway","trace_id":"b88666a2ee2849aa8ce3acfd3398e21f","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak"}}
+{"ts":"2026-10-27T19:31:01.049251Z","level":"info","service":"meeting-api","trace_id":"b88666a2ee2849aa8ce3acfd3398e21f","audience":"user","event":"bot_speak_queued","span":"bots.speak","user_id":3,"meeting_id":"7","fields":{"request_id":"6d3dd832abca4928935f701704611d24","chars":466,"role":"owner"}}
+INFO:     127.0.0.1:51266 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:31:01.049933Z","level":"debug","service":"gateway","trace_id":"b88666a2ee2849aa8ce3acfd3398e21f","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"POST","path":"http://localhost:8080/bots/google_meet/fnv-enye-wbr/speak","downstream_status":200}}
+INFO:     172.18.0.1:36700 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:31:08.842282Z","level":"debug","service":"gateway","trace_id":"7e3576f7c77f48988c2f586fb3405f1b","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/health","minted":true}}
+INFO:     127.0.0.1:35752 - "GET /health HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:31:09.076948Z","level":"debug","service":"gateway","trace_id":"3ceb0073d438403aa8487b34ca70800f","audience":"system","event":"request_received","span":"edge","fields":{"method":"DELETE","path":"/bots/google_meet/fnv-enye-wbr/speak","minted":true}}
+{"ts":"2026-10-27T19:31:09.078937Z","level":"debug","service":"identity","trace_id":"3ceb0073d438403aa8487b34ca70800f","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:49724 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:31:09.082245Z","level":"debug","service":"identity","trace_id":"3ceb0073d438403aa8487b34ca70800f","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":3.3}}
+{"ts":"2026-10-27T19:31:09.082442Z","level":"info","service":"gateway","trace_id":"3ceb0073d438403aa8487b34ca70800f","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"DELETE","path":"/bots/google_meet/fnv-enye-wbr/speak"}}
+{"ts":"2026-10-27T19:31:09.087799Z","level":"info","service":"meeting-api","trace_id":"3ceb0073d438403aa8487b34ca70800f","audience":"user","event":"bot_speak_stop_sent","span":"bots.speak","user_id":3,"meeting_id":"7","fields":{"bots":1,"role":"owner"}}
+INFO:     127.0.0.1:38690 - "DELETE /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:31:09.088488Z","level":"debug","service":"gateway","trace_id":"3ceb0073d438403aa8487b34ca70800f","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"DELETE","path":"http://localhost:8080/bots/google_meet/fnv-enye-wbr/speak","downstream_status":200}}
+INFO:     172.18.0.1:35432 - "DELETE /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36498 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36514 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:31:20.467464Z","level":"debug","service":"gateway","trace_id":"d32c16e42f3c43bda6cb770e02421c90","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/transcripts/google_meet/fnv-enye-wbr","minted":true}}
+{"ts":"2026-10-27T19:31:20.469332Z","level":"debug","service":"identity","trace_id":"d32c16e42f3c43bda6cb770e02421c90","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:45806 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:31:20.473936Z","level":"debug","service":"identity","trace_id":"d32c16e42f3c43bda6cb770e02421c90","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":4.6}}
+{"ts":"2026-10-27T19:31:20.474542Z","level":"info","service":"gateway","trace_id":"d32c16e42f3c43bda6cb770e02421c90","audience":"user","event":"request_accepted","span":"auth","user_id":4,"fields":{"method":"GET","path":"/transcripts/google_meet/fnv-enye-wbr"}}
+{"ts":"2026-10-27T19:31:20.481217Z","level":"info","service":"transcription-collector","trace_id":"70c5fedfd91d437fb0d0e582569b1632","audience":"user","event":"transcript_served","span":"transcripts.get","user_id":4,"meeting_id":"google_meet/fnv-enye-wbr","fields":{"segments":5}}
+INFO:     127.0.0.1:36526 - "GET /transcripts/google_meet/fnv-enye-wbr HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:31:20.482194Z","level":"debug","service":"gateway","trace_id":"d32c16e42f3c43bda6cb770e02421c90","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":4,"fields":{"method":"GET","path":"http://localhost:8080/transcripts/google_meet/fnv-enye-wbr","downstream_status":200}}
+INFO:     172.18.0.1:46356 - "GET /transcripts/google_meet/fnv-enye-wbr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45554 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45566 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:31:38.898253Z","level":"debug","service":"gateway","trace_id":"0786b8ce9d2a4594b993969ecf4ecd32","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/health","minted":true}}
+INFO:     127.0.0.1:39284 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50794 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50796 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:31:44.533815Z","level":"debug","service":"gateway","trace_id":"b75f1a1cd24e4da88650b6bad6883393","audience":"system","event":"request_received","span":"edge","fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak","minted":true}}
+{"ts":"2026-10-27T19:31:44.535752Z","level":"debug","service":"identity","trace_id":"b75f1a1cd24e4da88650b6bad6883393","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:48446 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:31:44.539653Z","level":"debug","service":"identity","trace_id":"b75f1a1cd24e4da88650b6bad6883393","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":3.9}}
+{"ts":"2026-10-27T19:31:44.539885Z","level":"info","service":"gateway","trace_id":"b75f1a1cd24e4da88650b6bad6883393","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak"}}
+{"ts":"2026-10-27T19:31:44.546211Z","level":"info","service":"meeting-api","trace_id":"b75f1a1cd24e4da88650b6bad6883393","audience":"user","event":"bot_speak_queued","span":"bots.speak","user_id":3,"meeting_id":"7","fields":{"request_id":"accdbcb296a94c84857a1426fcae5e36","chars":12,"role":"owner"}}
+INFO:     127.0.0.1:50802 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:31:44.547145Z","level":"debug","service":"gateway","trace_id":"b75f1a1cd24e4da88650b6bad6883393","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"POST","path":"http://localhost:8080/bots/google_meet/fnv-enye-wbr/speak","downstream_status":200}}
+INFO:     172.18.0.1:46822 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:31:58.587398Z","level":"debug","service":"gateway","trace_id":"6a5ded8c48f34483b2c9453b50833bde","audience":"system","event":"request_received","span":"edge","fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak","minted":true}}
+{"ts":"2026-10-27T19:31:58.589525Z","level":"debug","service":"identity","trace_id":"6a5ded8c48f34483b2c9453b50833bde","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:43250 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:31:58.592572Z","level":"debug","service":"identity","trace_id":"6a5ded8c48f34483b2c9453b50833bde","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":3.0}}
+{"ts":"2026-10-27T19:31:58.592839Z","level":"info","service":"gateway","trace_id":"6a5ded8c48f34483b2c9453b50833bde","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"POST","path":"/bots/google_meet/fnv-enye-wbr/speak"}}
+{"ts":"2026-10-27T19:31:58.598655Z","level":"info","service":"meeting-api","trace_id":"6a5ded8c48f34483b2c9453b50833bde","audience":"user","event":"bot_speak_queued","span":"bots.speak","user_id":3,"meeting_id":"7","fields":{"request_id":"13afa532a41645ecada3d45bf6446722","chars":466,"role":"owner"}}
+INFO:     127.0.0.1:52150 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:31:58.599790Z","level":"debug","service":"gateway","trace_id":"6a5ded8c48f34483b2c9453b50833bde","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"POST","path":"http://localhost:8080/bots/google_meet/fnv-enye-wbr/speak","downstream_status":200}}
+INFO:     172.18.0.1:54702 - "POST /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52152 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52162 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:32:06.660680Z","level":"debug","service":"gateway","trace_id":"65aaf53cd68545da9b9147ad6a7d7bbe","audience":"system","event":"request_received","span":"edge","fields":{"method":"DELETE","path":"/bots/google_meet/fnv-enye-wbr/speak","minted":true}}
+{"ts":"2026-10-27T19:32:06.662844Z","level":"debug","service":"identity","trace_id":"65aaf53cd68545da9b9147ad6a7d7bbe","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:33366 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:32:06.666758Z","level":"debug","service":"identity","trace_id":"65aaf53cd68545da9b9147ad6a7d7bbe","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":3.9}}
+{"ts":"2026-10-27T19:32:06.667425Z","level":"info","service":"gateway","trace_id":"65aaf53cd68545da9b9147ad6a7d7bbe","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"DELETE","path":"/bots/google_meet/fnv-enye-wbr/speak"}}
+{"ts":"2026-10-27T19:32:06.673564Z","level":"info","service":"meeting-api","trace_id":"65aaf53cd68545da9b9147ad6a7d7bbe","audience":"user","event":"bot_speak_stop_sent","span":"bots.speak","user_id":3,"meeting_id":"7","fields":{"bots":1,"role":"owner"}}
+INFO:     127.0.0.1:48030 - "DELETE /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:32:06.675103Z","level":"debug","service":"gateway","trace_id":"65aaf53cd68545da9b9147ad6a7d7bbe","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"DELETE","path":"http://localhost:8080/bots/google_meet/fnv-enye-wbr/speak","downstream_status":200}}
+INFO:     172.18.0.1:36292 - "DELETE /bots/google_meet/fnv-enye-wbr/speak HTTP/1.1" 200 OK
+54:M 27 Oct 2026 19:32:07.087 * 100 changes in 300 seconds. Saving...
+54:M 27 Oct 2026 19:32:07.087 * Background saving started by pid 12757
+12757:C 27 Oct 2026 19:32:07.104 * DB saved on disk
+12757:C 27 Oct 2026 19:32:07.104 * Fork CoW for RDB: current 0 MB, peak 0 MB, average 0 MB
+54:M 27 Oct 2026 19:32:07.188 * Background saving terminated with success
+INFO:     127.0.0.1:60782 - "GET /workloads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60786 - "GET /workloads HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:32:08.693009Z","level":"debug","service":"identity","trace_id":"d37cb40a1f4847a5bd29f3cabf4c7dd0","audience":"system","event":"request_received","fields":{"method":"GET","path":"/internal/calendar-configs"}}
+INFO:     127.0.0.1:33374 - "GET /internal/calendar-configs HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:32:08.698160Z","level":"debug","service":"identity","trace_id":"d37cb40a1f4847a5bd29f3cabf4c7dd0","audience":"system","event":"request_completed","fields":{"method":"GET","path":"/internal/calendar-configs","status":200,"duration_ms":5.1}}
+{"ts":"2026-10-27T19:32:08.978605Z","level":"debug","service":"gateway","trace_id":"90cccee005c64a589e12c4c3d4404c77","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/health","minted":true}}
+INFO:     127.0.0.1:52028 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33324 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33330 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:32:25.364606Z","level":"debug","service":"gateway","trace_id":"9fa5424a9893498a8273be805d06aa07","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/transcripts/google_meet/fnv-enye-wbr","minted":true}}
+{"ts":"2026-10-27T19:32:25.366449Z","level":"debug","service":"identity","trace_id":"9fa5424a9893498a8273be805d06aa07","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:38730 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:32:25.371300Z","level":"debug","service":"identity","trace_id":"9fa5424a9893498a8273be805d06aa07","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":4.8}}
+{"ts":"2026-10-27T19:32:25.371871Z","level":"info","service":"gateway","trace_id":"9fa5424a9893498a8273be805d06aa07","audience":"user","event":"request_accepted","span":"auth","user_id":4,"fields":{"method":"GET","path":"/transcripts/google_meet/fnv-enye-wbr"}}
+{"ts":"2026-10-27T19:32:25.379184Z","level":"info","service":"transcription-collector","trace_id":"2ad7cd6520c246049ec63517b1d9bceb","audience":"user","event":"transcript_served","span":"transcripts.get","user_id":4,"meeting_id":"google_meet/fnv-enye-wbr","fields":{"segments":7}}
+INFO:     127.0.0.1:38786 - "GET /transcripts/google_meet/fnv-enye-wbr HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:32:25.379924Z","level":"debug","service":"gateway","trace_id":"9fa5424a9893498a8273be805d06aa07","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":4,"fields":{"method":"GET","path":"http://localhost:8080/transcripts/google_meet/fnv-enye-wbr","downstream_status":200}}
+INFO:     172.18.0.1:49440 - "GET /transcripts/google_meet/fnv-enye-wbr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38796 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38810 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:32:39.042499Z","level":"debug","service":"gateway","trace_id":"6d38f061a3ea41458d12b480a623c07a","audience":"system","event":"request_received","span":"edge","fields":{"method":"GET","path":"/health","minted":true}}
+INFO:     127.0.0.1:52214 - "GET /health HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:32:39.284292Z","level":"debug","service":"gateway","trace_id":"d61bbbf1caf74ea096feae48d4588b34","audience":"system","event":"request_received","span":"edge","fields":{"method":"DELETE","path":"/bots/google_meet/fnv-enye-wbr","minted":true}}
+{"ts":"2026-10-27T19:32:39.286626Z","level":"debug","service":"identity","trace_id":"d61bbbf1caf74ea096feae48d4588b34","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:40230 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:32:39.289591Z","level":"debug","service":"identity","trace_id":"d61bbbf1caf74ea096feae48d4588b34","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":3.0}}
+{"ts":"2026-10-27T19:32:39.289781Z","level":"info","service":"gateway","trace_id":"d61bbbf1caf74ea096feae48d4588b34","audience":"user","event":"request_accepted","span":"auth","user_id":3,"fields":{"method":"DELETE","path":"/bots/google_meet/fnv-enye-wbr"}}
+INFO:     127.0.0.1:47804 - "DELETE /bots/google_meet/fnv-enye-wbr HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:32:39.303383Z","level":"debug","service":"gateway","trace_id":"d61bbbf1caf74ea096feae48d4588b34","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":3,"fields":{"method":"DELETE","path":"http://localhost:8080/bots/google_meet/fnv-enye-wbr","downstream_status":200}}
+INFO:     172.18.0.1:38096 - "DELETE /bots/google_meet/fnv-enye-wbr HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:32:39.311163Z","level":"debug","service":"gateway","trace_id":"0cae9ef29e0c4ba9833bd26325dc1a92","audience":"system","event":"request_received","span":"edge","fields":{"method":"DELETE","path":"/bots/google_meet/fnv-enye-wbr","minted":true}}
+{"ts":"2026-10-27T19:32:39.312211Z","level":"debug","service":"identity","trace_id":"0cae9ef29e0c4ba9833bd26325dc1a92","audience":"system","event":"request_received","fields":{"method":"POST","path":"/internal/validate"}}
+INFO:     127.0.0.1:40230 - "POST /internal/validate HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:32:39.314926Z","level":"debug","service":"identity","trace_id":"0cae9ef29e0c4ba9833bd26325dc1a92","audience":"system","event":"request_completed","fields":{"method":"POST","path":"/internal/validate","status":200,"duration_ms":2.7}}
+{"ts":"2026-10-27T19:32:39.315169Z","level":"info","service":"gateway","trace_id":"0cae9ef29e0c4ba9833bd26325dc1a92","audience":"user","event":"request_accepted","span":"auth","user_id":4,"fields":{"method":"DELETE","path":"/bots/google_meet/fnv-enye-wbr"}}
+{"ts":"2026-10-27T19:32:39.322211Z","level":"info","service":"meeting-api","trace_id":"763c63f2ce3d4fefbe471d86491964fc","audience":"user","event":"recording_completed","span":"recordings.upload","user_id":3,"meeting_id":"7","fields":{"recording_id":979011917842,"media_type":"audio"}}
+INFO:     127.0.0.1:47808 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47804 - "DELETE /bots/google_meet/fnv-enye-wbr HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:32:39.327896Z","level":"debug","service":"gateway","trace_id":"0cae9ef29e0c4ba9833bd26325dc1a92","audience":"system","event":"downstream_forwarded","span":"proxy","user_id":4,"fields":{"method":"DELETE","path":"http://localhost:8080/bots/google_meet/fnv-enye-wbr","downstream_status":200}}
+INFO:     172.18.0.1:38098 - "DELETE /bots/google_meet/fnv-enye-wbr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47808 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:32:39.346534Z","level":"info","service":"meeting-api","trace_id":"f746d887fb724696a029a23d04474243","audience":"user","event":"recording_completed","span":"recordings.upload","user_id":4,"meeting_id":"8","fields":{"recording_id":846494085346,"media_type":"audio"}}
+INFO:     127.0.0.1:47810 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47810 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:32:40.455531Z","level":"info","service":"meeting-api","trace_id":"b36c3322cc6649c9af205c63e9705096","audience":"system","event":"meeting_copilot_reap_signalled","span":"lifecycle.callback","meeting_id":"d856aca0-91b2-4775-935a-e41cb4eee8aa","fields":{"meeting_row_id":7,"native":"fnv-enye-wbr","meeting_status":"completed"}}
+{"ts":"2026-10-27T19:32:40.455617Z","level":"info","service":"meeting-api","trace_id":"b36c3322cc6649c9af205c63e9705096","audience":"user","event":"meeting_lifecycle_advanced","span":"lifecycle.callback","meeting_id":"d856aca0-91b2-4775-935a-e41cb4eee8aa","fields":{"meeting_status":"completed"}}
+INFO:     127.0.0.1:47820 - "POST /bots/internal/callback/lifecycle HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:32:40.472274Z","level":"info","service":"meeting-api","trace_id":"8c253deda2cf4255adee63f86eb83ba8","audience":"operator","event":"signal_tape_stored","span":"recordings.signal","user_id":3,"meeting_id":"7","fields":{"session_uid":"d856aca0-91b2-4775-935a-e41cb4eee8aa","part":"captured-signal","bytes":267,"storage_path":"signal/3/7/d856aca0-91b2-4775-935a-e41cb4eee8aa/captured-signal.jsonl"}}
+INFO:     127.0.0.1:47808 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:32:40.482055Z","level":"info","service":"meeting-api","trace_id":"66b8e16f37b6485889eaa922ac0b89ed","audience":"system","event":"meeting_copilot_reap_signalled","span":"lifecycle.callback","meeting_id":"2414ee56-5bdc-447d-b3cc-803b556b9d7b","fields":{"meeting_row_id":8,"native":"fnv-enye-wbr","meeting_status":"completed"}}
+{"ts":"2026-10-27T19:32:40.482092Z","level":"info","service":"meeting-api","trace_id":"66b8e16f37b6485889eaa922ac0b89ed","audience":"user","event":"meeting_lifecycle_advanced","span":"lifecycle.callback","meeting_id":"2414ee56-5bdc-447d-b3cc-803b556b9d7b","fields":{"meeting_status":"completed"}}
+INFO:     127.0.0.1:47826 - "POST /bots/internal/callback/lifecycle HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:32:40.489286Z","level":"info","service":"meeting-api","trace_id":"9ca74f1dfef54b2ba10215b5f89b33ed","audience":"operator","event":"signal_tape_stored","span":"recordings.signal","user_id":3,"meeting_id":"7","fields":{"session_uid":"d856aca0-91b2-4775-935a-e41cb4eee8aa","part":"observations","bytes":363,"storage_path":"signal/3/7/d856aca0-91b2-4775-935a-e41cb4eee8aa/observations.jsonl"}}
+INFO:     127.0.0.1:47808 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:32:40.506089Z","level":"info","service":"meeting-api","trace_id":"097d0a2d481a40428d1b8522e51bc37e","audience":"operator","event":"signal_tape_stored","span":"recordings.signal","user_id":3,"meeting_id":"7","fields":{"session_uid":"d856aca0-91b2-4775-935a-e41cb4eee8aa","part":"botlog","bytes":36273,"storage_path":"signal/3/7/d856aca0-91b2-4775-935a-e41cb4eee8aa/botlog.txt"}}
+INFO:     127.0.0.1:47808 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:32:40.510185Z","level":"info","service":"meeting-api","trace_id":"d9410e7be31a4ff397e9d63d0064820d","audience":"operator","event":"signal_tape_stored","span":"recordings.signal","user_id":4,"meeting_id":"8","fields":{"session_uid":"2414ee56-5bdc-447d-b3cc-803b556b9d7b","part":"captured-signal","bytes":1187132,"storage_path":"signal/4/8/2414ee56-5bdc-447d-b3cc-803b556b9d7b/captured-signal.jsonl"}}
+INFO:     127.0.0.1:47810 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:32:40.522778Z","level":"info","service":"meeting-api","trace_id":"b19efefbfe1946cd940ee64c5cd758b9","audience":"operator","event":"signal_tape_stored","span":"recordings.signal","user_id":4,"meeting_id":"8","fields":{"session_uid":"2414ee56-5bdc-447d-b3cc-803b556b9d7b","part":"stt","bytes":3055,"storage_path":"signal/4/8/2414ee56-5bdc-447d-b3cc-803b556b9d7b/stt.jsonl"}}
+INFO:     127.0.0.1:47810 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:32:40.593340Z","level":"info","service":"meeting-api","trace_id":"57e862ad0d8c4026ab595cd27eda3c37","audience":"operator","event":"signal_tape_stored","span":"recordings.signal","user_id":4,"meeting_id":"8","fields":{"session_uid":"2414ee56-5bdc-447d-b3cc-803b556b9d7b","part":"observations","bytes":363,"storage_path":"signal/4/8/2414ee56-5bdc-447d-b3cc-803b556b9d7b/observations.jsonl"}}
+INFO:     127.0.0.1:47810 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:32:40.608641Z","level":"info","service":"meeting-api","trace_id":"3566b8486ea941a1b45bcef2d96af861","audience":"operator","event":"signal_tape_stored","span":"recordings.signal","user_id":4,"meeting_id":"8","fields":{"session_uid":"2414ee56-5bdc-447d-b3cc-803b556b9d7b","part":"botlog","bytes":36949,"storage_path":"signal/4/8/2414ee56-5bdc-447d-b3cc-803b556b9d7b/botlog.txt"}}
+INFO:     127.0.0.1:47810 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+{"ts":"2026-10-27T19:32:40.621961Z","level":"info","service":"meeting-api","trace_id":"27b4a172ae25441b94cc3dead9e1d849","audience":"operator","event":"signal_tape_stored","span":"recordings.signal","user_id":4,"meeting_id":"8","fields":{"session_uid":"2414ee56-5bdc-447d-b3cc-803b556b9d7b","part":"transcript","bytes":2420,"storage_path":"signal/4/8/2414ee56-5bdc-447d-b3cc-803b556b9d7b/transcript.jsonl"}}
+2026-10-27 19:32:40,622 INFO reaped unknown pid 2619 (exit status 1)
+INFO:     127.0.0.1:47810 - "POST /internal/recordings/upload HTTP/1.1" 200 OK
+2026-10-27 19:32:41,624 INFO reaped unknown pid 569 (exit status 0)
+2026-10-27 19:32:41,624 INFO reaped unknown pid 570 (exit status 0)
+2026-10-27 19:32:41,624 INFO reaped unknown pid 573 (exit status 0)
+2026-10-27 19:32:41,624 INFO reaped unknown pid 574 (exit status 0)
+2026-10-27 19:32:41,624 INFO reaped unknown pid 581 (exit status 0)
+2026-10-27 19:32:41,624 INFO reaped unknown pid 583 (exit status 0)
+2026-10-27 19:32:41,624 INFO reaped unknown pid 2624 (exit status 1)
+2026-10-27 19:32:41,624 INFO reaped unknown pid 582 (exit status 0)
+2026-10-27 19:32:41,624 INFO reaped unknown pid 584 (exit status 0)

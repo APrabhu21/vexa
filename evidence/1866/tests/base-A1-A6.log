@@ -1,0 +1,810 @@
+FFFFFFF.FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF                                [100%]
+================================== FAILURES ===================================
+______ test_owner_speak_publishes_one_speak_act_carrying_the_request_id _______
+
+    def test_owner_speak_publishes_one_speak_act_carrying_the_request_id():
+        client, repo, bus = _live()
+        mid = _seed(repo)
+    
+        r = client.post(URL, headers=_h(), json={"text": "hi"})
+    
+>       assert r.status_code == 200, r.text
+E       AssertionError: {"detail":"Not Found"}
+E       assert 404 == 200
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:120: AssertionError
+_____________ test_a_voice_preset_rides_the_act_and_auto_does_not _____________
+
+    def test_a_voice_preset_rides_the_act_and_auto_does_not():
+        client, repo, bus = _live()
+        _seed(repo)
+    
+>       assert client.post(URL, headers=_h(), json={"text": "a", "voice": "af_bella"}).status_code == 200
+E       AssertionError: assert 404 == 200
+E        +  where 404 = <Response [404 Not Found]>.status_code
+E        +    where <Response [404 Not Found]> = post('/bots/google_meet/abc-defg-hij/speak', headers={'x-user-id': '7'}, json={'text': 'a', 'voice': 'af_bella'})
+E        +      where post = <starlette.testclient.TestClient object at 0x00000229AC434C50>.post
+E        +      and   {'x-user-id': '7'} = _h()
+
+tests\test_speak_route.py:133: AssertionError
+____________ test_mcp_and_unknown_fields_are_accepted_and_ignored _____________
+
+    def test_mcp_and_unknown_fields_are_accepted_and_ignored():
+        client, repo, bus = _live()
+        _seed(repo)
+    
+        r = client.post(URL, headers=_h(), json={"text": "hi", "language": "en", "asked_by_a_human": True,
+                                                 "format": "pcm", "sample_rate": 24000, "provider": "x",
+                                                 "something_else": 1})
+    
+>       assert r.status_code == 200, r.text
+E       AssertionError: {"detail":"Not Found"}
+E       assert 404 == 200
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:151: AssertionError
+________________ test_only_the_newest_active_voice_bot_speaks _________________
+
+    def test_only_the_newest_active_voice_bot_speaks():
+        client, repo, bus = _live()
+        _seed(repo)
+        newest = _seed(repo)
+    
+>       assert client.post(URL, headers=_h(), json={"text": "hi"}).status_code == 200
+E       AssertionError: assert 404 == 200
+E        +  where 404 = <Response [404 Not Found]>.status_code
+E        +    where <Response [404 Not Found]> = post('/bots/google_meet/abc-defg-hij/speak', headers={'x-user-id': '7'}, json={'text': 'hi'})
+E        +      where post = <starlette.testclient.TestClient object at 0x00000229A90368A0>.post
+E        +      and   {'x-user-id': '7'} = _h()
+
+tests\test_speak_route.py:160: AssertionError
+________ test_a_workspace_editor_can_speak_through_a_bound_bot[owner] _________
+
+role = 'owner'
+
+    @pytest.mark.parametrize("role", ["owner", "contributor"])
+    def test_a_workspace_editor_can_speak_through_a_bound_bot(role):
+        client, repo, bus = _live(roles=Roles({(MEMBER, WS): role}))
+        mid = _seed(repo, workspace_id=WS)
+    
+        r = client.post(URL, headers=_h(MEMBER, WS), json={"text": "hi"})
+    
+>       assert r.status_code == 200, r.text
+E       AssertionError: {"detail":"Not Found"}
+E       assert 404 == 200
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:175: AssertionError
+_____ test_a_workspace_editor_can_speak_through_a_bound_bot[contributor] ______
+
+role = 'contributor'
+
+    @pytest.mark.parametrize("role", ["owner", "contributor"])
+    def test_a_workspace_editor_can_speak_through_a_bound_bot(role):
+        client, repo, bus = _live(roles=Roles({(MEMBER, WS): role}))
+        mid = _seed(repo, workspace_id=WS)
+    
+        r = client.post(URL, headers=_h(MEMBER, WS), json={"text": "hi"})
+    
+>       assert r.status_code == 200, r.text
+E       AssertionError: {"detail":"Not Found"}
+E       assert 404 == 200
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:175: AssertionError
+___________ test_a_workspace_reader_is_refused_403_naming_the_role ____________
+
+    def test_a_workspace_reader_is_refused_403_naming_the_role():
+        client, repo, bus = _live(roles=Roles({(MEMBER, WS): "reader"}))
+        _seed(repo, workspace_id=WS)
+    
+        r = client.post(URL, headers=_h(MEMBER, WS), json={"text": "hi"})
+    
+>       assert r.status_code == 403
+E       assert 404 == 403
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:185: AssertionError
+__________________________ test_identity_down_is_503 __________________________
+
+    def test_identity_down_is_503():
+        client, repo, bus = _live(roles=Roles(down=True))
+        _seed(repo, workspace_id=WS)
+    
+        r = client.post(URL, headers=_h(MEMBER, WS), json={"text": "hi"})
+    
+>       assert r.status_code == 503
+E       assert 404 == 503
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:206: AssertionError
+_____ test_a_bot_that_cannot_speak_is_409_and_nothing_is_published[seed0] _____
+
+seed = {'status': 'joining'}
+
+    @pytest.mark.parametrize("seed", [
+        {"status": "joining"},
+        {"status": "awaiting_admission"},
+        {"voice": False},
+        {"stop_requested": True},
+    ])
+    def test_a_bot_that_cannot_speak_is_409_and_nothing_is_published(seed):
+        client, repo, bus = _live()
+        _seed(repo, **seed)
+    
+        r = client.post(URL, headers=_h(), json={"text": "hi"})
+    
+>       assert r.status_code == 409, r.text
+E       AssertionError: {"detail":"Not Found"}
+E       assert 404 == 409
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:225: AssertionError
+_____ test_a_bot_that_cannot_speak_is_409_and_nothing_is_published[seed1] _____
+
+seed = {'status': 'awaiting_admission'}
+
+    @pytest.mark.parametrize("seed", [
+        {"status": "joining"},
+        {"status": "awaiting_admission"},
+        {"voice": False},
+        {"stop_requested": True},
+    ])
+    def test_a_bot_that_cannot_speak_is_409_and_nothing_is_published(seed):
+        client, repo, bus = _live()
+        _seed(repo, **seed)
+    
+        r = client.post(URL, headers=_h(), json={"text": "hi"})
+    
+>       assert r.status_code == 409, r.text
+E       AssertionError: {"detail":"Not Found"}
+E       assert 404 == 409
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:225: AssertionError
+_____ test_a_bot_that_cannot_speak_is_409_and_nothing_is_published[seed2] _____
+
+seed = {'voice': False}
+
+    @pytest.mark.parametrize("seed", [
+        {"status": "joining"},
+        {"status": "awaiting_admission"},
+        {"voice": False},
+        {"stop_requested": True},
+    ])
+    def test_a_bot_that_cannot_speak_is_409_and_nothing_is_published(seed):
+        client, repo, bus = _live()
+        _seed(repo, **seed)
+    
+        r = client.post(URL, headers=_h(), json={"text": "hi"})
+    
+>       assert r.status_code == 409, r.text
+E       AssertionError: {"detail":"Not Found"}
+E       assert 404 == 409
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:225: AssertionError
+_____ test_a_bot_that_cannot_speak_is_409_and_nothing_is_published[seed3] _____
+
+seed = {'stop_requested': True}
+
+    @pytest.mark.parametrize("seed", [
+        {"status": "joining"},
+        {"status": "awaiting_admission"},
+        {"voice": False},
+        {"stop_requested": True},
+    ])
+    def test_a_bot_that_cannot_speak_is_409_and_nothing_is_published(seed):
+        client, repo, bus = _live()
+        _seed(repo, **seed)
+    
+        r = client.post(URL, headers=_h(), json={"text": "hi"})
+    
+>       assert r.status_code == 409, r.text
+E       AssertionError: {"detail":"Not Found"}
+E       assert 404 == 409
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:225: AssertionError
+____________ test_a_bot_without_the_voice_flag_says_how_to_fix_it _____________
+
+    def test_a_bot_without_the_voice_flag_says_how_to_fix_it():
+        client, repo, _ = _live()
+        _seed(repo, voice=False)
+    
+        r = client.post(URL, headers=_h(), json={"text": "hi"})
+    
+>       assert r.json()["detail"] == ("this bot was started without voice_agent_enabled: true, so it "
+                                      "cannot speak — start a bot with that flag")
+E       AssertionError: assert 'Not Found' == 'this bot was...ith that flag'
+E         
+E         - this bot was started without voice_agent_enabled: true, so it cannot speak — start a bot with that flag
+E         + Not Found
+
+tests\test_speak_route.py:235: AssertionError
+________________________ test_no_bot_listening_is_409 _________________________
+
+    def test_no_bot_listening_is_409():
+        client, repo, _ = _live(bus=Bus(receivers=0))
+        _seed(repo)
+    
+        r = client.post(URL, headers=_h(), json={"text": "hi"})
+    
+>       assert r.status_code == 409
+E       assert 404 == 409
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:245: AssertionError
+____________________________ test_bus_down_is_503 _____________________________
+
+    def test_bus_down_is_503():
+        client, repo, _ = _live(bus=Bus(down=True))
+        _seed(repo)
+    
+        r = client.post(URL, headers=_h(), json={"text": "hi"})
+    
+>       assert r.status_code == 503
+E       assert 404 == 503
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:254: AssertionError
+_____________________ test_a_malformed_body_is_422[body0] _____________________
+
+body = {}
+
+    @pytest.mark.parametrize("body", [
+        {},
+        {"text": ""},
+        {"text": "   "},
+        {"text": 5},
+        {"text": "x" * 501},
+        {"text": "hi", "voice": "bad voice!"},
+        {"text": "hi", "voice": "v" * 65},
+        {"text": "hi", "audio_base64": "AAAA"},
+        {"text": "hi", "audio_url": "https://example.com/a.wav"},
+        ["not", "an", "object"],
+    ])
+    def test_a_malformed_body_is_422(body):
+        client, repo, bus = _live()
+        _seed(repo)
+    
+        r = client.post(URL, headers=_h(), json=body)
+    
+>       assert r.status_code == 422, r.text
+E       AssertionError: {"detail":"Not Found"}
+E       assert 404 == 422
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:278: AssertionError
+_____________________ test_a_malformed_body_is_422[body1] _____________________
+
+body = {'text': ''}
+
+    @pytest.mark.parametrize("body", [
+        {},
+        {"text": ""},
+        {"text": "   "},
+        {"text": 5},
+        {"text": "x" * 501},
+        {"text": "hi", "voice": "bad voice!"},
+        {"text": "hi", "voice": "v" * 65},
+        {"text": "hi", "audio_base64": "AAAA"},
+        {"text": "hi", "audio_url": "https://example.com/a.wav"},
+        ["not", "an", "object"],
+    ])
+    def test_a_malformed_body_is_422(body):
+        client, repo, bus = _live()
+        _seed(repo)
+    
+        r = client.post(URL, headers=_h(), json=body)
+    
+>       assert r.status_code == 422, r.text
+E       AssertionError: {"detail":"Not Found"}
+E       assert 404 == 422
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:278: AssertionError
+_____________________ test_a_malformed_body_is_422[body2] _____________________
+
+body = {'text': '   '}
+
+    @pytest.mark.parametrize("body", [
+        {},
+        {"text": ""},
+        {"text": "   "},
+        {"text": 5},
+        {"text": "x" * 501},
+        {"text": "hi", "voice": "bad voice!"},
+        {"text": "hi", "voice": "v" * 65},
+        {"text": "hi", "audio_base64": "AAAA"},
+        {"text": "hi", "audio_url": "https://example.com/a.wav"},
+        ["not", "an", "object"],
+    ])
+    def test_a_malformed_body_is_422(body):
+        client, repo, bus = _live()
+        _seed(repo)
+    
+        r = client.post(URL, headers=_h(), json=body)
+    
+>       assert r.status_code == 422, r.text
+E       AssertionError: {"detail":"Not Found"}
+E       assert 404 == 422
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:278: AssertionError
+_____________________ test_a_malformed_body_is_422[body3] _____________________
+
+body = {'text': 5}
+
+    @pytest.mark.parametrize("body", [
+        {},
+        {"text": ""},
+        {"text": "   "},
+        {"text": 5},
+        {"text": "x" * 501},
+        {"text": "hi", "voice": "bad voice!"},
+        {"text": "hi", "voice": "v" * 65},
+        {"text": "hi", "audio_base64": "AAAA"},
+        {"text": "hi", "audio_url": "https://example.com/a.wav"},
+        ["not", "an", "object"],
+    ])
+    def test_a_malformed_body_is_422(body):
+        client, repo, bus = _live()
+        _seed(repo)
+    
+        r = client.post(URL, headers=_h(), json=body)
+    
+>       assert r.status_code == 422, r.text
+E       AssertionError: {"detail":"Not Found"}
+E       assert 404 == 422
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:278: AssertionError
+_____________________ test_a_malformed_body_is_422[body4] _____________________
+
+body = {'text': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx...xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'}
+
+    @pytest.mark.parametrize("body", [
+        {},
+        {"text": ""},
+        {"text": "   "},
+        {"text": 5},
+        {"text": "x" * 501},
+        {"text": "hi", "voice": "bad voice!"},
+        {"text": "hi", "voice": "v" * 65},
+        {"text": "hi", "audio_base64": "AAAA"},
+        {"text": "hi", "audio_url": "https://example.com/a.wav"},
+        ["not", "an", "object"],
+    ])
+    def test_a_malformed_body_is_422(body):
+        client, repo, bus = _live()
+        _seed(repo)
+    
+        r = client.post(URL, headers=_h(), json=body)
+    
+>       assert r.status_code == 422, r.text
+E       AssertionError: {"detail":"Not Found"}
+E       assert 404 == 422
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:278: AssertionError
+_____________________ test_a_malformed_body_is_422[body5] _____________________
+
+body = {'text': 'hi', 'voice': 'bad voice!'}
+
+    @pytest.mark.parametrize("body", [
+        {},
+        {"text": ""},
+        {"text": "   "},
+        {"text": 5},
+        {"text": "x" * 501},
+        {"text": "hi", "voice": "bad voice!"},
+        {"text": "hi", "voice": "v" * 65},
+        {"text": "hi", "audio_base64": "AAAA"},
+        {"text": "hi", "audio_url": "https://example.com/a.wav"},
+        ["not", "an", "object"],
+    ])
+    def test_a_malformed_body_is_422(body):
+        client, repo, bus = _live()
+        _seed(repo)
+    
+        r = client.post(URL, headers=_h(), json=body)
+    
+>       assert r.status_code == 422, r.text
+E       AssertionError: {"detail":"Not Found"}
+E       assert 404 == 422
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:278: AssertionError
+_____________________ test_a_malformed_body_is_422[body6] _____________________
+
+body = {'text': 'hi', 'voice': 'vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv'}
+
+    @pytest.mark.parametrize("body", [
+        {},
+        {"text": ""},
+        {"text": "   "},
+        {"text": 5},
+        {"text": "x" * 501},
+        {"text": "hi", "voice": "bad voice!"},
+        {"text": "hi", "voice": "v" * 65},
+        {"text": "hi", "audio_base64": "AAAA"},
+        {"text": "hi", "audio_url": "https://example.com/a.wav"},
+        ["not", "an", "object"],
+    ])
+    def test_a_malformed_body_is_422(body):
+        client, repo, bus = _live()
+        _seed(repo)
+    
+        r = client.post(URL, headers=_h(), json=body)
+    
+>       assert r.status_code == 422, r.text
+E       AssertionError: {"detail":"Not Found"}
+E       assert 404 == 422
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:278: AssertionError
+_____________________ test_a_malformed_body_is_422[body7] _____________________
+
+body = {'text': 'hi', 'audio_base64': 'AAAA'}
+
+    @pytest.mark.parametrize("body", [
+        {},
+        {"text": ""},
+        {"text": "   "},
+        {"text": 5},
+        {"text": "x" * 501},
+        {"text": "hi", "voice": "bad voice!"},
+        {"text": "hi", "voice": "v" * 65},
+        {"text": "hi", "audio_base64": "AAAA"},
+        {"text": "hi", "audio_url": "https://example.com/a.wav"},
+        ["not", "an", "object"],
+    ])
+    def test_a_malformed_body_is_422(body):
+        client, repo, bus = _live()
+        _seed(repo)
+    
+        r = client.post(URL, headers=_h(), json=body)
+    
+>       assert r.status_code == 422, r.text
+E       AssertionError: {"detail":"Not Found"}
+E       assert 404 == 422
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:278: AssertionError
+_____________________ test_a_malformed_body_is_422[body8] _____________________
+
+body = {'text': 'hi', 'audio_url': 'https://example.com/a.wav'}
+
+    @pytest.mark.parametrize("body", [
+        {},
+        {"text": ""},
+        {"text": "   "},
+        {"text": 5},
+        {"text": "x" * 501},
+        {"text": "hi", "voice": "bad voice!"},
+        {"text": "hi", "voice": "v" * 65},
+        {"text": "hi", "audio_base64": "AAAA"},
+        {"text": "hi", "audio_url": "https://example.com/a.wav"},
+        ["not", "an", "object"],
+    ])
+    def test_a_malformed_body_is_422(body):
+        client, repo, bus = _live()
+        _seed(repo)
+    
+        r = client.post(URL, headers=_h(), json=body)
+    
+>       assert r.status_code == 422, r.text
+E       AssertionError: {"detail":"Not Found"}
+E       assert 404 == 422
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:278: AssertionError
+_____________________ test_a_malformed_body_is_422[body9] _____________________
+
+body = ['not', 'an', 'object']
+
+    @pytest.mark.parametrize("body", [
+        {},
+        {"text": ""},
+        {"text": "   "},
+        {"text": 5},
+        {"text": "x" * 501},
+        {"text": "hi", "voice": "bad voice!"},
+        {"text": "hi", "voice": "v" * 65},
+        {"text": "hi", "audio_base64": "AAAA"},
+        {"text": "hi", "audio_url": "https://example.com/a.wav"},
+        ["not", "an", "object"],
+    ])
+    def test_a_malformed_body_is_422(body):
+        client, repo, bus = _live()
+        _seed(repo)
+    
+        r = client.post(URL, headers=_h(), json=body)
+    
+>       assert r.status_code == 422, r.text
+E       AssertionError: {"detail":"Not Found"}
+E       assert 404 == 422
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:278: AssertionError
+_______________________ test_audio_input_points_at_514 ________________________
+
+    def test_audio_input_points_at_514():
+        client, repo, _ = _live()
+        _seed(repo)
+    
+        r = client.post(URL, headers=_h(), json={"text": "hi", "audio_base64": "AAAA"})
+    
+>       assert r.json()["detail"] == "audio input is not served by this route yet — see #514"
+E       AssertionError: assert 'Not Found' == 'audio input ...et — see #514'
+E         
+E         - audio input is not served by this route yet — see #514
+E         + Not Found
+
+tests\test_speak_route.py:288: AssertionError
+___________________ test_exactly_500_characters_is_accepted ___________________
+
+    def test_exactly_500_characters_is_accepted():
+        client, repo, _ = _live()
+        _seed(repo)
+    
+>       assert client.post(URL, headers=_h(), json={"text": "x" * 500}).status_code == 200
+E       AssertionError: assert 404 == 200
+E        +  where 404 = <Response [404 Not Found]>.status_code
+E        +    where <Response [404 Not Found]> = post('/bots/google_meet/abc-defg-hij/speak', headers={'x-user-id': '7'}, json={'text': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx...xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'})
+E        +      where post = <starlette.testclient.TestClient object at 0x00000229ACDD0D40>.post
+E        +      and   {'x-user-id': '7'} = _h()
+
+tests\test_speak_route.py:295: AssertionError
+_____________________ test_a_body_that_is_not_json_is_422 _____________________
+
+    def test_a_body_that_is_not_json_is_422():
+        client, repo, _ = _live()
+        _seed(repo)
+    
+        r = client.post(URL, headers={**_h(), "content-type": "application/json"}, content=b"{nope")
+    
+>       assert r.status_code == 422
+E       assert 404 == 422
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:304: AssertionError
+_____ test_a_platform_without_a_meeting_to_speak_into_is_422[voice_note] ______
+
+platform = 'voice_note'
+
+    @pytest.mark.parametrize("platform", ["voice_note", "browser_session", "vexa_call", "skype"])
+    def test_a_platform_without_a_meeting_to_speak_into_is_422(platform):
+        client, _, _ = _live()
+    
+        r = client.post(f"/bots/{platform}/{NATIVE}/speak", headers=_h(), json={"text": "hi"})
+    
+>       assert r.status_code == 422
+E       assert 404 == 422
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:313: AssertionError
+___ test_a_platform_without_a_meeting_to_speak_into_is_422[browser_session] ___
+
+platform = 'browser_session'
+
+    @pytest.mark.parametrize("platform", ["voice_note", "browser_session", "vexa_call", "skype"])
+    def test_a_platform_without_a_meeting_to_speak_into_is_422(platform):
+        client, _, _ = _live()
+    
+        r = client.post(f"/bots/{platform}/{NATIVE}/speak", headers=_h(), json={"text": "hi"})
+    
+>       assert r.status_code == 422
+E       assert 404 == 422
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:313: AssertionError
+______ test_a_platform_without_a_meeting_to_speak_into_is_422[vexa_call] ______
+
+platform = 'vexa_call'
+
+    @pytest.mark.parametrize("platform", ["voice_note", "browser_session", "vexa_call", "skype"])
+    def test_a_platform_without_a_meeting_to_speak_into_is_422(platform):
+        client, _, _ = _live()
+    
+        r = client.post(f"/bots/{platform}/{NATIVE}/speak", headers=_h(), json={"text": "hi"})
+    
+>       assert r.status_code == 422
+E       assert 404 == 422
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:313: AssertionError
+________ test_a_platform_without_a_meeting_to_speak_into_is_422[skype] ________
+
+platform = 'skype'
+
+    @pytest.mark.parametrize("platform", ["voice_note", "browser_session", "vexa_call", "skype"])
+    def test_a_platform_without_a_meeting_to_speak_into_is_422(platform):
+        client, _, _ = _live()
+    
+        r = client.post(f"/bots/{platform}/{NATIVE}/speak", headers=_h(), json={"text": "hi"})
+    
+>       assert r.status_code == 422
+E       assert 404 == 422
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:313: AssertionError
+_______________________ test_a_body_over_16_kib_is_413 ________________________
+
+    def test_a_body_over_16_kib_is_413():
+        client, repo, bus = _live()
+        _seed(repo)
+    
+        r = client.post(URL, headers=_h(), json={"text": "hi", "padding": "x" * 16_384})
+    
+>       assert r.status_code == 413
+E       assert 404 == 413
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:322: AssertionError
+___________________________ test_no_identity_is_401 ___________________________
+
+    def test_no_identity_is_401():
+        client, repo, _ = _live()
+        _seed(repo)
+    
+>       assert client.post(URL, json={"text": "hi"}).status_code == 401
+E       AssertionError: assert 404 == 401
+E        +  where 404 = <Response [404 Not Found]>.status_code
+E        +    where <Response [404 Not Found]> = post('/bots/google_meet/abc-defg-hij/speak', json={'text': 'hi'})
+E        +      where post = <starlette.testclient.TestClient object at 0x00000229ACBF43E0>.post
+
+tests\test_speak_route.py:330: AssertionError
+_ test_the_seventh_speak_in_a_minute_is_429_and_not_published_and_chat_is_unaffected _
+
+    def test_the_seventh_speak_in_a_minute_is_429_and_not_published_and_chat_is_unaffected():
+        client, repo, bus = _live()
+        _seed(repo)
+    
+        codes = [client.post(URL, headers=_h(), json={"text": f"n{i}"}).status_code for i in range(7)]
+    
+>       assert codes == [200] * 6 + [429]
+E       assert [404, 404, 40...404, 404, ...] == [200, 200, 20...200, 200, ...]
+E         
+E         At index 0 diff: 404 != 200
+E         Use -v to get more diff
+
+tests\test_speak_route.py:343: AssertionError
+_______ test_delete_sends_speak_stop_without_needing_active_or_the_flag _______
+
+    def test_delete_sends_speak_stop_without_needing_active_or_the_flag():
+        client, repo, bus = _live()
+        mid = _seed(repo, status="joining", voice=False)
+    
+        r = client.delete(URL, headers=_h())
+    
+>       assert r.status_code == 200, r.text
+E       AssertionError: {"detail":"Not Found"}
+E       assert 404 == 200
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:360: AssertionError
+_________ test_delete_reaches_every_owned_bot_and_is_not_rate_limited _________
+
+    def test_delete_reaches_every_owned_bot_and_is_not_rate_limited():
+        client, repo, bus = _live()
+        a, b = _seed(repo), _seed(repo)
+        for i in range(6):
+            client.post(URL, headers=_h(), json={"text": f"n{i}"})
+        bus.published.clear()
+    
+        r = client.delete(URL, headers=_h())
+    
+>       assert r.status_code == 200
+E       assert 404 == 200
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:375: AssertionError
+_______________ test_delete_by_a_workspace_editor_and_refusals ________________
+
+    def test_delete_by_a_workspace_editor_and_refusals():
+        client, repo, bus = _live(roles=Roles({(MEMBER, WS): "contributor"}))
+        _seed(repo, workspace_id=WS)
+    
+>       assert client.delete(URL, headers=_h(MEMBER, WS)).status_code == 200
+E       AssertionError: assert 404 == 200
+E        +  where 404 = <Response [404 Not Found]>.status_code
+E        +    where <Response [404 Not Found]> = delete('/bots/google_meet/abc-defg-hij/speak', headers={'x-user-id': '8', 'x-user-workspaces': 'ws_team'})
+E        +      where delete = <starlette.testclient.TestClient object at 0x00000229AC31DCD0>.delete
+E        +      and   {'x-user-id': '8', 'x-user-workspaces': 'ws_team'} = _h(8, 'ws_team')
+
+tests\test_speak_route.py:385: AssertionError
+________ test_delete_with_nothing_listening_is_409_and_bus_down_is_503 ________
+
+    def test_delete_with_nothing_listening_is_409_and_bus_down_is_503():
+        for bus, code in ((Bus(receivers=0), 409), (Bus(down=True), 503)):
+            client, repo, _ = _live(bus=bus)
+            _seed(repo)
+>           assert client.delete(URL, headers=_h()).status_code == code
+E           AssertionError: assert 404 == 409
+E            +  where 404 = <Response [404 Not Found]>.status_code
+E            +    where <Response [404 Not Found]> = delete('/bots/google_meet/abc-defg-hij/speak', headers={'x-user-id': '7'})
+E            +      where delete = <starlette.testclient.TestClient object at 0x00000229ACA48140>.delete
+E            +      and   {'x-user-id': '7'} = _h()
+
+tests\test_speak_route.py:393: AssertionError
+______________ test_the_audit_lines_never_carry_the_spoken_text _______________
+
+caplog = <_pytest.logging.LogCaptureFixture object at 0x00000229AC983B60>
+
+    def test_the_audit_lines_never_carry_the_spoken_text(caplog):
+        client, repo, _ = _live()
+        _seed(repo)
+        secret = "the merger closes on Friday"
+    
+        with caplog.at_level(logging.DEBUG):
+            ok = client.post(URL, headers=_h(), json={"text": secret})
+            client.post(URL, headers=_h(STRANGER), json={"text": secret})
+            client.delete(URL, headers=_h())
+    
+>       assert ok.status_code == 200
+E       assert 404 == 200
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_speak_route.py:409: AssertionError
+------------------------------ Captured log call ------------------------------
+DEBUG    asyncio:proactor_events.py:634 Using proactor: IocpProactor
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/bots/google_meet/abc-defg-hij/speak "HTTP/1.1 404 Not Found"
+DEBUG    asyncio:proactor_events.py:634 Using proactor: IocpProactor
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/bots/google_meet/abc-defg-hij/speak "HTTP/1.1 404 Not Found"
+DEBUG    asyncio:proactor_events.py:634 Using proactor: IocpProactor
+INFO     httpx:_client.py:1025 HTTP Request: DELETE http://testserver/bots/google_meet/abc-defg-hij/speak "HTTP/1.1 404 Not Found"
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\aprabhu\JANCodes\vexa-1866\core\meetings\services\meeting-api\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+.venv\Lib\site-packages\starlette\testclient.py:53
+  C:\Users\aprabhu\JANCodes\vexa-1866\core\meetings\services\meeting-api\.venv\Lib\site-packages\starlette\testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_speak_route.py::test_owner_speak_publishes_one_speak_act_carrying_the_request_id
+FAILED tests/test_speak_route.py::test_a_voice_preset_rides_the_act_and_auto_does_not
+FAILED tests/test_speak_route.py::test_mcp_and_unknown_fields_are_accepted_and_ignored
+FAILED tests/test_speak_route.py::test_only_the_newest_active_voice_bot_speaks
+FAILED tests/test_speak_route.py::test_a_workspace_editor_can_speak_through_a_bound_bot[owner]
+FAILED tests/test_speak_route.py::test_a_workspace_editor_can_speak_through_a_bound_bot[contributor]
+FAILED tests/test_speak_route.py::test_a_workspace_reader_is_refused_403_naming_the_role
+FAILED tests/test_speak_route.py::test_identity_down_is_503 - assert 404 == 503
+FAILED tests/test_speak_route.py::test_a_bot_that_cannot_speak_is_409_and_nothing_is_published[seed0]
+FAILED tests/test_speak_route.py::test_a_bot_that_cannot_speak_is_409_and_nothing_is_published[seed1]
+FAILED tests/test_speak_route.py::test_a_bot_that_cannot_speak_is_409_and_nothing_is_published[seed2]
+FAILED tests/test_speak_route.py::test_a_bot_that_cannot_speak_is_409_and_nothing_is_published[seed3]
+FAILED tests/test_speak_route.py::test_a_bot_without_the_voice_flag_says_how_to_fix_it
+FAILED tests/test_speak_route.py::test_no_bot_listening_is_409 - assert 404 =...
+FAILED tests/test_speak_route.py::test_bus_down_is_503 - assert 404 == 503
+FAILED tests/test_speak_route.py::test_a_malformed_body_is_422[body0] - Asser...
+FAILED tests/test_speak_route.py::test_a_malformed_body_is_422[body1] - Asser...
+FAILED tests/test_speak_route.py::test_a_malformed_body_is_422[body2] - Asser...
+FAILED tests/test_speak_route.py::test_a_malformed_body_is_422[body3] - Asser...
+FAILED tests/test_speak_route.py::test_a_malformed_body_is_422[body4] - Asser...
+FAILED tests/test_speak_route.py::test_a_malformed_body_is_422[body5] - Asser...
+FAILED tests/test_speak_route.py::test_a_malformed_body_is_422[body6] - Asser...
+FAILED tests/test_speak_route.py::test_a_malformed_body_is_422[body7] - Asser...
+FAILED tests/test_speak_route.py::test_a_malformed_body_is_422[body8] - Asser...
+FAILED tests/test_speak_route.py::test_a_malformed_body_is_422[body9] - Asser...
+FAILED tests/test_speak_route.py::test_audio_input_points_at_514 - AssertionE...
+FAILED tests/test_speak_route.py::test_exactly_500_characters_is_accepted - A...
+FAILED tests/test_speak_route.py::test_a_body_that_is_not_json_is_422 - asser...
+FAILED tests/test_speak_route.py::test_a_platform_without_a_meeting_to_speak_into_is_422[voice_note]
+FAILED tests/test_speak_route.py::test_a_platform_without_a_meeting_to_speak_into_is_422[browser_session]
+FAILED tests/test_speak_route.py::test_a_platform_without_a_meeting_to_speak_into_is_422[vexa_call]
+FAILED tests/test_speak_route.py::test_a_platform_without_a_meeting_to_speak_into_is_422[skype]
+FAILED tests/test_speak_route.py::test_a_body_over_16_kib_is_413 - assert 404...
+FAILED tests/test_speak_route.py::test_no_identity_is_401 - AssertionError: a...
+FAILED tests/test_speak_route.py::test_the_seventh_speak_in_a_minute_is_429_and_not_published_and_chat_is_unaffected
+FAILED tests/test_speak_route.py::test_delete_sends_speak_stop_without_needing_active_or_the_flag
+FAILED tests/test_speak_route.py::test_delete_reaches_every_owned_bot_and_is_not_rate_limited
+FAILED tests/test_speak_route.py::test_delete_by_a_workspace_editor_and_refusals
+FAILED tests/test_speak_route.py::test_delete_with_nothing_listening_is_409_and_bus_down_is_503
+FAILED tests/test_speak_route.py::test_the_audit_lines_never_carry_the_spoken_text
+40 failed, 1 passed, 2 warnings in 5.65s

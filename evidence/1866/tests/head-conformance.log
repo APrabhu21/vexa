@@ -1,0 +1,28 @@
+........................................................................ [ 75%]
+........................                                                 [100%]
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\aprabhu\JANCodes\vexa-1866\core\gateway\services\conformance\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+.venv\Lib\site-packages\starlette\testclient.py:53
+  C:\Users\aprabhu\JANCodes\vexa-1866\core\gateway\services\conformance\.venv\Lib\site-packages\starlette\testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+tests/test_contract_conformance.py::test_every_sealed_api_v1_route_is_implemented_or_audited
+tests/test_contract_conformance.py::test_no_stale_known_gaps
+  C:\Users\aprabhu\JANCodes\vexa-1866\core\gateway\services\conformance\.venv\Lib\site-packages\fastapi\openapi\utils.py:252: UserWarning: Duplicate Operation ID forward_tail_agent__path__post for function forward_tail at C:\Users\aprabhu\JANCodes\vexa-1866\core\gateway\services\conformance\..\gateway\src\gateway\app.py
+    warnings.warn(message, stacklevel=1)
+
+tests/test_contract_conformance.py::test_every_sealed_api_v1_route_is_implemented_or_audited
+tests/test_contract_conformance.py::test_no_stale_known_gaps
+  C:\Users\aprabhu\JANCodes\vexa-1866\core\gateway\services\conformance\.venv\Lib\site-packages\fastapi\openapi\utils.py:252: UserWarning: Duplicate Operation ID mcp_message_mcp_post for function mcp_message at C:\Users\aprabhu\JANCodes\vexa-1866\core\gateway\services\conformance\..\gateway\src\gateway\app.py
+    warnings.warn(message, stacklevel=1)
+
+tests/test_contract_conformance.py::test_every_sealed_api_v1_route_is_implemented_or_audited
+tests/test_contract_conformance.py::test_no_stale_known_gaps
+  C:\Users\aprabhu\JANCodes\vexa-1866\core\gateway\services\conformance\.venv\Lib\site-packages\fastapi\openapi\utils.py:252: UserWarning: Duplicate Operation ID mcp_message_path_mcp__path__post for function mcp_message_path at C:\Users\aprabhu\JANCodes\vexa-1866\core\gateway\services\conformance\..\gateway\src\gateway\app.py
+    warnings.warn(message, stacklevel=1)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+96 passed, 8 warnings in 24.73s

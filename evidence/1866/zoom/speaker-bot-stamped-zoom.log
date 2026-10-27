@@ -1,0 +1,21 @@
+20:30:54.211 [bot] speak id=c1120adb056449d3947e096ee91d11f0 started chars=67
+20:30:54.211 [bot] speak id=c1120adb056449d3947e096ee91d11f0 mic=zoom_ui_left_on (Zoom grants a voice bot audio only with its mic on; tts_sink is muted at rest)
+20:31:02.389 [bot] speak id=c1120adb056449d3947e096ee91d11f0 done ms=8130
+20:32:20.414 [bot] speak id=8e18e0aedf374775976d34c90368028a started chars=466
+20:32:20.414 [bot] speak id=8e18e0aedf374775976d34c90368028a mic=zoom_ui_left_on (Zoom grants a voice bot audio only with its mic on; tts_sink is muted at rest)
+20:32:28.670 [bot] speak_stop cleared=0
+20:32:28.670 [bot] speak id=8e18e0aedf374775976d34c90368028a failed reason=stopped
+20:33:01.326 [bot] speak id=2ae37608001b4b16b0b990576be0f8aa started chars=8
+20:33:01.326 [bot] speak id=2ae37608001b4b16b0b990576be0f8aa mic=zoom_ui_left_on (Zoom grants a voice bot audio only with its mic on; tts_sink is muted at rest)
+20:33:01.326 [bot] speak dropped id=e6804953630d44059b5c6f879e2c90df reason=queue_full
+20:33:01.633 [bot] speak dropped id=b9e510d0bfcc4e69bab9f8b4519c16c8 reason=queue_full
+20:33:03.991 [bot] speak id=2ae37608001b4b16b0b990576be0f8aa done ms=2600
+20:33:03.991 [bot] speak id=6d83a5075661409e9fc83b38a7b77fbf started chars=8
+20:33:03.991 [bot] speak id=6d83a5075661409e9fc83b38a7b77fbf mic=zoom_ui_left_on (Zoom grants a voice bot audio only with its mic on; tts_sink is muted at rest)
+20:33:07.254 [bot] speak id=6d83a5075661409e9fc83b38a7b77fbf done ms=3474
+20:33:07.254 [bot] speak id=0cd70374740f469098c1327e716b90c5 started chars=8
+20:33:07.254 [bot] speak id=0cd70374740f469098c1327e716b90c5 mic=zoom_ui_left_on (Zoom grants a voice bot audio only with its mic on; tts_sink is muted at rest)
+20:33:10.640 [bot] speak id=0cd70374740f469098c1327e716b90c5 done ms=3191
+20:33:10.640 [bot] speak id=120eaf57098043d4b562155d3df6e75d started chars=8
+20:33:10.640 [bot] speak id=120eaf57098043d4b562155d3df6e75d mic=zoom_ui_left_on (Zoom grants a voice bot audio only with its mic on; tts_sink is muted at rest)
+20:33:13.916 [bot] speak id=120eaf57098043d4b562155d3df6e75d done ms=3407

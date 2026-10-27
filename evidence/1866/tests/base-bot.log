@@ -1,0 +1,302 @@
+  ✅ found all invocation goldens
+  ✅ golden Invocation.bot-account.json parses
+  ✅ golden Invocation.full.json parses
+  ✅ golden Invocation.jitsi-onprem.json parses
+  ✅ golden Invocation.jitsi.json parses
+  ✅ golden Invocation.minimal.json parses
+  ✅ golden Invocation.vexa_call.json parses
+  ✅ golden Invocation.voice_note.json parses
+  ✅ jitsi-onprem: meetingHostAllow typed
+  ✅ full: platform = google_meet
+  ✅ full: recordingEnabled true
+  ✅ full: automaticLeave threaded
+  ✅ full: secret token present (not logged)
+  ✅ full: transcriptionModel threaded (#522)
+  ✅ full: captureSignalEnabled threaded (O-TEL-1)
+  ✅ bot-account: authenticated with sessionRestoreUrl, no store fields
+  ✅ jitsi: platform = jitsi
+  ✅ jitsi: meetingUrl carries the deployment host
+  ✅ loadInvocation reads VEXA_BOT_CONFIG
+  ✅ missing env → InvocationError
+  ✅ empty string → InvocationError
+  ✅ non-JSON → InvocationError
+  ✅ missing required field → InvocationError
+  ✅ unknown property (additionalProperties:false) → InvocationError
+  ✅ bad platform enum → InvocationError
+
+✅ config (L1/L2): the goldens parse, the env helper round-trips, and off-contract input fails fast (ajv ≡ invocation.v1).
+  ✅ speaker-stream env values reach the config
+  ✅ valid speaker-stream env emits no warnings
+  ✅ invalid speaker-stream values fall back loudly
+  ✅ BOT_SPEAKER_MIN_FINAL_AUDIO_SEC reaches the config
+  ✅ BOT_STT_TIMEOUT_SEC unset → client default
+  ✅ BOT_STT_TIMEOUT_SEC=45 → 45000 ms
+  ✅ BOT_STT_TIMEOUT_SEC under 20 s is refused loudly (default kept)
+  ✅ default (unset): ONE pipeline — fast drafts (pause finals, pipelined drafts) because reconfirmation is on
+  ✅ BOT_TRANSCRIPTION_LATENCY=standard → config unchanged
+  ✅ reconfirmation off (BOT_TRANSCRIPT_RECONFIRM_SEC=0) → the confirm-on-agreement lane, never first versions as final
+  ✅ reconfirm seconds: unset 10, 0 off, junk falls back to 10, capped at 30
+  ✅ low on a per-participant track: pause finals, single-answer confirm, pipelined drafts; explicit knobs win
+  ✅ low on a voice note: pause finals without pipelined drafts
+  ✅ nothing degraded ⇒ nothing reported
+  ✅ a degraded meeting reports
+  ✅ 18 faults collapse to ONE summary entry per kind
+  ✅ the count carries the storm (18)
+  ✅ the backend HTTP status is kept
+  ✅ the backend's OWN detail is kept, not a paraphrase
+  ✅ total across kinds
+  ✅ kinds are ordered worst-first
+  ✅ a human-readable reason rides the field lifecycle.v1 already has
+  ✅ only the FIRST of a kind logs loudly (a storm must not flood the log)
+  ✅ the loud line names the consequence
+  ✅ a fault with no STT provenance is ignored (and null/undefined never throw)
+[bot] orchestrator: emitting completed (reason=max_bot_time_exceeded, from=active)
+[bot] orchestrator: completed emitted + flushed
+  ✅ the meeting still ends normally (reporting never changes the exit)
+  ✅ the TERMINAL event carries stt_fault
+  ✅ it names the kind that broke the transcript
+  ✅ NO non-terminal event carries it (one report, at the end)
+[bot] orchestrator: emitting completed (reason=max_bot_time_exceeded, from=active)
+[bot] orchestrator: completed emitted + flushed
+  ✅ a meeting with no STT fault emits NO stt_fault field
+[bot] orchestrator: emitting completed (reason=max_bot_time_exceeded, from=active)
+[bot] orchestrator: completed emitted + flushed
+  ✅ a throwing reporter still lets the bot report its terminal state
+
+✅ stt-faults: a meeting degraded by STT carries WHY on its terminal lifecycle.v1 event — one summary per kind with the backend's own words, never on a non-terminal event, and never at the cost of the exit path.
+  ✅ no ranges → no fragment (a healthy meeting carries no field)
+  ✅ ranges become transcript_gaps, ordered by start
+  ✅ times are epoch seconds like transcript.v1 segments
+  ✅ absolute ISO times are stamped
+  ✅ the reason travels
+  ✅ bounded: at most 500 entries on one event
+  ✅ mergeDegraded keeps stt_fault and adds gaps
+  ✅ mergeDegraded of nothing is nothing
+[bot] orchestrator: emitting completed (reason=max_bot_time_exceeded, from=active)
+[bot] orchestrator: completed emitted + flushed
+  ✅ the meeting still ends normally
+  ✅ ranges are read AFTER the lane is disposed (the final pass decides)
+  ✅ the TERMINAL event carries transcript_gaps
+  ✅ non-terminal events never carry it
+  ✅ the gap is the lost window, in epoch seconds
+  ✅ per-channel lane: missingRanges() reads the lane (empty when nothing lost)
+  ✅ teams lane: missingRanges() reads the CSRC lane
+[gmeet-pipeline] [RECONFIRM] reconfirmed=0 confirmed-as-drafted=0 requests=0
+[COVERAGE] captured=0s submitted=0s transcribed=0s (0% of captured) no_speech=0s short=0s dropped=0s
+[bot] transcription stop budget spent with audio still owed — recording it as missing (stt had not transcribed it when the meeting stopped (stop budget 0s))
+  ✅ stop() returns at the budget instead of waiting on the STT
+  ✅ what was still owed is recorded as missing, naming the budget
+
+✅ transcript-gaps: a window the lane never transcribed reaches the meeting record on the terminal event.
+  ✅ silence before W does not fire
+  ✅ silence at W fires exactly once
+  ✅ exactly-once verdict stops polling
+  ✅ remote speech at W-epsilon resets the window
+  ✅ reset window eventually fires
+  ✅ repeated remote speech prevents leave
+  ✅ local bot speech does not reset remote silence
+  ✅ a quiet delivered frame counts as presence (no false leave)
+  ✅ a zero-energy frame is silence, not presence
+  ✅ absent audio tap fails closed
+  ✅ failed or torn-down audio tap fails closed
+  ✅ stop cancels the monitor
+  ✅ a future adapter can veto the silence verdict
+  ✅ connected streams + zero frames does not fire left_alone
+  ✅ capture-fault is surfaced loudly
+  ✅ the guard keeps polling instead of terminating
+  ✅ a persisting capture-fault never converts into left_alone
+  ✅ zero connected streams still resolves alone
+  ✅ frames stopping mid-meeting with streams connected does not fire
+  ✅ unknown stream presence leaves the silence verdict untouched
+  ✅ zero-energy frames still arriving resolve alone (silent room, not deaf bot)
+  ✅ fault held the verdict
+  ✅ recovered capture is not fired on early
+  ✅ a healed capture returns to the plain silence verdict
+  ✅ capture restart is attempted exactly once
+  ✅ the restart attempt does not release left_alone
+  ✅ a fresh presence report holds the verdict
+  ✅ stale presence falls back to the pre-guard behaviour
+  ✅ a momentary zero inside the staleness window does not evict
+  ✅ #866/#887: ready-with-no-frames + zero streams still resolves alone
+  ✅ #1192 under #887: ready-with-no-frames + live streams withholds left_alone
+  ✅ …and says so
+  ✅ guard abstains when capture is unavailable
+  ✅ guard abstains when presence was never reported
+  ✅ guard abstains on a stale presence report
+  ✅ guard abstains while frames are arriving
+  ✅ guard objects when connected streams deliver nothing
+  ✅ guard objects when frames stopped a full window ago
+  ✅ the shipped guard defaults to a 30s presence staleness
+  ✅ a zero-energy frame counts as arrival, not presence
+  ✅ an energetic frame moves both
+  ✅ presence records count, observation time and last-present time
+  ✅ a zero report updates the observation time but keeps the last-present time
+  ✅ a nonsense presence report is ignored
+  ✅ unavailable still fails closed
+  ✅ a capture restart re-arms frame bookkeeping but keeps what the page said about the room
+  ✅ explicit everyoneLeftTimeout wins
+  ✅ env override applies when invocation is absent
+  ✅ module default is ten minutes
+  ✅ invalid env falls back to module default
+deaf-lane guard — audio keeps arriving, no STT round-trip settles
+  ✅ heard audio with no STT round-trip raises ONE typed incident
+  ✅ the incident is loud
+  ✅ a persisting incident is not re-reported
+  ✅ a settled round-trip clears it
+  ✅ and the count restarts from that round-trip
+  ✅ stop releases the poll
+  ✅ a lane transcribing on cadence never trips it
+  ✅ a silent room (frames, no energy) never trips it
+  ✅ capture not ready yet never trips it
+  ✅ a deaf lane is carried as stt_fault kind lane_deaf
+  ✅ and names itself in the lifecycle reason
+  ✅ watch keeps the closure properties (the STT back-pressure gate)
+  ✅ (deaf before the round-trip)
+  ✅ watch passes every argument and the result through
+  ✅ a settled round-trip through watch clears the incident
+  ✅ a typed STT fault still rethrows, and counts as a round-trip
+
+✅ aloneness (L2): scripted remote-audio timelines prove silence, reset, fail-closed, exactly-once, and timeout precedence.
+[bot] orchestrator: emitting completed (reason=stopped, from=active)
+[bot] orchestrator: completed emitted + flushed
+  ✅ happy: exit 0 / completed
+  ✅ happy: sequence joining→awaiting_admission→active→completed
+  ✅ happy: every transition legal
+  ✅ happy: every event conforms to lifecycle.v1
+  ✅ happy: completion_reason=stopped
+  ✅ happy: joining carried container_id
+  ✅ happy: pipeline started then stopped
+[bot] orchestrator: emitting completed (reason=stopped, from=active)
+[bot] orchestrator: completed emitted + flushed
+  ✅ event-time: every lifecycle transition carries its producer timestamp exactly once
+[bot] orchestrator: emitting completed (reason=stopped, from=active)
+[bot] orchestrator: completed emitted + flushed
+  ✅ handle(leave): completed(stopped)
+  ✅ join-error: failed / exit 1
+  ✅ join-error: failure_stage=joining
+  ✅ join-error: completion_reason=join_failure
+  ✅ join-error: the thrown reason text reaches the terminal event
+  ✅ join-error: no active emitted
+  ✅ join-error: events conform
+  ✅ url-secret: positive control — the thrown text carried the passcode
+  ✅ url-secret: no emitted lifecycle event carries the passcode
+  ✅ url-secret: the reason keeps host and meeting id
+  ✅ url-secret: join_evidence.detail redacted too
+  ✅ url-secret: events conform
+  ✅ rejected: failed
+  ✅ rejected: failure_stage=awaiting_admission
+  ✅ rejected: completion_reason=awaiting_admission_rejected
+  ✅ rejected: sequence legal (joining→awaiting_admission→failed)
+  ✅ rejected: events conform
+  ✅ timeout: completion_reason=awaiting_admission_timeout
+  ✅ reasonless#926: exit 1
+  ✅ reasonless#926: completion_reason=auth_session_missing
+  ✅ reasonless#926: reason text is NON-NULL (carried from driver)
+  ✅ reasonless#926: events conform
+  ✅ reasonless#926: bare enum still gets a non-null reason
+  ✅ pipeline-fail: failed
+  ✅ pipeline-fail: failure_stage=active
+  ✅ pipeline-fail: reached active first
+  ✅ pipeline-fail: events conform
+[bot] orchestrator: emitting completed (reason=evicted, from=active)
+[bot] orchestrator: completed emitted + flushed
+  ✅ removal: completed(evicted)
+  ✅ removal: sequence reached active
+[bot] orchestrator: emitting completed (reason=max_bot_time_exceeded, from=active)
+[bot] orchestrator: completed emitted + flushed
+  ✅ time-cap: completed(max_bot_time_exceeded)
+[bot] orchestrator: emitting completed (reason=left_alone, from=active)
+[bot] orchestrator: completed emitted + flushed
+  ✅ aloneness: completed(left_alone)
+  ✅ aloneness: every lifecycle event conforms
+  ✅ aloneness: double verdict and removal race emit one terminal
+  ✅ aloneness: teardown stops the source
+[bot] orchestrator: emitting completed (reason=stopped, from=active)
+[bot] orchestrator: completed emitted + flushed
+  ✅ transcript: one segment reached the sink
+  ✅ transcript: segment conforms to transcript.v1
+  ✅ pipeline-fail: bot LEFT the meeting (no ghost participant)
+  ✅ pipeline-fail: still failed / exit 1
+[bot] orchestrator: emitting completed (reason=stopped, from=active)
+[bot] orchestrator: completed emitted + flushed
+  ✅ stop(): completed(stopped) — worker is disposable, never hangs after active
+[bot] orchestrator: emitting completed (reason=stopped, from=active)
+[bot] orchestrator: completed emitted + flushed
+  ✅ reports: serialized in emit order despite a slow awaiting_admission sink
+  ✅ withdraw: join.withdraw() invoked exactly once (join request cancelled)
+  ✅ withdraw: reason forwarded to the withdraw
+  ✅ withdraw: reached awaiting_admission then terminated (no active)
+  ✅ withdraw: terminal failed(awaiting_admission / stopped), exit 0
+  ✅ withdraw: sequence legal + conforms
+  ✅ withdraw: did NOT SIGKILL-orphan — the run resolved on its own (no watchdog needed)
+  ✅ #889: acts subscribed DURING the lobby (before admission)
+  ✅ #889: lobby leave act → withdraw invoked exactly once
+  ✅ #889: withdraw reason forwarded (stopped)
+  ✅ #889: terminal failed(awaiting_admission / stopped), exit 0
+  ✅ #889: never reached active (withdrew from the lobby)
+  ✅ #889: sequence legal + conforms
+[bot] orchestrator: emitting completed (reason=stopped, from=active)
+[bot] orchestrator: completed emitted + flushed
+  ✅ active-stop: completed(stopped) via the active-leave path (unchanged)
+  ✅ active-stop: withdraw NOT invoked (active leave, not a waiting-room withdraw)
+[bot] orchestrator: emitting completed (reason=stopped, from=active)
+[bot] orchestrator: completed emitted + flushed
+  ✅ #593: reached active (post-admission capture handoff did not evict)
+  ✅ #593: never emitted failed (no self-evict)
+  ✅ #593: leave NEVER called with pipeline_start_failed
+  ✅ #593: ended cleanly via the leave act → completed(stopped)
+  ✅ #593: both subsystem faults surfaced loud (capture + engine)
+  ✅ gate both-down: NO join attempted (refused before meeting navigation)
+  ✅ gate both-down: exit code 3 (dedicated infra signal)
+  ✅ gate both-down: terminal failed
+  ✅ gate both-down: failure_stage=requested (distinct from a real join failure)
+  ✅ gate both-down: infra_fault=control_plane_unreachable
+  ✅ gate both-down: unreachable_channels names both deps
+  ✅ gate both-down: reason text carries the discriminator
+  ✅ gate both-down: exit_code on the event = 3
+  ✅ gate both-down: terminal event still conforms to lifecycle.v1
+  ✅ gate both-down: never reached active
+[bot] orchestrator: emitting completed (reason=stopped, from=active)
+[bot] orchestrator: completed emitted + flushed
+  ✅ gate either-channel: join PROCEEDED (secondary up ⇒ can still report)
+  ✅ gate either-channel: completed(stopped), not an infra abort
+  ✅ gate either-channel: no infra_fault emitted
+[bot] orchestrator: emitting completed (reason=stopped, from=active)
+[bot] orchestrator: completed emitted + flushed
+  ✅ gate reachable: proceeded to completed
+  ✅ gate reachable: secondary channel NEVER probed (fast path, zero added latency)
+  ✅ missing port: throws
+  ✅ missing port: names the port
+  ✅ missing port: not a raw property TypeError
+
+✅ orchestrator (L2): the meeting machine drives a schema-valid lifecycle.v1 sequence and routes transcript.v1 — offline, every port faked.
+  ✅ SIGTERM → orchestrator.stop("stopped")
+  ✅ no premature force-exit
+  ✅ wedged leave → force exit(1) within the grace
+  ✅ second signal is a no-op (once + single watchdog)
+  ✅ graceful stop triggered
+  ✅ release() detaches listeners
+  ✅ no force-exit for a clean leave (watchdog is unref’d & the process exits normally)
+  ✅ SIGINT → orchestrator.stop("stopped")
+  ✅ default grace = 20s (<25s bound)
+  ✅ BOT_SIGTERM_GRACE_MS override
+  ✅ bad override falls back to default
+  ✅ non-positive override falls back to default
+
+✅ signals (L2): SIGTERM/SIGINT trigger the graceful leave, and the force-exit watchdog bounds a wedged teardown inside the stop grace.
+node:fs:1282
+  return binding.rmSync(getValidatedPath(path), opts.maxRetries, opts.recursive, opts.retryDelay);
+                 ^
+
+Error: EPERM, Permission denied: 'C:\Users\aprabhu\AppData\Local\Temp\bot-entrypoint-k63r3V'
+    at rmSync (node:fs:1282:18)
+    at ChildProcess.<anonymous> (C:\Users\aprabhu\JANCodes\vexa-1866\core\meetings\services\bot\src\entrypoint.test.ts:83:7)
+    at ChildProcess.emit (node:events:514:28)
+    at ChildProcess._handle.onexit (node:internal/child_process:324:12) {
+  errno: 1,
+  code: 'EPERM',
+  path: 'C:\\Users\\aprabhu\\AppData\\Local\\Temp\\bot-entrypoint-k63r3V',
+  syscall: 'rm'
+}
+
+Node.js v24.22.0

@@ -1,0 +1,210 @@
+........................................................................ [  2%]
+............s........................................................... [  4%]
+........................................................................ [  7%]
+........................................................................ [  9%]
+........................................................................ [ 11%]
+........................................................................ [ 14%]
+........................................................................ [ 16%]
+........................................................................ [ 19%]
+........................................................................ [ 21%]
+........................................................................ [ 23%]
+........................................................s............... [ 26%]
+........................................................................ [ 28%]
+ssss.................................................................... [ 31%]
+........................................................................ [ 33%]
+.....................................................s..s............... [ 35%]
+.........................................FF...........................F. [ 38%]
+.......................................................ss............... [ 40%]
+...............................................................F........ [ 43%]
+..........................s............................................. [ 45%]
+..F..................................................................... [ 47%]
+........................................................................ [ 50%]
+........................................................................ [ 52%]
+........................................................................ [ 54%]
+........................................................................ [ 57%]
+......................................................s................. [ 59%]
+........................................................................ [ 62%]
+........................................................................ [ 64%]
+........................................................................ [ 66%]
+........................................................................ [ 69%]
+........................................................................ [ 71%]
+........................................................................ [ 74%]
+....................ss.................................................. [ 76%]
+........................................................................ [ 78%]
+........................................................................ [ 81%]
+........................................................ss.............. [ 83%]
+........................................................................ [ 86%]
+........................................................................ [ 88%]
+........................................................................ [ 90%]
+........................................................................ [ 93%]
+........................................................................ [ 95%]
+........................................................................ [ 98%]
+...........................................................              [100%]
+================================== FAILURES ===================================
+_____ test_continuous_untracked_past_window_escalates_once_with_evidence ______
+
+    def test_continuous_untracked_past_window_escalates_once_with_evidence():
+        """CONTINUOUS untracked past the window (runtime restart on the process backend: the workers
+        died with it, no callback will ever come) escalates the meeting to `failed` EXACTLY ONCE, with
+        the evidence note recorded on the transition — and the 15s error/DELETE loop stops (the
+        terminal row leaves the sweep's listing)."""
+        repo = InMemoryMeetingRepo()
+        m = _seed(repo, status="active")
+        repo._meetings[m["id"]]["bot_container_id"] = "wl-lost"
+        runtime = FakeRuntimeClient(workloads={})          # untracked forever — nothing will re-adopt
+        client = TestClient(create_app(open_callbacks=True, meeting_repo=repo))
+        tracker: dict = {}
+    
+        assert _run_general_sweep_esc(client, repo, runtime, tracker, untracked_grace=0.0) == 0
+        assert repo._meetings[m["id"]]["status"] == "active"   # window opened, not yet elapsed
+    
+        n = _run_general_sweep_esc(client, repo, runtime, tracker, untracked_grace=0.0)
+>       assert n == 1, "continuous untracked past the window must escalate"
+E       AssertionError: continuous untracked past the window must escalate
+E       assert 0 == 1
+
+tests\test_lifecycle_seam.py:940: AssertionError
+---------------------------- Captured stdout call -----------------------------
+{"ts":"2026-10-27T16:17:03.333197Z","level":"error","service":"meeting-api","trace_id":"a5bb198c665947b1990450ab7dc1b22b","audience":"system","event":"meeting_workload_untracked","span":"reconcile.liveness","fields":{"meeting_id":1,"status":"active","workload_id":"wl-lost"}}
+{"ts":"2026-10-27T16:17:03.334198Z","level":"error","service":"meeting-api","trace_id":"4359dc7b2bbd48188740d1ede1b8dc26","audience":"system","event":"meeting_workload_untracked","span":"reconcile.liveness","fields":{"meeting_id":1,"status":"active","workload_id":"wl-lost"}}
+------------------------------ Captured log call ------------------------------
+ERROR    test.reconcile:reconcile.py:360 nonterminal-reconcile: runtime does not know workload wl-lost for active meeting 1 — NOT evidence the bot is gone; not reaping (waiting for runtime re-adoption / the bot's own callback)
+ERROR    test.reconcile:reconcile.py:360 nonterminal-reconcile: runtime does not know workload wl-lost for active meeting 1 — NOT evidence the bot is gone; not reaping (waiting for runtime re-adoption / the bot's own callback)
+_________ test_stopping_untracked_past_window_escalates_on_stop_grace _________
+
+    def test_stopping_untracked_past_window_escalates_on_stop_grace():
+        """The `stopping` zombie (user pressed Stop, then the runtime restarted on the process backend):
+        the teardown stays unconfirmable (404) forever. A stop was EXPLICITLY requested, so it converges
+        on the SHORT stop_grace — NOT the long untracked window — instead of sitting stuck for 10 min (or,
+        across a redeploy burst that keeps resetting the in-process window, ~forever). The restart-mid-
+        leave stuck-meeting fix."""
+        repo = InMemoryMeetingRepo()
+        m = _seed(repo, status="stopping")
+        repo._meetings[m["id"]]["bot_container_id"] = "wl-gone"
+        repo._meetings[m["id"]]["data"]["stop_requested"] = True
+        runtime = FakeRuntimeClient(workloads={})
+        client = TestClient(create_app(open_callbacks=True, meeting_repo=repo))
+        tracker: dict = {}
+    
+        # untracked_grace stays LONG (a live *active* bot keeps its full patience); a `stopping` row
+        # converges on stop_grace regardless — proving it's the short window driving the escalation.
+        assert _run_general_sweep_esc(client, repo, runtime, tracker, untracked_grace=600.0, stop_grace=0.0) == 0
+        assert repo._meetings[m["id"]]["status"] == "stopping"  # window opened
+    
+>       assert _run_general_sweep_esc(client, repo, runtime, tracker, untracked_grace=600.0, stop_grace=0.0) == 1
+E       assert 0 == 1
+E        +  where 0 = _run_general_sweep_esc(<starlette.testclient.TestClient object at 0x000002364AA68980>, <meeting_api.bot_spawn.fakes.InMemoryMeetingRepo object at 0x000002364C211430>, <meeting_api.bot_spawn.fakes.FakeRuntimeClient object at 0x000002364C212390>, {1: 961929.578}, untracked_grace=600.0, stop_grace=0.0)
+
+tests\test_lifecycle_seam.py:973: AssertionError
+---------------------------- Captured stdout call -----------------------------
+{"ts":"2026-10-27T16:17:03.852039Z","level":"error","service":"meeting-api","trace_id":"320cea8f760d4939971b54dc52dc38b7","audience":"system","event":"stop_reconcile_orphan_kill_unconfirmed","span":"reconcile.stop","fields":{"meeting_id":1,"workload_id":"wl-gone","error":"runtime does not know workload 'wl-gone' (termination unconfirmed)"}}
+{"ts":"2026-10-27T16:17:03.854030Z","level":"error","service":"meeting-api","trace_id":"3e2fe4ebd4874844a876ac52a1555df8","audience":"system","event":"stop_reconcile_orphan_kill_unconfirmed","span":"reconcile.stop","fields":{"meeting_id":1,"workload_id":"wl-gone","error":"runtime does not know workload 'wl-gone' (termination unconfirmed)"}}
+------------------------------ Captured log call ------------------------------
+ERROR    test.reconcile:reconcile.py:55 reconcile: runtime does not know workload wl-gone for meeting 1 — termination UNCONFIRMED, a live container may be orphaned; NOT advancing the meeting (runtime does not know workload 'wl-gone' (termination unconfirmed))
+ERROR    test.reconcile:reconcile.py:55 reconcile: runtime does not know workload wl-gone for meeting 1 — termination UNCONFIRMED, a live container may be orphaned; NOT advancing the meeting (runtime does not know workload 'wl-gone' (termination unconfirmed))
+__ test_pre_active_untracked_workload_still_escalates_on_the_bounded_window ___
+
+    def test_pre_active_untracked_workload_still_escalates_on_the_bounded_window():
+        """NEGATIVE CONTROL (no row leaks forever, part 2). Now that pre-active rows are probed, a
+        runtime 404 lands them on the SAME bounded untracked escalation as `active`: no reap on the
+        404 itself (amnesia is not evidence), and convergence to `failed` once the window elapses —
+        with the stage-derived reason, so the re-spawn is still allowed."""
+        repo = InMemoryMeetingRepo()
+        m = _seed(repo, status="awaiting_admission")
+        repo._meetings[m["id"]]["bot_container_id"] = "wl-404"
+        runtime = FakeRuntimeClient(workloads={})
+        client = TestClient(create_app(open_callbacks=True, meeting_repo=repo))
+        tracker: dict = {}
+    
+        assert _run_general_sweep_esc(client, repo, runtime, tracker, untracked_grace=0.0) == 0
+        assert repo._meetings[m["id"]]["status"] == "awaiting_admission"   # window opened only
+        assert runtime.deleted == []
+    
+>       assert _run_general_sweep_esc(client, repo, runtime, tracker, untracked_grace=0.0) == 1
+E       assert 0 == 1
+E        +  where 0 = _run_general_sweep_esc(<starlette.testclient.TestClient object at 0x000002364BD6FC20>, <meeting_api.bot_spawn.fakes.InMemoryMeetingRepo object at 0x000002364BB7CA10>, <meeting_api.bot_spawn.fakes.FakeRuntimeClient object at 0x000002364A793680>, {1: 961932.796}, untracked_grace=0.0)
+
+tests\test_lifecycle_seam.py:1585: AssertionError
+---------------------------- Captured stdout call -----------------------------
+{"ts":"2026-10-27T16:17:07.078282Z","level":"error","service":"meeting-api","trace_id":"0a2ed8a3b2d64863af917b04f3e6e2f4","audience":"system","event":"meeting_workload_untracked","span":"reconcile.liveness","fields":{"meeting_id":1,"status":"awaiting_admission","workload_id":"wl-404"}}
+{"ts":"2026-10-27T16:17:07.079295Z","level":"error","service":"meeting-api","trace_id":"75da439a28ae428087e9df1a207cb28e","audience":"system","event":"meeting_workload_untracked","span":"reconcile.liveness","fields":{"meeting_id":1,"status":"awaiting_admission","workload_id":"wl-404"}}
+------------------------------ Captured log call ------------------------------
+ERROR    test.reconcile:reconcile.py:360 nonterminal-reconcile: runtime does not know workload wl-404 for awaiting_admission meeting 1 — NOT evidence the bot is gone; not reaping (waiting for runtime re-adoption / the bot's own callback)
+ERROR    test.reconcile:reconcile.py:360 nonterminal-reconcile: runtime does not know workload wl-404 for awaiting_admission meeting 1 — NOT evidence the bot is gone; not reaping (waiting for runtime re-adoption / the bot's own callback)
+_______ test_refused_golden_is_what_the_fixture_builds[backslash-path] ________
+
+name = 'backslash-path'
+
+    @pytest.mark.parametrize("name", sorted(G.REFUSED))
+    def test_refused_golden_is_what_the_fixture_builds(name):
+>       _check_or_write(G.GOLDEN / "refused" / f"{name}.zip", G.refused_bundle(name))
+
+tests\test_meeting_bundle_contract.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('C:/Users/aprabhu/JANCodes/vexa-1866/deploy/contracts/meeting-bundle.v1/golden/refused/backslash-path.zip')
+data = b'PK\x03\x04\x14\x00\x00\x00\x08\x00\x00\x00!\x00\xe6\xa8$\xc8y\x01\x00\x00\x9e\x02\x00\x00\r\x00\x00\x00manifest.json...4\x81I\x04\x00\x00workspace/../evil.txtPK\x05\x06\x00\x00\x00\x00\x05\x00\x05\x003\x01\x00\x00\x7f\x04\x00\x00\x00\x00'
+
+    def _check_or_write(path, data: bytes):
+        if REGEN:
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(data)
+        assert path.is_file(), f"missing golden {path} — regenerate with MEETING_BUNDLE_REGEN=1"
+>       assert path.read_bytes() == data, f"{path.name} differs from what the shipped code writes"
+E       AssertionError: backslash-path.zip differs from what the shipped code writes
+E       assert b'PK\x03\x04\...0\x00\x00\x00' == b'PK\x03\x04\...0\x00\x00\x00'
+E         
+E         At index 1136 diff: b'\\' != b'/'
+E         Use -v to get more diff
+
+tests\test_meeting_bundle_contract.py:36: AssertionError
+______ test_both_schema_models_declare_the_transcriptions_source_column _______
+
+    def test_both_schema_models_declare_the_transcriptions_source_column():
+        """admin-api's models own the table (its schema sync adds the column); meeting-api's mirror must
+        match it byte-for-byte or the db-writer's INSERT names a column the mirror does not know."""
+        for rel in ("core/identity/services/admin-api/src/admin_api/schema/models.py",
+                    "core/meetings/services/meeting-api/src/meeting_api/sessions/models.py"):
+            for parent in Path(__file__).resolve().parents:
+                if (parent / rel).is_file():
+>                   assert "    source = Column(String(32), nullable=True)\n" in (parent / rel).read_text(), rel
+                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_meeting_chat.py:456: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\aprabhu\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py:1028: in read_text
+    return f.read()
+           ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <encodings.cp1252.IncrementalDecoder object at 0x000002364C993140>
+input = b'"""The v0.12 backing-stack schema \xe2\x80\x94 the SQLAlchemy source-of-truth.\n\nDerived from the parent (re-read, ...n\n    __table_args__ = (\n        UniqueConstraint("meeting_id", "session_uid", name="_meeting_session_uc"),\n    )\n'
+final = True
+
+    def decode(self, input, final=False):
+>       return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       UnicodeDecodeError: 'charmap' codec can't decode byte 0x90 in position 149: character maps to <undefined>
+
+C:\Users\aprabhu\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\encodings\cp1252.py:23: UnicodeDecodeError
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\aprabhu\JANCodes\vexa-1866\core\meetings\services\meeting-api\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+.venv\Lib\site-packages\starlette\testclient.py:53
+  C:\Users\aprabhu\JANCodes\vexa-1866\core\meetings\services\meeting-api\.venv\Lib\site-packages\starlette\testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+tests/test_meeting_chat.py::test_the_transcriptions_upsert_carries_the_segment_source
+  C:\Users\aprabhu\JANCodes\vexa-1866\core\meetings\services\meeting-api\src\meeting_api\collector\adapters.py:250: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    "segid": str(sid), "source": seg.get("source"), "created": _dt.utcnow(),
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_lifecycle_seam.py::test_continuous_untracked_past_window_escalates_once_with_evidence
+FAILED tests/test_lifecycle_seam.py::test_stopping_untracked_past_window_escalates_on_stop_grace
+FAILED tests/test_lifecycle_seam.py::test_pre_active_untracked_workload_still_escalates_on_the_bounded_window
+FAILED tests/test_meeting_bundle_contract.py::test_refused_golden_is_what_the_fixture_builds[backslash-path]
+FAILED tests/test_meeting_chat.py::test_both_schema_models_declare_the_transcriptions_source_column
+5 failed, 2990 passed, 16 skipped, 41 deselected, 3 warnings in 106.58s (0:01:46)

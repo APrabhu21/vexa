@@ -1,0 +1,640 @@
+_XSERVTransSocketUNIXCreateListener: ...SocketCreateListener() failed
+_XSERVTransMakeAllCOTSServerListeners: server already running
+The XKEYBOARD keymap compiler (xkbcomp) reports:
+> Warning:          Could not resolve keysym XF86CameraAccessEnable
+> Warning:          Could not resolve keysym XF86CameraAccessDisable
+> Warning:          Could not resolve keysym XF86CameraAccessToggle
+> Warning:          Could not resolve keysym XF86NextElement
+> Warning:          Could not resolve keysym XF86PreviousElement
+> Warning:          Could not resolve keysym XF86AutopilotEngageToggle
+> Warning:          Could not resolve keysym XF86MarkWaypoint
+> Warning:          Could not resolve keysym XF86Sos
+> Warning:          Could not resolve keysym XF86NavChart
+> Warning:          Could not resolve keysym XF86FishingChart
+> Warning:          Could not resolve keysym XF86SingleRangeRadar
+> Warning:          Could not resolve keysym XF86DualRangeRadar
+> Warning:          Could not resolve keysym XF86RadarOverlay
+> Warning:          Could not resolve keysym XF86TraditionalSonar
+> Warning:          Could not resolve keysym XF86ClearvuSonar
+> Warning:          Could not resolve keysym XF86SidevuSonar
+> Warning:          Could not resolve keysym XF86NavInfo
+Errors from xkbcomp are not fatal to the X server
+{"level":"info","msg":"[capture-signal] tape-started","event":"capture_signal.tape_started","path":"/var/lib/vexa-runtime/homes/1500000001.c8d14c00d3d8c306/captured-signal/23d14b50-ef8b-4509-84fa-e558faaf4d1d.captured-signal.jsonl","max_bytes":262144000,"platform":"teams"}
+[bot] capture-signal recording → /var/lib/vexa-runtime/homes/1500000001.c8d14c00d3d8c306/captured-signal/23d14b50-ef8b-4509-84fa-e558faaf4d1d.captured-signal.jsonl
+[bot] aloneness: silence adapter + deaf-capture guard enabled (window_ms=600000)
+[bot] speaker-stream tuning enabled: {"pauseFinalMs":500,"idleTimeoutSec":1,"submitInterval":1,"maxBufferDuration":10,"confirmThreshold":1,"pipelineDrafts":true,"minAudioDuration":0.75}
+[bot] transcription language: auto (invocation)
+[remote-browser] Chromium runs with its sandbox
+{"ts":"2026-10-27T20:52:50.770Z","level":"info","msg":"Step 1: Navigating to Teams meeting: https://teams.microsoft.com/meet/2102361579860283"}
+[bot] navigation guard: allowed a navigation to teams.microsoft.com
+[bot] navigation guard: allowed a redirect to teams.microsoft.com
+[page-console:log] Vexa Browser Utils loaded successfully: [createGmeetCapture, createGmeetSpeakers, createGmeetCaptureV1, pickBoundName, GmeetChannelBinder, createPcmCaptureNode, createGmeetChat, sendGmeetChatMessage, openGmeetChatPanel, prepareGmeetChatSend, awaitGmeetChatLanded, createMixedAudioCapture, installRemoteAudioHook, selectTeamsMixStreams, mainAudioProvedSilent, createCsrcPoll, createRecordingTap, createJitsiSpeakers, createJitsiChat, sendJitsiChatMessage, createTeamsSpeakers, createTeamsCaptions, createZoomSpeakers, createTrackNameResolver]
+[page-console:log] Vexa Browser Utils loaded successfully: [createGmeetCapture, createGmeetSpeakers, createGmeetCaptureV1, pickBoundName, GmeetChannelBinder, createPcmCaptureNode, createGmeetChat, sendGmeetChatMessage, openGmeetChatPanel, prepareGmeetChatSend, awaitGmeetChatLanded, createMixedAudioCapture, installRemoteAudioHook, selectTeamsMixStreams, mainAudioProvedSilent, createCsrcPoll, createRecordingTap, createJitsiSpeakers, createJitsiChat, sendJitsiChatMessage, createTeamsSpeakers, createTeamsCaptions, createZoomSpeakers, createTrackNameResolver]
+[bot] navigation guard: allowed a navigation to teams.microsoft.com
+[page-console:log] Vexa Browser Utils loaded successfully: [createGmeetCapture, createGmeetSpeakers, createGmeetCaptureV1, pickBoundName, GmeetChannelBinder, createPcmCaptureNode, createGmeetChat, sendGmeetChatMessage, openGmeetChatPanel, prepareGmeetChatSend, awaitGmeetChatLanded, createMixedAudioCapture, installRemoteAudioHook, selectTeamsMixStreams, mainAudioProvedSilent, createCsrcPoll, createRecordingTap, createJitsiSpeakers, createJitsiChat, sendJitsiChatMessage, createTeamsSpeakers, createTeamsCaptions, createZoomSpeakers, createTrackNameResolver]
+{"ts":"2026-10-27T20:52:52.200Z","level":"info","msg":"Joining callback sent successfully"}
+{"ts":"2026-10-27T20:52:52.204Z","level":"info","msg":"UI locale (teams, pre-join): en-us via html-lang; navigator.language=en-US"}
+{"ts":"2026-10-27T20:52:52.204Z","level":"info","msg":"Step 2: Looking for 'Continue on this browser' button..."}
+[page] [page-fault] unhandledrejection: Error: [_getUserIdentifier] user missing. fn:getuid;user:0 :: Error: [_getUserIdentifier] user missing. fn:getuid;user:0
+    at p (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/async-entry-b27cc96c3889ce4a.js:2319:10604)
+    at ne (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/async-entry-b27cc96c3889ce4a.js:1:870100)
+    at async b$.setLicenseDetails (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/async-entry-b27cc96c3889ce4a.js:86:124210)
+[page-console:error] Unhandled error/rejection {"isTrusted":true}
+[page-console:log] Vexa Browser Utils loaded successfully: [createGmeetCapture, createGmeetSpeakers, createGmeetCaptureV1, pickBoundName, GmeetChannelBinder, createPcmCaptureNode, createGmeetChat, sendGmeetChatMessage, openGmeetChatPanel, prepareGmeetChatSend, awaitGmeetChatLanded, createMixedAudioCapture, installRemoteAudioHook, selectTeamsMixStreams, mainAudioProvedSilent, createCsrcPoll, createRecordingTap, createJitsiSpeakers, createJitsiChat, sendJitsiChatMessage, createTeamsSpeakers, createTeamsCaptions, createZoomSpeakers, createTrackNameResolver]
+[page-console:log] Vexa Browser Utils loaded successfully: [createGmeetCapture, createGmeetSpeakers, createGmeetCaptureV1, pickBoundName, GmeetChannelBinder, createPcmCaptureNode, createGmeetChat, sendGmeetChatMessage, openGmeetChatPanel, prepareGmeetChatSend, awaitGmeetChatLanded, createMixedAudioCapture, installRemoteAudioHook, selectTeamsMixStreams, mainAudioProvedSilent, createCsrcPoll, createRecordingTap, createJitsiSpeakers, createJitsiChat, sendJitsiChatMessage, createTeamsSpeakers, createTeamsCaptions, createZoomSpeakers, createTrackNameResolver]
+[bot] navigation guard: allowed a navigation to teams.microsoft.com
+[bot] navigation guard: allowed a redirect to teams.microsoft.com
+[page-console:log] Vexa Browser Utils loaded successfully: [createGmeetCapture, createGmeetSpeakers, createGmeetCaptureV1, pickBoundName, GmeetChannelBinder, createPcmCaptureNode, createGmeetChat, sendGmeetChatMessage, openGmeetChatPanel, prepareGmeetChatSend, awaitGmeetChatLanded, createMixedAudioCapture, installRemoteAudioHook, selectTeamsMixStreams, mainAudioProvedSilent, createCsrcPoll, createRecordingTap, createJitsiSpeakers, createJitsiChat, sendJitsiChatMessage, createTeamsSpeakers, createTeamsCaptions, createZoomSpeakers, createTrackNameResolver]
+[page-console:log] Vexa Browser Utils loaded successfully: [createGmeetCapture, createGmeetSpeakers, createGmeetCaptureV1, pickBoundName, GmeetChannelBinder, createPcmCaptureNode, createGmeetChat, sendGmeetChatMessage, openGmeetChatPanel, prepareGmeetChatSend, awaitGmeetChatLanded, createMixedAudioCapture, installRemoteAudioHook, selectTeamsMixStreams, mainAudioProvedSilent, createCsrcPoll, createRecordingTap, createJitsiSpeakers, createJitsiChat, sendJitsiChatMessage, createTeamsSpeakers, createTeamsCaptions, createZoomSpeakers, createTrackNameResolver]
+[bot] navigation guard: allowed a navigation to teams.microsoft.com
+[page-console:log] Vexa Browser Utils loaded successfully: [createGmeetCapture, createGmeetSpeakers, createGmeetCaptureV1, pickBoundName, GmeetChannelBinder, createPcmCaptureNode, createGmeetChat, sendGmeetChatMessage, openGmeetChatPanel, prepareGmeetChatSend, awaitGmeetChatLanded, createMixedAudioCapture, installRemoteAudioHook, selectTeamsMixStreams, mainAudioProvedSilent, createCsrcPoll, createRecordingTap, createJitsiSpeakers, createJitsiChat, sendJitsiChatMessage, createTeamsSpeakers, createTeamsCaptions, createZoomSpeakers, createTrackNameResolver]
+{"ts":"2026-10-27T20:52:59.960Z","level":"info","msg":"✅ Clicked 'Continue on this browser' button"}
+{"ts":"2026-10-27T20:53:00.461Z","level":"info","msg":"Step 2.5: Waiting for Teams pre-join controls..."}
+{"ts":"2026-10-27T20:53:00.474Z","level":"info","msg":"✅ Teams pre-join controls are ready"}
+{"ts":"2026-10-27T20:53:00.474Z","level":"info","msg":"Step 3: Camera handling..."}
+[page-console:error] CallTitleService: callTitleService: getDefaultCallTitle failed
+{"ts":"2026-10-27T20:53:05.476Z","level":"info","msg":"ℹ️ Camera button not found or already off"}
+{"ts":"2026-10-27T20:53:05.476Z","level":"info","msg":"Step 4: Trying to set display name..."}
+{"ts":"2026-10-27T20:53:05.500Z","level":"info","msg":"✅ Display name set to \"Vexa Listener\""}
+{"ts":"2026-10-27T20:53:05.501Z","level":"info","msg":"Step 5: Ensuring Computer audio is selected..."}
+{"ts":"2026-10-27T20:53:05.503Z","level":"info","msg":"ℹ️ Audio radios not visible. Attempting to force-enable speaker..."}
+{"ts":"2026-10-27T20:53:05.507Z","level":"info","msg":"ℹ️ Speaker controls not visible; continuing with defaults."}
+{"ts":"2026-10-27T20:53:05.509Z","level":"info","msg":"Step 6: Clicking 'Join now' to enter the meeting..."}
+{"ts":"2026-10-27T20:53:05.653Z","level":"info","msg":"✅ Clicked 'Join now' button"}
+[page] [Audio Hook] mirrored remote audio track a14f5e1d (1 total)
+{"ts":"2026-10-27T20:53:06.653Z","level":"info","msg":"Step 6c: Handling post-join AV-confirmation modal (if shown)..."}
+{"ts":"2026-10-27T20:53:06.661Z","level":"info","msg":"✅ Reached Teams lobby after Join now"}
+{"ts":"2026-10-27T20:53:06.661Z","level":"info","msg":"Step 6b: Muting mic..."}
+{"ts":"2026-10-27T20:53:06.876Z","level":"info","msg":"✅ Mic muted via Ctrl+Shift+M"}
+{"ts":"2026-10-27T20:53:06.876Z","level":"info","msg":"Step 7: Checking current state..."}
+{"ts":"2026-10-27T20:53:06.877Z","level":"info","msg":"Waiting for Teams meeting admission..."}
+{"ts":"2026-10-27T20:53:06.879Z","level":"info","msg":"Checking if bot is already admitted to the Teams meeting..."}
+{"ts":"2026-10-27T20:53:06.888Z","level":"info","msg":"Bot not yet admitted - checking for Teams waiting room indicators..."}
+{"ts":"2026-10-27T20:53:06.890Z","level":"info","msg":"Found Teams waiting room indicator: lobby text or Join now button visible - Bot is still in waiting room"}
+{"ts":"2026-10-27T20:53:06.890Z","level":"info","msg":"Waiting 1 second to ensure joining callback is processed before sending awaiting_admission..."}
+{"ts":"2026-10-27T20:53:07.893Z","level":"info","msg":"Awaiting admission callback sent successfully"}
+{"ts":"2026-10-27T20:53:07.893Z","level":"info","msg":"Bot is in Teams waiting room. Waiting for 900000ms for admission..."}
+{"ts":"2026-10-27T20:53:09.899Z","level":"info","msg":"Still in Teams waiting room... 2s elapsed"}
+{"ts":"2026-10-27T20:53:11.905Z","level":"info","msg":"Still in Teams waiting room... 4s elapsed"}
+{"ts":"2026-10-27T20:53:13.911Z","level":"info","msg":"Still in Teams waiting room... 6s elapsed"}
+{"ts":"2026-10-27T20:53:15.915Z","level":"info","msg":"Still in Teams waiting room... 8s elapsed"}
+{"ts":"2026-10-27T20:53:17.920Z","level":"info","msg":"Still in Teams waiting room... 10s elapsed"}
+{"ts":"2026-10-27T20:53:19.924Z","level":"info","msg":"Still in Teams waiting room... 12s elapsed"}
+{"ts":"2026-10-27T20:53:21.929Z","level":"info","msg":"Still in Teams waiting room... 14s elapsed"}
+{"ts":"2026-10-27T20:53:23.937Z","level":"info","msg":"Still in Teams waiting room... 16s elapsed"}
+{"ts":"2026-10-27T20:53:25.943Z","level":"info","msg":"Still in Teams waiting room... 18s elapsed"}
+{"ts":"2026-10-27T20:53:27.948Z","level":"info","msg":"Still in Teams waiting room... 20s elapsed"}
+{"ts":"2026-10-27T20:53:29.955Z","level":"info","msg":"Still in Teams waiting room... 22s elapsed"}
+{"ts":"2026-10-27T20:53:31.960Z","level":"info","msg":"Still in Teams waiting room... 24s elapsed"}
+{"ts":"2026-10-27T20:53:33.964Z","level":"info","msg":"Still in Teams waiting room... 26s elapsed"}
+{"ts":"2026-10-27T20:53:35.969Z","level":"info","msg":"Still in Teams waiting room... 28s elapsed"}
+{"ts":"2026-10-27T20:53:37.974Z","level":"info","msg":"Still in Teams waiting room... 30s elapsed"}
+{"ts":"2026-10-27T20:53:39.980Z","level":"info","msg":"Still in Teams waiting room... 32s elapsed"}
+{"ts":"2026-10-27T20:53:41.984Z","level":"info","msg":"Still in Teams waiting room... 34s elapsed"}
+{"ts":"2026-10-27T20:53:43.990Z","level":"info","msg":"Still in Teams waiting room... 36s elapsed"}
+{"ts":"2026-10-27T20:53:45.995Z","level":"info","msg":"Still in Teams waiting room... 38s elapsed"}
+{"ts":"2026-10-27T20:53:48.000Z","level":"info","msg":"Still in Teams waiting room... 40s elapsed"}
+{"ts":"2026-10-27T20:53:50.006Z","level":"info","msg":"Still in Teams waiting room... 42s elapsed"}
+{"ts":"2026-10-27T20:53:52.010Z","level":"info","msg":"Still in Teams waiting room... 44s elapsed"}
+{"ts":"2026-10-27T20:53:54.015Z","level":"info","msg":"Still in Teams waiting room... 46s elapsed"}
+{"ts":"2026-10-27T20:53:56.020Z","level":"info","msg":"Still in Teams waiting room... 48s elapsed"}
+{"ts":"2026-10-27T20:53:58.025Z","level":"info","msg":"Still in Teams waiting room... 50s elapsed"}
+{"ts":"2026-10-27T20:54:00.030Z","level":"info","msg":"Still in Teams waiting room... 52s elapsed"}
+{"ts":"2026-10-27T20:54:02.035Z","level":"info","msg":"Still in Teams waiting room... 54s elapsed"}
+{"ts":"2026-10-27T20:54:04.039Z","level":"info","msg":"Still in Teams waiting room... 56s elapsed"}
+{"ts":"2026-10-27T20:54:06.043Z","level":"info","msg":"Still in Teams waiting room... 58s elapsed"}
+{"ts":"2026-10-27T20:54:08.048Z","level":"info","msg":"Still in Teams waiting room... 60s elapsed"}
+{"ts":"2026-10-27T20:54:10.054Z","level":"info","msg":"Still in Teams waiting room... 62s elapsed"}
+{"ts":"2026-10-27T20:54:12.059Z","level":"info","msg":"Still in Teams waiting room... 64s elapsed"}
+{"ts":"2026-10-27T20:54:14.063Z","level":"info","msg":"Still in Teams waiting room... 66s elapsed"}
+{"ts":"2026-10-27T20:54:16.067Z","level":"info","msg":"Still in Teams waiting room... 68s elapsed"}
+{"ts":"2026-10-27T20:54:18.073Z","level":"info","msg":"Still in Teams waiting room... 70s elapsed"}
+{"ts":"2026-10-27T20:54:20.078Z","level":"info","msg":"Still in Teams waiting room... 72s elapsed"}
+{"ts":"2026-10-27T20:54:22.084Z","level":"info","msg":"Still in Teams waiting room... 74s elapsed"}
+{"ts":"2026-10-27T20:54:24.090Z","level":"info","msg":"Still in Teams waiting room... 76s elapsed"}
+{"ts":"2026-10-27T20:54:26.095Z","level":"info","msg":"Still in Teams waiting room... 78s elapsed"}
+{"ts":"2026-10-27T20:54:28.100Z","level":"info","msg":"Still in Teams waiting room... 80s elapsed"}
+{"ts":"2026-10-27T20:54:30.105Z","level":"info","msg":"Still in Teams waiting room... 82s elapsed"}
+{"ts":"2026-10-27T20:54:32.110Z","level":"info","msg":"Still in Teams waiting room... 84s elapsed"}
+{"ts":"2026-10-27T20:54:34.114Z","level":"info","msg":"Still in Teams waiting room... 86s elapsed"}
+{"ts":"2026-10-27T20:54:36.119Z","level":"info","msg":"Still in Teams waiting room... 88s elapsed"}
+{"ts":"2026-10-27T20:54:38.125Z","level":"info","msg":"Still in Teams waiting room... 90s elapsed"}
+{"ts":"2026-10-27T20:54:40.129Z","level":"info","msg":"Still in Teams waiting room... 92s elapsed"}
+{"ts":"2026-10-27T20:54:42.134Z","level":"info","msg":"Still in Teams waiting room... 94s elapsed"}
+{"ts":"2026-10-27T20:54:44.139Z","level":"info","msg":"Still in Teams waiting room... 96s elapsed"}
+{"ts":"2026-10-27T20:54:46.144Z","level":"info","msg":"Still in Teams waiting room... 98s elapsed"}
+{"ts":"2026-10-27T20:54:48.149Z","level":"info","msg":"Still in Teams waiting room... 100s elapsed"}
+{"ts":"2026-10-27T20:54:50.153Z","level":"info","msg":"Still in Teams waiting room... 102s elapsed"}
+{"ts":"2026-10-27T20:54:52.158Z","level":"info","msg":"Still in Teams waiting room... 104s elapsed"}
+{"ts":"2026-10-27T20:54:54.164Z","level":"info","msg":"Still in Teams waiting room... 106s elapsed"}
+{"ts":"2026-10-27T20:54:56.169Z","level":"info","msg":"Still in Teams waiting room... 108s elapsed"}
+{"ts":"2026-10-27T20:54:58.174Z","level":"info","msg":"Still in Teams waiting room... 110s elapsed"}
+{"ts":"2026-10-27T20:55:00.179Z","level":"info","msg":"Still in Teams waiting room... 112s elapsed"}
+{"ts":"2026-10-27T20:55:02.185Z","level":"info","msg":"Still in Teams waiting room... 114s elapsed"}
+{"ts":"2026-10-27T20:55:04.189Z","level":"info","msg":"Still in Teams waiting room... 116s elapsed"}
+{"ts":"2026-10-27T20:55:06.195Z","level":"info","msg":"Still in Teams waiting room... 118s elapsed"}
+{"ts":"2026-10-27T20:55:08.200Z","level":"info","msg":"Still in Teams waiting room... 120s elapsed"}
+{"ts":"2026-10-27T20:55:10.205Z","level":"info","msg":"Still in Teams waiting room... 122s elapsed"}
+{"ts":"2026-10-27T20:55:12.210Z","level":"info","msg":"Still in Teams waiting room... 124s elapsed"}
+{"ts":"2026-10-27T20:55:14.214Z","level":"info","msg":"Still in Teams waiting room... 126s elapsed"}
+{"ts":"2026-10-27T20:55:16.219Z","level":"info","msg":"Still in Teams waiting room... 128s elapsed"}
+{"ts":"2026-10-27T20:55:18.224Z","level":"info","msg":"Still in Teams waiting room... 130s elapsed"}
+{"ts":"2026-10-27T20:55:20.229Z","level":"info","msg":"Still in Teams waiting room... 132s elapsed"}
+{"ts":"2026-10-27T20:55:22.234Z","level":"info","msg":"Still in Teams waiting room... 134s elapsed"}
+{"ts":"2026-10-27T20:55:24.241Z","level":"info","msg":"Still in Teams waiting room... 136s elapsed"}
+{"ts":"2026-10-27T20:55:26.246Z","level":"info","msg":"Still in Teams waiting room... 138s elapsed"}
+{"ts":"2026-10-27T20:55:28.251Z","level":"info","msg":"Still in Teams waiting room... 140s elapsed"}
+{"ts":"2026-10-27T20:55:30.256Z","level":"info","msg":"Still in Teams waiting room... 142s elapsed"}
+{"ts":"2026-10-27T20:55:32.262Z","level":"info","msg":"Still in Teams waiting room... 144s elapsed"}
+{"ts":"2026-10-27T20:55:34.267Z","level":"info","msg":"Still in Teams waiting room... 146s elapsed"}
+{"ts":"2026-10-27T20:55:36.272Z","level":"info","msg":"Still in Teams waiting room... 148s elapsed"}
+{"ts":"2026-10-27T20:55:38.277Z","level":"info","msg":"Still in Teams waiting room... 150s elapsed"}
+{"ts":"2026-10-27T20:55:40.281Z","level":"info","msg":"Still in Teams waiting room... 152s elapsed"}
+{"ts":"2026-10-27T20:55:42.287Z","level":"info","msg":"Still in Teams waiting room... 154s elapsed"}
+{"ts":"2026-10-27T20:55:44.293Z","level":"info","msg":"Still in Teams waiting room... 156s elapsed"}
+{"ts":"2026-10-27T20:55:46.297Z","level":"info","msg":"Still in Teams waiting room... 158s elapsed"}
+{"ts":"2026-10-27T20:55:48.301Z","level":"info","msg":"Still in Teams waiting room... 160s elapsed"}
+{"ts":"2026-10-27T20:55:50.306Z","level":"info","msg":"Still in Teams waiting room... 162s elapsed"}
+{"ts":"2026-10-27T20:55:52.312Z","level":"info","msg":"Still in Teams waiting room... 164s elapsed"}
+{"ts":"2026-10-27T20:55:54.316Z","level":"info","msg":"Still in Teams waiting room... 166s elapsed"}
+{"ts":"2026-10-27T20:55:56.322Z","level":"info","msg":"Still in Teams waiting room... 168s elapsed"}
+{"ts":"2026-10-27T20:55:58.326Z","level":"info","msg":"Still in Teams waiting room... 170s elapsed"}
+{"ts":"2026-10-27T20:56:00.331Z","level":"info","msg":"Still in Teams waiting room... 172s elapsed"}
+{"ts":"2026-10-27T20:56:02.335Z","level":"info","msg":"Still in Teams waiting room... 174s elapsed"}
+{"ts":"2026-10-27T20:56:04.340Z","level":"info","msg":"Still in Teams waiting room... 176s elapsed"}
+{"ts":"2026-10-27T20:56:06.345Z","level":"info","msg":"Still in Teams waiting room... 178s elapsed"}
+{"ts":"2026-10-27T20:56:08.350Z","level":"info","msg":"Still in Teams waiting room... 180s elapsed"}
+{"ts":"2026-10-27T20:56:10.356Z","level":"info","msg":"Still in Teams waiting room... 182s elapsed"}
+{"ts":"2026-10-27T20:56:12.361Z","level":"info","msg":"Still in Teams waiting room... 184s elapsed"}
+{"ts":"2026-10-27T20:56:14.366Z","level":"info","msg":"Still in Teams waiting room... 186s elapsed"}
+{"ts":"2026-10-27T20:56:16.371Z","level":"info","msg":"Still in Teams waiting room... 188s elapsed"}
+{"ts":"2026-10-27T20:56:18.376Z","level":"info","msg":"Still in Teams waiting room... 190s elapsed"}
+{"ts":"2026-10-27T20:56:20.382Z","level":"info","msg":"Still in Teams waiting room... 192s elapsed"}
+{"ts":"2026-10-27T20:56:22.387Z","level":"info","msg":"Still in Teams waiting room... 194s elapsed"}
+{"ts":"2026-10-27T20:56:24.392Z","level":"info","msg":"Still in Teams waiting room... 196s elapsed"}
+{"ts":"2026-10-27T20:56:26.396Z","level":"info","msg":"Still in Teams waiting room... 199s elapsed"}
+{"ts":"2026-10-27T20:56:28.401Z","level":"info","msg":"Still in Teams waiting room... 201s elapsed"}
+{"ts":"2026-10-27T20:56:30.407Z","level":"info","msg":"Still in Teams waiting room... 203s elapsed"}
+{"ts":"2026-10-27T20:56:32.412Z","level":"info","msg":"Still in Teams waiting room... 205s elapsed"}
+{"ts":"2026-10-27T20:56:34.417Z","level":"info","msg":"Still in Teams waiting room... 207s elapsed"}
+{"ts":"2026-10-27T20:56:36.424Z","level":"info","msg":"Still in Teams waiting room... 209s elapsed"}
+{"ts":"2026-10-27T20:56:38.430Z","level":"info","msg":"Still in Teams waiting room... 211s elapsed"}
+{"ts":"2026-10-27T20:56:40.436Z","level":"info","msg":"Still in Teams waiting room... 213s elapsed"}
+{"ts":"2026-10-27T20:56:42.440Z","level":"info","msg":"Still in Teams waiting room... 215s elapsed"}
+{"ts":"2026-10-27T20:56:44.444Z","level":"info","msg":"Still in Teams waiting room... 217s elapsed"}
+{"ts":"2026-10-27T20:56:46.449Z","level":"info","msg":"Still in Teams waiting room... 219s elapsed"}
+{"ts":"2026-10-27T20:56:48.454Z","level":"info","msg":"Still in Teams waiting room... 221s elapsed"}
+{"ts":"2026-10-27T20:56:50.458Z","level":"info","msg":"Still in Teams waiting room... 223s elapsed"}
+{"ts":"2026-10-27T20:56:52.462Z","level":"info","msg":"Still in Teams waiting room... 225s elapsed"}
+{"ts":"2026-10-27T20:56:54.466Z","level":"info","msg":"Still in Teams waiting room... 227s elapsed"}
+{"ts":"2026-10-27T20:56:56.472Z","level":"info","msg":"Still in Teams waiting room... 229s elapsed"}
+{"ts":"2026-10-27T20:56:58.477Z","level":"info","msg":"Still in Teams waiting room... 231s elapsed"}
+{"ts":"2026-10-27T20:57:00.482Z","level":"info","msg":"Still in Teams waiting room... 233s elapsed"}
+{"ts":"2026-10-27T20:57:02.488Z","level":"info","msg":"Still in Teams waiting room... 235s elapsed"}
+{"ts":"2026-10-27T20:57:04.493Z","level":"info","msg":"Still in Teams waiting room... 237s elapsed"}
+{"ts":"2026-10-27T20:57:06.498Z","level":"info","msg":"Still in Teams waiting room... 239s elapsed"}
+{"ts":"2026-10-27T20:57:08.503Z","level":"info","msg":"Still in Teams waiting room... 241s elapsed"}
+{"ts":"2026-10-27T20:57:10.507Z","level":"info","msg":"Still in Teams waiting room... 243s elapsed"}
+{"ts":"2026-10-27T20:57:12.512Z","level":"info","msg":"Still in Teams waiting room... 245s elapsed"}
+{"ts":"2026-10-27T20:57:14.517Z","level":"info","msg":"Still in Teams waiting room... 247s elapsed"}
+{"ts":"2026-10-27T20:57:16.522Z","level":"info","msg":"Still in Teams waiting room... 249s elapsed"}
+{"ts":"2026-10-27T20:57:18.527Z","level":"info","msg":"Still in Teams waiting room... 251s elapsed"}
+{"ts":"2026-10-27T20:57:20.532Z","level":"info","msg":"Still in Teams waiting room... 253s elapsed"}
+{"ts":"2026-10-27T20:57:22.537Z","level":"info","msg":"Still in Teams waiting room... 255s elapsed"}
+{"ts":"2026-10-27T20:57:24.541Z","level":"info","msg":"Still in Teams waiting room... 257s elapsed"}
+{"ts":"2026-10-27T20:57:26.546Z","level":"info","msg":"Still in Teams waiting room... 259s elapsed"}
+{"ts":"2026-10-27T20:57:28.551Z","level":"info","msg":"Still in Teams waiting room... 261s elapsed"}
+{"ts":"2026-10-27T20:57:30.556Z","level":"info","msg":"Still in Teams waiting room... 263s elapsed"}
+{"ts":"2026-10-27T20:57:32.561Z","level":"info","msg":"Still in Teams waiting room... 265s elapsed"}
+{"ts":"2026-10-27T20:57:34.566Z","level":"info","msg":"Still in Teams waiting room... 267s elapsed"}
+{"ts":"2026-10-27T20:57:36.571Z","level":"info","msg":"Still in Teams waiting room... 269s elapsed"}
+{"ts":"2026-10-27T20:57:38.576Z","level":"info","msg":"Still in Teams waiting room... 271s elapsed"}
+{"ts":"2026-10-27T20:57:40.581Z","level":"info","msg":"Still in Teams waiting room... 273s elapsed"}
+{"ts":"2026-10-27T20:57:42.586Z","level":"info","msg":"Still in Teams waiting room... 275s elapsed"}
+{"ts":"2026-10-27T20:57:44.590Z","level":"info","msg":"Still in Teams waiting room... 277s elapsed"}
+{"ts":"2026-10-27T20:57:46.595Z","level":"info","msg":"Still in Teams waiting room... 279s elapsed"}
+{"ts":"2026-10-27T20:57:48.600Z","level":"info","msg":"Still in Teams waiting room... 281s elapsed"}
+{"ts":"2026-10-27T20:57:50.606Z","level":"info","msg":"Still in Teams waiting room... 283s elapsed"}
+{"ts":"2026-10-27T20:57:52.610Z","level":"info","msg":"Still in Teams waiting room... 285s elapsed"}
+{"ts":"2026-10-27T20:57:54.615Z","level":"info","msg":"Still in Teams waiting room... 287s elapsed"}
+{"ts":"2026-10-27T20:57:56.622Z","level":"info","msg":"Still in Teams waiting room... 289s elapsed"}
+{"ts":"2026-10-27T20:57:58.626Z","level":"info","msg":"Still in Teams waiting room... 291s elapsed"}
+{"ts":"2026-10-27T20:58:00.631Z","level":"info","msg":"Still in Teams waiting room... 293s elapsed"}
+{"ts":"2026-10-27T20:58:02.635Z","level":"info","msg":"Still in Teams waiting room... 295s elapsed"}
+{"ts":"2026-10-27T20:58:04.639Z","level":"info","msg":"Still in Teams waiting room... 297s elapsed"}
+{"ts":"2026-10-27T20:58:06.644Z","level":"info","msg":"Still in Teams waiting room... 299s elapsed"}
+{"ts":"2026-10-27T20:58:08.650Z","level":"info","msg":"Still in Teams waiting room... 301s elapsed"}
+{"ts":"2026-10-27T20:58:10.655Z","level":"info","msg":"Still in Teams waiting room... 303s elapsed"}
+{"ts":"2026-10-27T20:58:12.660Z","level":"info","msg":"Still in Teams waiting room... 305s elapsed"}
+{"ts":"2026-10-27T20:58:14.664Z","level":"info","msg":"Still in Teams waiting room... 307s elapsed"}
+{"ts":"2026-10-27T20:58:16.669Z","level":"info","msg":"Still in Teams waiting room... 309s elapsed"}
+{"ts":"2026-10-27T20:58:18.676Z","level":"info","msg":"Still in Teams waiting room... 311s elapsed"}
+{"ts":"2026-10-27T20:58:20.680Z","level":"info","msg":"Still in Teams waiting room... 313s elapsed"}
+{"ts":"2026-10-27T20:58:22.685Z","level":"info","msg":"Still in Teams waiting room... 315s elapsed"}
+{"ts":"2026-10-27T20:58:24.690Z","level":"info","msg":"Still in Teams waiting room... 317s elapsed"}
+{"ts":"2026-10-27T20:58:26.694Z","level":"info","msg":"Still in Teams waiting room... 319s elapsed"}
+{"ts":"2026-10-27T20:58:28.698Z","level":"info","msg":"Still in Teams waiting room... 321s elapsed"}
+{"ts":"2026-10-27T20:58:30.703Z","level":"info","msg":"Still in Teams waiting room... 323s elapsed"}
+{"ts":"2026-10-27T20:58:32.709Z","level":"info","msg":"Still in Teams waiting room... 325s elapsed"}
+{"ts":"2026-10-27T20:58:34.713Z","level":"info","msg":"Still in Teams waiting room... 327s elapsed"}
+{"ts":"2026-10-27T20:58:36.718Z","level":"info","msg":"Still in Teams waiting room... 329s elapsed"}
+{"ts":"2026-10-27T20:58:38.723Z","level":"info","msg":"Still in Teams waiting room... 331s elapsed"}
+{"ts":"2026-10-27T20:58:40.727Z","level":"info","msg":"Still in Teams waiting room... 333s elapsed"}
+{"ts":"2026-10-27T20:58:42.731Z","level":"info","msg":"Still in Teams waiting room... 335s elapsed"}
+{"ts":"2026-10-27T20:58:44.736Z","level":"info","msg":"Still in Teams waiting room... 337s elapsed"}
+{"ts":"2026-10-27T20:58:46.742Z","level":"info","msg":"Still in Teams waiting room... 339s elapsed"}
+{"ts":"2026-10-27T20:58:48.746Z","level":"info","msg":"Still in Teams waiting room... 341s elapsed"}
+{"ts":"2026-10-27T20:58:50.750Z","level":"info","msg":"Still in Teams waiting room... 343s elapsed"}
+{"ts":"2026-10-27T20:58:52.755Z","level":"info","msg":"Still in Teams waiting room... 345s elapsed"}
+{"ts":"2026-10-27T20:58:54.761Z","level":"info","msg":"Still in Teams waiting room... 347s elapsed"}
+{"ts":"2026-10-27T20:58:56.766Z","level":"info","msg":"Still in Teams waiting room... 349s elapsed"}
+{"ts":"2026-10-27T20:58:58.771Z","level":"info","msg":"Still in Teams waiting room... 351s elapsed"}
+{"ts":"2026-10-27T20:59:00.775Z","level":"info","msg":"Still in Teams waiting room... 353s elapsed"}
+{"ts":"2026-10-27T20:59:02.780Z","level":"info","msg":"Still in Teams waiting room... 355s elapsed"}
+{"ts":"2026-10-27T20:59:04.785Z","level":"info","msg":"Still in Teams waiting room... 357s elapsed"}
+{"ts":"2026-10-27T20:59:06.790Z","level":"info","msg":"Still in Teams waiting room... 359s elapsed"}
+{"ts":"2026-10-27T20:59:08.795Z","level":"info","msg":"Still in Teams waiting room... 361s elapsed"}
+{"ts":"2026-10-27T20:59:10.799Z","level":"info","msg":"Still in Teams waiting room... 363s elapsed"}
+{"ts":"2026-10-27T20:59:12.804Z","level":"info","msg":"Still in Teams waiting room... 365s elapsed"}
+{"ts":"2026-10-27T20:59:14.810Z","level":"info","msg":"Still in Teams waiting room... 367s elapsed"}
+{"ts":"2026-10-27T20:59:16.814Z","level":"info","msg":"Still in Teams waiting room... 369s elapsed"}
+{"ts":"2026-10-27T20:59:18.819Z","level":"info","msg":"Still in Teams waiting room... 371s elapsed"}
+{"ts":"2026-10-27T20:59:20.824Z","level":"info","msg":"Still in Teams waiting room... 373s elapsed"}
+{"ts":"2026-10-27T20:59:22.829Z","level":"info","msg":"Still in Teams waiting room... 375s elapsed"}
+{"ts":"2026-10-27T20:59:24.834Z","level":"info","msg":"Still in Teams waiting room... 377s elapsed"}
+{"ts":"2026-10-27T20:59:26.839Z","level":"info","msg":"Still in Teams waiting room... 379s elapsed"}
+{"ts":"2026-10-27T20:59:28.844Z","level":"info","msg":"Still in Teams waiting room... 381s elapsed"}
+{"ts":"2026-10-27T20:59:30.848Z","level":"info","msg":"Still in Teams waiting room... 383s elapsed"}
+{"ts":"2026-10-27T20:59:32.853Z","level":"info","msg":"Still in Teams waiting room... 385s elapsed"}
+{"ts":"2026-10-27T20:59:34.858Z","level":"info","msg":"Still in Teams waiting room... 387s elapsed"}
+{"ts":"2026-10-27T20:59:36.863Z","level":"info","msg":"Still in Teams waiting room... 389s elapsed"}
+{"ts":"2026-10-27T20:59:38.867Z","level":"info","msg":"Still in Teams waiting room... 391s elapsed"}
+{"ts":"2026-10-27T20:59:40.872Z","level":"info","msg":"Still in Teams waiting room... 393s elapsed"}
+{"ts":"2026-10-27T20:59:42.878Z","level":"info","msg":"Still in Teams waiting room... 395s elapsed"}
+{"ts":"2026-10-27T20:59:44.882Z","level":"info","msg":"Still in Teams waiting room... 397s elapsed"}
+{"ts":"2026-10-27T20:59:46.887Z","level":"info","msg":"Still in Teams waiting room... 399s elapsed"}
+{"ts":"2026-10-27T20:59:48.891Z","level":"info","msg":"Still in Teams waiting room... 401s elapsed"}
+{"ts":"2026-10-27T20:59:50.895Z","level":"info","msg":"Still in Teams waiting room... 403s elapsed"}
+[page] [Audio Hook] mirrored remote audio track mainAudi (2 total)
+{"ts":"2026-10-27T20:59:52.899Z","level":"info","msg":"Still in Teams waiting room... 405s elapsed"}
+{"ts":"2026-10-27T20:59:52.905Z","level":"info","msg":"Teams waiting room indicator disappeared - checking if bot was admitted or rejected..."}
+{"ts":"2026-10-27T20:59:52.941Z","level":"info","msg":"✅ Found admission indicator: button[id=\"hangup-button\"]"}
+{"ts":"2026-10-27T20:59:52.942Z","level":"info","msg":"✅ Bot was admitted to the Teams meeting: Leave button confirmed"}
+[page] [mixed] connected remote stream 1
+[page] [Csrc] csrc poll started (100ms, inactive after 400ms)
+[page] [TeamsSpeakers] 👁️ [TeamsSpeakers] Observing: Atharva Prabhu (735e7fb5-5feb-47d0-a950-13c960ed0707)
+[page] [TeamsSpeakers] observation {"type":"signal-absent","platform":"teams","signal":"dom-outline","reason":"outline-missing","tMs":1793134792973}
+[page] [TeamsSpeakers] [TeamsSpeakers] signal-absent reason=outline-missing signal=dom-outline stream=descendant stable-root=yes
+[page] [TeamsSpeakers] observation {"type":"signal-absent","platform":"teams","signal":"dom-outline","reason":"outline-missing","tMs":1793134792973}
+[page] [TeamsSpeakers] [TeamsSpeakers] signal-absent reason=outline-missing signal=dom-outline stream=absent stable-root=no
+[page] [TeamsSpeakers] observation {"type":"signal-absent","platform":"teams","signal":"dom-outline","reason":"outline-missing","tMs":1793134792973}
+[page] [TeamsSpeakers] [TeamsSpeakers] signal-absent reason=outline-missing signal=dom-outline stream=absent stable-root=no
+[page] [TeamsSpeakers] observation {"type":"roster-name","platform":"teams","name":"Atharva Prabhu","scan":1,"tMs":1793134792973}
+[page] [TeamsSpeakers] [TeamsSpeakers] roster-name sighting 1/3
+[page] [TeamsSpeakers] observation {"type":"roster-coverage","platform":"teams","participants":1,"named":1,"tMs":1793134792973}
+[page] [TeamsSpeakers] [TeamsSpeakers] roster-coverage named=1 participants=1
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 4 participants, observing 1 with signal (signal-absent 3)
+[page] [TeamsSpeakers] ⚠️ [TeamsSpeakers] WARN coverage-low found=4 observable=1 ratio=0.25 — most matched tiles carry no voice-level outline, so they can never be observed or named
+[page] [mixed] capture started over 1 stream(s)
+[page] [record-chunker] mix +stream (1 live)
+[page] [record-chunker] MediaRecorder started (audio/webm;codecs=opus, timeslice=15000ms)
+{"ts":"2026-10-27T20:59:52.987Z","level":"info","msg":"Starting periodic Teams removal monitoring..."}
+[page-console:error] TaskManagerService: notify:: Task Execute Error - taskId CreateCoreSecurityTask, code=EXECUTION_FAILURE errorMsg={"type":"TrustedTypeError","code":"DUPLICATE_POLICY_FOUND","stack":"DUPLICATE_POLICY_FOUND Error: undefined\n    at s.configureCoreSecurityService (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/53835-75915a6f300556ba.js:8:15880)\n    at uH.execute (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/light-meetings-experience-edd999ba3adc0c0a.js:38:10899)\n    at uH.executeSafe (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/light-meetings-experience-edd999ba3adc0c0a.js:23:73127)\n    at u (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/light-meetings-experience-edd999ba3adc0c0a.js:157:58719)\n    at m (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/light-meetings-experience-edd999ba3adc0c0a.js:157:58801)\n    at PW.notifyLifeCycleEvent (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/light-meetings-experience-edd999ba3adc0c0a.js:157:58813)\n    at async om.createCoreServices (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/light-meetings-experience-edd999ba3adc0c0a.js:23:49285)\n    at async ov.initializeCoreServices (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/light-meetings-experience-edd999ba3adc0c0a.js:23:59342)\n    at async ov.init (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/light-meetings-experience-edd999ba3adc0c0a.js:23:57649)\n    at async eyf (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/main-dc6019caad18baf6.js:122:13703)","prevError":{"name":"Error","message":"ChunkLoader::coreSecurityService is already defined. Developer should not be calling configureCoreSecurityService multiple times in it's context","stack":[]}}.
+[page-console:error] TaskManagerService: notify:: Task Execute Error - taskId InitTelemetryMonitorsTask, code=MISSING_DEPENDENCIES errorMsg=["leakDetectorService"] are required, but not initialized..
+[page] [TeamsSpeakers] 👁️ [TeamsSpeakers] Observing: Vexa Speaker (47bed567-654c-4f01-b4b5-ecd52701f37e)
+[page] [TeamsSpeakers] observation {"type":"signal-absent","platform":"teams","signal":"dom-outline","reason":"outline-missing","tMs":1793134795498}
+[page] [TeamsSpeakers] [TeamsSpeakers] signal-absent reason=outline-missing signal=dom-outline stream=absent stable-root=no
+[page] [TeamsSpeakers] observation {"type":"signal-absent","platform":"teams","signal":"dom-outline","reason":"outline-missing","tMs":1793134795545}
+[page] [TeamsSpeakers] [TeamsSpeakers] signal-absent reason=outline-missing signal=dom-outline stream=descendant stable-root=yes
+[page] [TeamsSpeakers] observation {"type":"signal-absent","platform":"teams","signal":"dom-outline","reason":"outline-missing","tMs":1793134795546}
+[page] [TeamsSpeakers] [TeamsSpeakers] signal-absent reason=outline-missing signal=dom-outline stream=absent stable-root=no
+[page] [TeamsSpeakers] observation {"type":"signal-absent","platform":"teams","signal":"dom-outline","reason":"outline-missing","tMs":1793134795570}
+[page] [TeamsSpeakers] [TeamsSpeakers] signal-absent reason=outline-missing signal=dom-outline stream=descendant stable-root=yes
+[page] [TeamsSpeakers] observation {"type":"signal-absent","platform":"teams","signal":"dom-outline","reason":"outline-missing","tMs":1793134795570}
+[page] [TeamsSpeakers] [TeamsSpeakers] signal-absent reason=outline-missing signal=dom-outline stream=absent stable-root=no
+[page-console:error] TaskManagerService: Failed 2 core tasks: CreateCoreSecurityTask,InitTelemetryMonitorsTask, lifeCycleEvent=Initialization:  Error: TaskManagerService::lifeCycleEvent=Initialization::NotInitialized
+    at d (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/main-dc6019caad18baf6.js:28:5401)
+    at PW.logErrorSummary (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/light-meetings-experience-edd999ba3adc0c0a.js:157:61288)
+    at PW.notifyLifeCycleEvent (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/light-meetings-experience-edd999ba3adc0c0a.js:157:58961)
+    at async om.createCoreServices (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/light-meetings-experience-edd999ba3adc0c0a.js:23:49285)
+    at async ov.initializeCoreServices (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/light-meetings-experience-edd999ba3adc0c0a.js:23:59342)
+    at async ov.init (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/light-meetings-experience-edd999ba3adc0c0a.js:23:57649)
+    at async eyf (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/main-dc6019caad18baf6.js:122:13703)
+    at async eyC (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/main-dc6019caad18baf6.js:122:14141)
+    at async eyy (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/main-dc6019caad18baf6.js:122:14698)
+[page-console:error] RenderingContextManager: [TaskError::CreateCoreSecurityTask::EXECUTION_FAILURE::undefined][TrustedTypeError::DUPLICATE_POLICY_FOUND][Error::ChunkLoader::coreSecurityService is already defined. Developer should not be calling configureCoreSecurityService multiple times in it's context]
+[page-console:error] RenderingContextManager: [TaskError::InitTelemetryMonitorsTask::MISSING_DEPENDENCIES::leakDetectorService]
+[page-console:error] TaskManagerService: notify:: Task Execute Error - taskId SignalCoreLifecycleChangesTask, code=MISSING_DEPENDENCIES errorMsg=["proactiveSuggestionsService"] are required, but not initialized..
+[page-console:error] TaskManagerService: Failed 1 core tasks: SignalCoreLifecycleChangesTask, lifeCycleEvent=OnUserAuthenticated:  Error: TaskManagerService::lifeCycleEvent=OnUserAuthenticated::NotInitialized
+    at d (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/main-dc6019caad18baf6.js:28:5401)
+    at PW.logErrorSummary (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/light-meetings-experience-edd999ba3adc0c0a.js:157:61288)
+    at PW.notifyLifeCycleEvent (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/light-meetings-experience-edd999ba3adc0c0a.js:157:58961)
+    at async om.createUserRenderingContext (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/light-meetings-experience-edd999ba3adc0c0a.js:23:55020)
+    at async om.createUserContextWithTelemetry (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/light-meetings-experience-edd999ba3adc0c0a.js:23:52959)
+[page-console:error] RenderingContextManager: [TaskError::SignalCoreLifecycleChangesTask::MISSING_DEPENDENCIES::proactiveSuggestionsService]
+[page-console:error] Failed to load resource: the server responded with a status of 401 ()
+[page] [page-fault] unhandledrejection: undefined :: (no stack)
+[page-console:error] ErrorStateProvider: Reported error for scenario unhandled_rejection_error: UnhandledPromiseRejection {showOops: false, errors: [lineno:undefined;colno:undefined], errorCode: UnhandledPromiseRejection, fileSource: undefined, extractedError: Stringifying error failed}
+[page-console:error] ExperienceLifeCycleManagerV2: failed to register window, could not find user anon.prod.72f988bf-86f1-41af-91ab-2d7cd011db47.undefined
+[page-console:error] Failed to load resource: the server responded with a status of 401 ()
+[page-console:error] CID[Core-eeeb28a7-ff56-4e98-b389-938b39d1a4c8] AtpSafelinksService: AtpSafelinks GetPolicy API failed with Error: RequireStatusFailed
+[page-console:error] CID[Core-eeeb28a7-ff56-4e98-b389-938b39d1a4c8] AtpSafelinksService: Error getting ATP Safelinks policy: failed to retreive from local storage and service and received null
+[page-console:error] cdlwebworker: {errorCode:FailedToUpdate,component:ConversationFolderManager,message:setFolderTableVersion failed with Store is not initialized,hostRendererId:cdlwebworker}
+[page-console:error] resolverUncaughtErrorBoundary__doNotAssignToGraphQLTeam: Uncaught error in a GraphQL resolver for operation "allClientPreferences", at field selection path "allClientPreferences.animation.disableAnimations"
+[page-console:error] resolverUncaughtErrorBoundary__doNotAssignToGraphQLTeam: Uncaught error in a GraphQL resolver for operation "allClientPreferences", at field selection path "allClientPreferences.animation.disableAnimations" - resolverType=browser - {"message":"Cannot return null for non-nullable field AnimationPreferences.disableAnimations.","locations":[],"path":["allClientPreferences","animation","disableAnimations"]}
+[page] [TeamsSpeakers] observation {"type":"roster-name","platform":"teams","name":"Atharva Prabhu","scan":2,"tMs":1793134798188}
+[page] [TeamsSpeakers] [TeamsSpeakers] roster-name sighting 2/3
+[page] [TeamsSpeakers] observation {"type":"roster-name","platform":"teams","name":"Vexa Speaker","scan":1,"tMs":1793134798188}
+[page] [TeamsSpeakers] [TeamsSpeakers] roster-name sighting 1/3
+[page] [TeamsSpeakers] observation {"type":"roster-coverage","platform":"teams","participants":2,"named":2,"tMs":1793134798188}
+[page] [TeamsSpeakers] [TeamsSpeakers] roster-coverage named=2 participants=2
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page-console:error] i18n: failed to import ./generated/resources/en-us/live-persona-card Error: ScriptCodeError, failed to load bundle: live-persona-card-locale-en-us
+    at d (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/main-dc6019caad18baf6.js:28:5401)
+    at c (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/53835-75915a6f300556ba.js:8:18781)
+    at g (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/53835-75915a6f300556ba.js:8:18927)
+    at async h (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/53835-75915a6f300556ba.js:8:19163)
+    at async Promise.all (index 0)
+[page-console:error] i18n: failed to import ./generated/resources/en-us/presence Error: ScriptCodeError, failed to load bundle: presence-locale-en-us
+    at d (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/main-dc6019caad18baf6.js:28:5401)
+    at c (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/53835-75915a6f300556ba.js:8:18781)
+    at g (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/53835-75915a6f300556ba.js:8:18927)
+    at async h (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/53835-75915a6f300556ba.js:8:19163)
+    at async Promise.all (index 1)
+[page-console:error] CDL: {errorCode:RemoteOperationFailed,requestId:s-1,component:RequestHandler,requestWindowId:main,operationType:subscription,operationName:DataResolversBrowserChatServiceEventsChatServiceBatchEventSubscription,message:error while processing s-1: {message:Unexpected error value: { context: DataLayerClient, subContext: getConversation, reason: undefined, code: NotPresent, serverResponse: undefined, isExpected: false, errorCode: undefined, name: ChatPaneWithSub, message: Conversation not found for: 19:meeting_YmM2MDUxZGUtNDQyYy00ZTY5LWEwYmUtZWYzYzkzZTcwNDQx@thread.v2, originalErrorMessage: undefined, originalErrorReason: undefined, statusCode: undefined },locations:[{line:2,column:3}],path:[chatServiceBatchEvent]} (reason: undefined),hostRendererId:7d0175b0-45e4-49a0-aea7-a7c1b2ebb896}
+[page-console:error] CDL: Subscription with request-id 's-1' stopped due to an error in even. Will send GQL_STOP.
+[page-console:error] CDL: {errorCode:RemoteOperationFailed,requestId:s-2,component:RequestHandler,requestWindowId:main,operationType:subscription,operationName:DataResolversBrowserChatServiceEventsChatServiceBatchEventSubscription,message:error while processing s-2: {message:Unexpected error value: { context: DataLayerClient, subContext: getConversation, reason: undefined, code: NotPresent, serverResponse: undefined, isExpected: false, errorCode: undefined, name: ChatPaneWithItems, message: Conversation not found for: 19:meeting_YmM2MDUxZGUtNDQyYy00ZTY5LWEwYmUtZWYzYzkzZTcwNDQx@thread.v2, originalErrorMessage: undefined, originalErrorReason: undefined, statusCode: undefined },locations:[{line:2,column:3}],path:[chatServiceBatchEvent]} (reason: undefined),hostRendererId:7d0175b0-45e4-49a0-aea7-a7c1b2ebb896}
+[page-console:error] CDL: Subscription with request-id 's-2' stopped due to an error in even. Will send GQL_STOP.
+[page-console:error] i18n: failed to import ./generated/resources/en-us/semantic-object Error: ScriptCodeError, failed to load bundle: semantic-object-locale-en-us
+    at d (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/main-dc6019caad18baf6.js:28:5401)
+    at c (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/53835-75915a6f300556ba.js:8:18781)
+    at g (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/53835-75915a6f300556ba.js:8:18927)
+    at async h (https://teams.public.onecdn.static.microsoft/teams-modular-packages/hashed-assets/53835-75915a6f300556ba.js:8:19163)
+    at async Promise.all (index 0)
+[page-console:error] resolverUncaughtErrorBoundary__doNotAssignToGraphQLTeam: Uncaught error in a GraphQL resolver for operation "ComponentsComposeMessagePresenceBatchSubscription"
+[page-console:error] resolverUncaughtErrorBoundary__doNotAssignToGraphQLTeam: Uncaught error in a GraphQL resolver for operation "ComponentsComposeMessagePresenceBatchSubscription" - resolverType=browser - {"message":"Unexpected error value: \"Type definition for Subscription.presenceUpdateEventBatch is missing\"","locations":[]}
+[page-console:error] resolverUncaughtErrorBoundary__doNotAssignToGraphQLTeam: Uncaught error in a GraphQL resolver for operation "ComponentsPinnedMessageChatPinnedMessageEventsSubscription", at field selection path "chatPinnedMessageEvents"
+[page-console:error] resolverUncaughtErrorBoundary__doNotAssignToGraphQLTeam: Uncaught error in a GraphQL resolver for operation "ComponentsPinnedMessageChatPinnedMessageEventsSubscription", at field selection path "chatPinnedMessageEvents" - resolverType=browser - {"message":"Unexpected error value: \"Subscription field must return Async Iterable. Received: undefined.\"","locations":[],"path":["chatPinnedMessageEvents"]}
+[page-console:error] CID[main] ChatServiceSubscription: ChatPaneWithSub:{"context":"DataLayerClient","subContext":"onError","code":"RemoteOperationFailed"}
+[page-console:error] CID[main] ChatServiceSubscription: ChatPaneWithItems:{"context":"DataLayerClient","subContext":"onError","code":"RemoteOperationFailed"}
+[page-console:error] CID[main] ChatServiceSubscription: MessagePaneRenderer:{"context":"DataLayerClient","subContext":"onError","code":"RemoteOperationFailed"}
+[page-console:error] resolverUncaughtErrorBoundary__doNotAssignToGraphQLTeam: Uncaught error in a GraphQL resolver for operation "ComponentsChatQueriesSetConsumptionHorizonMutation", at field selection path "setConsumptionHorizon"
+[page-console:error] resolverUncaughtErrorBoundary__doNotAssignToGraphQLTeam: Uncaught error in a GraphQL resolver for operation "ComponentsChatQueriesSetConsumptionHorizonMutation", at field selection path "setConsumptionHorizon" - resolverType=browser - {"message":"Resolver for Mutation.setConsumptionHorizon is missing","locations":[],"path":["setConsumptionHorizon"]}
+[page-console:error] CID[main] useConsumptionHorizon: Failed to execute consumptionHorizon update mutation: convId 19:meeting_YmM2MDUxZGUtNDQyYy00ZTY5LWEwYmUtZWYzYzkzZTcwNDQx@thread.v2, messageId 1793134800659, clientMessageId , originalArrivalTime 1793134800659, error Error
+[page-console:error] CID[main] useConsumptionHorizon: updateConsumptionHorizons: Failed to update consumption horizon, convId: 19:meeting_YmM2MDUxZGUtNDQyYy00ZTY5LWEwYmUtZWYzYzkzZTcwNDQx@thread.v2. Unknown error.
+[page-console:error] resolverUncaughtErrorBoundary__doNotAssignToGraphQLTeam: Uncaught error in a GraphQL resolver for operation "ComponentsChatQueriesSetConsumptionHorizonMutation", at field selection path "setConsumptionHorizon"
+[page-console:error] resolverUncaughtErrorBoundary__doNotAssignToGraphQLTeam: Uncaught error in a GraphQL resolver for operation "ComponentsChatQueriesSetConsumptionHorizonMutation", at field selection path "setConsumptionHorizon" - resolverType=browser - {"message":"Resolver for Mutation.setConsumptionHorizon is missing","locations":[],"path":["setConsumptionHorizon"]}
+[page-console:error] CID[main] useConsumptionHorizon: Failed to execute consumptionHorizon update mutation: convId 19:meeting_YmM2MDUxZGUtNDQyYy00ZTY5LWEwYmUtZWYzYzkzZTcwNDQx@thread.v2, messageId 1793134800659, clientMessageId , originalArrivalTime 1793134800659, error Error
+[page-console:error] CID[main] useConsumptionHorizon: updateConsumptionHorizons: Failed to update consumption horizon, convId: 19:meeting_YmM2MDUxZGUtNDQyYy00ZTY5LWEwYmUtZWYzYzkzZTcwNDQx@thread.v2. Unknown error.
+[page] [TeamsSpeakers] observation {"type":"roster-name","platform":"teams","name":"Atharva Prabhu","scan":3,"tMs":1793134802974}
+[page] [TeamsSpeakers] [TeamsSpeakers] roster-name sighting 3/3
+[page] [TeamsSpeakers] observation {"type":"roster-name","platform":"teams","name":"Vexa Speaker","scan":2,"tMs":1793134802974}
+[page] [TeamsSpeakers] [TeamsSpeakers] roster-name sighting 2/3
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [TeamsSpeakers] observation {"type":"roster-name","platform":"teams","name":"Vexa Speaker","scan":3,"tMs":1793134807974}
+[page] [TeamsSpeakers] [TeamsSpeakers] roster-name sighting 3/3
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [record-chunker] chunk 0 (3662 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":17,"recording_session_uid":"23d14b50-ef8b-4509-84fa-e558faaf4d1d"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":0,"is_final":false,"chunk_size_bytes":3662,"recording_meeting_id":17,"recording_session_uid":"23d14b50-ef8b-4509-84fa-e558faaf4d1d"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [mixed] MAIN-AUDIO ABSENT — the picked mix produced no sound; falling back to every track
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":21997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] connected remote stream 2
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":23997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":25997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":27997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[bot] hint-counters bridge-crossed=0 pipeline-received=0 binder-matched=0 binder-missed=0 teams-captions=0 csrc-crossed=0 observations=23
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":29997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [TeamsSpeakers] health found=6 observable=2 named=2 name-unresolved=0 transitions=0
+[page] [TeamsCaptions] health present=false wrapper=none authors=0 texts=0 emitted=0 unresolved=0 self=0
+[page] [TeamsCaptions] observation {"type":"captions-absent","platform":"teams","signal":"closed-caption","reason":"renderer-missing","candidates":[{"sel":"[data-tid=\"closed-caption-renderer-wrapper\"]","count":0},{"sel":"[data-tid=\"closed-caption-v2-virtual-list-content\"]","count":0},{"sel":"[data-tid=\"closed-captions-renderer\"]","count":0},{"sel":"[data-tid*=\"closed-caption\"]","count":0}],"tMs":1793134822975}
+[page] [TeamsCaptions] [TeamsCaptions] captions-absent reason=renderer-missing — no caption renderer matched; either captions never came on in this meeting or every candidate selector is stale
+[page] [record-chunker] chunk 1 (3516 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":17,"recording_session_uid":"23d14b50-ef8b-4509-84fa-e558faaf4d1d"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":1,"is_final":false,"chunk_size_bytes":3516,"recording_meeting_id":17,"recording_session_uid":"23d14b50-ef8b-4509-84fa-e558faaf4d1d"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":31997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":33997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":35997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] observation {"type":"indicator-fired","platform":"teams","signal":"dom-outline","indicator":"vdi-occlusion","tMs":1793134829302}
+[page] [TeamsSpeakers] [TeamsSpeakers] indicator-fired indicator=vdi-occlusion
+[page] [TeamsSpeakers] 🎤 [TeamsSpeakers] SPEAKER_START: Vexa Speaker (47bed567-654c-4f01-b4b5-ecd52701f37e)
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":37997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":39997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [TeamsSpeakers] 🔇 [TeamsSpeakers] SPEAKER_END: Vexa Speaker (47bed567-654c-4f01-b4b5-ecd52701f37e)
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":41997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":43997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [record-chunker] chunk 2 (80314 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":17,"recording_session_uid":"23d14b50-ef8b-4509-84fa-e558faaf4d1d"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":2,"is_final":false,"chunk_size_bytes":80314,"recording_meeting_id":17,"recording_session_uid":"23d14b50-ef8b-4509-84fa-e558faaf4d1d"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":45997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":47997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":49997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":51997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":53997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":55997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":57997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[bot] hint-counters bridge-crossed=4 pipeline-received=4 binder-matched=0 binder-missed=0 teams-captions=0 csrc-crossed=2 observations=40
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":59997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [TeamsSpeakers] health found=6 observable=2 named=2 name-unresolved=0 transitions=1
+[page] [TeamsCaptions] health present=false wrapper=none authors=0 texts=0 emitted=0 unresolved=0 self=0
+[page] [record-chunker] chunk 3 (3530 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":17,"recording_session_uid":"23d14b50-ef8b-4509-84fa-e558faaf4d1d"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":3,"is_final":false,"chunk_size_bytes":3530,"recording_meeting_id":17,"recording_session_uid":"23d14b50-ef8b-4509-84fa-e558faaf4d1d"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":61997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":63997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page-console:error] CID[Core-eeeb28a7-ff56-4e98-b389-938b39d1a4c8] FilesValidDomainsService: files-valid-domains-service: isValidCache failed: Unexpected end of JSON input
+[page-console:error] Failed to load resource: the server responded with a status of 400 ()
+[page-console:error] resolverUncaughtErrorBoundary__doNotAssignToGraphQLTeam: Uncaught error in a GraphQL resolver for operation "ComponentsComposeMessageDeleteRoamedDraftMutation", at field selection path "deleteDraftMessage"
+[page-console:error] resolverUncaughtErrorBoundary__doNotAssignToGraphQLTeam: Uncaught error in a GraphQL resolver for operation "ComponentsComposeMessageDeleteRoamedDraftMutation", at field selection path "deleteDraftMessage" - resolverType=browser - {"message":"RequireStatusFailed","locations":[],"path":["deleteDraftMessage"]}
+[page-console:error] CID[Core-eeeb28a7-ff56-4e98-b389-938b39d1a4c8] FilesValidDomainsService: FilesValidDomainsService: getValidDomains failed with error: Cannot read properties of undefined (reading 'map')
+[page-console:error] resolverUncaughtErrorBoundary__doNotAssignToGraphQLTeam: Uncaught error in a GraphQL resolver for operation "ComponentsFilesCommonValidFileDomainsQuery", at field selection path "filesValidDomains"
+[page-console:error] resolverUncaughtErrorBoundary__doNotAssignToGraphQLTeam: Uncaught error in a GraphQL resolver for operation "ComponentsFilesCommonValidFileDomainsQuery", at field selection path "filesValidDomains" - resolverType=browser - {"message":"FilesValidDomainsService::getValidDomains::UnhandledRuntimeException","locations":[],"path":["filesValidDomains"]}
+[page-console:error] CID[main] useGetValidFileDomains: Exception while executing validFileDomainsQuery: Error: FilesValidDomainsService::getValidDomains::UnhandledRuntimeException
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":65997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":67997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":69997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":71997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":73997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page-console:error] resolverUncaughtErrorBoundary__doNotAssignToGraphQLTeam: Uncaught error in a GraphQL resolver for operation "ComponentsTypingIndicatorTypingUsersQuery", at field selection path "typingUsers"
+[page-console:error] resolverUncaughtErrorBoundary__doNotAssignToGraphQLTeam: Uncaught error in a GraphQL resolver for operation "ComponentsTypingIndicatorTypingUsersQuery", at field selection path "typingUsers" - resolverType=browser - {"message":"Resolver for Query.typingUsers is missing","locations":[],"path":["typingUsers"]}
+[page-console:error] resolverUncaughtErrorBoundary__doNotAssignToGraphQLTeam: Uncaught error in a GraphQL resolver for operation "ComponentsTypingIndicatorTypingUsersSubscription", at field selection path "typingUsersEvent"
+[page-console:error] resolverUncaughtErrorBoundary__doNotAssignToGraphQLTeam: Uncaught error in a GraphQL resolver for operation "ComponentsTypingIndicatorTypingUsersSubscription", at field selection path "typingUsersEvent" - resolverType=browser - {"message":"Unexpected error value: \"Subscription field must return Async Iterable. Received: undefined.\"","locations":[],"path":["typingUsersEvent"]}
+[page-console:error] CID[Core-eeeb28a7-ff56-4e98-b389-938b39d1a4c8] FilesValidDomainsService: files-valid-domains-service: isValidCache failed: Unexpected end of JSON input
+[page-console:error] CDL: {errorCode:RemoteOperationFailed,requestId:q-23,component:RequestHandler,requestWindowId:main,operationType:query,operationName:ComponentsComposeMessageChannelByIdQuery,message:error while processing q-23: {message:Unexpected error value: Variable $conversationId of required type ID! was not provided.,locations:[{line:1,column:48}]} (reason: undefined),hostRendererId:7d0175b0-45e4-49a0-aea7-a7c1b2ebb896}
+[page-console:error] resolverUncaughtErrorBoundary__doNotAssignToGraphQLTeam: Uncaught error in a GraphQL resolver for operation "ComponentsComposeMessageMobileAttachUpdatesSubscription", at field selection path "subscribeToCrossDeviceAttachType"
+[page-console:error] resolverUncaughtErrorBoundary__doNotAssignToGraphQLTeam: Uncaught error in a GraphQL resolver for operation "ComponentsComposeMessageMobileAttachUpdatesSubscription", at field selection path "subscribeToCrossDeviceAttachType" - resolverType=browser - {"message":"Cannot read properties of undefined (reading 'logger')","locations":[],"path":["subscribeToCrossDeviceAttachType"]}
+[page-console:error] CID[Core-eeeb28a7-ff56-4e98-b389-938b39d1a4c8] FilesValidDomainsService: FilesValidDomainsService: getValidDomains failed with error: Cannot read properties of undefined (reading 'map')
+[page-console:error] resolverUncaughtErrorBoundary__doNotAssignToGraphQLTeam: Uncaught error in a GraphQL resolver for operation "ComponentsFilesCommonValidFileDomainsQuery", at field selection path "filesValidDomains"
+[page-console:error] resolverUncaughtErrorBoundary__doNotAssignToGraphQLTeam: Uncaught error in a GraphQL resolver for operation "ComponentsFilesCommonValidFileDomainsQuery", at field selection path "filesValidDomains" - resolverType=browser - {"message":"FilesValidDomainsService::getValidDomains::UnhandledRuntimeException","locations":[],"path":["filesValidDomains"]}
+[page-console:error] CID[main] useGetValidFileDomains: Exception while executing validFileDomainsQuery: Error: FilesValidDomainsService::getValidDomains::UnhandledRuntimeException
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [record-chunker] chunk 4 (3516 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":17,"recording_session_uid":"23d14b50-ef8b-4509-84fa-e558faaf4d1d"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":4,"is_final":false,"chunk_size_bytes":3516,"recording_meeting_id":17,"recording_session_uid":"23d14b50-ef8b-4509-84fa-e558faaf4d1d"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":75997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":77997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":79997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":81997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":83997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":85997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":87997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[bot] hint-counters bridge-crossed=4 pipeline-received=4 binder-matched=0 binder-missed=0 teams-captions=0 csrc-crossed=2 observations=55
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":89997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [TeamsSpeakers] health found=6 observable=2 named=2 name-unresolved=0 transitions=1
+[page] [TeamsCaptions] health present=false wrapper=none authors=0 texts=0 emitted=0 unresolved=0 self=0
+[page] [record-chunker] chunk 5 (3531 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":17,"recording_session_uid":"23d14b50-ef8b-4509-84fa-e558faaf4d1d"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":5,"is_final":false,"chunk_size_bytes":3531,"recording_meeting_id":17,"recording_session_uid":"23d14b50-ef8b-4509-84fa-e558faaf4d1d"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":91997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":93997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":95997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":97997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] observation {"type":"indicator-silent","platform":"teams","signal":"dom-outline","reason":"no-speaking-transition-in-window","found":6,"observable":2,"windowMs":60000,"tMs":1793134890974}
+[page] [TeamsSpeakers] ⚠️ [TeamsSpeakers] WARN indicator-silent observable=2 found=6 windowMs=60000 — no candidate indicator has fired; this producer is emitting no speaker attribution at all
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":99997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":101997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":103997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [record-chunker] chunk 6 (3531 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":17,"recording_session_uid":"23d14b50-ef8b-4509-84fa-e558faaf4d1d"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":6,"is_final":false,"chunk_size_bytes":3531,"recording_meeting_id":17,"recording_session_uid":"23d14b50-ef8b-4509-84fa-e558faaf4d1d"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":105997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":107997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":109997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":111997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":113997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":115997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":117997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[bot] hint-counters bridge-crossed=4 pipeline-received=4 binder-matched=0 binder-missed=0 teams-captions=0 csrc-crossed=2 observations=71
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":119997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [TeamsSpeakers] health found=6 observable=2 named=2 name-unresolved=0 transitions=1
+[page] [TeamsCaptions] health present=false wrapper=none authors=0 texts=0 emitted=0 unresolved=0 self=0
+[page] [record-chunker] chunk 7 (3531 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":17,"recording_session_uid":"23d14b50-ef8b-4509-84fa-e558faaf4d1d"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":7,"is_final":false,"chunk_size_bytes":3531,"recording_meeting_id":17,"recording_session_uid":"23d14b50-ef8b-4509-84fa-e558faaf4d1d"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":121997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":123997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":125997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":127997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":129997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":131997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":133997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [record-chunker] chunk 8 (14627 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":17,"recording_session_uid":"23d14b50-ef8b-4509-84fa-e558faaf4d1d"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":8,"is_final":false,"chunk_size_bytes":14627,"recording_meeting_id":17,"recording_session_uid":"23d14b50-ef8b-4509-84fa-e558faaf4d1d"}
+[page] [TeamsSpeakers] observation {"type":"indicator-fired","platform":"teams","signal":"dom-outline","indicator":"vdi-occlusion","tMs":1793134928680}
+[page] [TeamsSpeakers] [TeamsSpeakers] indicator-fired indicator=vdi-occlusion
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":135997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🎤 [TeamsSpeakers] SPEAKER_START: Vexa Speaker (47bed567-654c-4f01-b4b5-ecd52701f37e)
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":137997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔇 [TeamsSpeakers] SPEAKER_END: Vexa Speaker (47bed567-654c-4f01-b4b5-ecd52701f37e)
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":139997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [TeamsSpeakers] observation {"type":"indicator-fired","platform":"teams","signal":"dom-outline","indicator":"vdi-occlusion","tMs":1793134934352}
+[page] [TeamsSpeakers] [TeamsSpeakers] indicator-fired indicator=vdi-occlusion
+[page] [TeamsSpeakers] 🎤 [TeamsSpeakers] SPEAKER_START: Vexa Speaker (47bed567-654c-4f01-b4b5-ecd52701f37e)
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":141997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] observation {"type":"indicator-fired","platform":"teams","signal":"dom-outline","indicator":"vdi-occlusion","tMs":1793134935065}
+[page] [TeamsSpeakers] [TeamsSpeakers] indicator-fired indicator=vdi-occlusion
+[page] [TeamsSpeakers] 🎤 [TeamsSpeakers] SPEAKER_START: Vexa Speaker (47bed567-654c-4f01-b4b5-ecd52701f37e)
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":143997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔇 [TeamsSpeakers] SPEAKER_END: Vexa Speaker (47bed567-654c-4f01-b4b5-ecd52701f37e)
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [TeamsSpeakers] observation {"type":"indicator-fired","platform":"teams","signal":"dom-outline","indicator":"vdi-occlusion","tMs":1793134938359}
+[page] [TeamsSpeakers] [TeamsSpeakers] indicator-fired indicator=vdi-occlusion
+[page] [TeamsSpeakers] 🎤 [TeamsSpeakers] SPEAKER_START: Vexa Speaker (47bed567-654c-4f01-b4b5-ecd52701f37e)
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":145997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] observation {"type":"indicator-fired","platform":"teams","signal":"dom-outline","indicator":"vdi-occlusion","tMs":1793134939732}
+[page] [TeamsSpeakers] [TeamsSpeakers] indicator-fired indicator=vdi-occlusion
+[page] [TeamsSpeakers] 🎤 [TeamsSpeakers] SPEAKER_START: Vexa Speaker (47bed567-654c-4f01-b4b5-ecd52701f37e)
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":147997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔇 [TeamsSpeakers] SPEAKER_END: Vexa Speaker (47bed567-654c-4f01-b4b5-ecd52701f37e)
+[bot] hint-counters bridge-crossed=14 pipeline-received=14 binder-matched=0 binder-missed=0 teams-captions=0 csrc-crossed=8 observations=91
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":149997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [TeamsSpeakers] health found=6 observable=2 named=2 name-unresolved=0 transitions=6
+[page] [TeamsCaptions] health present=false wrapper=none authors=0 texts=0 emitted=0 unresolved=0 self=0
+[page] [TeamsSpeakers] observation {"type":"indicator-fired","platform":"teams","signal":"dom-outline","indicator":"vdi-occlusion","tMs":1793134943367}
+[page] [TeamsSpeakers] [TeamsSpeakers] indicator-fired indicator=vdi-occlusion
+[page] [record-chunker] chunk 9 (45426 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":17,"recording_session_uid":"23d14b50-ef8b-4509-84fa-e558faaf4d1d"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":9,"is_final":false,"chunk_size_bytes":45426,"recording_meeting_id":17,"recording_session_uid":"23d14b50-ef8b-4509-84fa-e558faaf4d1d"}
+[page] [TeamsSpeakers] 🎤 [TeamsSpeakers] SPEAKER_START: Vexa Speaker (47bed567-654c-4f01-b4b5-ecd52701f37e)
+[page] [TeamsSpeakers] 🔇 [TeamsSpeakers] SPEAKER_END: Vexa Speaker (47bed567-654c-4f01-b4b5-ecd52701f37e)
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":151997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":153997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":155997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":157997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":159997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":161997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":163997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [record-chunker] chunk 10 (21619 bytes)
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":17,"recording_session_uid":"23d14b50-ef8b-4509-84fa-e558faaf4d1d"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":10,"is_final":false,"chunk_size_bytes":21619,"recording_meeting_id":17,"recording_session_uid":"23d14b50-ef8b-4509-84fa-e558faaf4d1d"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":165997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":167997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":169997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":171997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":173997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [TeamsSpeakers] 🔍 [TeamsSpeakers] Scanned 6 participants, observing 2 with signal (signal-absent 4)
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":175997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [mixed] observation {"kind":"main-audio-silent","platform":"teams","capturedMs":177997,"streamCount":2,"trackIds":["a14f5e1d-45ac-4d58-84d7-118b24c1a76f","mainAudio-67003"],"action":"mainAudio mix was picked but carried NO energetic audio — capturing ALL tracks instead"}
+[page] [Csrc] csrc poll stopped (1774 polls, 10 transitions, 0 errors)
+[page] [record-chunker] chunk 11 (3054 bytes)
+[page] [record-chunker] final chunk emitted (seq=12)
+{"ts":"2026-10-27T21:02:51.475Z","level":"info","msg":"[leaveMicrosoftTeams] Triggering leave action in browser context..."}
+{"ts":"2026-10-27T21:02:51.475Z","level":"info","msg":"[leaveMicrosoftTeams] Stopping recording pipeline before leave..."}
+{"ts":"2026-10-27T21:02:51.475Z","level":"warn","msg":"[leaveMicrosoftTeams] No bot config provided; cannot send leave callback"}
+{"ts":"2026-10-27T21:02:51.475Z","level":"info","msg":"[leaveMicrosoftTeams] Attempting to click leave button using Playwright's native click..."}
+{"ts":"2026-10-27T21:02:51.476Z","level":"info","msg":"[leaveMicrosoftTeams] Found #hangup-button, clicking with Playwright..."}
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":17,"recording_session_uid":"23d14b50-ef8b-4509-84fa-e558faaf4d1d"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":12,"is_final":true,"chunk_size_bytes":0,"recording_meeting_id":17,"recording_session_uid":"23d14b50-ef8b-4509-84fa-e558faaf4d1d"}
+{"level":"info","msg":"[Recording] Upload successful","http_status":200,"recording_meeting_id":17,"recording_session_uid":"23d14b50-ef8b-4509-84fa-e558faaf4d1d"}
+{"level":"info","msg":"[Recording] Chunk uploaded","chunk_seq":11,"is_final":false,"chunk_size_bytes":3054,"recording_meeting_id":17,"recording_session_uid":"23d14b50-ef8b-4509-84fa-e558faaf4d1d"}
+{"ts":"2026-10-27T21:02:51.546Z","level":"info","msg":"[leaveMicrosoftTeams] Successfully clicked #hangup-button using Playwright"}
+{"ts":"2026-10-27T21:02:51.546Z","level":"info","msg":"[leaveMicrosoftTeams] Waiting 3 seconds for Teams to process leave..."}
+{"ts":"2026-10-27T21:02:54.547Z","level":"info","msg":"[leaveMicrosoftTeams] Wait complete. Teams should have processed the leave action."}
+[bot] orchestrator: emitting completed (reason=stopped, from=active)
+[bot] redis (acts) error: Socket closed unexpectedly
+[bot] redis (transcript) error: Socket closed unexpectedly
+[bot] redis (acts) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] redis (transcript) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] redis (transcript) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] redis (acts) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] orchestrator: completed emitted + flushed
+[bot] capture-signal: session written: /var/lib/vexa-runtime/homes/1500000001.c8d14c00d3d8c306/captured-signal/23d14b50-ef8b-4509-84fa-e558faaf4d1d.captured-signal.jsonl (32 frames, 16 hints, 0 captions, 10 csrc, 108 observations)
+[bot] transcript-snapshot: 5 row(s) → /var/lib/vexa-runtime/homes/1500000001.c8d14c00d3d8c306/captured-signal/23d14b50-ef8b-4509-84fa-e558faaf4d1d.transcript.jsonl
+{"level":"info","msg":"[capture-signal] tape-uploaded","event":"capture_signal.tape_uploaded","part":"captured-signal","path":"/var/lib/vexa-runtime/homes/1500000001.c8d14c00d3d8c306/captured-signal/23d14b50-ef8b-4509-84fa-e558faaf4d1d.captured-signal.jsonl","bytes":704333,"capped":false}
+{"level":"info","msg":"[capture-signal] tape-uploaded","event":"capture_signal.tape_uploaded","part":"stt","path":"/var/lib/vexa-runtime/homes/1500000001.c8d14c00d3d8c306/captured-signal/23d14b50-ef8b-4509-84fa-e558faaf4d1d.stt.jsonl","bytes":1225,"capped":false}
+{"level":"info","msg":"[capture-signal] tape-uploaded","event":"capture_signal.tape_uploaded","part":"csrc","path":"/var/lib/vexa-runtime/homes/1500000001.c8d14c00d3d8c306/captured-signal/23d14b50-ef8b-4509-84fa-e558faaf4d1d.csrc.jsonl","bytes":1189,"capped":false}
+[bot] redis (transcript) error: WRONGPASS invalid username-password pair or user is disabled.
+[bot] redis (acts) error: WRONGPASS invalid username-password pair or user is disabled.
+{"level":"info","msg":"[capture-signal] tape-uploaded","event":"capture_signal.tape_uploaded","part":"observations","path":"/var/lib/vexa-runtime/homes/1500000001.c8d14c00d3d8c306/captured-signal/23d14b50-ef8b-4509-84fa-e558faaf4d1d.observations.jsonl","bytes":33209,"capped":false}
+{"level":"info","msg":"[capture-signal] tape-uploaded","event":"capture_signal.tape_uploaded","part":"botlog","path":"/var/lib/vexa-runtime/homes/1500000001.c8d14c00d3d8c306/captured-signal/23d14b50-ef8b-4509-84fa-e558faaf4d1d.botlog.txt","bytes":111108,"capped":false}
+{"level":"info","msg":"[capture-signal] tape-uploaded","event":"capture_signal.tape_uploaded","part":"transcript","path":"/var/lib/vexa-runtime/homes/1500000001.c8d14c00d3d8c306/captured-signal/23d14b50-ef8b-4509-84fa-e558faaf4d1d.transcript.jsonl","bytes":1535,"capped":false}
